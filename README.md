@@ -1,30 +1,34 @@
-==================
 About this project
 ==================
 
-------
-How to
-------
+***
 
+How to use
+==================
 
---------
+***
+
 Progress
---------
+==================
 
+***
 
--------
 Join us
--------
+==================
 
 This is a open source project.
-If you are interested.
-Welcome to join us.
-You can download here:
-git@github.com:crazy-canux/xplugin_nagios.git
 
-----------
+If you are interested.
+
+Welcome to join us.
+
+[download](git@github.com:crazy-canux/xplugin_nagios.git)
+
+***
+
 About bugs
-----------
+==================
 
 If you find any bugs please contact the author.
-canux.cheng@faurecia.com.
+
+Email: <canux.cheng@faurecia.com>
