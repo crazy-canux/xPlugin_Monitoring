@@ -1,27 +1,53 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-######################################################################
-# Copyright (C) 2015 Faurecia (China) Holding Co.,Ltd.               #
-# All rights reserved                                                #
-# Name: check_mssql_sql.py
-# Author: Canux canuxcheng@gmail.com                                 #
-# Version: V1.0                                                      #
-# Time: Mon 07 Mar 2016 02:46:39 AM EST
-######################################################################
-# Description:
-######################################################################
+"""Copyright (C) 2015 Faurecia (China) Holding Co.,Ltd.
 
+All rights reserved.
+Name: check_mssql.py
+Author: Canux CHENG canuxcheng@gmail.com
+Version: V1.0.0.0
+Time: Wed 27 Jul 2016 02:01:20 PM CST
+
+Description:
+    [1.0.0.0] 20160727 Init this plugin for basic functions.
+"""
 import os
 import sys
 import logging
 import argparse
+import re
+# try:
+#     import cPickle as pickle
+# except:
+#     import pickle
+
 import pymssql
 
 
-class Base(object):
-    """Basic class for everything."""
+class Nagios(object):
+
+    """Basic class for nagios."""
+
     def __init__(self, name=None, version='1.0.0', description='For MSSQL'):
-        self.name = os.path.basename(sys.argv[0]) if not name else name
+        self._name = os.path.basename(sys.argv[0]) if not name else name
+        self.__version = version
+        self.__description = description
+
+        # Init the log
+        logging.basicConfig(format='[%(levelname)s] (%(module)s) %(message)s')
+        self.logger = logging.getLogger("mssql")
+        self.logger.setLevel(logging.INFO)
+
+        # Init the argument
+        self.__define_options()
+        self.define_sub_options()
+        self.__parse_options()
+
+        # Init the logger
+        if self.args.debug:
+            self.logger.setLevel(logging.DEBUG)
+        self.logger.debug("===== BEGIN DEBUG =====")
+        self.logger.debug("Init Nagios")
 
         # Init output data.
         self._output = ""
@@ -29,29 +55,16 @@ class Base(object):
         self.longoutput = []
         self.perfdata = []
 
-        # Init the log
-        logging.basicConfig(format='[%(levelname)s] (%(module)s) %(message)s')
-        self.logger = logging.getLogger("mssql")
-        self.logger.setLevel(logging.INFO)
-
-        # Init  the argument
-        self.__define_options()
-        self.define_sub_options()
-        self.__parse_options()
-
-        if self.args.debug:
-            self.logger.setLevel(logging.DEBUG)
-        self.logger.debug("===== BEGIN DEBUG =====")
-        self.logger.debug("Init base")
-
-        if self.__class__.__name__ == "Base":
+        # End the debug.
+        if self.__class__.__name__ == "Nagios":
             self.logger.debug("===== END DEBUG =====")
 
     def __define_options(self):
         self.parser = argparse.ArgumentParser(description="Plugin for MSSQL.")
         self.parser.add_argument('-V', '--version',
                                  action='version',
-                                 version='%s %s" % (self.name, self.version)',
+                                 version='%s %s' % (self._name,
+                                                    self.__version),
                                  help='Show version')
         self.parser.add_argument('-D', '--debug',
                                  action='store_true',
@@ -105,31 +118,37 @@ class Base(object):
 
 
 class NagiosOk(Exception):
+
     def __init__(self, msg):
         print "OK - %s" % msg
         raise SystemExit(0)
 
 
 class NagiosWarning(Exception):
+
     def __init__(self, msg):
         print "WARNING - %s" % msg
         raise SystemExit(1)
 
 
 class NagiosCritical(Exception):
+
     def __init__(self, msg):
         print "CRITICAL - %s" % msg
         raise SystemExit(2)
 
 
 class NagiosUnknown(Exception):
+
     def __init__(self, msg):
         print "UNKNOWN - %s" % msg
         raise SystemExit(3)
 
 
-class Mssql(Base):
+class Mssql(Nagios):
+
     """Basic class for mssql."""
+
     def __init__(self, *args, **kwargs):
         super(Mssql, self).__init__(*args, **kwargs)
         self.logger.debug("Init mssql")
@@ -162,25 +181,26 @@ class Mssql(Base):
             self.logger.debug("fetchall ok")
         except pymssql.Error as e:
             self.unknown("Fetchall error: %s" % e)
+        try:
+            self.cursor.close()
+            self.logger.debug("Close cursor ok")
+        except pymssql.Error as e:
+            self.unknown("Close cursor error: %s" % e)
         return self.results
 
     def close(self):
         """Close the connection."""
         try:
             self.conn.close()
-            self.logger.debug("Close ok")
+            self.logger.debug("Close connect ok")
         except pymssql.Error as e:
             self.unknown("Close connect error: %s" % e)
-
-    def version(self):
-        self.results = self.query("select @@version as version")
-        self.logger.debug("MSSQL Version: {}".format(self.results))
 
     def define_sub_options(self):
         super(Mssql, self).define_sub_options()
         self.mssql_parser.add_argument('-H', '--server',
                                        required=True,
-                                       help='database server.',
+                                       help='database server\instance.',
                                        dest='server')
         self.mssql_parser.add_argument('-u', '--user',
                                        required=True,
@@ -193,30 +213,37 @@ class Mssql(Base):
         self.mssql_parser.add_argument('-d', '--database',
                                        default='master',
                                        required=False,
-                                       help='database name.',
+                                       help='database name, default master',
                                        dest='database')
         self.mssql_parser.add_argument('-t', '--timeout',
-                                       default=15,
-                                       type=int,
-                                       required=False,
-                                       help='query timeout.',
-                                       dest='timeout')
-        self.mssql_parser.add_argument('-l', '--login_timeout',
                                        default=30,
                                        type=int,
                                        required=False,
-                                       help='connection and login time out.',
+                                       help='query timeout, default 30s',
+                                       dest='timeout')
+        self.mssql_parser.add_argument('-l', '--login_timeout',
+                                       default=60,
+                                       type=int,
+                                       required=False,
+                                       help='connection and login time out,\
+                                       default 60s.',
                                        dest='login_timeout')
         self.mssql_parser.add_argument('-c', '--charset',
                                        default='utf8',
                                        type=str,
                                        required=False,
-                                       help='set the charset.',
+                                       help='set the charset, default utf8',
                                        dest='charset')
 
 
+# Extension for function monitoring.
+# Just use the API from class Nagios and Mssql.
+
+
 class Sql(Mssql):
+
     """Just for the return value is a single number."""
+
     def __init__(self, *args, **kwargs):
         super(Sql, self).__init__(*args, **kwargs)
         self.logger.debug("Init Sql")
@@ -253,190 +280,34 @@ class Sql(Mssql):
                                      dest='as_dict')
 
     def sql_handle(self):
-        self.version()
-        self.results = self.query(self.args.sql)
+        self.__results = self.query(self.args.sql)
         self.close()
-        if not self.results:
+        if not self.__results:
             self.unknown("SP/SQL return nothing.")
-        self.logger.debug("results: {}".format(self.results))
-        if len(self.results) != 1:
+        self.logger.debug("results: {}".format(self.__results))
+        if len(self.__results) != 1:
             self.unknown("SP/SQL return more than one number.")
-        self.result = self.results[0][0]
-        if not isinstance(self.result, (int, long)):
+        self.__result = self.__results[0][0]
+        if not isinstance(self.__result, (int, long)):
             self.unknown("SP/SQL not return a single number.")
-        self.logger.debug("result: {}".format(self.result))
+        self.logger.debug("result: {}".format(self.__result))
         status = self.ok
 
         # Compare the vlaue.
-        if self.result > self.args.warning:
+        if self.__result > self.args.warning:
             status = self.warning
-        if self.result > self.args.critical:
+        if self.__result > self.args.critical:
             status = self.critical
 
         # Output
-        self.shortoutput = "The result is {}".format(self.result)
+        self.shortoutput = "The result is {}".format(self.__result)
         self.longoutput.append("-------------------------------\n")
-        self.longoutput.append(str(self.results))
+        self.longoutput.append(str(self.__results))
         self.longoutput.append("-------------------------------\n")
         self.perfdata.append("\n{sql}={result};{warn};{crit};0;".format(
             crit=self.args.critical,
             warn=self.args.warning,
-            result=self.result,
-            sql=self.args.sql))
-
-        # Return status with message to Nagios.
-        status(self.output(long_output_limit=None))
-        self.logger.debug("Return status and exit to Nagios.")
-
-
-class Esupply(Mssql):
-    """Count the return value and show the lines.
-    Monitoring e-supply process.
-    """
-    def __init__(self, *args, **kwargs):
-        super(Esupply, self).__init__(*args, **kwargs)
-        self.logger.debug("Init esupply")
-
-    def define_sub_options(self):
-        super(Esupply, self).define_sub_options()
-        self.esupply_parser = self.subparsers.add_parser('esupply',
-                                                         help='For esupply db',
-                                                         description='Options\
-                                                         for esupply.')
-        self.esupply_parser.add_argument('-s', '--sql',
-                                         action='append',
-                                         type=str,
-                                         required=True,
-                                         help='The sql or store procedure.',
-                                         dest='sql')
-        self.esupply_parser.add_argument('-w', '--warning',
-                                         default=0,
-                                         type=int,
-                                         required=False,
-                                         help='Warning value for sql',
-                                         dest='warning')
-        self.esupply_parser.add_argument('-c', '--critical',
-                                         default=0,
-                                         type=int,
-                                         required=False,
-                                         help='Critical value for sql',
-                                         dest='critical')
-        self.esupply_parser.add_argument('--as_dict',
-                                         default=True,
-                                         type=bool,
-                                         required=False,
-                                         help='Set the return mode.',
-                                         dest='as_dict')
-
-    def esupply_handle(self):
-        self.version()
-        self.results = self.query(self.args.sql)
-        self.close()
-        self.logger.debug("results: {}".format(self.results))
-        self.result = int(len(self.results))
-        self.logger.debug("result: {}".format(self.result))
-        status = self.ok
-
-        # Compare the vlaue.
-        if self.result > self.args.warning:
-            status = self.warning
-        if self.result > self.args.critical:
-            status = self.critical
-
-        # Output for nagios
-        self.shortoutput = "The result is {}".format(self.result)
-        self.longoutput.append("-------------------------------\n")
-        if self.result:
-            if isinstance(self.results[0], dict):
-                keys = self.results[0].keys()
-                for loop in range(0, self.result):
-                    for key in keys:
-                        value = str(self.results[loop].get(key)).strip("\n")
-                        line = key + ": " + value
-                        self.longoutput.append(line + "\n")
-                    self.longoutput.append("-------------------------------\n")
-        self.perfdata.append("\n{sql}={result};{warn};{crit};0;".format(
-            crit=self.args.critical,
-            warn=self.args.warning,
-            result=self.result,
-            sql=self.args.sql))
-
-        # Return status with message to Nagios.
-        status(self.output(long_output_limit=None))
-        self.logger.debug("Return status and exit to Nagios.")
-
-
-class IjcoreM(Mssql):
-    """Count the return value and show the lines.
-    Monitoring Ijcore process.
-    Replace IjcoreM.
-    """
-    def __init__(self, *args, **kwargs):
-        super(IjcoreM, self).__init__(*args, **kwargs)
-        self.logger.debug("Init ijcorem")
-
-    def define_sub_options(self):
-        super(IjcoreM, self).define_sub_options()
-        self.ijcorem_parser = self.subparsers.add_parser('ijcorem',
-                                                         help='For ijcore db',
-                                                         description='Options\
-                                                         for ijcore.')
-        self.ijcorem_parser.add_argument('-s', '--sql',
-                                         action='append',
-                                         type=str,
-                                         required=True,
-                                         help='The sql or store procedure.',
-                                         dest='sql')
-        self.ijcorem_parser.add_argument('-w', '--warning',
-                                         default=0,
-                                         type=int,
-                                         required=False,
-                                         help='Warning value for sql',
-                                         dest='warning')
-        self.ijcorem_parser.add_argument('-c', '--critical',
-                                         default=0,
-                                         type=int,
-                                         required=False,
-                                         help='Critical value for sql',
-                                         dest='critical')
-        self.ijcorem_parser.add_argument('--as_dict',
-                                         default=True,
-                                         type=bool,
-                                         required=False,
-                                         help='Set the return mode.',
-                                         dest='as_dict')
-
-    def ijcorem_handle(self):
-        self.version()
-        self.results = self.query(self.args.sql)
-        self.close()
-        self.logger.debug("results: {}".format(self.results))
-        self.result = int(len(self.results))
-        self.logger.debug("result: {}".format(self.result))
-        status = self.ok
-
-        # Compare the vlaue.
-        if self.result > self.args.warning:
-            status = self.warning
-        if self.result > self.args.critical:
-            status = self.critical
-
-        # Output for nagios
-        self.shortoutput = "The result is {}".format(self.result)
-        self.longoutput.append("-------------------------------\n")
-        if self.result:
-            if isinstance(self.results[0], dict):
-                keys = self.results[0].keys()
-                for loop in range(0, self.result):
-                    for key in keys:
-                        value = str(self.results[loop].get(key)).strip("\n")
-                        line = key + ": " + value
-                        self.longoutput.append(line + "\n")
-                    self.longoutput.append("-------------------------------\n")
-        self.perfdata.append("\n{sql}={result};{warn};{crit};0;".format(
-            crit=self.args.critical,
-            warn=self.args.warning,
-            result=self.result,
+            result=self.__result,
             sql=self.args.sql))
 
         # Return status with message to Nagios.
@@ -445,8 +316,9 @@ class IjcoreM(Mssql):
 
 
 class DatabaseUsed(Mssql):
-    """For check the database-size, database-used, database-percent.
-    """
+
+    """For check the database-size, database-used, database-percent."""
+
     def __init__(self, *args, **kwargs):
         super(DatabaseUsed, self).__init__(*args, **kwargs)
         self.logger.debug("Init databaseused")
@@ -459,19 +331,18 @@ class DatabaseUsed(Mssql):
                                                     description='Options\
                                                     for database-used.')
         self.du_parser.add_argument('-w', '--warning',
-                                    default=80,
+                                    default=0,
                                     type=int,
                                     required=False,
                                     help='Warning value for data file.',
                                     dest='warning')
         self.du_parser.add_argument('-c', '--critical',
-                                    default=90,
+                                    default=0,
                                     type=int,
                                     required=False,
                                     help='Critical value for data file.',
                                     dest='critical')
-        self.du_parser.add_argument('--regex',
-                                    action='append',
+        self.du_parser.add_argument('-r', '--regex',
                                     required=False,
                                     help='Specify the DB you want.',
                                     dest='regex')
@@ -501,7 +372,7 @@ declare
            logused float);
 
 declare
-  DBCursor      cursor for
+  dbcursor      cursor for
                 select name from sys.databases order by database_id;
 
 open dbcursor;
@@ -509,14 +380,14 @@ fetch NEXT FROM dbcursor INTO @dbname;
 
 while @@FETCH_STATUS = 0
 BEGIN
-  set @SQL='use ' + @dbname + '; SELECT ''' +  @dbname + ''' as dbname' +
+  set @SQL='use ' + quotename(@dbname) + '; SELECT ''' +  @dbname + ''' as dbname' +
        ', (SELECT SUM(CAST(size AS FLOAT)) / 128 FROM sys.database_files WHERE  type IN (0, 2, 4)) dbsize' +
        ', SUM(CAST(a.total_pages AS FLOAT)) / 128 reservedsize' +
        ', (SELECT SUM(CAST(size AS FLOAT)) / 128 FROM sys.database_files WHERE  type IN (1, 3)) logsize' +
        ', (select sum(cast(fileproperty(name, ''SpaceUsed'') as float))/128 from sys.database_files where type in (1,3)) logUsedMB' +
-       ' FROM ' + @dbname + '.sys.partitions p' +
-       ' INNER JOIN ' + @dbname + '.sys.allocation_units a ON p.partition_id = a.container_id' +
-       ' LEFT OUTER JOIN ' + @dbname + '.sys.internal_tables it ON p.object_id = it.object_id';
+       ' FROM ' + quotename(@dbname) + '.sys.partitions p' +
+       ' INNER JOIN ' + quotename(@dbname) + '.sys.allocation_units a ON p.partition_id = a.container_id' +
+       ' LEFT OUTER JOIN ' + quotename(@dbname) + '.sys.internal_tables it ON p.object_id = it.object_id';
 
   insert into @datatab
   execute(@SQL);
@@ -533,71 +404,103 @@ select  name
       , round(dbused / dbsize *100, 2) dbpercent
 from @datatab d order by name;
 """
-        self.dbwarn = []
-        self.dbcrit = []
-        self.result = []
-        self.version()
-        self.results = self.query(self.database_used_sql)
-        self.close()
-        self.logger.debug("results: {}".format(self.results))
-        status = self.ok
+        self.__dbwarn = []
+        self.__dbwarn_rest = []
+        self.__dbcrit = []
+        self.__dbcrit_rest = []
+        self.__new_results = []
 
-        for loop in range(0, len(self.results)):
-            self.line_dict = self.results[loop]
-            self.logger.debug("line_dict {0}: {1}".format(loop,
-                                                          self.line_dict))
-            self.dbpect = float(self.line_dict['dbpercent'])
+        self.__results = self.query(self.database_used_sql)
+        self.close()
+        self.logger.debug("results: {}".format(self.__results))
+
+        # filter.
+        if self.args.regex:
+            for loop in range(0, len(self.__results)):
+                self.logger.debug("line_dict {0}: {1}".format(
+                    loop, self.__results[loop]))
+                name = str(self.__results[loop]['name'])
+                if re.findall(self.args.regex, name):
+                    self.__new_results.append(self.__results[loop])
+        else:
+            self.__new_results = self.__results
+
+        status = self.ok
+        self.__result = []
+        self.__result_rest = self.__new_results
+
+        for loop in range(0, len(self.__new_results)):
+            line_dict = self.__new_results[loop]
+            dbsize = float(line_dict['dbsize'])
 
             # Compare the db
-            if self.dbpect > self.args.warning:
-                self.dbwarn.append(self.line_dict)
-            if self.dbpect > self.args.critical:
-                self.dbcrit.append(self.line_dict)
+            if self.args.warning:
+                if dbsize > self.args.warning:
+                    self.__dbwarn.append(line_dict)
+                else:
+                    self.__dbwarn_rest.append(line_dict)
+            if self.args.critical:
+                if dbsize > self.args.critical:
+                    self.__dbcrit.append(line_dict)
+                else:
+                    self.__dbcrit_rest.append(line_dict)
 
-        if len(self.dbwarn):
-            self.status = self.warning
-            self.result = self.dbwarn
-        if len(self.dbcrit):
+        # get status and results.
+        if len(self.__dbwarn):
+            status = self.warning
+            self.__result = self.__dbwarn
+            self.__result_rest = self.__dbwarn_rest
+        if len(self.__dbcrit):
             status = self.critical
-            self.result = self.dbcrit
+            self.__result = self.__dbcrit
+            self.__result_rest = self.__dbcrit_rest
 
         # Output for nagios
         self.shortoutput = "{0} db, {1} db warning, {2} db critical.".format(
-            len(self.results), len(self.dbwarn), len(self.dbcrit))
-        self.longoutput.append("-------------------------------\n")
-        if self.result:
-            if isinstance(self.result[0], dict):
-                keys = self.result[0].keys()
-                for loop in range(0, len(self.result)):
-                    for key in keys:
-                        value = str(self.result[loop].get(key)).strip("\n")
-                        if key == 'dbpercent':
-                            unit = "%"
-                        elif key == 'dbsize':
-                            unit = "MB"
-                        elif key == 'dbused':
-                            unit = "MB"
-                        else:
-                            unit = ""
-                        line = key + ": " + value + unit
-                        self.longoutput.append(line + "\n")
-                    self.longoutput.append("-------------------------------\n")
+            len(self.__new_results), len(self.__dbwarn), len(self.__dbcrit))
+        self.longoutput.append("---------------------------------\n")
+        self.__write_longoutput(self.__result)
+        self.longoutput.append("=============== OK ===============\n")
+        self.__write_longoutput(self.__result_rest)
         self.perfdata.append("\nError number={result};{warn};{crit};0;".format(
             crit=self.args.critical,
             warn=self.args.warning,
-            result=len(self.result)))
+            result=len(self.__result)))
 
         # Return status with message to Nagios.
         status(self.output(long_output_limit=None))
         self.logger.debug("Return status and exit to Nagios.")
 
+    def __write_longoutput(self, result):
+        try:
+            if result:
+                if isinstance(result[0], dict):
+                    keys = result[0].keys()
+                    for loop in range(0, len(result)):
+                        for key in keys:
+                            value = str(result[loop].get(key)).strip("\n")
+                            if key == 'dbpercent':
+                                unit = "%"
+                            elif key == 'dbsize':
+                                unit = "MB"
+                            elif key == 'dbused':
+                                unit = "MB"
+                            else:
+                                unit = ""
+                            line = key + ": " + value + unit
+                            self.longoutput.append(line + "\n")
+                        self.longoutput.append("---------------------------\n")
+        except Exception as e:
+            self.unknown("database-used write_longoutput error: {}".format(e))
+
 
 class DatabaseLogUsed(Mssql):
-    """For check database-log-size, database-log-used, database-log-percent.
-    """
+
+    """For check database-log-size, database-log-used, database-log-percent."""
+
     def __init__(self, *args, **kwargs):
         super(DatabaseLogUsed, self).__init__(*args, **kwargs)
-        self.logger.debug("Init databaseused")
+        self.logger.debug("Init databaselogused")
 
     def define_sub_options(self):
         super(DatabaseLogUsed, self).define_sub_options()
@@ -607,19 +510,18 @@ class DatabaseLogUsed(Mssql):
                                                     description='Options\
                                                     for databaselog-used.')
         self.dl_parser.add_argument('-w', '--warning',
-                                    default=80,
+                                    default=0,
                                     type=int,
                                     required=False,
                                     help='Warning value for log file.',
                                     dest='warning')
         self.dl_parser.add_argument('-c', '--critical',
-                                    default=90,
+                                    default=0,
                                     type=int,
                                     required=False,
                                     help='Critical value for log file.',
                                     dest='critical')
-        self.dl_parser.add_argument('--regex',
-                                    action='append',
+        self.dl_parser.add_argument('-r', '--regex',
                                     required=False,
                                     help='Specify the DB you want.',
                                     dest='regex')
@@ -643,13 +545,13 @@ DECLARE
 declare
   @datatab table
           (name    sysname,
-          dbsize  float,
-          dbused  float,
-          logsize  float,
-          logused  float);
+           dbsize  float,
+           dbused  float,
+           logsize float,
+           logused float);
 
 declare
-  DBCursor      cursor for
+  dbcursor      cursor for
                 select name from sys.databases order by database_id;
 
 open dbcursor;
@@ -657,14 +559,14 @@ fetch NEXT FROM dbcursor INTO @dbname;
 
 while @@FETCH_STATUS = 0
 BEGIN
-  set @SQL='use ' + @dbname + '; SELECT ''' +  @dbname + ''' as dbname' +
+  set @SQL='use ' + quotename(@dbname) + '; SELECT ''' +  @dbname + ''' as dbname' +
        ', (SELECT SUM(CAST(size AS FLOAT)) / 128 FROM sys.database_files WHERE  type IN (0, 2, 4)) dbsize' +
        ', SUM(CAST(a.total_pages AS FLOAT)) / 128 reservedsize' +
        ', (SELECT SUM(CAST(size AS FLOAT)) / 128 FROM sys.database_files WHERE  type IN (1, 3)) logsize' +
        ', (select sum(cast(fileproperty(name, ''SpaceUsed'') as float))/128 from sys.database_files where type in (1,3)) logUsedMB' +
-       ' FROM ' + @dbname + '.sys.partitions p' +
-       ' INNER JOIN ' + @dbname + '.sys.allocation_units a ON p.partition_id = a.container_id' +
-       ' LEFT OUTER JOIN ' + @dbname + '.sys.internal_tables it ON p.object_id = it.object_id';
+       ' FROM ' + quotename(@dbname) + '.sys.partitions p' +
+       ' INNER JOIN ' + quotename(@dbname) + '.sys.allocation_units a ON p.partition_id = a.container_id' +
+       ' LEFT OUTER JOIN ' + quotename(@dbname) + '.sys.internal_tables it ON p.object_id = it.object_id';
 
   insert into @datatab
   execute(@SQL);
@@ -678,82 +580,114 @@ DEALLOCATE dbcursor;
 select  name
       , logsize
       , logused
-      , round(logused / logsize *100, 2) logpercent
+      ,round(logused / logsize *100, 2) logpercent
 from @datatab d order by name;
 """
-        self.logwarn = []
-        self.logcrit = []
-        self.log_result = []
-        self.version()
-        self.results = self.query(self.databaselog_used_sql)
-        self.close()
-        self.logger.debug("results: {}".format(self.results))
-        status = self.ok
+        self.__logwarn = []
+        self.__logwarn_rest = []
+        self.__logcrit = []
+        self.__logcrit_rest = []
+        self.__new_results = []
 
-        for loop in range(0, len(self.results)):
-            self.line_dict = self.results[loop]
-            self.logger.debug("line_dict {0}: {1}".format(loop,
-                                                          self.line_dict))
-            self.logpect = float(self.line_dict['logpercent'])
+        self.__results = self.query(self.databaselog_used_sql)
+        self.close()
+        self.logger.debug("results: {}".format(self.__results))
+
+        # filter
+        if self.args.regex:
+            for loop in range(0, len(self.__results)):
+                self.logger.debug("line_dict {0}: {1}".format(
+                    loop, self.__results[loop]))
+                name = str(self.__results[loop]['name'])
+                if re.findall(self.args.regex, name):
+                    self.__new_results.append(self.__results[loop])
+        else:
+            self.__new_results = self.__results
+
+        status = self.ok
+        self.__result = []
+        self.__result_rest = self.__new_results
+
+        for loop in range(0, len(self.__new_results)):
+            line_dict = self.__new_results[loop]
+            logsize = float(line_dict['logsize'])
 
             # Compare the db
-            if self.logpect > self.args.warning:
-                self.logwarn.append(self.line_dict)
-            if self.logpect > self.args.critical:
-                self.logcrit.append(self.line_dict)
+            if self.args.warning:
+                if logsize > self.args.warning:
+                    self.__logwarn.append(line_dict)
+                else:
+                    self.__logwarn_rest.append(line_dict)
+            if self.args.critical:
+                if logsize > self.args.critical:
+                    self.__logcrit.append(line_dict)
+                else:
+                    self.__logwarn_rest.append(line_dict)
 
-        if len(self.logwarn):
+        # get status and result.
+        if len(self.__logwarn):
             status = self.warning
-            self.log_result = self.logwarn
-        if len(self.logcrit):
+            self.__result = self.__logwarn
+            self.__result_rest = self.__logwarn_rest
+        if len(self.__logcrit):
             status = self.critical
-            self.log_result = self.logcrit
+            self.__result = self.__logcrit
+            self.__result_rest = self.__logcrit_rest
 
         # Output for nagios
-        self.shortoutput = "{0} db, {1} db warning, {2} db critical.".format(
-            len(self.results), len(self.logwarn), len(self.logcrit))
-        self.longoutput.append("-------------------------------\n")
-        if self.log_result:
-            if isinstance(self.log_result[0], dict):
-                keys = self.log_result[0].keys()
-                for loop in range(0, len(self.log_result)):
-                    for key in keys:
-                        value = str(self.log_result[loop].get(key)).strip("\n")
-                        if key == 'logpercent':
-                            unit = "%"
-                        elif key == 'logsize':
-                            unit = "MB"
-                        elif key == 'logused':
-                            unit = "MB"
-                        else:
-                            unit = ""
-                        line = key + ": " + value + unit
-                        self.longoutput.append(line + "\n")
-                    self.longoutput.append("-------------------------------\n")
+        self.shortoutput = "{0} dblog, {1} warning, {2} critical.".format(
+            len(self.__new_results), len(self.__logwarn), len(self.__logcrit))
+        self.longoutput.append("---------------------------------\n")
+        self.__write_longoutput(self.__result)
+        self.longoutput.append("=============== OK ===============\n")
+        self.__write_longoutput(self.__result_rest)
         self.perfdata.append("\nError number={result};{warn};{crit};0;".format(
             crit=self.args.critical,
             warn=self.args.warning,
-            result=len(self.log_result)))
+            result=len(self.__result)))
 
         # Return status with message to Nagios.
         status(self.output(long_output_limit=None))
         self.logger.debug("Return status and exit to Nagios.")
 
+    def __write_longoutput(self, result):
+        try:
+            if result:
+                if isinstance(result[0], dict):
+                    keys = result[0].keys()
+                    for loop in range(0, len(result)):
+                        for key in keys:
+                            value = str(result[loop].get(key)).strip("\n")
+                            if key == 'logpercent':
+                                unit = "%"
+                            elif key == 'logsize':
+                                unit = "MB"
+                            elif key == 'logused':
+                                unit = "MB"
+                            else:
+                                unit = ""
+                            line = key + ": " + value + unit
+                            self.longoutput.append(line + "\n")
+                        self.longoutput.append("---------------------------\n")
+        except Exception as e:
+            self.unknown("databaselog-used write_longoutput error: {}".format(
+                e))
 
-class Diff(Sql, Esupply, IjcoreM, DatabaseUsed, DatabaseLogUsed):
+
+class Pool(Sql, DatabaseUsed, DatabaseLogUsed):
+
+    """Register your own class here."""
+
     def __init__(self, *args, **kwargs):
-        super(Diff, self).__init__(*args, **kwargs)
+        super(Pool, self).__init__(*args, **kwargs)
 
 
 def main():
-    plugin = Diff()
+    """Register your own mode and handle method here."""
+    plugin = Pool()
     arguments = sys.argv[1:]
     if 'sql' in arguments:
         plugin.sql_handle()
-    elif 'esupply' in arguments:
-        plugin.esupply_handle()
-    elif 'ijcorem' in arguments:
-        plugin.ijcorem_handle()
     elif 'database-used' in arguments:
         plugin.database_used_handle()
     elif 'databaselog-used' in arguments:
