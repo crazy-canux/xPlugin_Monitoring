@@ -1,0 +1,9 @@
+README.rst
+setup.py
+plugin/__init__.py
+xplugin.egg-info/PKG-INFO
+xplugin.egg-info/SOURCES.txt
+xplugin.egg-info/dependency_links.txt
+xplugin.egg-info/not-zip-safe
+xplugin.egg-info/requires.txt
+xplugin.egg-info/top_level.txt

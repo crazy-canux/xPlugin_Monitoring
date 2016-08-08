@@ -31,7 +31,7 @@ setup(
     maintainer='Canux CHENG',
     maintainer_email='canuxcheng@gmail.com',
     description='Common interface for tons of protocal, used for monitoring tools, like nagios/icinga...',
-    long_description=open(os.path.abspath(os.path.join(os.path.dirname(__file__), 'README'))).read(),
+    long_description=open(os.path.abspath(os.path.join(os.path.dirname(__file__), 'README.rst'))).read(),
     license='GPL',
     platforms='any',
     keywords='monitoring nagios plugin',
