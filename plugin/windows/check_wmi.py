@@ -3,10 +3,10 @@
 """Copyright (C) 2015 Faurecia (China) Holding Co.,Ltd.
 
 All rights reserved.
-Name: check_ftp.py
+Name: check_wmi.py
 Author: Canux CHENG canuxcheng@gmail.com
 Version: V1.0.0.0
-Time: Thu 28 Jul 2016 03:23:45 PM CST
+Time: Mon 08 Aug 2016 04:43:40 PM CST
 
 Description:
     [1.0.0.0] 20160728 init for basic function.

@@ -3,7 +3,7 @@
 """Copyright (C) 2015 Faurecia (China) Holding Co.,Ltd.
 
 All rights reserved.
-Name: check_snmp_storate.py
+Name: check_snmp_storage.py
 Author: Canux CHENG canuxcheng@gmail.com
 Version: V1.0.0.0
 Time: Wed 03 Aug 2016 01:53:50 PM CST

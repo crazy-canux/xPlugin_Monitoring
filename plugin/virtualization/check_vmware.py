@@ -3,10 +3,10 @@
 """Copyright (C) 2015 Faurecia (China) Holding Co.,Ltd.
 
 All rights reserved.
-Name: check_ssh.py
+Name: check_vmware.py
 Author: Canux CHENG canuxcheng@gmail.com
 Version: V1.0.0.0
-Time: Thu 28 Jul 2016 04:44:53 PM CST
+Time: Mon 08 Aug 2016 04:41:43 PM CST
 
 Description:
     [1.0.0.0] 20160728 init for basic function.
@@ -23,7 +23,7 @@ import socket
 # except:
 #     import pickle
 
-import paramiko
+import pyvmomi
 
 
 class Nagios(object):
