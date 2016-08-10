@@ -8,8 +8,6 @@ Or, you can use the output of this plugins to filter for your need.
 
 `[awesome-monitoring] <https://github.com/crazy-canux/awesome-monitoring>`_.
 
------
-
 --------------
 How to install
 --------------
@@ -45,23 +43,17 @@ TODO
 3. check_wmi.py
 4. check_vmware.py
 
------
-
 =======
 Authors
 =======
 
 `[Authors] <https://github.com/crazy-canux/xPlugin_Monitoring/blob/master/AUTHORS>`_
 
------
-
 ============
 Contribution
 ============
 
 `[Contribution] <https://github.com/crazy-canux/xPlugin_Monitoring/blob/master/contributing>`_
-
------
 
 =======
 License

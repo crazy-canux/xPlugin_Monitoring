@@ -20,7 +20,9 @@ INSTALL_REQUIRES = [
     'pymysql',
     'pymssql',
     'pysnmp',
-    'paramiko'
+    'paramiko',
+    'wmi',
+    'pyvmomi'
 ]
 
 setup(
@@ -35,13 +37,13 @@ setup(
     license='GPL',
     platforms='any',
     keywords='monitoring nagios plugin',
-    url='https://github.com/crazy-canux/xPlugin_Monitoring',
+    url='https://github.com/crazy-canux/xplugin',
     install_requires=INSTALL_REQUIRES,
     packages=find_packages(),
     zip_safe=False,
     include_package_data=True,
     classifiers=[
-        'Development Status :: 5 - Production/Stable',
+        "Development Status :: 5 - Production/Stable",
         "Environment :: Plugins",
         "Intended Audience :: Developers",
         "License :: OSI Approved :: GNU General Public License (GPL)",
