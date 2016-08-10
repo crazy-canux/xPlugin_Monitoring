@@ -10,7 +10,7 @@ Time: Fri 05 Aug 2016 09:59:29 AM CST
 
 Description:
 """
-import os
+import codecs
 
 from setuptools import setup, find_packages
 
@@ -31,7 +31,7 @@ setup(
     maintainer='Canux CHENG',
     maintainer_email='canuxcheng@gmail.com',
     description='Common interface for tons of protocal, used for monitoring tools, like nagios/icinga...',
-    long_description=open(os.path.abspath(os.path.join(os.path.dirname(__file__), 'README.rst'))).read(),
+    long_description=codecs.open('README.rst', 'r', 'utf-8').read(),
     license='GPL',
     platforms='any',
     keywords='monitoring nagios plugin',

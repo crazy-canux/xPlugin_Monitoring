@@ -1,7 +1,24 @@
-=======================
-Contribution Guidelines
-=======================
+============================
+How to contribute to xplugin
+============================
 
-Any one can create pull request for this project.
+Thanks for considering contributing to xplugin.
+
+------
+Issues
+------
+
+Use github issue tracker.
+
+----------
+Submitting
+----------
+
+Create pull request on github directely.
 
 
+----
+Wiki
+----
+
+Welcome to write the wiki.

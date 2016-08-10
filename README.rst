@@ -1,14 +1,22 @@
-==================
-Monitoring Plugins
-==================
+=======
+xplugin
+=======
 
-Plugins support nagios and tools based on nagios.
+xplugin support nagios and tools based on nagios.
 
 Or, you can use the output of this plugins to filter for your need.
 
 `[awesome-monitoring] <https://github.com/crazy-canux/awesome-monitoring>`_.
 
 -----
+
+--------------
+How to install
+--------------
+
+Use pip to install:
+
+    pip install xplugin
 
 ----------
 How to use
@@ -20,7 +28,13 @@ If it is written in python then mostly use standard library, and third party lib
 
 If it is written in shell or powershell, no need to install any library.
 
------
+--------------
+How to extends
+--------------
+
+Every plugin just give a common API and some exapmles which use this API.
+
+So, you can use the API to extend for your business monitoring.
 
 -----
 TODO
@@ -33,29 +47,19 @@ TODO
 
 -----
 
----------
-Customize
----------
-
-Every plugin just give a common API and some exapmles which use this API.
-
-So, you can use the API to extend for your business monitoring.
-
------
-
--------
+=======
 Authors
--------
+=======
 
 `[Authors] <https://github.com/crazy-canux/xPlugin_Monitoring/blob/master/AUTHORS>`_
 
 -----
 
-------------
+============
 Contribution
-------------
+============
 
-`[Authors] <https://github.com/crazy-canux/xPlugin_Monitoring/blob/master/contributing>`_
+`[Contribution] <https://github.com/crazy-canux/xPlugin_Monitoring/blob/master/contributing>`_
 
 -----
 
