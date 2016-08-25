@@ -1,6 +1,8 @@
 pymysql
 pymssql
-pysnmp
 paramiko
-wmi
+pysnmp
 pyvmomi
+sh
+requests
+bs4

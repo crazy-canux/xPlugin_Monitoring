@@ -40,10 +40,9 @@ TODO
 
 1. check_snmp_network.py
 2. check_snmp_storage.py
-3. check_wmi.py
-4. check_vmware.py
-5. xplugin/docs build with sphinx
-6. xplugin/plugin/test
+3. check_vmware.py
+4. xplugin/docs build with sphinx
+5. xplugin/plugin/test
 
 ============
 Contribution

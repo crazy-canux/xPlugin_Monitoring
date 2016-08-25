@@ -34,7 +34,9 @@ INSTALL_REQUIRES = [
     'paramiko',
     'pysnmp',
     'pyvmomi',
-    'sh'
+    'sh',
+    'requests',
+    'bs4'
 ]
 
 setup(

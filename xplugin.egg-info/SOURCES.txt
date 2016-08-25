@@ -1,6 +1,11 @@
 README.rst
 setup.py
 plugin/__init__.py
+plugin/check_ftp.py
+plugin/check_mssql.py
+plugin/check_mysql.py
+plugin/check_ssh.py
+plugin/check_wmi.py
 xplugin.egg-info/PKG-INFO
 xplugin.egg-info/SOURCES.txt
 xplugin.egg-info/dependency_links.txt
