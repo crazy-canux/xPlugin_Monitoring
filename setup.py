@@ -10,19 +10,31 @@ Time: Fri 05 Aug 2016 09:59:29 AM CST
 
 Description:
 """
-import codecs
+import os
 
 from setuptools import setup, find_packages
 
 import plugin
 
+
+def read(readme):
+    """Give reST format README for pypi."""
+    extend = os.path.splitext(readme)[1]
+    if (extend == '.rst'):
+        import codecs
+        return codecs.open(readme, 'r', 'utf-8').read()
+    elif (extend == '.md'):
+        import pypandoc
+        import codecs
+        return codecs.open(pypandoc.convert(readme, 'rst'), 'r', 'utf-8').read()
+
 INSTALL_REQUIRES = [
     'pymysql',
     'pymssql',
-    'pysnmp',
     'paramiko',
-    'wmi',
-    'pyvmomi'
+    'pysnmp',
+    'pyvmomi',
+    'sh'
 ]
 
 setup(
@@ -33,7 +45,7 @@ setup(
     maintainer='Canux CHENG',
     maintainer_email='canuxcheng@gmail.com',
     description='Common interface for tons of protocal, used for monitoring tools, like nagios/icinga...',
-    long_description=codecs.open('README.rst', 'r', 'utf-8').read(),
+    long_description=read('README.rst'),
     license='GPL',
     platforms='any',
     keywords='monitoring nagios plugin',

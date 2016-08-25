@@ -17,7 +17,6 @@ import logging
 import argparse
 import string
 import socket
-# import re
 # try:
 #     import cPickle as pickle
 # except:
@@ -32,7 +31,7 @@ class Nagios(object):
 
     def __init__(self, name=None, version='1.0.0.0', description='For ssh'):
         """Init class Nagios."""
-        self._name = os.path.basename(sys.argv[0]) if not name else name
+        self.__name = os.path.basename(sys.argv[0]) if not name else name
         self.__version = version
         self.__description = description
 
@@ -66,8 +65,7 @@ class Nagios(object):
         self.parser = argparse.ArgumentParser(description="Plugin for ssh.")
         self.parser.add_argument('-V', '--version',
                                  action='version',
-                                 version='%s %s' % (self._name,
-                                                    self.__version),
+                                 version='{0} {1}'.format(self.__name, self.__version),
                                  help='Show version')
         self.parser.add_argument('-D', '--debug',
                                  action='store_true',
@@ -223,13 +221,13 @@ class Ssh(Nagios):
                                      default='22',
                                      type=int,
                                      required=False,
-                                     help='ssh server port, default 22.',
+                                     help='ssh server port, default is %(default)s.',
                                      dest='port')
         self.ssh_parser.add_argument('-t', '--timeout',
                                      default=60,
                                      type=int,
                                      required=False,
-                                     help='ssh timeout, default 60s',
+                                     help='ssh timeout, default is %(default)s',
                                      dest='timeout')
         self.ssh_parser.add_argument('-u', '--user',
                                      required=False,
@@ -263,13 +261,13 @@ class Command(Ssh):
                                     default=0,
                                     type=int,
                                     required=False,
-                                    help='Warning value for Command',
+                                    help='Warning value for Command, default is %(default)s',
                                     dest='warning')
         self.cm_parser.add_argument('-c', '--critical',
                                     default=0,
                                     type=int,
                                     required=False,
-                                    help='Critical value for Command',
+                                    help='Critical value for Command, default is %(default)s',
                                     dest='critical')
 
     def command_handle(self):

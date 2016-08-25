@@ -15,7 +15,6 @@ import os
 import sys
 import logging
 import argparse
-# import re
 # try:
 #     import cPickle as pickle
 # except:
@@ -29,7 +28,7 @@ class Nagios(object):
     """Basic class for nagios."""
 
     def __init__(self, name=None, version='1.0.0', description='For mysql'):
-        self._name = os.path.basename(sys.argv[0]) if not name else name
+        self.__name = os.path.basename(sys.argv[0]) if not name else name
         self.__version = version
         self.__description = description
 
@@ -63,8 +62,7 @@ class Nagios(object):
         self.parser = argparse.ArgumentParser(description="Plugin for mysql.")
         self.parser.add_argument('-V', '--version',
                                  action='version',
-                                 version='%s %s' % (self._name,
-                                                    self.__version),
+                                 version='{0} {1}'.format(self.__name, self.__version),
                                  help='Show version')
         self.parser.add_argument('-D', '--debug',
                                  action='store_true',
@@ -212,20 +210,19 @@ class Mysql(Nagios):
         self.mysql_parser.add_argument('-d', '--database',
                                        default='master',
                                        required=False,
-                                       help='database name, default master',
+                                       help='database name, default is %(default)s',
                                        dest='database')
         self.mysql_parser.add_argument('-l', '--login_timeout',
                                        default=60,
                                        type=int,
                                        required=False,
-                                       help='connection and login time out,\
-                                       default 60s.',
+                                       help='connection and login time out, default is %(default)s',
                                        dest='login_timeout')
         self.mysql_parser.add_argument('-c', '--charset',
                                        default='utf8',
                                        type=str,
                                        required=False,
-                                       help='set the charset, default utf8',
+                                       help='set the charset, default is %(default)s',
                                        dest='charset')
 
 
@@ -257,13 +254,13 @@ class Sql(Mysql):
                                      default=0,
                                      type=int,
                                      required=False,
-                                     help='Warning value for sql',
+                                     help='Warning value for sql, default is %(default)s',
                                      dest='warning')
         self.sql_parser.add_argument('-c', '--critical',
                                      default=0,
                                      type=int,
                                      required=False,
-                                     help='Critical value for sql',
+                                     help='Critical value for sql, default is %(default)s',
                                      dest='critical')
         self.sql_parser.add_argument('--as_dict',
                                      default=pymysql.cursors.SSCursor,

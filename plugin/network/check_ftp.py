@@ -15,7 +15,6 @@ import os
 import sys
 import logging
 import argparse
-# import re
 # try:
 #     import cPickle as pickle
 # except:
@@ -29,7 +28,7 @@ class Nagios(object):
 
     def __init__(self, name=None, version='1.0.0.0', description='For Ftp'):
         """Init class Nagios."""
-        self._name = os.path.basename(sys.argv[0]) if not name else name
+        self.__name = os.path.basename(sys.argv[0]) if not name else name
         self.__version = version
         self.__description = description
 
@@ -63,8 +62,7 @@ class Nagios(object):
         self.parser = argparse.ArgumentParser(description="Plugin for ftp.")
         self.parser.add_argument('-V', '--version',
                                  action='version',
-                                 version='%s %s' % (self._name,
-                                                    self.__version),
+                                 version='{0} {1}'.format(self.__name, self.__version),
                                  help='Show version')
         self.parser.add_argument('-D', '--debug',
                                  action='store_true',
@@ -185,13 +183,13 @@ class Ftp(Nagios):
                                      default='21',
                                      type=int,
                                      required=False,
-                                     help='ftp server port.',
+                                     help='ftp server port, default is %(default)s',
                                      dest='port')
         self.ftp_parser.add_argument('-t', '--timeout',
                                      default=-999,
                                      type=int,
                                      required=False,
-                                     help='ftp timeout, default -999',
+                                     help='ftp timeout, default is %(default)s',
                                      dest='timeout')
         self.ftp_parser.add_argument('-u', '--user',
                                      required=True,
@@ -204,13 +202,18 @@ class Ftp(Nagios):
         self.ftp_parser.add_argument('-a', '--acct',
                                      default='',
                                      required=False,
-                                     help='acct for ftp login, default null',
+                                     help='acct for ftp login, default is %(default)s',
                                      dest='acct')
 
 
 class FileNumber(Ftp):
 
-    """Count the file number in the ftp folder."""
+    """Count the file number in the ftp folder.
+
+    TODO:
+        -r
+        -R
+    """
 
     def __init__(self, *args, **kwargs):
         super(FileNumber, self).__init__(*args, **kwargs)
@@ -231,20 +234,20 @@ class FileNumber(Ftp):
                                     help='RE for filename or extension',
                                     dest='regex')
         self.fn_parser.add_argument('-R', '--recursive',
-                                    required=False,
+                                    action='store_true',
                                     help='Recursive count file under path.',
                                     dest='recursive')
         self.fn_parser.add_argument('-w', '--warning',
                                     default=0,
                                     type=int,
                                     required=False,
-                                    help='Warning value for filenumber',
+                                    help='Warning value for filenumber, default is %(default)s',
                                     dest='warning')
         self.fn_parser.add_argument('-c', '--critical',
                                     default=0,
                                     type=int,
                                     required=False,
-                                    help='Critical value for filenumber',
+                                    help='Critical value for filenumber, default is %(default)s',
                                     dest='critical')
 
     def filenumber_handle(self):

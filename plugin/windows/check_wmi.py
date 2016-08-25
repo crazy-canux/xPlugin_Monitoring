@@ -15,27 +15,30 @@ import os
 import sys
 import logging
 import argparse
-# import re
 # try:
 #     import cPickle as pickle
 # except:
 #     import pickle
-import wmi
+import subprocess
+import csv
+import datetime
+
+# import sh
 
 
 class Nagios(object):
 
     """Basic class for nagios."""
 
-    def __init__(self, name=None, version='1.0.0.0', description='For Ftp'):
+    def __init__(self, name=None, version='1.0.0.0', description='For wmi'):
         """Init class Nagios."""
-        self._name = os.path.basename(sys.argv[0]) if not name else name
+        self.__name = os.path.basename(sys.argv[0]) if not name else name
         self.__version = version
         self.__description = description
 
         # Init the log
         logging.basicConfig(format='[%(levelname)s] (%(module)s) %(message)s')
-        self.logger = logging.getLogger("ftp")
+        self.logger = logging.getLogger("wmi")
         self.logger.setLevel(logging.INFO)
 
         # Init the argument
@@ -60,11 +63,10 @@ class Nagios(object):
             self.logger.debug("===== END DEBUG =====")
 
     def __define_options(self):
-        self.parser = argparse.ArgumentParser(description="Plugin for ftp.")
+        self.parser = argparse.ArgumentParser(description="Plugin for wmi.")
         self.parser.add_argument('-V', '--version',
                                  action='version',
-                                 version='%s %s' % (self._name,
-                                                    self.__version),
+                                 version='{0} {1}'.format(self.__name, self.__version),
                                  help='Show version')
         self.parser.add_argument('-D', '--debug',
                                  action='store_true',
@@ -73,8 +75,8 @@ class Nagios(object):
                                  dest='debug')
 
     def define_sub_options(self):
-        self.ftp_parser = self.parser.add_argument_group('ftp options',
-                                                         'For ftp connect.')
+        self.wmi_parser = self.parser.add_argument_group('wmi options',
+                                                         'For wmi connect.')
         self.subparsers = self.parser.add_subparsers(title='Action:',
                                                      description='The mode.',
                                                      help='Options for mode.')
@@ -145,72 +147,73 @@ class NagiosUnknown(Exception):
         raise SystemExit(3)
 
 
-class Ftp(Nagios):
+class Wmi(Nagios):
 
-    """Basic class for ftp."""
+    """Basic class for wmi."""
 
     def __init__(self, *args, **kwargs):
-        super(Ftp, self).__init__(*args, **kwargs)
-        self.logger.debug("Init Ftp")
+        super(Wmi, self).__init__(*args, **kwargs)
+        self.logger.debug("Init wmi")
 
-    def connect(self):
-        """Connect to ftp server."""
+    def query(self, wql):
+        """Connect by wmi and run wql."""
         try:
-            self.ftp = ftplib.FTP()
-            self.ftp.connect(host=self.args.host,
-                             port=self.args.port,
-                             timeout=self.args.timeout)
-            self.ftp.login(user=self.args.user,
-                           passwd=self.args.password,
-                           acct=self.args.acct)
-            return self.ftp
-        except ftplib.Error as e:
-            self.unknown("Can not connect to the ftp: %s" % e)
-
-    def quit(self):
-        """Close and exit the connection."""
-        try:
-            self.ftp.quit()
-            self.logger.debug("quit connect ok")
-        except ftplib.Error as e:
-            self.unknown("quit connect error: %s" % e)
+            self.__wql = ['wmic', '-U',
+                          self.args.domain + '\\' + self.args.adminuser + '%' + self.args.password,
+                          '//' + self.args.host,
+                          '--namespace', self.args.namespace,
+                          '--delimiter', self.args.delimiter,
+                          wql]
+            self.logger.debug("wql: {}".format(self.__wql))
+            self.__output = subprocess.check_output(self.__wql)
+            self.logger.debug("output: {}".format(self.__output))
+            self.__wmi_output = self.__output.splitlines()[1:]
+            self.logger.debug("wmi_output: {}".format(self.__wmi_output))
+            self.__csv_header = csv.DictReader(self.__wmi_output, delimiter='|')
+            self.logger.debug("csv_header: {}".format(self.__csv_header))
+            return list(self.__csv_header)
+        except subprocess.CalledProcessError as e:
+            self.unknown("Connect by wmi and run wql error: %s" % e)
 
     def define_sub_options(self):
-        super(Ftp, self).define_sub_options()
-        self.ftp_parser.add_argument('-H', '--host',
+        super(Wmi, self).define_sub_options()
+        self.wmi_parser.add_argument('-H', '--host',
                                      required=True,
-                                     help='ftp server host.',
+                                     help='wmi server host.',
                                      dest='host')
-        self.ftp_parser.add_argument('-p', '--port',
-                                     default='21',
-                                     type=int,
+        self.wmi_parser.add_argument('-d', '--domain',
                                      required=False,
-                                     help='ftp server port.',
-                                     dest='port')
-        self.ftp_parser.add_argument('-t', '--timeout',
-                                     default=-999,
-                                     type=int,
-                                     required=False,
-                                     help='ftp timeout, default -999',
-                                     dest='timeout')
-        self.ftp_parser.add_argument('-u', '--user',
+                                     help='wmi server domain.',
+                                     dest='domain')
+        self.wmi_parser.add_argument('-u', '--adminuser',
                                      required=True,
-                                     help='ftp login username.',
-                                     dest='user')
-        self.ftp_parser.add_argument('-P', '--password',
+                                     help='wmi admin username',
+                                     dest='adminuser')
+        self.wmi_parser.add_argument('-p', '--password',
                                      required=True,
-                                     help='ftp login password.',
+                                     help='wmi login password.',
                                      dest='password')
-        self.ftp_parser.add_argument('-a', '--acct',
-                                     default='',
+        self.wmi_parser.add_argument('-n', '--namespace',
+                                     default='root\cimv2',
                                      required=False,
-                                     help='acct for ftp login, default null',
-                                     dest='acct')
+                                     help='namespace for wmi, default is %(default)s',
+                                     dest='namespace')
+        self.wmi_parser.add_argument('-s', '--delimiter',
+                                     default='|',
+                                     required=False,
+                                     help='delimiter for wmi, default is %(default)s',
+                                     dest='delimiter')
 
 
-class FileNumber(Ftp):
+class FileNumber(Wmi):
 
-    """Count the file number in the ftp folder."""
+    r"""Count the number of file in the folder.
+
+    Example:
+    check_wmi.py -H HOSTNAME -d [Domain] -u USER -p [password] --debug filenumber -d 'C:' -r
+    check_wmi.py -H HOSTNAME -d [Domain] -u USER -p [password] --debug filenumber -d 'C:' -p '\\' -f '%%' -e '%%' -r
+    check_wmi.py -H HOSTNAME -d [Domain] -u USER -p [password] --debug filenumber -d 'C:' -p '\\Windows\\' -f '%%' -e '%%' -r
+    """
 
     def __init__(self, *args, **kwargs):
         super(FileNumber, self).__init__(*args, **kwargs)
@@ -222,51 +225,81 @@ class FileNumber(Ftp):
                                                     help='Count file number.',
                                                     description='Options\
                                                     for filenumber.')
-        self.fn_parser.add_argument('-p', '--path',
+        self.fn_parser.add_argument('-q', '--query',
+                                    required=False,
+                                    help='wql for wmi.',
+                                    dest='query')
+        self.fn_parser.add_argument('-d', '--drive',
                                     required=True,
-                                    help='The folder you want to count.',
+                                    help='the windows driver, like C:',
+                                    dest='drive')
+        self.fn_parser.add_argument('-p', '--path',
+                                    default="\\\\",
+                                    required=False,
+                                    help='the folder, default is %(default)s',
                                     dest='path')
-        self.fn_parser.add_argument('-r', '--regex',
+        self.fn_parser.add_argument('-f', '--filename',
+                                    default="%%",
                                     required=False,
-                                    help='RE for filename or extension',
-                                    dest='regex')
-        self.fn_parser.add_argument('-R', '--recursive',
+                                    help='the filename, default is %(default)s',
+                                    dest='filename')
+        self.fn_parser.add_argument('-e', '--extension',
+                                    default="%%",
                                     required=False,
+                                    help='the file extension, default is %(default)s',
+                                    dest='extension')
+        self.fn_parser.add_argument('-R', '--recursion',
+                                    action='store_true',
                                     help='Recursive count file under path.',
-                                    dest='recursive')
+                                    dest='recursion')
         self.fn_parser.add_argument('-w', '--warning',
                                     default=0,
                                     type=int,
                                     required=False,
-                                    help='Warning value for filenumber',
+                                    help='Warning number of file, default is %(default)s',
                                     dest='warning')
         self.fn_parser.add_argument('-c', '--critical',
                                     default=0,
                                     type=int,
                                     required=False,
-                                    help='Critical value for filenumber',
+                                    help='Critical number of file, default is %(default)s',
                                     dest='critical')
 
+    def __get_file(self, path):
+        self.wql_file = "SELECT Name FROM CIM_DataFile WHERE Drive='{0}' \
+            AND Path='{1}' AND FileName LIKE '{2}' AND Extension LIKE '{3}'".format(self.args.drive,
+                                                                                    path,
+                                                                                    self.args.filename,
+                                                                                    self.args.extension)
+        self.file_data = self.query(self.wql_file)
+        [self.file_list.append(file_data) for file_data in self.file_data]
+        self.logger.debug("file_data: {}".format(self.file_data))
+        return len(self.file_data), self.file_list
+
+    def __get_folder(self, path):
+        self.wql_folder = "SELECT FileName FROM CIM_Directory WHERE Drive='{0}' AND Path='{1}'".format(self.args.drive,
+                                                                                                       path)
+        self.number, self.file_list = self.__get_file(path)
+        self.count += self.number
+        self.folder_data = self.query(self.wql_folder)
+        self.logger.debug("folder_data: {}".format(self.folder_data))
+        if self.folder_data:
+            for folder in self.folder_data:
+                self.new_path = (folder['Name'].split(":")[1] + "\\").replace("\\", "\\\\")
+                self.__get_folder(self.new_path)
+        return self.count, self.file_list
+
     def filenumber_handle(self):
-        """Get the number of files in the folder."""
-        self.__results = []
-        self.__dirs = []
-        self.__files = []
-        self.__ftp = self.connect()
-        self.__ftp.dir(self.args.path, self.__results.append)
-        # self.logger.debug("dir results: {}".format(self.__results))
-        self.quit()
+        """Get the number of file in the folder."""
+        self.file_list = []
+        self.count = 0
+
+        if self.args.recursion:
+            self.__result, self.__file_list = self.__get_folder(self.args.path)
+        else:
+            self.__result, self.__file_list = self.__get_file(self.args.path)
 
         status = self.ok
-
-        for data in self.__results:
-            if "<DIR>" in data:
-                self.__dirs.append(str(data.split()[3]))
-            else:
-                self.__files.append(str(data.split()[2]))
-
-        self.__result = len(self.__files)
-        self.logger.debug("result: {}".format(self.__result))
 
         # Compare the vlaue.
         if self.__result > self.args.warning:
@@ -277,7 +310,8 @@ class FileNumber(Ftp):
         # Output
         self.shortoutput = "Found {0} files in {1}.".format(self.__result,
                                                             self.args.path)
-        [self.longoutput.append(line) for line in self.__results if self.__results]
+        self.logger.debug("file_list: {}".format(self.__file_list))
+        [self.longoutput.append(file_data.get('Name')) for file_data in self.__file_list]
         self.perfdata.append("{path}={result};{warn};{crit};0;".format(
             crit=self.args.critical,
             warn=self.args.warning,
@@ -289,7 +323,169 @@ class FileNumber(Ftp):
         self.logger.debug("Return status and exit to Nagios.")
 
 
-class Pool(FileNumber):
+class FileAge(Wmi):
+
+    r"""Get the file age, compare with the current date and time.
+
+    Example:
+    check_wmi.py -H HOSTNAME -d [Domain] -u USER -p [password] --debug fileage -d 'C:' -r
+    check_wmi.py -H HOSTNAME -d [Domain] -u USER -p [password] --debug fileage -d 'C:' -p '\\' -f '%%' -e '%%' -r
+    check_wmi.py -H HOSTNAME -d [Domain] -u USER -p [password] --debug fileage -d 'C:' -p '\\Windows\\' -f '%%' -e '%%' -r
+    """
+
+    def __init__(self, *args, **kwargs):
+        super(FileAge, self).__init__(*args, **kwargs)
+        self.logger.debug("Init FileAge")
+
+    def define_sub_options(self):
+        super(FileAge, self).define_sub_options()
+        self.fa_parser = self.subparsers.add_parser('fileage',
+                                                    help='Get file age.',
+                                                    description='Options\
+                                                    for fileage.')
+        self.fa_parser.add_argument('-q', '--query',
+                                    required=False,
+                                    help='wql for wmi.',
+                                    dest='query')
+        self.fa_parser.add_argument('-d', '--drive',
+                                    required=True,
+                                    help='the windows driver, like C:',
+                                    dest='drive')
+        self.fa_parser.add_argument('-p', '--path',
+                                    default="\\\\",
+                                    required=False,
+                                    help='the folder, default is %(default)s',
+                                    dest='path')
+        self.fa_parser.add_argument('-f', '--filename',
+                                    default="%%",
+                                    required=False,
+                                    help='the filename, default is %(default)s',
+                                    dest='filename')
+        self.fa_parser.add_argument('-e', '--extension',
+                                    default="%%",
+                                    required=False,
+                                    help='the file extension, default is %(default)s',
+                                    dest='extension')
+        self.fa_parser.add_argument('-R', '--recursion',
+                                    action='store_true',
+                                    help='Recursive count file under path.',
+                                    dest='recursion')
+        self.fa_parser.add_argument('-w', '--warning',
+                                    default=30,
+                                    type=int,
+                                    required=False,
+                                    help='Warning minute of file, default is %(default)s',
+                                    dest='warning')
+        self.fa_parser.add_argument('-c', '--critical',
+                                    default=60,
+                                    type=int,
+                                    required=False,
+                                    help='Critical minute of file, default is %(default)s',
+                                    dest='critical')
+
+    def __get_file(self, path):
+        self.wql_file = "SELECT LastModified FROM CIM_DataFile WHERE Drive='{0}' \
+            AND Path='{1}' AND FileName LIKE '{2}' AND Extension LIKE '{3}'".format(self.args.drive,
+                                                                                    path,
+                                                                                    self.args.filename,
+                                                                                    self.args.extension)
+        self.file_data = self.query(self.wql_file)
+        [self.file_list.append(file_data) for file_data in self.file_data]
+        self.logger.debug("file_data: {}".format(self.file_data))
+        return self.file_list
+
+    def __get_folder(self, path):
+        self.wql_folder = "SELECT FileName FROM CIM_Directory WHERE Drive='{0}' AND Path='{1}'".format(self.args.drive,
+                                                                                                       path)
+        self.file_list = self.__get_file(path)
+        self.folder_data = self.query(self.wql_folder)
+        self.logger.debug("folder_data: {}".format(self.folder_data))
+        if self.folder_data:
+            for folder in self.folder_data:
+                self.new_path = (folder['Name'].split(":")[1] + "\\").replace("\\", "\\\\")
+                self.__get_folder(self.new_path)
+        return self.file_list
+
+    def __get_current_datetime(self):
+        """Get current datetime for every file."""
+        self.wql_time = "SELECT LocalDateTime FROM Win32_OperatingSystem"
+        self.current_time = self.query(self.wql_time)
+        # [{'LocalDateTime': '20160824161431.977000+480'}]'
+        self.current_time_string = str(self.current_time[0].get('LocalDateTime').split('.')[0])
+        # '20160824161431'
+        self.current_time_format = datetime.datetime.strptime(self.current_time_string, '%Y%m%d%H%M%S')
+        # param: datetime.datetime(2016, 8, 24, 16, 14, 31) -> type: datetime.datetime
+        return self.current_time_format
+
+    def fileage_handle(self):
+        """Get the number of file in the folder."""
+        self.file_list = []
+        self.ok_file = []
+        self.warn_file = []
+        self.crit_file = []
+
+        if self.args.recursion:
+            self.__file_list = self.__get_folder(self.args.path)
+        else:
+            self.__file_list = self.__get_file(self.args.path)
+        self.logger.debug("file_list: {}".format(self.__file_list))
+        # [{'LastModified': '20160824142017.737101+480', 'Name': 'd:\\test\\1.txt'},
+        # {'LastModified': '20160824142021.392101+480', 'Name': 'd:\\test\\2.txt'},
+        # {'LastModified': '20160824142106.460101+480', 'Name': 'd:\\test\\test1\\21.txt'}]
+
+        for file_dict in self.__file_list:
+            self.filename = file_dict.get('Name')
+            self.logger.debug("===== start to compare {} =====".format(self.filename))
+
+            self.file_datetime_string = file_dict.get('LastModified').split('.')[0]
+            self.file_datetime = datetime.datetime.strptime(self.file_datetime_string, '%Y%m%d%H%M%S')
+            self.logger.debug("file_datetime: {}".format(self.file_datetime))
+
+            self.current_datetime = self.__get_current_datetime()
+            self.logger.debug("current_datetime: {}".format(self.current_datetime))
+
+            self.__delta_datetime = self.current_datetime - self.file_datetime
+            self.logger.debug("delta_datetime: {}".format(self.__delta_datetime))
+            self.logger.debug("warn_datetime: {}".format(datetime.timedelta(minutes=self.args.warning)))
+            self.logger.debug("crit_datetime: {}".format(datetime.timedelta(minutes=self.args.critical)))
+            if self.__delta_datetime > datetime.timedelta(minutes=self.args.critical):
+                self.crit_file.append(self.filename)
+            elif self.__delta_datetime > datetime.timedelta(minutes=self.args.warning):
+                self.warn_file.append(self.filename)
+            else:
+                self.ok_file.append(self.filename)
+
+        status = self.ok
+
+        # Compare the vlaue.
+        if self.warn_file:
+            status = self.warning
+        if self.crit_file:
+            status = self.critical
+
+        # Output
+        self.shortoutput = "Found {0} files out of date.".format(len(self.crit_file))
+        if self.crit_file:
+            self.longoutput.append("===== Critical File out of date ====")
+        [self.longoutput.append(filename) for filename in self.crit_file if self.crit_file]
+        if self.warn_file:
+            self.longoutput.append("===== Warning File out of date ====")
+        [self.longoutput.append(filename) for filename in self.warn_file if self.warn_file]
+        if self.ok_file:
+            self.longoutput.append("===== OK File out of date ====")
+        [self.longoutput.append(filename) for filename in self.ok_file if self.ok_file]
+        self.perfdata.append("{path}={result};{warn};{crit};0;".format(
+            crit=self.args.critical,
+            warn=self.args.warning,
+            result=len(self.crit_file),
+            path=self.args.drive + self.args.path))
+
+        # Return status with message to Nagios.
+        status(self.output(long_output_limit=None))
+        self.logger.debug("Return status and exit to Nagios.")
+
+
+class Pool(FileNumber, FileAge):
 
     """Register your own class here."""
 
@@ -303,6 +499,8 @@ def main():
     arguments = sys.argv[1:]
     if 'filenumber' in arguments:
         plugin.filenumber_handle()
+    elif 'fileage' in arguments:
+        plugin.fileage_handle()
     else:
         plugin.unknown("Unknown actions.")
 

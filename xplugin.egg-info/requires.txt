@@ -2,3 +2,5 @@ pymysql
 pymssql
 pysnmp
 paramiko
+wmi
+pyvmomi

@@ -42,18 +42,20 @@ TODO
 2. check_snmp_storage.py
 3. check_wmi.py
 4. check_vmware.py
-
-=======
-Authors
-=======
-
-`[Authors] <https://github.com/crazy-canux/xPlugin_Monitoring/blob/master/AUTHORS>`_
+5. xplugin/docs build with sphinx
+6. xplugin/plugin/test
 
 ============
 Contribution
 ============
 
-`[Contribution] <https://github.com/crazy-canux/xPlugin_Monitoring/blob/master/contributing>`_
+`[Contribution] <https://github.com/crazy-canux/xplugin/blob/master/CONTRIBUTING.rst>`_
+
+=======
+Authors
+=======
+
+`[Authors] <https://github.com/crazy-canux/xplugin/blob/master/AUTHORS.rst>`_
 
 =======
 License

@@ -3,10 +3,23 @@
 """Copyright (C) 2015 Faurecia (China) Holding Co.,Ltd.
 
 All rights reserved.
-Name: check_vmware.py
+Name: check_http.py
 Author: Canux CHENG canuxcheng@gmail.com
 Version: V1.0.0.0
-Time: Mon 08 Aug 2016 04:41:43 PM CST
+Time: Mon 22 Aug 2016 06:18:07 AM EDT
+
+Description:
+"""
+import os
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""Copyright (C) 2015 Faurecia (China) Holding Co.,Ltd.
+
+All rights reserved.
+Name: check_ftp.py
+Author: Canux CHENG canuxcheng@gmail.com
+Version: V1.0.0.0
+Time: Thu 28 Jul 2016 03:23:45 PM CST
 
 Description:
     [1.0.0.0] 20160728 init for basic function.
@@ -19,23 +32,22 @@ import argparse
 #     import cPickle as pickle
 # except:
 #     import pickle
-
-import pyvmomi
+import ftplib
 
 
 class Nagios(object):
 
     """Basic class for nagios."""
 
-    def __init__(self, name=None, version='1.0.0.0', description='For ssh'):
+    def __init__(self, name=None, version='1.0.0.0', description='For Ftp'):
         """Init class Nagios."""
-        self._name = os.path.basename(sys.argv[0]) if not name else name
+        self.__name = os.path.basename(sys.argv[0]) if not name else name
         self.__version = version
         self.__description = description
 
         # Init the log
         logging.basicConfig(format='[%(levelname)s] (%(module)s) %(message)s')
-        self.logger = logging.getLogger("ssh")
+        self.logger = logging.getLogger("ftp")
         self.logger.setLevel(logging.INFO)
 
         # Init the argument
@@ -60,11 +72,10 @@ class Nagios(object):
             self.logger.debug("===== END DEBUG =====")
 
     def __define_options(self):
-        self.parser = argparse.ArgumentParser(description="Plugin for ssh.")
+        self.parser = argparse.ArgumentParser(description="Plugin for ftp.")
         self.parser.add_argument('-V', '--version',
                                  action='version',
-                                 version='%s %s' % (self._name,
-                                                    self.__version),
+                                 version='{0} {1}'.format(self.__name, self.__version),
                                  help='Show version')
         self.parser.add_argument('-D', '--debug',
                                  action='store_true',
@@ -73,8 +84,8 @@ class Nagios(object):
                                  dest='debug')
 
     def define_sub_options(self):
-        self.ssh_parser = self.parser.add_argument_group('ssh options',
-                                                         'For ssh connect.')
+        self.ftp_parser = self.parser.add_argument_group('ftp options',
+                                                         'For ftp connect.')
         self.subparsers = self.parser.add_subparsers(title='Action:',
                                                      description='The mode.',
                                                      help='Options for mode.')
@@ -145,146 +156,134 @@ class NagiosUnknown(Exception):
         raise SystemExit(3)
 
 
-class Vmware(Nagios):
+class Ftp(Nagios):
 
-    """Basic class for ssh."""
+    """Basic class for ftp."""
 
     def __init__(self, *args, **kwargs):
-        super(Ssh, self).__init__(*args, **kwargs)
-        self.logger.debug("Init ssh")
+        super(Ftp, self).__init__(*args, **kwargs)
+        self.logger.debug("Init Ftp")
+
+    def connect(self):
+        """Connect to ftp server."""
         try:
-            self.ssh = paramiko.SSHClient()
-            self.ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-            self.ssh.connect(hostname=self.args.host,
+            self.ftp = ftplib.FTP()
+            self.ftp.connect(host=self.args.host,
                              port=self.args.port,
-                             username=self.args.user,
-                             password=self.args.password,
-                             pkey=None,
-                             key_filename=None,
-                             timeout=self.args.timeout,
-                             allow_agent=True,
-                             look_for_keys=True,
-                             compress=False,
-                             sock=None)
-        except paramiko.SSHException as e:
-            self.unknown("Can not connect to server with SSH: %s" % e)
+                             timeout=self.args.timeout)
+            self.ftp.login(user=self.args.user,
+                           passwd=self.args.password,
+                           acct=self.args.acct)
+            return self.ftp
+        except ftplib.Error as e:
+            self.unknown("Can not connect to the ftp: %s" % e)
 
-    def execute(self, command, timeout=None):
-        """Execute a shell command."""
-        try:
-            self.channel = self.ssh.get_transport().open_session()
-        except paramiko.SSHException as e:
-            self.unknown("Create channel error: %s" % e)
-        try:
-            self.channel.settimeout(self.args.timeout if not timeout else timeout)
-        except socket.timeout as e:
-            self.unknown("Settimeout for channel error: %s" % e)
-        try:
-            self.logger.debug("command: {}".format(command))
-            self.channel.exec_command(command)
-        except paramiko.SSHException as e:
-            self.unknown("Execute command error: %s" % e)
-        try:
-            self.stdin = self.channel.makefile('wb', -1)
-            self.stderr = map(string.strip, self.channel.makefile_stderr('rb', -1).readlines())
-            self.stdout = map(string.strip, self.channel.makefile('rb', -1).readlines())
-        except Exception as e:
-            self.unknown("Get result error: %s" % e)
-        try:
-            self.status = self.channel.recv_exit_status()
-        except paramiko.SSHException as e:
-            self.unknown("Get return code error: %s" % e)
-        else:
-            if self.status != 0:
-                self.unknown("Return code: %d , stderr: %s" % (self.status, self.errors))
-            else:
-                return self.stdout
-        finally:
-            self.logger.debug("Execute command finish.")
-
-    def close(self):
+    def quit(self):
         """Close and exit the connection."""
         try:
-            self.ssh.close()
-            self.logger.debug("close connect ok")
-        except paramiko.SSHException as e:
-            self.unknown("close connect error: %s" % e)
+            self.ftp.quit()
+            self.logger.debug("quit connect ok")
+        except ftplib.Error as e:
+            self.unknown("quit connect error: %s" % e)
 
     def define_sub_options(self):
-        super(Ssh, self).define_sub_options()
-        self.ssh_parser.add_argument('-H', '--host',
+        super(Ftp, self).define_sub_options()
+        self.ftp_parser.add_argument('-H', '--host',
                                      required=True,
-                                     help='ssh server host.',
+                                     help='ftp server host.',
                                      dest='host')
-        self.ssh_parser.add_argument('-p', '--port',
-                                     default='22',
+        self.ftp_parser.add_argument('-p', '--port',
+                                     default='21',
                                      type=int,
                                      required=False,
-                                     help='ssh server port, default 22.',
+                                     help='ftp server port, default is %(default)s',
                                      dest='port')
-        self.ssh_parser.add_argument('-t', '--timeout',
-                                     default=60,
+        self.ftp_parser.add_argument('-t', '--timeout',
+                                     default=-999,
                                      type=int,
                                      required=False,
-                                     help='ssh timeout, default 60s',
+                                     help='ftp timeout, default is %(default)s',
                                      dest='timeout')
-        self.ssh_parser.add_argument('-u', '--user',
-                                     required=False,
-                                     help='ssh login username.',
+        self.ftp_parser.add_argument('-u', '--user',
+                                     required=True,
+                                     help='ftp login username.',
                                      dest='user')
-        self.ssh_parser.add_argument('-P', '--password',
-                                     required=False,
-                                     help='ssh login password.',
+        self.ftp_parser.add_argument('-P', '--password',
+                                     required=True,
+                                     help='ftp login password.',
                                      dest='password')
+        self.ftp_parser.add_argument('-a', '--acct',
+                                     default='',
+                                     required=False,
+                                     help='acct for ftp login, default is %(default)s',
+                                     dest='acct')
 
 
-class Command(Ssh):
+class FileNumber(Ftp):
 
-    """Run a command by SSH and return a single number."""
+    """Count the file number in the ftp folder.
+
+    TODO:
+        -r
+        -R
+    """
 
     def __init__(self, *args, **kwargs):
-        super(Command, self).__init__(*args, **kwargs)
-        self.logger.debug("Init Command")
+        super(FileNumber, self).__init__(*args, **kwargs)
+        self.logger.debug("Init FileNumber")
 
     def define_sub_options(self):
-        super(Command, self).define_sub_options()
-        self.cm_parser = self.subparsers.add_parser('command',
-                                                    help='Run shell command.',
+        super(FileNumber, self).define_sub_options()
+        self.fn_parser = self.subparsers.add_parser('filenumber',
+                                                    help='Count file number.',
                                                     description='Options\
-                                                    for command.')
-        self.cm_parser.add_argument('-C', '--command',
+                                                    for filenumber.')
+        self.fn_parser.add_argument('-p', '--path',
                                     required=True,
-                                    help='The shell command.',
-                                    dest='command')
-        self.cm_parser.add_argument('-w', '--warning',
+                                    help='The folder you want to count.',
+                                    dest='path')
+        self.fn_parser.add_argument('-r', '--regex',
+                                    required=False,
+                                    help='RE for filename or extension',
+                                    dest='regex')
+        self.fn_parser.add_argument('-R', '--recursive',
+                                    action='store_true',
+                                    help='Recursive count file under path.',
+                                    dest='recursive')
+        self.fn_parser.add_argument('-w', '--warning',
                                     default=0,
                                     type=int,
                                     required=False,
-                                    help='Warning value for Command',
+                                    help='Warning value for filenumber, default is %(default)s',
                                     dest='warning')
-        self.cm_parser.add_argument('-c', '--critical',
+        self.fn_parser.add_argument('-c', '--critical',
                                     default=0,
                                     type=int,
                                     required=False,
-                                    help='Critical value for Command',
+                                    help='Critical value for filenumber, default is %(default)s',
                                     dest='critical')
 
-    def command_handle(self):
-        """Get the number of the shell command."""
-        self.__results = self.execute(self.args.command)
-        self.close()
-
-        self.logger.debug("results: {}".format(self.__results))
-        if not self.__results:
-            self.unknown("{} return nothing.".format(self.args.command))
-        if len(self.__results) != 1:
-            self.unknown("{} return more than one number.".format(self.args.command))
-        self.__result = int(self.__results[0])
-        self.logger.debug("result: {}".format(self.__result))
-        if not isinstance(self.__result, (int, long)):
-            self.unknown("{} didn't return single number.".format(self.args.command))
+    def filenumber_handle(self):
+        """Get the number of files in the folder."""
+        self.__results = []
+        self.__dirs = []
+        self.__files = []
+        self.__ftp = self.connect()
+        self.__ftp.dir(self.args.path, self.__results.append)
+        # self.logger.debug("dir results: {}".format(self.__results))
+        self.quit()
 
         status = self.ok
+
+        for data in self.__results:
+            if "<DIR>" in data:
+                self.__dirs.append(str(data.split()[3]))
+            else:
+                self.__files.append(str(data.split()[2]))
+
+        self.__result = len(self.__files)
+        self.logger.debug("result: {}".format(self.__result))
+
         # Compare the vlaue.
         if self.__result > self.args.warning:
             status = self.warning
@@ -292,20 +291,21 @@ class Command(Ssh):
             status = self.critical
 
         # Output
-        self.shortoutput = "{0} return {1}.".format(self.args.command, self.__result)
+        self.shortoutput = "Found {0} files in {1}.".format(self.__result,
+                                                            self.args.path)
         [self.longoutput.append(line) for line in self.__results if self.__results]
-        self.perfdata.append("{command}={result};{warn};{crit};0;".format(
+        self.perfdata.append("{path}={result};{warn};{crit};0;".format(
             crit=self.args.critical,
             warn=self.args.warning,
             result=self.__result,
-            command=self.args.command))
+            path=self.args.path))
 
         # Return status with message to Nagios.
         status(self.output(long_output_limit=None))
         self.logger.debug("Return status and exit to Nagios.")
 
 
-class Pool(Command):
+class Pool(FileNumber):
 
     """Register your own class here."""
 
@@ -317,8 +317,8 @@ def main():
     """Register your own mode and handle method here."""
     plugin = Pool()
     arguments = sys.argv[1:]
-    if 'command' in arguments:
-        plugin.command_handle()
+    if 'filenumber' in arguments:
+        plugin.filenumber_handle()
     else:
         plugin.unknown("Unknown actions.")
 

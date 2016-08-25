@@ -29,7 +29,7 @@ class Nagios(object):
     """Basic class for nagios."""
 
     def __init__(self, name=None, version='1.0.0', description='For MSSQL'):
-        self._name = os.path.basename(sys.argv[0]) if not name else name
+        self.__name = os.path.basename(sys.argv[0]) if not name else name
         self.__version = version
         self.__description = description
 
@@ -63,8 +63,7 @@ class Nagios(object):
         self.parser = argparse.ArgumentParser(description="Plugin for MSSQL.")
         self.parser.add_argument('-V', '--version',
                                  action='version',
-                                 version='%s %s' % (self._name,
-                                                    self.__version),
+                                 version='{0} {1}'.format(self.__name, self.__version),
                                  help='Show version')
         self.parser.add_argument('-D', '--debug',
                                  action='store_true',
@@ -213,26 +212,25 @@ class Mssql(Nagios):
         self.mssql_parser.add_argument('-d', '--database',
                                        default='master',
                                        required=False,
-                                       help='database name, default master',
+                                       help='database name, default is %(default)s',
                                        dest='database')
         self.mssql_parser.add_argument('-t', '--timeout',
                                        default=30,
                                        type=int,
                                        required=False,
-                                       help='query timeout, default 30s',
+                                       help='query timeout, default is %(default)s',
                                        dest='timeout')
         self.mssql_parser.add_argument('-l', '--login_timeout',
                                        default=60,
                                        type=int,
                                        required=False,
-                                       help='connection and login time out,\
-                                       default 60s.',
+                                       help='connection and login time out, default is %(default)s',
                                        dest='login_timeout')
         self.mssql_parser.add_argument('-c', '--charset',
                                        default='utf8',
                                        type=str,
                                        required=False,
-                                       help='set the charset, default utf8',
+                                       help='set the charset, default is %(default)s',
                                        dest='charset')
 
 
@@ -264,13 +262,13 @@ class Sql(Mssql):
                                      default=0,
                                      type=int,
                                      required=False,
-                                     help='Warning value for sql',
+                                     help='Warning value for sql, default is %(default)s',
                                      dest='warning')
         self.sql_parser.add_argument('-c', '--critical',
                                      default=0,
                                      type=int,
                                      required=False,
-                                     help='Critical value for sql',
+                                     help='Critical value for sql, default is %(default)s',
                                      dest='critical')
         self.sql_parser.add_argument('--as_dict',
                                      default=False,
@@ -334,13 +332,13 @@ class DatabaseUsed(Mssql):
                                     default=0,
                                     type=int,
                                     required=False,
-                                    help='Warning value for data file.',
+                                    help='Warning value for data file, default is %(default)s',
                                     dest='warning')
         self.du_parser.add_argument('-c', '--critical',
                                     default=0,
                                     type=int,
                                     required=False,
-                                    help='Critical value for data file.',
+                                    help='Critical value for data file, default is %(default)s',
                                     dest='critical')
         self.du_parser.add_argument('-r', '--regex',
                                     required=False,
@@ -513,13 +511,13 @@ class DatabaseLogUsed(Mssql):
                                     default=0,
                                     type=int,
                                     required=False,
-                                    help='Warning value for log file.',
+                                    help='Warning value for log file, default is %(default)s',
                                     dest='warning')
         self.dl_parser.add_argument('-c', '--critical',
                                     default=0,
                                     type=int,
                                     required=False,
-                                    help='Critical value for log file.',
+                                    help='Critical value for log file, default is %(default)s',
                                     dest='critical')
         self.dl_parser.add_argument('-r', '--regex',
                                     required=False,

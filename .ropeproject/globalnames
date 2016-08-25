@@ -2,4 +2,5 @@
 check_snmp]q(UNagiosCriticalqU
 FileNumberqUFtpqUNagiosqUNagiosWarningqUmainqUNagiosUnknownq	UPoolq
 UNagiosOkqeUcheck_mysql]q(UNagiosCriticalqUSqlqUNagiosqUNagiosWarningqUMysqlqUNagiosUnknownqUmainqUPoolqUNagiosOkqeUcheck_snmp_storage]q(hU
-FileNumberqUFtpqhhhhhheUsetup]qUINSTALL_REQUIRESqaUplugin]Ucheck_mssql]q(hhhhUDatabaseUsedqhhUDatabaseLogUsedqUMssqlqhheU	check_ftp]q(hhhhhhhhheU	check_wmi]q (hhhhhhhhheU	check_ssh]q!(hhhhhUCommandq"USshq#hheUcheck_snmp_network]q$(hhhhhhhhheUcheck_vmware]q%(hh"hhhh#hhheu.
+FileNumberqUFtpqhhhhhheUsetup]q(UreadqUINSTALL_REQUIRESqeUplugin]Ucheck_mssql]q(hhhhUDatabaseUsedqhhUDatabaseLogUsedqUMssqlqhheU	check_ftp]q (hhhhhhhhheU	check_wmi]q!(hhUWmiq"hUFileAgeq#hhhhheU	check_ssh]q$(hhhhhUCommandq%USshq&hheUcheck_snmp_network]q'(hhhhhhhhheU
+check_http]q((hhhhhhhhheUcheck_vmware]q)(hh%hhhhhUVmwareq*heu.
