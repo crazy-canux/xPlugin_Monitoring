@@ -1,6 +1,6 @@
 Metadata-Version: 1.1
 Name: xplugin
-Version: 1.0.0.9
+Version: 1.1.0.0
 Summary: Common interface for tons of protocal, used for monitoring tools, like nagios/icinga...
 Home-page: https://github.com/crazy-canux/xplugin
 Author: Canux CHENG
@@ -34,6 +34,10 @@ Description: =======
         
         If it is written in shell or powershell, no need to install any library.
         
+        You can use it like:
+        
+            import plugin
+        
         --------------
         How to extends
         --------------
@@ -48,7 +52,7 @@ Description: =======
         
         1. check_snmp_network.py
         2. check_snmp_storage.py
-        3. check_vmware.py
+        3. check_http.py
         4. xplugin/docs build with sphinx
         5. xplugin/plugin/test
         

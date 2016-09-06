@@ -26,6 +26,10 @@ If it is written in python then mostly use standard library, and third party lib
 
 If it is written in shell or powershell, no need to install any library.
 
+You can use it like:
+
+    import plugin
+
 --------------
 How to extends
 --------------
@@ -40,7 +44,7 @@ TODO
 
 1. check_snmp_network.py
 2. check_snmp_storage.py
-3. check_vmware.py
+3. check_http.py
 4. xplugin/docs build with sphinx
 5. xplugin/plugin/test
 

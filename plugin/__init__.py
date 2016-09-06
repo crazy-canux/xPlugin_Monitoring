@@ -12,7 +12,7 @@ Time: Fri 05 Aug 2016 02:41:19 PM CST
 
 Example:
     import plugin
-
 """
 
-__VERSION__ = "1.0.0.9"
+__version__ = "1.1.0.0"
+__author__ = "Canux CHENG"

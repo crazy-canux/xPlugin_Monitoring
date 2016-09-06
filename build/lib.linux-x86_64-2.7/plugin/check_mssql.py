@@ -15,11 +15,11 @@ import os
 import sys
 import logging
 import argparse
-import re
 # try:
 #     import cPickle as pickle
 # except:
 #     import pickle
+import re
 
 import pymssql
 
@@ -672,17 +672,17 @@ from @datatab d order by name;
                 e))
 
 
-class Pool(Sql, DatabaseUsed, DatabaseLogUsed):
+class Register(Sql, DatabaseUsed, DatabaseLogUsed):
 
     """Register your own class here."""
 
     def __init__(self, *args, **kwargs):
-        super(Pool, self).__init__(*args, **kwargs)
+        super(Register, self).__init__(*args, **kwargs)
 
 
 def main():
     """Register your own mode and handle method here."""
-    plugin = Pool()
+    plugin = Register()
     arguments = sys.argv[1:]
     if 'sql' in arguments:
         plugin.sql_handle()

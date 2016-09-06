@@ -15,12 +15,12 @@ import os
 import sys
 import logging
 import argparse
-import string
-import socket
 # try:
 #     import cPickle as pickle
 # except:
 #     import pickle
+import string
+import socket
 
 import paramiko
 
@@ -306,17 +306,17 @@ class Command(Ssh):
         self.logger.debug("Return status and exit to Nagios.")
 
 
-class Pool(Command):
+class Register(Command):
 
     """Register your own class here."""
 
     def __init__(self, *args, **kwargs):
-        super(Pool, self).__init__(*args, **kwargs)
+        super(Register, self).__init__(*args, **kwargs)
 
 
 def main():
     """Register your own mode and handle method here."""
-    plugin = Pool()
+    plugin = Register()
     arguments = sys.argv[1:]
     if 'command' in arguments:
         plugin.command_handle()

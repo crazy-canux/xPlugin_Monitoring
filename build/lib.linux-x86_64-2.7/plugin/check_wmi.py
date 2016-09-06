@@ -193,12 +193,12 @@ class Wmi(Nagios):
                                      required=True,
                                      help='wmi login password.',
                                      dest='password')
-        self.wmi_parser.add_argument('-n', '--namespace',
+        self.wmi_parser.add_argument('--namespace',
                                      default='root\cimv2',
                                      required=False,
                                      help='namespace for wmi, default is %(default)s',
                                      dest='namespace')
-        self.wmi_parser.add_argument('-s', '--delimiter',
+        self.wmi_parser.add_argument('--delimiter',
                                      default='|',
                                      required=False,
                                      help='delimiter for wmi, default is %(default)s',
@@ -293,19 +293,20 @@ class FileNumber(Wmi):
         """Get the number of file in the folder."""
         self.file_list = []
         self.count = 0
+        status = self.ok
 
         if self.args.recursion:
             self.__result, self.__file_list = self.__get_folder(self.args.path)
         else:
             self.__result, self.__file_list = self.__get_file(self.args.path)
 
-        status = self.ok
-
         # Compare the vlaue.
-        if self.__result > self.args.warning:
-            status = self.warning
         if self.__result > self.args.critical:
             status = self.critical
+        elif self.__result > self.args.warning:
+            status = self.warning
+        else:
+            status = self.ok
 
         # Output
         self.shortoutput = "Found {0} files in {1}.".format(self.__result,
@@ -423,6 +424,7 @@ class FileAge(Wmi):
         self.ok_file = []
         self.warn_file = []
         self.crit_file = []
+        status = self.ok
 
         if self.args.recursion:
             self.__file_list = self.__get_folder(self.args.path)
@@ -455,13 +457,13 @@ class FileAge(Wmi):
             else:
                 self.ok_file.append(self.filename)
 
-        status = self.ok
-
         # Compare the vlaue.
-        if self.warn_file:
-            status = self.warning
         if self.crit_file:
             status = self.critical
+        elif self.warn_file:
+            status = self.warning
+        else:
+            status = self.ok
 
         # Output
         self.shortoutput = "Found {0} files out of date.".format(len(self.crit_file))
@@ -485,22 +487,123 @@ class FileAge(Wmi):
         self.logger.debug("Return status and exit to Nagios.")
 
 
-class Pool(FileNumber, FileAge):
+class SqlserverLocks(Wmi):
+
+    """Check the attribute related to MSSQLSERVER_SQLServerLocks wmi class.
+
+    Example:
+        check_wmi.py -H HOSTNAME -d [Domain] -u USER -p [password] --debug sqlserverlocks -m LockTimeoutsPersec -w 0 -c 0
+        check_wmi.py -H HOSTNAME -d [Domain] -u USER -p [password] --debug sqlserverlocks -m LockWaitsPersec -w 0 -c 0
+        check_wmi.py -H HOSTNAME -d [Domain] -u USER -p [password] --debug sqlserverlocks -m NumberofDeadlocksPersec -w 0 -c 0
+    """
+
+    def __init__(self, *args, **kwargs):
+        super(SqlserverLocks, self).__init__(*args, **kwargs)
+        self.logger.debug("Init SqlserverLocks")
+
+    def define_sub_options(self):
+        super(SqlserverLocks, self).define_sub_options()
+        self.sl_parser = self.subparsers.add_parser('sqlserverlocks',
+                                                    help='Options for SqlserverLocks',
+                                                    description='All options for SqlserverLocks')
+        self.sl_parser.add_argument('-q', '--query',
+                                    required=False,
+                                    help='wql for wmi.',
+                                    dest='query')
+        self.sl_parser.add_argument('-m', '--mode',
+                                    required=True,
+                                    help='From ["LockTimeoutsPersec", "LockWaitsPersec", "NumberofDeadlocksPersec"]',
+                                    dest='mode')
+        self.sl_parser.add_argument('-w', '--warning',
+                                    default=0,
+                                    type=int,
+                                    required=False,
+                                    help='Default is %(default)s',
+                                    dest='warning')
+        self.sl_parser.add_argument('-c', '--critical',
+                                    default=0,
+                                    type=int,
+                                    required=False,
+                                    help='Default is %(default)s',
+                                    dest='critical')
+
+    def sqlserverlocks_handle(self):
+        self.ok_list = []
+        self.warn_list = []
+        self.crit_list = []
+        status = self.ok
+
+        if self.args.mode == "LockTimeoutsPersec":
+            self.wql = "select LockTimeoutsPersec from Win32_PerfFormattedData_MSSQLSERVER_SQLServerLocks"
+        elif self.args.mode == "LockWaitsPersec":
+            self.wql = "select LockWaitsPersec from Win32_PerfFormattedData_MSSQLSERVER_SQLServerLocks"
+        elif self.args.mode == "NumberofDeadlocksPersec":
+            self.wql = "select NumberofDeadlocksPersec from Win32_PerfFormattedData_MSSQLSERVER_SQLServerLocks"
+        else:
+            self.unknown("Unknown SqlServerLocks options")
+
+        self.__results = self.query(self.wql)
+        self.logger.debug("results: {}".format(self.__results))
+        # [{'LockTimeoutsPersec': '0', 'Name': 'File'}, {'LockTimeoutsPersec': '0', 'Name': 'Database'}]
+        # [[{'Name': 'OibTrackTbl', 'NumberofDeadlocksPersec': '0'}, {'Name': 'AllocUnit', 'NumberofDeadlocksPersec': '0'}]
+        for lock_dict in self.__results:
+            self.name = lock_dict.get('Name')
+            self.logger.debug("name: {}".format(self.name))
+            self.value = int(lock_dict.get(self.args.mode))
+            self.logger.debug("value: {}".format(self.value))
+            if self.value > self.args.critical:
+                self.crit_list.append(self.name + " : " + self.value)
+            elif self.value > self.args.warning:
+                self.warn_list.append(self.name + " : " + self.value)
+            else:
+                self.ok_list.append(self.name + " : " + str(self.value))
+
+        if self.crit_list:
+            status = self.critical
+        elif self.warn_list:
+            status = self.warning
+        else:
+            status = self.ok
+
+        self.shortoutput = "Found {0} {1} critical.".format(len(self.crit_list), self.args.mode)
+        if self.crit_list:
+            self.longoutput.append("===== Critical ====")
+        [self.longoutput.append(filename) for filename in self.crit_list if self.crit_list]
+        if self.warn_list:
+            self.longoutput.append("===== Warning ====")
+        [self.longoutput.append(filename) for filename in self.warn_list if self.warn_list]
+        if self.ok_list:
+            self.longoutput.append("===== OK ====")
+        [self.longoutput.append(filename) for filename in self.ok_list if self.ok_list]
+        self.perfdata.append("{mode}={result};{warn};{crit};0;".format(
+            crit=self.args.critical,
+            warn=self.args.warning,
+            result=len(self.crit_list),
+            mode=self.args.mode))
+
+        # Return status with message to Nagios.
+        status(self.output(long_output_limit=None))
+        self.logger.debug("Return status and exit to Nagios.")
+
+
+class Register(FileNumber, FileAge, SqlserverLocks):
 
     """Register your own class here."""
 
     def __init__(self, *args, **kwargs):
-        super(Pool, self).__init__(*args, **kwargs)
+        super(Register, self).__init__(*args, **kwargs)
 
 
 def main():
     """Register your own mode and handle method here."""
-    plugin = Pool()
+    plugin = Register()
     arguments = sys.argv[1:]
     if 'filenumber' in arguments:
         plugin.filenumber_handle()
     elif 'fileage' in arguments:
         plugin.fileage_handle()
+    elif 'sqlserverlocks' in arguments:
+        plugin.sqlserverlocks_handle()
     else:
         plugin.unknown("Unknown actions.")
 

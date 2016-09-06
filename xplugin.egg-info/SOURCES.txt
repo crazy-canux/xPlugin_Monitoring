@@ -5,6 +5,7 @@ plugin/check_ftp.py
 plugin/check_mssql.py
 plugin/check_mysql.py
 plugin/check_ssh.py
+plugin/check_winrm.py
 plugin/check_wmi.py
 xplugin.egg-info/PKG-INFO
 xplugin.egg-info/SOURCES.txt

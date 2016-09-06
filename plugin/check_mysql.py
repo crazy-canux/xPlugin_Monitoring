@@ -304,17 +304,17 @@ class Sql(Mysql):
         self.logger.debug("Return status and exit to Nagios.")
 
 
-class Pool(Sql):
+class Register(Sql):
 
     """Register your own class here."""
 
     def __init__(self, *args, **kwargs):
-        super(Pool, self).__init__(*args, **kwargs)
+        super(Register, self).__init__(*args, **kwargs)
 
 
 def main():
     """Register your own mode and handle method here."""
-    plugin = Pool()
+    plugin = Register()
     arguments = sys.argv[1:]
     if 'sql' in arguments:
         plugin.sql_handle()
