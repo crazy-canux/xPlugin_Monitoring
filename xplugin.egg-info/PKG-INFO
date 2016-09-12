@@ -1,6 +1,6 @@
 Metadata-Version: 1.1
 Name: xplugin
-Version: 2.0.0.0
+Version: 2.0.1.0
 Summary: Common interface for tons of protocal, used for monitoring tools, like nagios/icinga...
 Home-page: https://github.com/crazy-canux/xplugin
 Author: Canux CHENG
