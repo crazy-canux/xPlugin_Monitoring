@@ -1,0 +1,17 @@
+Source: plugin-mysql
+Section: misc
+Priority: extra
+Maintainer: Yves ANDOLFATTO <yves.andolfatto@faurecia.com>
+Build-Depends: debhelper (>= 8.0.0)
+Standards-Version: 3.9.3
+Vcs-Git: http://monitoring-dc.app.corp/git/plugins/mysql.git
+Vcs-Browser: http://monitoring-dc.app.corp/git/?p=plugins/mysql.git
+
+Package: plugin-mysql
+Architecture: amd64
+Depends:
+    ${shlibs:Depends},
+    ${misc:Depends},
+    ${perl:Depends},
+Description: Plugin for Nagios to check MYSQL
+ Collection of plugins to check MYSQL

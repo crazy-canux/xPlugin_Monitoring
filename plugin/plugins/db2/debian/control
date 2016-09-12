@@ -1,0 +1,19 @@
+Source: plugin-db2
+Section: misc
+Priority: extra
+Maintainer: EIT/PLM Delivery <dl-it-systemoperating-eitapplications@none.faurecia.com>
+Build-Depends: debhelper (>= 9)
+Standards-Version: 3.9.5
+Vcs-Git: http://monitoring-dc.app.corp/git/plugins/db2.git
+Vcs-Browser: http://monitoring-dc.app.corp/git/?p=plugins/db2.git
+
+Package: plugin-db2
+Architecture: all
+Depends:
+    ${misc:Depends},
+    python2.7,
+    python-monitoring-nagios,
+Description: Plugin for Nagios to check DB2
+ Collection of plugins to check DB2, including:
+   - Backup age by ssh
+   - Database log use by ssh

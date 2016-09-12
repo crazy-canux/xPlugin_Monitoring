@@ -1,0 +1,20 @@
+Source: plugin-vmware
+Section: misc
+Priority: extra
+Maintainer: Vincent BESANCON <besancon.vincent@gmail.com>
+Build-Depends: debhelper (>= 9)
+Standards-Version: 3.9.5
+Homepage: http://www.op5.org/community/plugin-inventory/op5-projects/check-esx-plugin
+Vcs-Git: http://monitoring-dc.app.corp/git/plugins/vmware.git
+Vcs-Browser: http://monitoring-dc.app.corp/git/?p=plugins/vmware.git
+
+Package: plugin-vmware
+Architecture: all
+Depends: 
+    ${misc:Depends},
+    ${perl:Depends},
+    libwww-perl,
+    libnagios-plugin-perl,
+    vmware-vsphere-sdk,
+Description: Nagios plugins to check VMWare ESX
+ Collection of Nagios plugins to check VMWare ESX hosts / vcenter.

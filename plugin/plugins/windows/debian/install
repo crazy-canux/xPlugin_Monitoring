@@ -1,0 +1,3 @@
+src/check_wmi_account.py    usr/lib/faurecia/plugins/sys/win
+src/check_wmi_fileage.py    usr/lib/faurecia/plugins/sys/win
+src/check_wmi_filecount.py    usr/lib/faurecia/plugins/sys/win

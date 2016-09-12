@@ -1,0 +1,30 @@
+plugin-generic (1.1.1) trusty; urgency=medium
+
+  [ Canux CHENG ]
+  * [new plugin]create new plugin for ftp.
+
+  [ Yves ANDOLFATTO ]
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Wed, 20 Jul 2016 15:37:56 +0200
+
+plugin-generic (1.1.0) trusty; urgency=medium
+
+  [ Vincent BESANCON ]
+  * Migrate fabfile to trusty.
+
+  [ Canux CHENG ]
+  * [ssh] use ssh to execute remote shell command.
+
+ -- Vincent BESANCON <vincent.besancon@faurecia.com>  Thu, 24 Sep 2015 15:55:53 +0200
+
+plugin-generic (1.0.1) trusty; urgency=medium
+
+  * Update package for ubuntu trusty.
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Thu, 10 Jul 2014 14:35:33 +0200
+
+plugin-generic (1.0.0) precise; urgency=low
+
+  * Initial release.
+
+ -- Vincent BESANCON <besancon.vincent@gmail.com>  Mon, 07 Oct 2013 11:22:40 +0200

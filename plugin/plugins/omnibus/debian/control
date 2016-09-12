@@ -1,0 +1,17 @@
+Source: plugin-omnibus
+Section: misc
+Priority: extra
+Maintainer: Yves ANDOLFATTO <yves.andolfatto@faurecia.com>
+Build-Depends: debhelper (>= 8.0.0)
+Standards-Version: 3.9.3
+Vcs-Git: http://monitoring-dc.app.corp/git/plugins/omnibus.git
+Vcs-Browser: http://monitoring-dc.app.corp/git/?p=plugins/omnibus.git
+
+Package: plugin-omnibus
+Architecture: amd64
+Depends:
+    ${misc:Depends},
+    ${python:Depends},
+    python-monitoring-venv,
+Description: Nagios plugins to check OMNibus
+ Collection of Nagios plugins to check OMNibus.

@@ -1,0 +1,19 @@
+Source: plugin-ldap
+Section: misc
+Priority: extra
+Maintainer: Patrick BAILAT <patrick.bailat-ext@faurecia.com>
+Build-Depends: debhelper (>= 8.0.0)
+Standards-Version: 3.9.3
+Vcs-Git: http://monitoring-dc.app.corp/git/plugins/ldap.git
+Vcs-Browser: http://monitoring-dc.app.corp/git/?p=plugins/ldap.git
+
+Package: plugin-ldap
+Architecture: all
+Depends:
+    ${shlibs:Depends},
+    ${misc:Depends},
+    ${python:Depends},
+    python-monitoring-venv (>=1.0.8)
+Description: Plugin for Nagios to check LDAP
+ Collection of plugins to check LDAP, including:
+    - Check account proprety

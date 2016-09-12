@@ -1,0 +1,11 @@
+.idea/
+build/
+dist/
+docs/_build/
+pkg-build/
+.directory
+*.pyc
+*.swp
+*.egg-info
+.vagrant
+

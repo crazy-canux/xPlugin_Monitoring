@@ -1,0 +1,3 @@
+src/storage                     usr/lib/faurecia/plugins/sto
+src/check_netapp_volume.py      usr/lib/faurecia/plugins/sto
+src/check_netapp_snapshot.py    usr/lib/faurecia/plugins/sto

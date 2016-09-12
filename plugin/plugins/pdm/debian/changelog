@@ -1,0 +1,23 @@
+plugin-app-pdm (1.1.1) precise; urgency=low
+
+  * timeout command returns 124 error code if the command timed out.
+
+ -- Vincent BESANCON <besancon.vincent@gmail.com>  Fri, 20 Jun 2014 14:06:05 +0200
+
+plugin-app-pdm (1.1.0) precise; urgency=low
+
+  * Add old PDM login using Java class to this repo. refs #2643
+
+ -- Vincent BESANCON <besancon.vincent@gmail.com>  Tue, 17 Sep 2013 12:06:47 +0200
+
+plugin-app-pdm (1.0.1) precise; urgency=low
+
+  * Strip the URL for any trailing /. refs #2328
+
+ -- Vincent BESANCON <besancon.vincent@gmail.com>  Fri, 02 Aug 2013 12:09:21 +0200
+
+plugin-app-pdm (1.0.0) precise; urgency=low
+
+  * Initial release.
+
+ -- Vincent BESANCON <besancon.vincent@gmail.com>  Wed, 31 Jul 2013 10:18:49 +0200

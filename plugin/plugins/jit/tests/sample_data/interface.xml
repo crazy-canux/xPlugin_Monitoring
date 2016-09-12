@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ALERTS>
+    <SOURCE>
+        <SERVER>FRSELIND0023</SERVER>
+        <DATABASE>gIMM</DATABASE>
+        <ROLE>MAIN</ROLE>
+        <VERSION>3.8.0</VERSION>
+        <DATETIME>13-11-2012_15:56:04</DATETIME>
+    </SOURCE>
+    <EVENTS>
+        <Event>
+            <Event-ID>gIMM-1</Event-ID>
+            <Event-Name>PendingEvents</Event-Name>
+            <DATETIME>13-11-2012_15:56:04</DATETIME>
+            <SEVERITY>OK</SEVERITY>
+            <MESSAGE>There are 0 pending events</MESSAGE>
+        </Event>
+        <Event>
+            <Event-ID>gIMM-2</Event-ID>
+            <Event-Name>CheckForecast</Event-Name>
+            <DATETIME>13-11-2012_15:56:04</DATETIME>
+            <SEVERITY>WARNING</SEVERITY>
+            <MESSAGE>Forecast has been NOT integrated correctly in the last 30 Hours</MESSAGE>
+        </Event>
+        <Event>
+            <Event-ID>gIMM-3</Event-ID>
+            <Event-Name>CheckForecast</Event-Name>
+            <DATETIME>13-11-2012_15:56:04</DATETIME>
+            <SEVERITY>INFO</SEVERITY>
+            <MESSAGE>EdiCounter: 00455 Date: 2012-10-27 02:40:07.857.Processed OK. Additions: Number: 72</MESSAGE>
+        </Event>
+        <Event>
+            <Event-ID>gIMM-4</Event-ID>
+            <Event-Name>CheckForecast</Event-Name>
+            <DATETIME>13-11-2012_15:56:04</DATETIME>
+            <SEVERITY>INFO</SEVERITY>
+            <MESSAGE>EdiCounter: 00455 Date: 2012-10-27 02:40:07.857.Processed OK. Deletes: Number: 0</MESSAGE>
+        </Event>
+        <Event>
+            <Event-ID>gIMM-5</Event-ID>
+            <Event-Name>CheckForecast</Event-Name>
+            <DATETIME>13-11-2012_15:56:04</DATETIME>
+            <SEVERITY>INFO</SEVERITY>
+            <MESSAGE>EdiCounter: 00455 Date: 2012-10-27 02:40:07.857.Processed OK. Updates: Number: 209</MESSAGE>
+        </Event>
+        <Event>
+            <Event-ID>gIMM-6</Event-ID>
+            <Event-Name>CheckMasterData</Event-Name>
+            <DATETIME>13-11-2012_15:56:04</DATETIME>
+            <SEVERITY>WARNING</SEVERITY>
+            <MESSAGE>MasterData has NOT been integrated in the last 72 hours</MESSAGE>
+        </Event>
+        <Event>
+            <Event-ID>gIMM-7</Event-ID>
+            <Event-Name>CheckMasterData</Event-Name>
+            <DATETIME>13-11-2012_15:56:04</DATETIME>
+            <SEVERITY>INFO</SEVERITY>
+            <MESSAGE>Last Master Data integration date: 2012-10-28 06:06:23 Message: 101 errors of integration.</MESSAGE>
+        </Event>
+        <Event>
+            <Event-ID>gIMM-8</Event-ID>
+            <Event-Name>CheckDevice</Event-Name>
+            <DATETIME>13-11-2012_15:56:04</DATETIME>
+            <SEVERITY>OK</SEVERITY>
+            <MESSAGE>There are 0 Errors from device 10LP001 from today</MESSAGE>
+        </Event>
+        <Event>
+            <Event-ID>gIMM-9</Event-ID>
+            <Event-Name>ReceptionCallOff-SequenceBreakEvent</Event-Name>
+            <DATETIME>13-11-2012_15:56:04</DATETIME>
+            <SEVERITY>OK</SEVERITY>
+            <MESSAGE>There is no unnexpected BreakEvent</MESSAGE>
+        </Event>
+        <Event>
+            <Event-ID>gIMM-10</Event-ID>
+            <Event-Name>ReceptionCallOff-SequenceWaitEvent</Event-Name>
+            <DATETIME>13-11-2012_15:56:04</DATETIME>
+            <SEVERITY>OK</SEVERITY>
+            <MESSAGE>There is no unnexpected WaitEvent</MESSAGE>
+        </Event>
+        <Event>
+            <Event-ID>gIMM-11</Event-ID>
+            <Event-Name>HIST_TABLES</Event-Name>
+            <DATETIME>13-11-2012_15:56:04</DATETIME>
+            <SEVERITY>INFO</SEVERITY>
+            <MESSAGE>3 rows</MESSAGE>
+        </Event>
+        <Event>
+            <Event-ID>gIMM-12</Event-ID>
+            <Event-Name>REP_TABLES</Event-Name>
+            <DATETIME>13-11-2012_15:56:04</DATETIME>
+            <SEVERITY>INFO</SEVERITY>
+            <MESSAGE>0 rows</MESSAGE>
+        </Event>
+    </EVENTS>
+</ALERTS>

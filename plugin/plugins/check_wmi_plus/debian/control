@@ -1,0 +1,30 @@
+Source: plugin-check-wmi-plus
+Section: misc
+Priority: extra
+Maintainer: Vincent BESANCON <vincent.besancon@faurecia.com>
+Build-Depends:
+    debhelper (>= 9),
+    devscripts (>= 2.10),
+Standards-Version: 3.9.5
+Homepage: http://www.edcint.co.nz/checkwmiplus/
+Vcs-Git: http://monitoring-dc.app.corp/git/plugin/plugin-check-wmi-plus.git
+Vcs-Browser: http://monitoring-dc.app.corp/git/?p=plugin/plugin-check-wmi-plus.git
+
+Package: plugin-check-wmi-plus
+Architecture: all
+Depends:
+    ${misc:Depends},
+    ${perl:Depends},
+    wmic,
+    libclass-singleton-perl,
+    libdatetime-locale-perl,
+    libdatetime-perl,
+    libdatetime-timezone-perl,
+    libnet-dns-perl,
+    libnet-ip-perl,
+    libnumber-format-perl,
+    libconfig-inifiles-perl,
+Description: Check WMI Plus is a client-less Nagios plugin for checking Windows systems.
+ Check WMI Plus uses the Windows Management Interface (WMI) to check for common
+ services (cpu, disk, sevices, eventlog...) on Windows machines. It requires
+ the open source wmi client for Linux.

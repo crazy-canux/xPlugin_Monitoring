@@ -1,0 +1,5 @@
+pkg-build/
+*.pyc
+*.swp
+~*
+.idea/

@@ -1,0 +1,109 @@
+plugin-db2 (1.3.3) trusty; urgency=medium
+
+  [ Canux CHENG ]
+  * [db2]update src/db2/vtl_backup.py.
+
+  [ Vincent BESANCON ]
+  * Bump version: 1.3.2 → 1.3.3
+
+ -- Vincent BESANCON <vincent.besancon@faurecia.com>  Wed, 28 Oct 2015 12:21:25 +0100
+
+plugin-db2 (1.3.2) trusty; urgency=medium
+
+  [ Canux CHENG ]
+  * [db2]add ssh exception handler.
+
+ -- Vincent BESANCON <vincent.besancon@faurecia.com>  Thu, 24 Sep 2015 16:09:01 +0200
+
+plugin-db2 (1.3.1) trusty; urgency=medium
+
+  * Set executable bit on check_db2_vtl_backup.py plugin.
+  * Bump version: 1.3.0 → 1.3.1
+
+ -- Vincent BESANCON <vincent.besancon@faurecia.com>  Tue, 28 Jul 2015 11:50:59 +0200
+
+plugin-db2 (1.3.0) trusty; urgency=medium
+
+  [ Canux CHENG ]
+  * [TSM]new plugin.
+
+ -- Vincent BESANCON <vincent.besancon@faurecia.com>  Tue, 28 Jul 2015 11:38:12 +0200
+
+plugin-db2 (1.2.1) trusty; urgency=medium
+
+  [ Patrick BAILAT ]
+  * Change "Vendor device" by "Vendor_device".
+
+  [ Vincent BESANCON ]
+  * Fix indent.
+  * db2.tsm_backup: remove usage of traceback module.
+  * Log command output in DEBUG mode.
+  * Optimize the search for 'NO_DATA' in output.
+  * Bump version: 1.2.0 → 1.2.1
+
+ -- Vincent BESANCON <vincent.besancon@faurecia.com>  Thu, 16 Apr 2015 11:56:58 +0200
+
+plugin-db2 (1.2.0) trusty; urgency=medium
+
+  [ Patrick BAILAT ]
+  * [TSM] add new script to check TSM backup by DB2
+
+  [ Vincent BESANCON ]
+  * This is a bumbversion managed project.
+  * Ignore pycharm project folder.
+  * Refresh package creation.
+  * Creates a db2 python package for shareable code.
+  * Migrate plugin check_db2_database_log to a class.
+  * Migrate plugin check_db2_tsm_backup to a class.
+  * Add a run_command() wrapper to base class.
+  * Bump version: 1.1.2 → 1.2.0
+
+ -- Vincent BESANCON <vincent.besancon@faurecia.com>  Fri, 03 Apr 2015 12:40:03 +0200
+
+plugin-db2 (1.1.2) trusty; urgency=medium
+
+  * Update package for ubuntu trusty.
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Thu, 10 Jul 2014 14:03:22 +0200
+
+plugin-db2 (1.1.1) precise; urgency=low
+
+  * UNRELEASED
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Wed, 28 Aug 2013 13:48:13 +0200
+
+plugin-db2 (1.1.0) precise; urgency=low
+
+  * [DB2] new script to check database log used. refs #2591
+
+ -- Patrick BAILAT <patrick.bailat-ext@faurecia.com>  Wed, 28 Aug 2013 13:31:14 +0200
+
+plugin-db2 (1.0.4) precise; urgency=low
+
+  * Indentation and Downgrade Standard-Version for 3.9.3, i.e. precise version
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Tue, 09 Apr 2013 15:43:11 +0200
+
+plugin-db2 (1.0.3) precise; urgency=low
+
+  * [Dependencies] Modify 'python' to ${python:Depends}
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Wed, 03 Apr 2013 16:39:27 +0200
+
+plugin-db2 (1.0.2) precise; urgency=low
+
+  * added validation on datetime, retrun unknow if not correct
+
+ -- Patrick BAILAT <patrick.bailat-ext@faurecia.com>  Wed, 20 Feb 2013 09:20:39 +0100
+
+plugin-db2 (1.0.1) precise; urgency=low
+
+  * Merge changes about SSH command execution that is now an object with attr output, errors and stdin.
+
+ -- Patrick BAILAT <patrick.bailat-ext@faurecia.com>  Tue, 19 Feb 2013 15:00:57 +0100
+
+plugin-db2 (1.0.0) stable; urgency=low
+
+  * Initial Release.
+
+ -- Patrick BAILAT <patrick.bailat-ext@faurecia.com>  Tue, 19 Feb 2013 10:49:44 +0100

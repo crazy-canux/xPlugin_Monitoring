@@ -1,0 +1,3 @@
+plugin-colisee-clients: embedded-library
+plugin-colisee-clients: binary-without-manpage
+plugin-colisee-clients: dir-or-file-in-opt

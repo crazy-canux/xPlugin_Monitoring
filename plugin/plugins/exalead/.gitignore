@@ -1,0 +1,12 @@
+.idea/
+build/
+dist/
+.ropeproject/
+docs/build/
+pkg-build/
+.directory
+*.pyc
+*.swp
+*.egg-info
+.vagrant
+/.project

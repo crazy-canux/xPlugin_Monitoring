@@ -1,0 +1,18 @@
+Source: plugin-generic
+Section: misc
+Priority: extra
+Maintainer: Monitoring & Reporting <9OPMonitoring@none.faurecia.com>
+Build-Depends: debhelper (>= 9)
+Standards-Version: 3.9.5
+Vcs-Git: http://monitoring-dc.app.corp/git/plugins/generic.git
+Vcs-Browser: http://monitoring-dc.app.corp/git/?p=plugins/generic.git
+
+Package: plugin-generic
+Architecture: all
+Depends:
+    ${misc:Depends},
+    python2.7,
+    python-monitoring-nagios,
+Description: Collection of generic plugins to process results from different output.
+ Plugins that are able to fetch data remotely (HTTP, ...) and process the result
+ as specified format (JSON, XML, ...). Then, return that data to Nagios.

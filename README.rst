@@ -2,9 +2,7 @@
 xplugin
 =======
 
-xplugin support nagios and tools based on nagios.
-
-Or, you can use the output of this plugins to filter for your need.
+xplugin include tons of plugins support nagios and tools based on nagios.
 
 `[awesome-monitoring] <https://github.com/crazy-canux/awesome-monitoring>`_.
 
@@ -12,41 +10,21 @@ Or, you can use the output of this plugins to filter for your need.
 How to install
 --------------
 
-Use pip to install:
+plugin/plugins/* based on libs/monitoring, so you have to put this lib in "/usr/lib/python2.7/dist-packages".
 
-    pip install xplugin
+plugin/\*.py is independent, you can just use it.
 
 ----------
 How to use
 ----------
 
-All these plugins are independent.
-
-If it is written in python then mostly use standard library, and third party library.
-
-If it is written in shell or powershell, no need to install any library.
-
-You can use it like:
-
-    import plugin
+Put these plugin in some where like "/usr/lib/monitoring/plugins".
 
 --------------
 How to extends
 --------------
 
-Every plugin just give a common API and some exapmles which use this API.
-
-So, you can use the API to extend for your business monitoring.
-
------
-TODO
------
-
-1. check_snmp_network.py
-2. check_snmp_storage.py
-3. check_http.py
-4. xplugin/docs build with sphinx
-5. xplugin/plugin/test
+You can use the API in plugin/libs/monitoring to write your own plugins.
 
 ============
 Contribution

@@ -1,0 +1,24 @@
+plugin-notify (0.1.0) precise; urgency=low
+
+  * [Gearman] Modify script to read conf_file and send a uniq trap. refs #2636
+  * [Debian] added depent, dirs and logrotate. refs #2636
+
+ -- Patrick BAILAT <patrick.bailat-ext@faurecia.com>  Fri, 13 Sep 2013 15:43:59 +0200
+
+plugin-notify (0.0.3) precise; urgency=low
+
+  * Indentation and Downgrade Standard-Version for 3.9.3, i.e. precise version
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Tue, 09 Apr 2013 17:32:19 +0200
+
+plugin-notify (0.0.2) precise; urgency=low
+
+  * Maj plugins
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Mon, 08 Apr 2013 17:42:06 +0200
+
+plugin-notify (0.0.1) precise; urgency=low
+
+  * Initial Release.
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Wed, 13 Mar 2013 13:37:55 +0100

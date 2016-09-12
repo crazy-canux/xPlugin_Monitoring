@@ -1,0 +1,2 @@
+src/check_nrft_nb_batch.py       usr/lib/faurecia/plugins/app/nrft
+src/check_nrft_loop_batch.py     usr/lib/faurecia/plugins/app/nrft

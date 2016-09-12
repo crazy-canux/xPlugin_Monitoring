@@ -1,0 +1,11 @@
+Format: http://dep.debian.net/deps/dep5
+Upstream-Name: nagios-plugin-elasticsearch
+Source: https://github.com/anchor/nagios-plugin-elasticsearch
+
+Files: debian/*
+Copyright: 2014 Monitoring & Reporting <dl-itop-monitoring@faurecia.com>
+License: MIT
+
+Files: *
+Copyright: 2014 Anchor Systems
+License: MIT

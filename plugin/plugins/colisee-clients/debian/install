@@ -1,0 +1,6 @@
+src/i4blt       usr/bin
+src/i4tv        usr/bin
+src/lmutil      usr/bin
+src/lmxendutil  usr/bin
+src/lstc_qrun   usr/bin
+src/opt/lum     opt

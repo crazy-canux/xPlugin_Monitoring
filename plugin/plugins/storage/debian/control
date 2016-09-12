@@ -1,0 +1,18 @@
+Source: plugin-storage
+Section: misc
+Priority: optional
+Maintainer: EIT/PLM Delivery <dl-it-systemoperating-eitapplications@none.faurecia.com>
+Build-Depends: debhelper (>= 9)
+Standards-Version: 3.9.5
+Vcs-Git: http://monitoring-dc.app.corp/git/plugins/storage.git
+Vcs-Browser: http://monitoring-dc.app.corp/git/?p=plugins/storage.git
+
+Package: plugin-storage
+Architecture: all
+Depends:
+    ${misc:Depends},
+    python2.7,
+    python-monitoring-nagios,
+Description: Nagios Storage Plugins Collection
+ This is the package to install Nagios Storage Plugins used to
+ check Netapp equipments and other storage related stuff.

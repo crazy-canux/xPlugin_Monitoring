@@ -1,0 +1,278 @@
+plugin-mssql (1.4.16) trusty; urgency=medium
+
+  [ Canux CHENG ]
+  * [update]update for ijcore function monitoring.
+
+  [ Adja Fatou FALL ]
+
+ -- Adja Fatou FALL <falladj@euedcmon0009.edc.eu.corp>  Mon, 22 Aug 2016 10:01:11 +0200
+
+plugin-mssql (1.4.15) trusty; urgency=medium
+
+  [ Canux CHENG ]
+  * [ijcore]update to 6.2 about ijcore longoutput.
+  * [update]about ijcore for longoutput
+
+  [ Yves ANDOLFATTO ]
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Thu, 21 Jul 2016 14:22:17 +0200
+
+plugin-mssql (1.4.14) trusty; urgency=medium
+
+  [ Canux CHENG ]
+  * [update]for database used and database log used.
+  * [6.1.0.0]update for database-used and databaselog-used.
+
+  [ Yves ANDOLFATTO ]
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Wed, 20 Jul 2016 15:29:54 +0200
+
+plugin-mssql (1.4.13) trusty; urgency=medium
+
+  [ Canux CHENG ]
+  * [6.0.1]fix bugs for init file.
+  * [6.0.1]remove ijcore file from other functions.
+
+  [ Yves ANDOLFATTO ]
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Fri, 08 Jul 2016 11:04:05 +0200
+
+plugin-mssql (1.4.12) trusty; urgency=medium
+
+  [ Canux CHENG ]
+  * [5.0.0]Release version for ijcore test.
+  * [6.0.0.0]Update to 6.0.0.0.
+
+  [ Adja Fatou FALL ]
+  * Update changelog for 1.4.11 release
+
+ -- Adja Fatou FALL <falladj@euedcmon0009.edc.eu.corp>  Fri, 08 Jul 2016 09:13:53 +0200
+
+plugin-mssql (1.4.11) trusty; urgency=medium
+
+  [ Canux CHENG ]
+  * [5.0.0]Release version for ijcore test.
+  * [6.0.0.0]Update to 6.0.0.0.
+
+  [ Adja Fatou FALL ]
+
+ -- Adja Fatou FALL <falladj@euedcmon0009.edc.eu.corp>  Fri, 08 Jul 2016 09:13:13 +0200
+
+plugin-mssql (1.4.11) trusty; urgency=medium
+
+  [ Canux CHENG ]
+  * [update]update shortoutput for ijcore error log.
+  * [update]update ijcore.txt
+  * [5.0.0]update to version 5.0
+
+  [ Yves ANDOLFATTO ]
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Tue, 05 Jul 2016 11:07:53 +0200
+
+plugin-mssql (1.4.10) trusty; urgency=medium
+
+  [ Canux CHENG ]
+  * [check_mssql_sql.py]update for ijcore for shortoutput.
+
+  [ Jean-Michel PFAADT ]
+
+ -- Jean-Michel PFAADT <pfaadtj@euedcmon0009.edc.eu.corp>  Fri, 01 Jul 2016 09:56:52 +0200
+
+plugin-mssql (1.4.9) trusty; urgency=medium
+
+  [ Canux CHENG ]
+  * [update 4.0]update for ijcore function monitoring.
+
+  [ Adja Fatou FALL ]
+
+ -- Adja Fatou FALL <falladj@euedcmon0009.edc.eu.corp>  Thu, 23 Jun 2016 10:17:19 +0200
+
+plugin-mssql (1.4.8) trusty; urgency=medium
+
+  [ Canux CHENG ]
+  * [update]update sequence jump shortoutput
+
+  [ Yves ANDOLFATTO ]
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Wed, 08 Jun 2016 09:29:14 +0200
+
+plugin-mssql (1.4.7) trusty; urgency=medium
+
+  [ Canux CHENG ]
+  * [update]for ijcorem update the shortoutput.
+
+  [ Yves ANDOLFATTO ]
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Thu, 02 Jun 2016 14:23:17 +0200
+
+plugin-mssql (1.4.6) trusty; urgency=medium
+
+  [ Canux CHENG ]
+  * [mssql]update for ijcore function monitoring.
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Tue, 24 May 2016 09:41:13 +0200
+
+plugin-mssql (1.4.5) trusty; urgency=medium
+
+  [ Canux CHENG ]
+  * [check_mssql_sql]database_used databaselog_used
+  * [update]check_mssql_sql.py for database-used and ijcorem
+
+  [ Adja Fatou FALL ]
+
+ -- Adja Fatou FALL <falladj@euedcmon0009.edc.eu.corp>  Thu, 07 Apr 2016 14:41:51 +0200
+
+plugin-mssql (1.4.4) trusty; urgency=medium
+
+  [ Canux CHENG ]
+  * [mssql_sql]update for database-used.
+  * [update]update the sql for database-used.
+  * [check_mssql_sql.py]fix the same name with version.
+  * [check_mssql_sql.py]update.
+
+  [ Yves ANDOLFATTO ]
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Wed, 23 Mar 2016 13:51:56 +0100
+
+plugin-mssql (1.4.3) trusty; urgency=medium
+
+  [ Canux CHENG ]
+  * [mssql]rewrite check_mssql_sql.py
+
+  [ Yves ANDOLFATTO ]
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Fri, 11 Mar 2016 10:38:17 +0100
+
+plugin-mssql (1.4.2) trusty; urgency=medium
+
+  [ Canux CHENG ]
+  * [update]format the longoutput.
+
+  [ Yves ANDOLFATTO ]
+
+ -- Canux CHENG <canux.cheng@faurecia.com>  Mon, 11 Jan 2016 13:27:21 +0100
+
+plugin-mssql (1.4.1) trusty; urgency=medium
+
+  [ Canux CHENG ]
+  * [update]fix when the result=0 longoutput error.
+
+  [ Yves ANDOLFATTO ]
+
+ -- Canux CHENG <canux.cheng@faurecia.com>  Mon, 21 Dec 2015 09:49:49 +0100
+
+plugin-mssql (1.4.0) trusty; urgency=medium
+
+  [ Canux CHENG ]
+  * [mssql]add src/check_mssql_sql.py
+
+  [ Vincent BESANCON ]
+  * Mistake in check_mssql_sql plugin script name.
+
+ -- Vincent BESANCON <vincent.besancon@faurecia.com>  Thu, 12 Nov 2015 14:14:47 +0100
+
+plugin-mssql (1.3.0) trusty; urgency=medium
+
+  [ Canux CHENG ]
+  * [update]update src/check_mssql_health.pl
+
+  [ Vincent BESANCON ]
+  * Migrate fabfile to trusty.
+
+ -- Vincent BESANCON <vincent.besancon@faurecia.com>  Wed, 28 Oct 2015 16:19:41 +0100
+
+plugin-mssql (1.2.12) trusty; urgency=medium
+
+  * Update package for ubuntu trusty.
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Thu, 10 Jul 2014 14:52:35 +0200
+
+plugin-mssql (1.2.11) precise; urgency=low
+
+  * check_mssql_health: ensure state file is non-zero size before trying to
+    load it.
+  * check_mssql_health: add another test to load the perl state file from NFS
+    share.
+
+ -- Vincent BESANCON <besancon.vincent@gmail.com>  Tue, 14 Jan 2014 17:02:10 +0100
+
+plugin-mssql (1.2.10) precise; urgency=low
+
+  * Fix wrong path.
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Thu, 09 Jan 2014 17:25:24 +0100
+
+plugin-mssql (1.2.9) precise; urgency=low
+
+  * Try to fix a bug with corrupted file.
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Thu, 09 Jan 2014 12:06:31 +0100
+
+plugin-mssql (1.2.8) precise; urgency=low
+
+  * Merged new version with our changes.
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Tue, 07 Jan 2014 17:31:03 +0100
+
+plugin-mssql (1.2.7) precise; urgency=low
+
+  * Change path to tmp files to store them by env on the NFS.
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Wed, 11 Dec 2013 11:47:30 +0100
+
+plugin-mssql (1.2.6) precise; urgency=low
+
+  * Change tmp path
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Tue, 24 Sep 2013 15:14:32 +0200
+
+plugin-mssql (1.2.5) precise; urgency=low
+
+  * add new dep for sybase.pm. refs #2642
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Thu, 12 Sep 2013 16:28:24 +0200
+
+plugin-mssql (1.2.4) quantal; urgency=low
+
+  * [check_mssql_health] database-backup-age: take into account incremental backup too. closes #2264
+
+ -- Vincent BESANCON <besancon.vincent@gmail.com>  Mon, 27 May 2013 14:24:07 +0200
+
+plugin-mssql (1.2.3) quantal; urgency=low
+
+  * Upgrade plugin check_mssql_health to version 1.5.19.
+  * [check_mssql_health] patch to add support for mode database-used (Patrick
+    BAILAT)
+
+ -- Vincent BESANCON <besancon.vincent@gmail.com>  Mon, 27 May 2013 11:34:23 +0200
+
+plugin-mssql (1.2.2) precise; urgency=low
+
+  * Remove unused file
+  * Indentation and Downgrade Standard-Version for 3.9.3, i.e. precise version
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Tue, 09 Apr 2013 16:39:57 +0200
+
+plugin-mssql (1.2.1) precise; urgency=low
+
+  * [Dependencies] Modify 'python' to ${python:Depends}
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Wed, 03 Apr 2013 16:46:06 +0200
+
+plugin-mssql (1.2.0) precise; urgency=low
+
+  * add dependency
+
+ -- Patrick BAILAT <patrick.bailat-ext@faurecia.com>  Wed, 13 Feb 2013 15:23:17 +0100
+
+plugin-mssql (1.1.0) precise; urgency=low
+
+  * added new script check_mssql_health
+
+ -- Patrick BAILAT <patrick.bailat-ext@faurecia.com>  Wed, 13 Feb 2013 14:34:15 +0100
+
+plugin-mssql (1.0.0) unstable; urgency=low
+
+  * Initial Release.
+
+ -- Patrick BAILAT <patrick.bailat-ext@faurecia.com>  Wed, 16 Jan 2013 14:31:59 +0100

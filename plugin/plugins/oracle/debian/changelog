@@ -1,0 +1,5 @@
+plugin-oracle (1.0.0) trusty; urgency=low
+
+  * Initial Release.
+
+ -- Vincent BESANCON <vincent.besancon@faurecia.com>  Tue, 28 Jul 2015 11:29:44 +0200

@@ -1,0 +1,15 @@
+/var/log/nagios/omnibus_host_trap_notify.log {
+    rotate 7
+    daily
+    compress
+    missingok
+    notifempty
+}
+
+/var/log/nagios/omnibus_trap_notify.log{
+    rotate 7
+    daily
+    compress
+    missingok
+    notifempty
+}

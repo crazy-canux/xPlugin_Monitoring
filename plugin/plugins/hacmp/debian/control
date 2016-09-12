@@ -1,0 +1,19 @@
+Source: plugin-hacmp
+Section: misc
+Priority: extra
+Maintainer: Patrick BAILAT <patrick.bailat-ext@faurecia.com>
+Build-Depends: debhelper (>= 8.0.0)
+Standards-Version: 3.9.3
+Vcs-Git: http://monitoring-dc.app.corp/git/plugins/hacmp.git
+Vcs-Browser: http://monitoring-dc.app.corp/git/?p=plugins/hacmp.git
+
+Package: plugin-hacmp
+Architecture: all
+Depends:
+    ${shlibs:Depends},
+    ${misc:Depends},
+    ${python:Depends},
+    python-monitoring-venv
+Description: Plugin for Nagios to check AIX HACMP
+ Collection of plugins to check AIX HACMP, including:
+   - Resource group

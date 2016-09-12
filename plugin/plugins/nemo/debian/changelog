@@ -1,0 +1,79 @@
+plugin-nemo (1.0.8) precise; urgency=low
+
+  * Fix deprecations for monitoring.nagios v1.3.0.
+
+ -- Vincent BESANCON <besancon.vincent@gmail.com>  Mon, 10 Mar 2014 14:34:38 +0100
+
+plugin-nemo (1.0.7) precise; urgency=low
+
+  * [idea] update for PyCharm 2.7.
+  * Reformat all headers and check pep8 warnings.
+  * [jobs] fixed job tag attribute "hostname". The correct attribute is
+    "host".
+  * Fixed pep8 syntax.
+  * [idea] run config: set remote python on EDC1 as default.
+  * [idea] run config: share LSF JOBS task.
+
+ -- Vincent BESANCON <besancon.vincent@gmail.com>  Tue, 09 Jul 2013 16:26:06 +0200
+
+plugin-nemo (1.0.6) precise; urgency=low
+
+  * UNRELEASED
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Wed, 26 Jun 2013 14:08:34 +0200
+
+plugin-nemo (1.0.5) precise; urgency=low
+
+  * Change XML Urls
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Wed, 26 Jun 2013 14:03:20 +0200
+
+plugin-nemo (1.0.4) precise; urgency=low
+
+  * Indentation and Downgrade Standard-Version for 3.9.3, i.e. precise version
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Tue, 09 Apr 2013 17:24:49 +0200
+
+plugin-nemo (1.0.3) precise; urgency=low
+
+  * [job] show hostname in longoutput for outdated jobs. refs #2089.
+  * [cpumem] suppress non-OK state if host is running jobs when checking
+    Memory. refs #2091.
+  * [pids] Add snmp capabilities to PIDS script for compare XML and Servers
+    jobs RUN . refs #2095.
+  * [Remove docs(unused) and modify dependencies
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Thu, 28 Mar 2013 09:51:02 +0100
+
+plugin-nemo (1.0.2) precise; urgency=low
+
+  * Convert hostname with lower() to match between XML and nagios HOSTNAME
+  * BUMP version
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Tue, 19 Feb 2013 16:41:44 +0100
+
+plugin-nemo (1.0.1) precise; urgency=low
+
+  * Set executable bit.
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Tue, 19 Feb 2013 11:51:07 +0100
+
+plugin-nemo (1.0.0) precise; urgency=low
+
+  * [idea] Share Pycharm configuration.
+  * check_nemo_lsf_cpumem: first release for production.
+  * Add check for XML age
+  * [mem cpu] add a check if a job queue nemo_* is running
+  * [xml] add check for RUNNING job with an empty PID
+  * [1.0.0] add checks for outdated jobs. Don't forget to change XML path
+    before using in prod on base.py
+  * update list of plugins for debian packaging
+  * fix bug...
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Tue, 19 Feb 2013 11:31:24 +0100
+
+plugin-nemo (0.0.1) unstable; urgency=low
+
+  * Initial Release.
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Wed, 13 Feb 2013 16:53:18 +0100

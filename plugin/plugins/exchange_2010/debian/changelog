@@ -1,0 +1,97 @@
+plugin-exchange2010 (1.5.3) trusty; urgency=medium
+
+  * Revert "Update changelog for 5.0.0.8 release"
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Fri, 08 Apr 2016 14:59:45 +0200
+
+plugin-exchange2010 (1.5.2) trusty; urgency=medium
+
+  * Update fabfile
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Fri, 08 Apr 2016 09:47:51 +0200
+
+plugin-exchange2010 (1.5.1) trusty; urgency=medium
+
+  [ Yves ANDOLFATTO ]
+  * Fix version
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Fri, 08 Apr 2016 09:40:00 +0200
+
+plugin-exchange2010 (1.5.0) precise; urgency=medium
+
+  * Simplify plugin entry point.
+  * tests: add XML sample for PBF servers.
+  * check_exchange_database_mount_pbf: new plugin to detect if PBF databases are mounted at the right location on servers.
+  * Bump version: 1.4.1 → 1.5.0
+
+ -- Vincent BESANCON <vincent.besancon@faurecia.com>  Thu, 07 Aug 2014 10:26:15 +0200
+
+plugin-exchange2010 (1.4.1) precise; urgency=medium
+
+  * check_exchange_database_queue: add perfdata.
+  * [pycharm] add run configurations for easy testing.
+  * Bump version: 1.4.0 → 1.4.1
+
+ -- Vincent BESANCON <vincent.besancon@faurecia.com>  Wed, 06 Aug 2014 16:42:55 +0200
+
+plugin-exchange2010 (1.4.0) precise; urgency=medium
+
+  * mounts: fix pep8 long line.
+  * check_exchange_database_queue: check queue length on databases.
+  * Make pylint happy with powershell package.
+  * Make pylint happy with plugin package.
+  * Make pylint happy with plugins.
+  * Bump version: 1.3.1 → 1.4.0
+
+ -- Vincent BESANCON <vincent.besancon@faurecia.com>  Wed, 06 Aug 2014 14:28:19 +0200
+
+plugin-exchange2010 (1.3.1) precise; urgency=medium
+
+  * check_exchange_database_mount: make a clear separation between primary db and replicas.
+  * check_exchange_mounts: add perfdata with used space on mount points.
+  * Bump version: 1.3.0 → 1.3.1
+
+ -- Vincent BESANCON <vincent.besancon@faurecia.com>  Wed, 06 Aug 2014 11:34:02 +0200
+
+plugin-exchange2010 (1.3.0) precise; urgency=medium
+
+  * Add nice docstrings to all tests.
+  * Add more debug messages.
+  * hub: fix regex on Active|Ready|Connecting queue.
+  * check_exchange_database_mount: check that primary databases are mounted on the checked host.
+  * Bump version: 1.2.0 → 1.3.0
+
+ -- Vincent BESANCON <vincent.besancon@faurecia.com>  Tue, 05 Aug 2014 16:41:59 +0200
+
+plugin-exchange2010 (1.2.0) precise; urgency=medium
+
+  * Fix typos.
+  * Move add_warning_result() and add_critical_result() in plugin base class.
+  * Begin XML object's properties mapping to python objects.
+  * Fix possible namespace colision.
+  * check_exchange_hub: plugin that check status of queues on HUB transport servers.
+  * Bump version: 1.1.0 → 1.2.0
+
+ -- Vincent BESANCON <vincent.besancon@faurecia.com>  Tue, 05 Aug 2014 13:52:51 +0200
+
+plugin-exchange2010 (1.1.0) precise; urgency=medium
+
+  * Fix expected type of argument "xml" in XMLTable() class.
+  * XMLTable: raise exception if no tabular data is found.
+  * Created a new class XMLSerializedTable to parse serialized objects to XML.
+  * Creates some false errors in DAG XML.
+  * PluginBase class will select appropriate XML class (tabular data / serialized form).
+  * Add match() in XMLSerializedTable() similar to XMLTable.match().
+  * check_exchange_replication: plugin that check the database replication health is ready.
+  * XMLSerializedTable.match() will not raise exception if property cannot be found but skip silently.
+  * Put version information in plugin package.
+  * Add bumpversion configuration.
+  * Bump version: 1.0.0 → 1.1.0
+
+ -- Vincent BESANCON <vincent.besancon@faurecia.com>  Tue, 05 Aug 2014 10:26:09 +0200
+
+plugin-exchange2010 (1.0.0) precise; urgency=low
+
+  * Initial Release.
+
+ -- Monitoring & Reporting <dl-itop-monitoring@faurecia.com>  Tue, 29 Jul 2014 11:24:42 +0200

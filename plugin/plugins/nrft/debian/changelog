@@ -1,0 +1,20 @@
+plugins-nrft (1.1.0) precise; urgency=medium
+
+  * Fix fabfile header.
+  * Delete unneeded fabfile in src folder.
+  * Fix all PEP8 errors.
+  * Renames plugins to standard.
+
+ -- Vincent BESANCON <vincent.besancon@faurecia.com>  Thu, 15 Jan 2015 10:09:43 +0100
+
+plugins-nrft (1.0.1) precise; urgency=medium
+
+  * Add precise version
+
+ -- Mohamed CHERROUD <mohamed.cherroud-ext@faurecia.com>  Tue, 09 Dec 2014 16:24:32 +0100
+
+plugins-nrft (1.0.0) precise; urgency=low
+
+  * Initial Release.
+
+ -- Monitoring & Reporting <dl-itop-monitoring@faurecia.com>  Mon, 08 Dec 2014 16:34:20 +0100

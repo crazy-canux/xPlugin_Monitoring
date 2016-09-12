@@ -1,0 +1,108 @@
+plugin-check-license-manager (1.0.14) trusty; urgency=medium
+
+  [ Canux CHENG ]
+  * [colisee]fix the execute bit.
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Tue, 01 Sep 2015 13:42:55 +0200
+
+plugin-check-license-manager (1.0.13) trusty; urgency=medium
+
+  [ Canux CHENG ]
+  * [license]register licman.
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Tue, 01 Sep 2015 10:33:31 +0200
+
+plugin-check-license-manager (1.0.12) trusty; urgency=medium
+
+  [ Canux CHENG ]
+  * [COLISEE]plugin check_licman_license_expiration.py.
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Mon, 31 Aug 2015 17:37:03 +0200
+
+plugin-check-license-manager (1.0.11) trusty; urgency=medium
+
+  * Update package for ubuntu trusty.
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Thu, 10 Jul 2014 14:47:15 +0200
+
+plugin-check-license-manager (1.0.10) precise; urgency=low
+
+  * Fix counting expired features. There at least one when entering the loops.
+
+ -- Vincent BESANCON <besancon.vincent@gmail.com>  Wed, 02 Apr 2014 09:22:05 +0200
+
+plugin-check-license-manager (1.0.9) precise; urgency=low
+
+  * [LUM expiration] threshold modified
+
+ -- Anthony COMTOIS <anthony.comtois@faurecia.com>  Thu, 16 Jan 2014 09:40:17 +0100
+
+plugin-check-license-manager (1.0.8) precise; urgency=low
+
+  * check_flexlm_feature_expiration: change longoutput to allow service to be volatile.
+  * Fixed PEP8.
+  * lmx: calc_expired_license() now returns feature expiration date also.
+  * check_lmx_status: change longoutput to allow service to be volatile.
+  * check_lum_license_expiration: change longoutput to allow service to be volatile.
+
+ -- Vincent BESANCON <besancon.vincent@gmail.com>  Mon, 25 Nov 2013 16:44:38 +0100
+
+plugin-check-license-manager (1.0.7) precise; urgency=low
+
+  [ Vincent BESANCON ]
+  * flexlm: add new arg -a/--with-stat to process license features details (lmstat -a).
+  * flexlm: reduce default timeout to 30 secs.
+
+  [ Yves ANDOLFATTO ]
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Tue, 19 Nov 2013 15:27:31 +0100
+
+plugin-check-license-manager (1.0.6) precise; urgency=low
+
+  * Fix bug haha.
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Fri, 08 Nov 2013 16:12:26 +0100
+
+plugin-check-license-manager (1.0.5) precise; urgency=low
+
+  * Add timeout arguemnt for flexlm
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Fri, 08 Nov 2013 15:54:34 +0100
+
+plugin-check-license-manager (1.0.4) precise; urgency=low
+
+  * Do not set plugins colisee as dependency
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Tue, 16 Jul 2013 16:47:33 +0200
+
+plugin-check-license-manager (1.0.3) precise; urgency=low
+
+  * Add colisee plugins as dep.
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Thu, 04 Jul 2013 17:28:01 +0200
+
+plugin-check-license-manager (1.0.2) precise; urgency=low
+
+  * Indentation and Downgrade Standard-Version for 3.9.3, i.e. precise version
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Tue, 09 Apr 2013 16:33:59 +0200
+
+plugin-check-license-manager (1.0.1) quantal; urgency=low
+
+  * Renamed package name to plugin-check-license-manager instead of using internal name.
+  * Ignore .idea folder.
+
+ -- Vincent BESANCON <besancon.vincent@gmail.com>  Wed, 03 Apr 2013 14:59:48 +0200
+
+plugin-check-license-manager (1.0.0) precise; urgency=low
+
+  * Use Semantic version.
+  * Prepared a Debian package.
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Fri, 15 Mar 2013 12:18:07 +0100
+
+plugin-check-license-manager (0.14.1) precise; urgency=low
+
+  * Initial Release.
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Thu, 14 Mar 2013 13:25:49 +0100

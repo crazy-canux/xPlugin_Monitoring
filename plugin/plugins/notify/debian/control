@@ -1,0 +1,20 @@
+Source: plugin-notify
+Section: misc
+Priority: extra
+Maintainer: Yves ANDOLFATTO <yves.andolfatto@faurecia.com>
+Build-Depends: debhelper (>= 8.0.0)
+Standards-Version: 3.9.3
+Vcs-Git: http://monitoring-dc.app.corp/git/plugins/notify.git
+Vcs-Browser: http://monitoring-dc.app.corp/git/?p=plugins/notify.git
+
+Package: plugin-notify
+Architecture: all
+Depends:
+    ${shlibs:Depends},
+    ${misc:Depends},
+    ${python:Depends},
+    ${perl:Depends},
+    libconfig-simple-perl,
+    snmp
+Description: Plugin useful for notifying others (Omnibus, Email...)
+ Contain plugins to send via SMS, Email or to Omnibus the Nagios alerts.

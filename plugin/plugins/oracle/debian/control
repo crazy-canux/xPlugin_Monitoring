@@ -1,0 +1,17 @@
+Source: plugin-oracle
+Section: misc
+Priority: extra
+Maintainer: EIT/PLM Delivery <dl-it-systemoperating-eitapplications@none.faurecia.com> 
+Build-Depends: debhelper (>= 9)
+Standards-Version: 3.9.5
+Vcs-Git: http://monitoring-dc.app.corp/git/plugins/oracle.git
+Vcs-Browser: http://monitoring-dc.app.corp/git/?p=plugins/oracle.git;a=summary
+
+Package: plugin-oracle
+Architecture: all
+Depends:
+    ${misc:Depends},
+    python2.7,
+    python-monitoring-nagios,
+Description: Install plugins collection for Oracle databases
+ Various Nagios plugins to check Oracle databases.

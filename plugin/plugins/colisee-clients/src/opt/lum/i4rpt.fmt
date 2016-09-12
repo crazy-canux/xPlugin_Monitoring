@@ -1,0 +1,779 @@
+:begin=standard:page=100:fld=^:mac=!
+//  
+!0:=;1=ERROR;2=LICENSE;3=LICENSE;4=SERVER;5=SERVER;6=MESSAGE;7=ERROR;\
+8=VENDOR;9=VENDOR;10=VENDOR;11=PRODUCT;12=PRODUCT;13=PRODUCT;14=PRODUCT;\
+15=PRODUCT;16=LICENSE;17=LICENSE;18=PRODUCT;19=PRODUCT;20=PRODUCT;21=ERROR;\
+22=SERVER;
+//
+!1:=;0=General;1=Fatal;2=Time Out;3=Stop;4=Start;5=Vendor;6=Add;\
+7=Rename;8=Delete;9=Add (Lic Type);10=Delete (Lic Type);\
+11=Reserve;12=Unreserve;13=Update reservation;\
+21=Granted;22=Released;23=Checked;24=Waiting;25=Grant/Wait;26=Wait Removed;\
+27=Multiple Grant;28=Multiple Release;29=Use-Once Used;30=Compound Requested;\
+31=Unknown;\
+41=Reserved Granted;42=Timed out;43=Soft-Stop Granted;44=Soft-Stop Checked;\
+45=Soft-Stop Released;46=Named Granted;47=Offline Reserved;\
+48=Offline Handed-Back;\
+51=Threshold Exceeded;52=Threshold Regained;54=Stop;55=Start;
+//
+!2:=;0=Concurrent Access License(s);1=Node-Locked License(s);\
+2=Use-Once License(s);3=Compound Password;4=Usage Metering License(s);\
+6=Any Type License(s);7=Use-Once Node-Locked License(s);\
+8=HalAccess License(s);9=Concurrent Node-Locked License(s);\
+10=Compound Node-Locked License(s);11=Permanent License(s);\
+12=Permanent Node-Locked License(s);13=Per-Seat License(s);\
+14=Per Server License(s);15=Reservable License(s);16=Reserved License(s);\
+20=Concurrent OffLine License(s);21=;
+//
+!3:=;0=None;100=Configured Processors;101=On-line Processors;\
+103=Physical Disks;104=Physical Memory Mb;105=Value Units;\
+106=INTEL 32 bits Processors;107=SPARC Processors;\
+108=RISC 32 bits Processors;109=INTEL 64 bits Processors;110=RISC 64 bits Processors;\
+111=PA-RISC Processors;
+//
+!:
+//
+hdg===========================================================================
+hdg===            S t a n d a r d   E v e n t   Page: ^page-i              ===
+hdg===========================================================================
+genSequence     : ^seq-i                    Event Type   : ^ety-d!0
+genTime Stamp   : ^tsa-t"%b %d %Y %X"       Event Subtype: ^eac-d!1
+genServer Name  : ^svnm
+lin
+linVendor  Name : ^vna-c32
+linProduct Name : ^pna-c31
+linProduct Id   : ^pida-i                   User  Id: ^uid
+linVersion      : ^vera                     Group Id: ^gid
+linAmount       : ^amt-f                    Node  Id: ^nid
+err
+errStatus Code  : ^scd-i
+errMessage      : ^emsg-n
+errJob Id       : ^jida-u
+fat
+fatMessage      : ^msga
+lev
+levLicense Type : ^ltya-d!2
+levCapacity Type: ^capac-d!3
+levSerial Number: ^snumb
+levTrans Id     : ^tida-r.0l
+levJob Id       : ^jidb-u
+levMachine Type : ^mach
+levAppl. Client : ^acid
+ltm
+ltmTrans Id     : ^tidb-r.0l
+ltmJob Id       : ^jidc-u
+sexserver exit
+sex-----------
+sexgeneric only
+sstserver start
+sst------------
+sstgeneric only
+vms
+vmsVendor Name  : ^vnb
+vmsMessage      : ^msgb
+ltydatabase change std info
+lty------------------------
+adv
+advVendor Name  : ^vnc
+rev
+revOld Vendor Name: ^ovn
+revNew Vendor Name: ^nvn
+adp
+adpVendor  Name : ^vnd-c32
+adpProduct Name : ^pnb-c31
+adpProduct Id   : ^pidb-i                Start  Date : ^sdt-t"%b %d %Y %X"
+adpVersion      : ^verb                  Expire Date : ^edt-t"%b %d %Y %X"
+adpLicenses     : ^lic-c6                License Type: ^lty-d!2
+adpTime Stamp   : ^tsb-t"%b %d %Y %X"
+adpSerial Number: ^sn
+adpCapacity Type: ^cap-d!3
+adp
+rep
+repVendor      Name: ^vne
+repOld Product Name: ^opn
+repNew Product Name: ^npn
+repProduct Id      : ^pidc-i
+ads
+adsReserved to User : ^uidf
+ads       for Group : ^gidf
+ads         at Node : ^nidf
+ban---------------------------------------------------------------------------
+end
+end                     ====================================
+end                     === End of Standard Event Report ===
+end                     ====================================
+:end=standard
+//
+:begin=report1:page=100:fld=^
+hdg===========================================================================
+hdg===         L i c e n s e   R e q u e s t s   B y   P r o d u c t       ===
+hdg===========================================================================
+hdg
+hdg                                          Licenses   Licenses     Percent
+hdgVendor/Product                Version     Requested  Granted     Rejections
+hdg----------------------------  ----------  ---------  ---------   ----------
+dtl^vend-c29                     ^ver-c10    ^req-f%.2f ^grnt-f%.2f ^rej-f%.2f
+dtl^prod-c29
+dtl
+end                 ==========================================
+end                 === End of License Requests By Product ===
+end                 ==========================================
+:end=report1
+//
+:begin=report2:page=100:fld=^
+hdg===========================================================================
+hdg===            L i c e n s e   R e q u e s t s   B y   U s e r          ===
+hdg===========================================================================
+hdg
+hdg                                          Licenses   Licenses     Percent
+hdgUser/Vendor/Product           Version     Requested  Granted     Rejections
+hdg----------------------------  ----------  ---------  --------    ----------
+dtl^user-c29                     ^ver-c10    ^req-f%.2f ^grnt-f%.2f ^rej-f%.2f
+dtl^vend-c29
+dtl^prod-c29
+dtl
+end                   =======================================
+end                   === End of License Requests By User ===
+end                   =======================================
+:end=report2
+//
+:begin=audit:page=100:fld=^:mac=!
+//
+!0:=;0=Deleted;1=Distributed;2=Enrolled;3=Updated;4=Enabled;\
+5=High Water Mark Reset;6=High Water Mark;
+//
+!1:=;1=Customer-Managed Use;
+!:
+//
+hdg===========================================================================
+hdg===         C u s t o m e r - M a n a g e d   U s e   A u d i t         ===
+hdg===========================================================================
+par
+par---------------------------------------------------------------------------
+parVendor Name   : ^vnam-c32
+parProduct Name  : ^pnam-c31
+parVersion       : ^ver                 Customer Name : ^cust
+parSecurity Level: ^reg-d!1             Company Name  : ^cnam
+par                                     Company Location: ^cloc
+parAdditional Information
+par----------------------
+add^addi-c60
+ade---------------------------------------------------------------------------
+chl
+chlTransaction #: ^tnum-i                  Transaction Type  : ^type-d!0
+chlTime Stamp   : ^tsa-t"%b %d %Y %X"      Number Of Licenses: ^amt-i
+chlServer Name  : ^svnm
+chlUser         : ^unam-c32
+chlGroup        : ^gnam-c32
+chlNode         : ^nnam-c32
+chlComment      : ^comm-c48
+chl
+end                  =========================================
+end                  === End of Customer-Managed Use Audit ===
+end                  =========================================
+:end=audit
+:begin=clusterslist:page=200:fld=^:mac=!
+//
+!0:=;0=Incomplete;1=Inactive;2=Active;3=Change pending;4=Active, no reserve;
+//
+!1:=;0=Unavailable;1=Waiting;2=Reserve;3=Serving;4=Not activated;
+//
+!:
+//
+hdg===========================================================================
+hdg===                     C l u s t e r   D e t a i l s                   ===
+hdg===========================================================================
+par
+par Cluster Name:              ^cnam
+par Cluster ID:                ^cid
+par Cluster Status:            ^cstat-d!0
+par Initial number of members: ^cnum-i
+par Minimum number of members: ^cmin-i
+par Maximum number of members: ^cmax-i
+par Majority of members:       ^cmaj-i
+cha
+cha ---------------------------- Member Information --------------------------
+cha
+cha Server Name:            ^snam
+cha Server Status:          ^sstat-d!1
+cha Server Share:           ^sshar-i%x
+cha Server Target ID:       ^stid-i%x
+chb Server Licenses:        ^slic-i
+chb Server In Use Licenses: ^sliu-f
+end
+end                       ===============================
+end                       === End of Clusters Details ===
+end                       ===============================
+:end=clusterslist
+:begin=serverlist:page=100:fld=^:mac=!
+//
+!0:=;0=Available;1=Not available;
+//
+!1:=;0=NodeLocked;1=Network;2=Central Registry;\
+3=NodeLocked,Network;4=Network,Central Registry;5=NodeLocked, Central Registry;\
+6=NodeLocked,Network,Central Registry;
+//
+!2:=;0=Not Available;1=none;2=high level;3=low level;4=low & high level;
+//
+!3:=;0=Null or Not Available;
+//
+!4:=;0=Not Available
+//
+!:
+//
+hdg===========================================================================
+hdg===                             S e r v e r s                           ===
+par===========================================================================
+par
+par  Server Name:     ^snam
+par  Target ID:       ^stid
+par  Target Type:     ^stpe
+par  Server Type:     ^stype-d!1
+par  Load:            ^sstress-d!3
+par  Load Threshold:  ^sthresh-d!4
+par  Trace:           ^strace-d!2
+par
+pas===========================================================================
+pas
+end                          ==========================
+end                          === End of Server List ===
+end                          ==========================
+:end=serverlist
+:begin=vendorlist:page=100:fld=^
+hdg===========================================================================
+hdg===                             V e n d o r s                           ===
+par===========================================================================
+par
+par  Vendor Name:     ^vnam
+par  Vendor ID:       ^vid
+par
+end                          ==========================
+end                          === End of Vendor List ===
+end                          ==========================
+:end=vendorlist
+:begin=productlist:page=200:fld=^:mac=!
+//
+!0:=;0=Concurrent Access License(s);1=Node-Locked License(s);\
+2=Use-Once License(s);3=Compound Password;4=Usage Metering License(s);\
+6=Any Type License(s);7=Use-Once Node-Locked License(s);\
+8=HalAccess License(s);9=Concurrent Node-Locked License(s);\
+10=Compound Node-Locked Password;13=Per-Seat License(s);14=Per-Server License(s);\
+15=Reservable License(s);16=Reserved Licenses(s);20=Concurrent OffLine License(s);
+//
+!1:=;0=Concurrent Access;1=Node Locked;2=Use-Once;3=Compound;\
+4=Usage Metering;6=Any Type;7=Use-Once Node Locked;8=HalAccess;\
+8=HalAccess;9=Concurrent Node-Locked;10=Compound Node-Locked;\
+13=Per-Seat;14=Per-Server;15=Reservable;16=Reserved;\
+20=Concurrent OffLine;
+//
+!2:=;0=None;1=Same node;2=Same group;3=Same user;4=Same job;5=Same acid;
+//
+!3:=;0=Metering enabled;1=Metering disabled;
+//
+!4:=;0=Stop execution;1=Warning;2=Silent;
+//
+!5:=;0=Synchronous;1=Asynchronous;
+//
+!6:=;0=Disabled;1=Enabled;
+//
+!7:=;0=No ;1=Yes;
+//
+!8:=;0=Disabled by Vendor;1=Enabled by Vendor;2=Disabled;3=Enabled;
+//
+!9:=;0=Customer-Managed Use (Meter-enabled product);1=Customer-Managed Use;\
+3=Vendor-Managed Use;
+//
+!10:=;0=None;100=Configured Processors;101=On-line Processors;\
+103=Physical Disks;104=Physical Memory Mb;105=Value Units;\
+106=INTEL 32 bits Processors;107=SPARC Processors;\
+108=RISC 32 bits Processors;109=INTEL 64 bits Processors;110=RISC 64 bits Processors;\
+111=PA-RISC Processors;
+//
+!:
+//
+hdg===========================================================================
+hdg===                            P r o d u c t s                          ===
+par===========================================================================
+par
+par  Vendor Name:                  ^vnam
+par  Vendor ID:                    ^vid
+par  Product Name:                 ^pnam
+par  Product Version:              ^pver
+par  Product ID:                   ^pid-i
+pab  Bundle Component:             ^bc-d!7
+pau  Licenses:                     ^al-i
+pal  In Use Licenses:              ^iul-f
+cha
+cha --------------------------- License Information --------------------------
+cha  ^lnum  ^ltype-d!0
+chb --------------------------- License Information --------------------------
+chb  ^ltypec-d!0                   ^lnumc remaining licenses
+chr  Server:      ^snam
+chs  Cluster:     ^hnam
+cht  Serial Number: ^snumb
+chu  Capacity Type: ^capac-d!10 
+chc  Start Date:    ^sdat-t"%b %d %Y %X"         Exp. Date: ^edat-t"%b %d %Y %X"
+chc  TimeStamp:     ^stmp-i
+chc  Annotation:    ^lant
+chc  Multi-Use Rules: ^musra-d!2 ^musrb-d!2 ^musrc-d!2 ^musrd-d!2 ^musre-d!2
+chd  Derived Start Date: ^dsdt-t"%b %d %Y %X"     Derived Lic. Type:  ^ltyp-d!1
+chd  Derived Exp. Date:  ^dedt-t"%b %d %Y %X"     Aggregate Duration: ^adur-i
+chq  Enrolled:  ^elc-i     Distributed: ^dl-i     To Be Distributed: ^tbdl-i
+che  Executable Name:  ^exenam
+che  Status:           ^metstat-d!3            Action:    ^action-d!4
+che  Operating Mode:   ^opmode-d!5
+chf  Security Level:   ^sl-d!9
+chf  Threshold:        ^thres-i
+chf  Soft Stop:        ^ssstate-d!8
+chg  High-Water Mark:  ^hwml-i
+cho  Per-Seat State:   ^pcstate-d!6
+chp  Un-Reserved Licenses: ^ru-i               Reserved Licenses: ^rr-i
+chm  TryBuy:           ^trybuy-d!7
+chn  User:             ^unam-c32
+chn  Group:            ^gnam-c32
+chn  Node:             ^nnam-c32
+chv  Custom1:          ^customa-d!7
+chw  Custom2:          ^customb-d!7
+chx  Custom3:          ^customc-d!7
+off  Max Offline Period:   ^admper-i
+end
+end                         ===========================
+end                         === End of Product List ===
+end                         ===========================
+:end=productlist
+:begin=licenselist:page=300:fld=^:mac=!
+//
+!0:=;0=Concurrent Access License(s);1=Node-Locked License(s);\
+2=Use-Once License(s);3=Compound Password;4=Usage Metering License(s);\
+6=Any Type License(s);7=Use-Once Node-Locked License(s);\
+8=HalAccess License(s);9=Concurrent Node-Locked License(s);\
+10=Compound Node-Locked Password;13=Per-Seat License(s);14=Per-Server License(s);\
+15=Reservable License(s);16=Reserved Licenses(s);\
+20=Concurrent OffLine License(s);
+//
+!1:=;0=Concurrent Access;1=Node Locked;2=Use-Once;3=Compound;\
+4=Usage Metering;6=Any Type;7=Use-Once Node Locked;8=HalAccess;\
+8=HalAccess;9=Concurrent Node-Locked;10=Compound Node-Locked;\
+13=Per-Seat;14=Per-Server;15=Reservable;16=Reserved;\
+20=Concurrent OffLine;
+//
+!2:=;0=None;1=Same node;2=Same group;3=Same user;4=Same job;5=Same acid;
+//
+!6:=;0=Disabled;1=Enabled;
+//
+!7:=;0=No ;1=Yes;
+//
+!8:=;0=Disabled by Vendor;1=Enabled by Vendor;2=Disabled;3=Enabled;
+//
+!9:=;0=Customer-Managed Use (Meter-enabled product);1=Customer-Managed Use;\
+3=Vendor-Managed Use;
+//
+!10:=;0=Unavailable;1=Waiting;2=Reserve;3=Serving;4=Not activated;
+//
+!11:=;0=None;100=Configured Processors;101=On-line Processors;\
+103=Physical Disks;104=Physical Memory Mb;105=Value Units;\
+106=INTEL 32 bits Processors;107=SPARC Processors;\
+108=RISC 32 bits Processors;109=INTEL 64 bits Processors;110=RISC 64 bits Processors;\
+111=PA-RISC Processors;
+//
+!12:=;0=Linear Increment;1=Within Range;
+//
+!:
+//
+hdg===========================================================================
+hdg===                            L i c e n s e s                          ===
+par===========================================================================
+par
+par  Vendor Name:                  ^vnam
+par  Vendor ID:                    ^vid
+par  Product Name:                 ^pnam
+par  Product Version:              ^pver
+par  Product ID:                   ^pid-i
+cha  ^lnum  ^ltype-d!0
+chb  ^ltypec-d!0                   ^lnumc remaining licenses
+chr  Server:      ^snam
+chs  Cluster:     ^cnam
+chu  Serial Number: ^snumb
+chv  Capacity Type: ^capac-d!11    
+chc  Start Date:    ^sdat-t"%b %d %Y %X"         Exp. Date: ^edat-t"%b %d %Y %X"
+chc  TimeStamp:     ^stmp-i
+chc  Annotation:    ^lant
+chc  Multi-Use Rules: ^musra-d!2 ^musrb-d!2 ^musrc-d!2 ^musrd-d!2 ^musre-d!2
+chd  Derived Start Date: ^dsdt-t"%b %d %Y %X"     Derived Lic. Type:  ^ltyp-d!1
+chd  Derived Exp. Date:  ^dedt-t"%b %d %Y %X"     Aggregate Duration: ^adur-i
+chq  Enrolled:  ^elc-i     Distributed: ^dl-i     To Be Distributed: ^tbdl-i
+che  In Use Licenses:  ^iul-f
+chf  Security Level:   ^sl-d!9
+chf  Threshold:        ^thres-i
+chf  Soft Stop:        ^ssstate-d!8
+chg  High-Water Mark:  ^hwml-i
+cho  Per-Seat State:   ^pcstate-d!6
+chp  Un-Reserved Licenses: ^ru-i               Reserved Licenses: ^rr-i
+chm  TryBuy:           ^trybuy-d!7
+chn  User:             ^unam-c32
+chn  Group:            ^gnam-c32
+chn  Node:             ^nnam-c32
+chw  Custom1:          ^customa-d!7
+chx  Custom2:          ^customb-d!7
+chy  Custom3:          ^customc-d!7
+off  Max Offline Period:       ^admper-i
+cht  --------------------------- Member Information --------------------------
+cht  Server Name:            ^hnam
+cht  Server Status:          ^sstat-d!10
+cht  Server Share:           ^sshar-i%x
+cht  Server Target ID:       ^stid-i%x
+cht  Server Licenses:        ^slic-i
+cht  Server In Use Licenses: ^sliu-f
+chj  ----------------------- Value Units - Details --------------------------
+chj  
+chj  Capacity                   Value     Value Units        
+chj  Type                       Units     Calculation          from     to
+chj  ------------------------   -------   -------------------  ------   ------   
+chk  ^capact-d!11               ^points-f ^caltp-d!12          ^from-i  ^to-i
+end
+end                         ===========================
+end                         === End of License List ===
+end                         ===========================
+:end=licenselist
+:begin=status:page=200:fld=^:mac=!
+//
+!0:=;0=Concurrent Access License(s);9=Concurrent Node-Locked License(s);\
+14=Per-Server License(s);15=Reservable License(s);16=Reserved Licenses(s);\
+20=Concurrent OffLine License(s);
+//
+!1:=;0=None;100=Configured Processors;101=On-line Processors;\
+103=Physical Disks;104=Physical Memory Mb;105=Value Units;\
+106=INTEL 32 bits Processors;107=SPARC Processors;\
+108=RISC 32 bits Processors;109=INTEL 64 bits Processors;110=RISC 64 bits Processors;\
+111=PA-RISC Processors;
+//
+!:
+//
+hdg===========================================================================
+hdg===                P r o d u c t  S t a t u s  R e p o r t              ===
+par===========================================================================
+par
+par  Vendor Name:      ^vnam
+par  Product Name:     ^pnam-c31
+par  Product Version:  ^pver
+par  License Type:     ^ltypec-d!0
+par
+par ---------------------------- Usage Information ---------------------------
+par
+pas 
+pas            Concurrent  Offline      Soft-Stop                 Queued
+pas  Licenses  In-Use      In-Use       In-Use       Not In-Use   Requests
+pas  --------  ----------  -----------  ----------   ----------   ----------
+pas  ^tnlic-i  ^nuse-f     ^ncouse-f    ^nssinuse-f   ^navl-f      ^nque-i
+pas
+pac
+pac            OffLine     Concurrent   Soft-Stop                 Queued 
+pac  Licenses  In-Use      In-Use       In-Use       Not In-Use   Requests 
+pac  --------  ----------  -----------  -----------  -----------  -----------
+pac  ^colic-i  ^couse-f    ^concuse-f   ^cossinuse-f ^coavl-f     ^coque-i
+pac
+pat  Licenses    In-Use      Soft-Stop In-Use  Not In-Use
+pat  --------    ------      ----------------  ----------
+pat  ^lic-i      ^inuse-f    ^ssinuse-f        ^avl-f
+pat
+pau  Licenses    In-Use      Not In-Use
+pau  --------    ------      ----------
+pau  ^nodlic-i   ^nodinuse-f ^nodavl-f
+pau
+chb ----------------------------- User Information ---------------------------
+chb
+chl  User:  ^unam-c32                       ^nlic-f"%.2f License(s)"
+chl  Group: ^gnam-c32                       In-Use Since: ^tuse-t"%b %d %Y %X"
+chl  Node:  ^nnam-c32                       Serial Number: ^snumb
+chl  Acid:  ^anam-c32                       Capacity Type: ^capac-d!1
+chl
+chq  Target ID:  ^target-i%x
+chq  End Reservation: ^resper-t"%b %d %Y %X"
+chq
+chm  License Exp. Time: ^etim-t"%b %d %Y %X"
+chm
+chn  License Soft-Stop Granted
+chn
+end                     ====================================
+end                     === End of Product Status Report ===
+end                     ====================================
+:end=status
+:begin=statusperclient:page=200:fld=^:mac=!
+//
+!0:=;13=Per-Seat License(s);
+//
+!:
+//
+hdg===========================================================================
+hdg===                P r o d u c t  S t a t u s  R e p o r t              ===
+par===========================================================================
+par
+par  Vendor Name:      ^vnam
+par  Product Name:     ^pnam-c31
+par  Product Version:  ^pver
+par  License Type:     ^ltypec-d!0
+par
+par -----------------------------  Usage Summary  ----------------------------
+par
+par  Licenses
+par  --------
+par
+par  Enrolled.........: ^tnlic-i          Remaining........: ^navl-f
+par  In-Use...........: ^nuse-f           High-Water Mark..: ^nhwm-i
+par
+par  Users
+par  -----
+par
+par  Application servers..: ^nas-i        Application clients..: ^nac-i
+chl
+chl  Application Server
+chl  ------------------
+chl
+chl  User:   ^unam-c32
+chl  Group:  ^gnam-c32
+chl  Node:   ^nnam-c32
+chl
+chm
+chm -------------------------- Users Information ------------------------------
+chm
+chm ACID                                  Start Date      Check Date      Count
+chm ------------------------------------- --------------  --------------  -----
+chn ^acid                                 ^s-t"%b %d %Y"  ^c-t"%b %d %Y"  ^lic-i
+end
+end                     ====================================
+end                     === End of Product Status Report ===
+end                     ====================================
+:end=statusperclient
+:begin=licdetails:page=100:fld=^:mac=!
+!0:=;0=Concurrent Access License(s);1=Node-Locked License(s);\
+2=Use-Once License(s);3=Compound Password;4=Usage Metering License(s);\
+6=Any Type License(s);7=Use-Once Node-Locked License(s);\
+8=HalAccess License(s);
+//
+!1:=;0=Concurrent Access;1=Node Locked;2=Use-Once;3=Compound;\
+4=Usage Metering;6=Any Type;7=Use-Once Node Locked;8=HalAccess;
+!2:=;0=None;1=Same node;2=Same group;3=Same user;4=Same job;
+!:
+dtb^lnum-i ^ltype-d!0
+dtc^ltypec-d!0          ^lnumc-i"%d remaining licenses"
+dtlServer: ^snam
+dtlStart Date: ^sdat-t"%b %d %Y"
+dtlExp. Date:  ^edat-t"%b %d %Y"
+dtlTimeStamp:  ^stmp-i
+dtlAnnotation: ^lant
+dtlMulti-Use Rules: ^musra-d!2 ^musrb-d!2 ^musrc-d!2 ^musrd-d!2
+dtaDerived Start Date: ^dsdt-t"%b %d %Y"
+dtaDerived Exp. Date:  ^dedt-t"%b %d %Y"
+dtaDerived Lic. Type:  ^ltyp-d!1
+dtaAggregate Duration: ^adur-i
+:end=licdetails
+:begin=usedetails:page=100:fld=^
+usrUser: ^unam-c22                 ^nlic-i"%d License(s)"
+usrIn-Use Since: ^tuse-t
+usrGroup: ^gnam
+usrNode: ^nnam
+:end=usedetails
+:begin=maxusage:page=100:fld=^
+hdg===========================================================================
+hdg===              L i c e n s e   U s e   B y   P r o d u c t            ===
+hdg===========================================================================
+hdg
+hdg                                    Maximum       Maximum
+hdg                                   Concurrent    Concurrent    Average Time
+hdgProduct/Vendor                       Nodes         Users       In Use (Min)
+hdg--------------------------------   ----------    ----------    ------------
+dtl^prod-c31                          ^nod-i%5d     ^usr-i%5d     ^use-i%5d
+dtl^vend-c32
+dtl
+end                    =====================================
+end                    === End of License Use By Product ===
+end                    =====================================
+:end=maxusage
+:begin=produser:page=100:fld=^
+hdg===========================================================================
+hdg===                 L i c e n s e   U s e   B y   U s e r               ===
+hdg===========================================================================
+hdg
+hdg                                     Times     Average Time
+hdgUser/Product/Vendor                 Invoked    In Use (Min)
+hdg--------------------------------    -------    ------------
+dtl^user-c32                           ^inv-i%5d  ^use-i%5d
+dtl^prod-c31
+dtl^vend-c32
+dtl
+end                      ==================================
+end                      === End of License Use By User ===
+end                      ==================================
+:end=produser
+:begin=collect:page=500:fld=^:mac=!
+//
+!0:=;1=ERROR;2=LICENSE;3=LICENSE;4=SERVER;5=SERVER;6=MESSAGE;7=FATAL;\
+8=VENDOR;9=VENDOR;10=VENDOR;11=PRODUCT;12=PRODUCT;13=PRODUCT;14=PRODUCT;
+//
+!1:=;0=General;1=Fatal;2=Time Out;3=Stop;4=Start;5=Vendor;6=Add;\
+7=Rename;8=Delete;9=Add (Lic Type);10=Delete (Lic Type);\
+21=Granted;22=Released;23=Checked;24=Waiting;25=Grant/Wait;26=Wait Removed;\
+27=Multiple Grant;28=Multiple Release;29=Use-Once Used;30=Compound Requested;\
+31=Unknown;
+//
+!:
+//
+hdg===========================================================================
+hdg===                          Collect Data Report                        ===
+hdg===========================================================================
+hdg The format of the data for this report is based on the event type
+hdg reported per line.
+hdg
+hdg if event-type == LICENSE
+hdg event-type,event-subtype,vendor,product-name,product-version,server,time
+hdg
+hdg if event-type == ERROR
+hdg event-type,vendor,product-name,product-version,server,time,status-code
+hdg
+hdg if event-type == SERVER
+hdg event-type,event-subtype,server,time
+hdg
+hdg if event-type == FATAL
+hdg event-type,event-subtype,server,time,errormsg
+hdg
+hdg===========================================================================
+hdg
+col^cet-d!0 ,^ces-d!1         ,^cvn-c32                         ,^cpn-c32                         ,^cver-c12    ,^csvn-c32                        ,^cts-i
+err^eet-d!0 ,^evn-c32                         ,^epn-c32                         ,^ever-c12    ,^esvn-c32                        ,^ets-i    ,^ecd-i
+srv^set-d!0 ,^ses-d!1         ,^ssvn-c32                        ,^sts-i
+fat^fet-d!0 ,^fsvn-c32                        ,^fts-i,^fmsg-c64
+end
+end                      ==================================
+end                      === End of Collect Data Report ===
+end                      ==================================
+:end=collect
+//
+:begin=prodsum:page=100:fld=^
+hdg===========================================================================
+hdg===                     P r o d u c t    S u m m a r y                  ===
+hdg===========================================================================
+hdg
+hdg                                            Product
+hdgVendor name           Product name          version     Licenses   In use
+hdg--------------------  --------------------  ----------  ---------  --------
+sum^vndnam-c20           ^prdnam-c20           ^ver-c10    ^nlic-i    ^nuse-f
+sum
+:end=prodsum
+//
+:begin=prodsumlct:page=100:fld=^
+hdg===========================================================================
+hdg===                   P r o d u c t    S u m m a r y                    ===
+hdg===========================================================================
+hdg
+hdg                                                                Product
+hdg Vendor name                  Product name                      version
+hdg --------------------         -------------------------         ----------
+sum ^vndnam-c20                  ^prdnam-c25                       ^ver-c10
+sum
+:end=prodsumlct
+//
+:begin=proddtllct:page=100:fld=^
+hdg===========================================================================
+hdg===                   P r o d u c t    D e t a i l s                    ===
+hdg===========================================================================
+hdg
+hdg
+hdg Vendor name\ID                                  Product name\ID\version
+hdg ------------------------------------            -------------------------
+dtl ^vnam-c20                                       ^pnam-c25
+dtl ^vid-c36                                        ^pid-c10
+dtl                                                 ^pver-c10
+dtl
+:end=proddtllct
+//
+:begin=vendsumlct:page=100:fld=^
+hdg===========================================================================
+hdg===                    V e n d o r     S u m m a r y                    ===
+hdg===========================================================================
+hdg
+hdg
+hdg Vendor name\ID                                  Number of products
+hdg ------------------------------------            -------------------------
+sum ^vnam-c20                                       ^pcount-c5
+sum ^vid-c36
+sum
+:end=vendsumlct
+:begin=bundleslist:page=200:fld=^:mac=!
+!0:=;0=Incomplete;1=Complete;2=Active;
+!:
+hdg===========================================================================
+hdg===                            B u n d l e s                            ===
+hdg===========================================================================
+par
+par Bundle  ID:                ^bid
+par Bundle  Name:              ^bnam
+par Bundle  Version:           ^bver
+par Bundle  Status:            ^bstat-d!0
+par Number of products:        ^bnum-i
+cha
+cha ------------------------- Component  Information --------------------------
+cha
+cha Product Name:           ^pnam
+cha Product Version:        ^pver
+cha Product ID:             ^pid-i
+cha
+end                       ===============================
+end                       === End of Bundles List =======
+end                       ===============================
+:end=bundleslist
+:begin=licenseauth:page=300:fld=^:mac=!
+//
+!0:=;0=Concurrent Access License(s);1=Node-Locked License(s);\
+2=Use-Once License(s);3=Compound Password;4=Usage Metering License(s);\
+6=Any Type License(s);7=Use-Once Node-Locked License(s);\
+8=HalAccess License(s);9=Concurrent Node-Locked License(s);\
+10=Compound Node-Locked Password;13=Per-Seat License(s);14=Per-Server License(s);\
+15=Reservable License(s);16=Reserved Licenses(s);\
+20= Concurrent Offline License(s);
+//
+!1:=;0=ALL NOT ALLOWED;1=ALL CONCURRENT ALLOWED;2=ALL ALLOWED;
+//
+!2:=;0=NOT ALLOWED;1=CONCURRENT ALLOWED;2=ALLOWED;
+//
+!:
+//
+hdg===========================================================================
+hdg===                            L i c e n s e s                          ===
+par===========================================================================
+par
+par  Vendor Name:                  ^vnam
+par  Vendor ID:                    ^vid
+par  Product Name:                 ^pnam
+par  Product Version:              ^pver
+par  Product ID:                   ^pid-i
+par  TimeStamp:                    ^stmp-i
+par  Serial Number:                ^snum
+par  ^lnum  ^ltype-d!0
+par  ^ltypec-d!0                  
+chq  Enrolled:  ^elc-i     Distributed: ^dl-i     To Be Distributed: ^tbdl-i
+chn  ----------------------------------------------------------------------- 
+chn                      A u t h o r i z a t i o n s 
+chn  ----------------------------------------------------------------------- 
+che  
+che  Default Authorization: 
+che  Mode:               ^dmod-d!1
+che  Password:           ^dpass-c32
+che  
+che  ----------------------------------------------------------------------- 
+chf  
+chf  User:               ^unam-c32
+chf  Group:              ^gnam-c32     
+chf  Offline Password:   ^pwnam-c32 
+chf  Offline Target ID:  ^tid-c9 
+chf  Mode:               ^mod-d!2
+chf  -----------------------------------------------------------------------
+chc  
+chc  User:               ^unamc-c32 
+chc  Group:              ^gnamc-c32 
+chc  Mode:               ^modc-d!2
+chc  -----------------------------------------------------------------------
+end
+end                         ===========================
+end                         === End of License List ===
+end                         ===========================
+:end=licenseauth

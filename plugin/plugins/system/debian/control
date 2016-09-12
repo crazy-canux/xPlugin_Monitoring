@@ -1,0 +1,30 @@
+Source: plugin-system
+Section: misc
+Priority: extra
+Maintainer: Vincent BESANCON <besancon.vincent@gmail.com>
+Build-Depends: debhelper (>= 9)
+Standards-Version: 3.9.5
+Vcs-Git: http://monitoring-dc.app.corp/git/plugins/system.git
+Vcs-Browser: http://monitoring-dc.app.corp/git/?p=plugins/system.git
+
+Package: plugin-system
+Architecture: all
+Depends:
+    ${misc:Depends},
+    ${perl:Depends},
+    libtimedate-perl,
+    libnet-telnet-perl,
+    libfilesys-smbclient-perl,
+    python2.7,
+    python-monitoring-nagios,
+    python-requests,
+    plugin-nagios,
+    php5-cli,
+    ksh,
+    rpcbind,
+    faurecia-snmp-mibs,
+Description: Collection of Nagios plugins checking System components
+ Collection of plugins to check system elements, including:
+    - Check files: size, count, age, sum of file sizes, check locally on
+      using SSH on remote server...
+    - Check unix account : use command 'id' by SSH

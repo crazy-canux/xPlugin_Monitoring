@@ -1,0 +1,47 @@
+plugin-storage (1.2.0) trusty; urgency=medium
+
+  [ Vincent BESANCON ]
+  * Migrate package plugin-storage to trusty.
+  * Remove extra header, there is Git for that !
+  * Fix last pylint warning.
+  * Debian control: add ${misc:Depends}.
+  * Cleanup debian unused files.
+  * Add bumpversion configuration.
+  * Refresh debian package construction.
+  * Use new style to create a Nagios plugin with exception catcher.
+  * Bump version: 1.1.1 → 1.2.0
+
+  [ Lei LIU ]
+  * [Storage] Add new scripts to check snapshot number.
+
+ -- Vincent BESANCON <vincent.besancon@faurecia.com>  Mon, 23 Feb 2015 16:02:28 +0100
+
+plugin-storage (1.1.1) precise; urgency=medium
+
+  [ Patrick BAILAT ]
+  * New script check_netapp_volume.py
+  * Set initial version to 1.0.0 (precise).
+
+  [ Vincent BESANCON ]
+  * Fix all common errors from linters.
+  * Tweaked the help and output messages.
+  * Set default value for thresholds arguments to 0.
+  * Set the performance data MAX value to 100 (percent values).
+
+  [ Patrick BAILAT ]
+  * [Storage] add regex on exit message
+
+ -- Patrick BAILAT <patrick.bailat-ext@faurecia.com>  Thu, 30 Oct 2014 10:20:14 +0100
+
+plugin-storage (1.1.0) precise; urgency=medium
+
+  * Modify changelog
+  * Modify changelog
+
+ -- Patrick BAILAT <patrick.bailat-ext@faurecia.com>  Wed, 30 Jul 2014 09:31:04 +0200
+
+plugin-storage (1.0.0) precise; urgency=low
+
+  * Initial Release.
+
+ -- Patrick BAILAT <patrick.bailat-ext@faurecia.com>  Tue, 29 Jul 2014 10:47:46 +0200

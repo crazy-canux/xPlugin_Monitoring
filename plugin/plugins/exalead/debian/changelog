@@ -1,0 +1,39 @@
+plugin-app-exalead (1.1.1) trusty; urgency=medium
+
+  * Update package for ubuntu trusty.
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Thu, 10 Jul 2014 14:25:36 +0200
+
+plugin-app-exalead (1.1.0) precise; urgency=low
+
+  * Updated ignore list.
+  * Removed git-buildpackage specific conf.
+  * Move source in src/ folder.
+  * Clean fabfile.
+  * Create an exalead package.
+  * Refactored check_exalead_buildgroup.
+  * Refactored check_exalead_deployment.
+  * [pycharm] share some tasks with the team to test the plugins.
+  * Install exalead python package.
+  * Set version to 1.1.0.
+  * Use ${python:Depends}.
+
+ -- Vincent BESANCON <besancon.vincent@gmail.com>  Tue, 13 Aug 2013 15:52:37 +0200
+
+plugin-app-exalead (1.0.2) precise; urgency=low
+
+  * Add new dependency and maj packages managements
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Wed, 20 Feb 2013 11:36:41 +0100
+
+plugin-app-exalead (1.0.1) stable; urgency=low
+
+  * Minor version 1.0.1.
+
+ -- Vincent BESANCON <vincent.besancon@faurecia.com>  Wed, 18 Apr 2012 11:42:40 +0200
+
+plugin-app-exalead (1.0) stable; urgency=low
+
+  * Initial Release.
+
+ -- Vincent BESANCON <vincent.besancon@faurecia.com>  Tue, 03 Apr 2012 17:23:49 +0200

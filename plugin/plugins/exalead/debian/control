@@ -1,0 +1,18 @@
+Source: plugin-app-exalead
+Section: misc
+Priority: extra
+Maintainer: Vincent BESANCON <vincent.besancon@faurecia.com>
+Build-Depends: debhelper (>= 9)
+Standards-Version: 3.9.5
+Homepage: http://monitoring-dc.app.corp/tracking/projects/exalead
+Vcs-Git: http://monitoring-dc.app.corp/git/plugins/exalead.git
+Vcs-Browser: http://monitoring-dc.app.corp/git/?p=plugins/exalead.git
+
+Package: plugin-app-exalead
+Architecture: all
+Depends:
+    ${misc:Depends},
+    python2.7,
+    python-monitoring-nagios,
+Description: Nagios / Shinken plugins to check Exalead application
+ This package setup the plugins to check Exalead application.

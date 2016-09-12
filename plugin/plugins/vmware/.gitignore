@@ -1,0 +1,7 @@
+.directory
+.idea/workspace.xml
+.idea/tasks.xml
+*.pyc
+pkg-build/
+docs/build/
+*.swp

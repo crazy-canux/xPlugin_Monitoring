@@ -1,0 +1,2 @@
+src/check_multi     usr/lib/faurecia/plugins/sys
+src/multichecks     etc/nagios

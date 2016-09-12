@@ -1,0 +1,24 @@
+Source: plugin-elasticsearch
+Section: misc
+Priority: extra
+Maintainer: Monitoring & Reporting <dl-itop-monitoring@faurecia.com>
+Build-Depends: debhelper (>= 9),
+               dh-python,
+               python-all,
+               python-setuptools,
+Standards-Version: 3.9.5
+Homepage: https://github.com/anchor/nagios-plugin-elasticsearch
+Vcs-Git: http://monitoring-dc.app.corp/git/plugins/elasticsearch.git
+Vcs-Browser: http://monitoring-dc.app.corp/git/?p=plugins/elasticsearch.git
+X-Python-Version: >= 2.7
+
+Package: plugin-elasticsearch
+Architecture: all
+Depends: ${shlibs:Depends},
+         ${misc:Depends},
+         python-nagioscheck,
+         python2.7,
+Description: An ElasticSearch availability and performance monitoring plugin for Nagios
+ This plugin may be used to monitor ElasticSearch data and proxy nodes.
+ .
+ This is the package for Python 2.

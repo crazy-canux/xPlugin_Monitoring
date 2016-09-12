@@ -1,0 +1,28 @@
+Source: plugin-app-jit
+Section: misc
+Priority: extra
+Maintainer: Monitoring & Reporting <9OPMonitoring@none.faurecia.com>
+Build-Depends: debhelper (>= 8.0.0)
+Standards-Version: 3.9.3
+Homepage: http://monitoring-dc.app.corp/tracking/projects/jitall
+Vcs-Git: http://monitoring-dc.app.corp/git/plugins/jit.git
+Vcs-Browser: http://monitoring-dc.app.corp/git/?p=plugins/jit.git
+
+Package: plugin-app-jit
+Architecture: all
+Depends:
+    ${misc:Depends},
+    ${python:Depends},
+    python-monitoring-venv
+Breaks: plugin-app-gimm (<< 1.2.0)
+Replaces: plugin-app-gimm (<< 1.2.0)
+Description: Nagios plugins to check JIT applications
+ This is the collection of Nagios plugins to check JIT systems and
+ application health including: BBDD, HIST_TABLES, REP_TABLES, ...
+
+Package: plugin-app-gimm
+Architecture: all
+Depends: plugin-app-jit, ${misc:Depends}
+Section: oldlibs
+Description: Transitional dummy package to install JIT plugins
+ This is a transitional dummy package. It can safely be removed.

@@ -1,0 +1,18 @@
+Source: plugin-erp-archiving
+Section: misc
+Priority: extra
+Maintainer: Yves ANDOLFATTO <yves.andolfatto@faurecia.com>
+Build-Depends: debhelper (>= 8.0.0)
+Standards-Version: 3.9.3
+Vcs-Git: http://monitoring-dc.app.corp/git/plugins/erp-archiving.git
+Vcs-Browser: http://monitoring-dc.app.corp/git/?p=plugins/erp-archiving.git
+
+Package: plugin-erp-archiving
+Architecture: amd64
+Depends: 
+    ${shlibs:Depends},
+    ${misc:Depends},
+    ${python:Depends},
+    python-monitoring-venv,
+Description: Nagios plugins to check ERP-Archiving
+ Collection of Nagios plugins to check ERP-Archiving.

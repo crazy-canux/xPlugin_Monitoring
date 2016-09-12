@@ -1,0 +1,3 @@
+src/notify_by_sms.py                usr/lib/faurecia/plugins/notify
+src/omnibus_host_trap_notify.pl     usr/lib/faurecia/plugins/notify
+src/omnibus_trap_notify.pl          usr/lib/faurecia/plugins/notify

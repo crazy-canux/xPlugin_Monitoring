@@ -1,0 +1,18 @@
+Source: plugin-check-multi
+Section: misc
+Priority: extra
+Maintainer: Yves ANDOLFATTO <yves.andolfatto@faurecia.com>
+Build-Depends: debhelper (>= 8.0.0)
+Standards-Version: 3.9.3
+Vcs-Git: http://monitoring-dc.app.corp/git/plugins/check-multi.git
+Vcs-Browser: http://monitoring-dc.app.corp/git/?p=plugins/check-multi.git
+
+Package: plugin-check-multi
+Architecture: all
+Depends:
+    ${shlibs:Depends},
+    ${misc:Depends},
+    ${perl:Depends},
+    plugin-nagios
+Description: Install Nagios plugin check_multi
+ Check_multi is a multi purpose swiss knife plugin.

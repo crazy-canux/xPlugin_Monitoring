@@ -1,0 +1,37 @@
+plugin-ldap (1.0.5) precise; urgency=low
+
+  * Remove unused file
+  * Indentation and Downgrade Standard-Version for 3.9.3, i.e. precise version
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Tue, 09 Apr 2013 16:31:10 +0200
+
+plugin-ldap (1.0.4) precise; urgency=low
+
+  * [Dependencies] Modify 'python' to ${python:Depends}
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Wed, 03 Apr 2013 16:43:03 +0200
+
+plugin-ldap (1.0.3) precise; urgency=low
+
+  * added warning for NORMAL_ACCOUNT
+
+ -- Patrick BAILAT <patrick.bailat-ext@faurecia.com>  Wed, 13 Feb 2013 11:17:06 +0100
+
+plugin-ldap (1.0.2) precise; urgency=low
+
+  * added blog try for ldap search
+
+ -- Patrick BAILAT <patrick.bailat-ext@faurecia.com>  Fri, 25 Jan 2013 15:10:33 +0100
+
+plugin-ldap (1.0.1) precise; urgency=low
+
+  * add option -b for base_dn
+  * add  lib dependence
+
+ -- Patrick BAILAT <patrick.bailat-ext@faurecia.com>  Thu, 17 Jan 2013 15:21:16 +0100
+
+plugin-ldap (1.0.0) unstable; urgency=low
+
+  * Initial Release.
+
+ -- Patrick BAILAT <patrick.bailat-ext@faurecia.com>  Tue, 15 Jan 2013 14:43:41 +0100

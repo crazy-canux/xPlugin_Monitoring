@@ -1,0 +1,17 @@
+Source: plugins-nrft
+Section: misc
+Priority: optional
+Maintainer: Monitoring & Reporting <dl-itop-monitoring@faurecia.com>
+Build-Depends: debhelper (>= 9)
+Standards-Version: 3.9.5
+Vcs-Git: http://monitoring-dc.app.corp/git/plugins/nrft.git
+Vcs-Browser: http://monitoring-dc.app.corp/git/?p=plugins/nrft.git
+
+Package: plugins-nrft
+Architecture: all
+Depends: 
+    python2.7,
+    python-monitoring-venv,
+Description: Nagios plugins to check NRFT Application.
+ This installs the Nagios plugins to check NRFT application (Oracle requests).
+

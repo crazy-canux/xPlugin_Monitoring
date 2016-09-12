@@ -1,0 +1,3 @@
+src/plugin                      usr/lib/faurecia/plugins/app/sharepoint/2013
+src/powershell                  usr/lib/faurecia/plugins/app/sharepoint/2013
+src/check_*.py                  usr/lib/faurecia/plugins/app/sharepoint/2013

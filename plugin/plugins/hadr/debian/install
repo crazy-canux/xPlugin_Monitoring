@@ -1,0 +1,3 @@
+src/hadr                    usr/lib/faurecia/plugins/sys/hadr
+src/check_hadr.py           usr/lib/faurecia/plugins/sys/hadr
+src/check_hadr_synchro.py   usr/lib/faurecia/plugins/sys/hadr

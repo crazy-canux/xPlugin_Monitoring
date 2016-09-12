@@ -1,0 +1,103 @@
+plugin-windows (1.2.4) trusty; urgency=medium
+
+  [ Canux CHENG ]
+  * [update]check_wmi_fileage.py for file extension.
+
+  [ Yves ANDOLFATTO ]
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Fri, 03 Jun 2016 11:24:31 +0200
+
+plugin-windows (1.2.3) trusty; urgency=medium
+
+  [ Canux CHENG ]
+  * [check_wmi_fileage.py]ignore for useless files.
+
+  [ Olivier BERNER ]
+
+ -- Olivier BERNER <olivier.berner-ext@faurecia.com>  Thu, 07 Apr 2016 14:41:57 +0200
+
+plugin-windows (1.2.2) trusty; urgency=medium
+
+  [ Canux CHENG ]
+  * [windows]new script.
+
+  [ Yves ANDOLFATTO ]
+
+ -- Canux CHENG <canux.cheng@faurecia.com>  Mon, 21 Dec 2015 09:42:12 +0100
+
+plugin-windows (1.2.1) trusty; urgency=medium
+
+  [ Canux CHENG ]
+  * [update]check_wmi_fileage.py
+  * [windows]update ck_wmi_fileage.py for request/5079.
+
+  [ Vincent BESANCON ]
+  * Do not manage versioning of plugins.
+
+ -- Vincent BESANCON <vincent.besancon@faurecia.com>  Wed, 28 Oct 2015 12:33:19 +0100
+
+plugin-windows (1.2.0) trusty; urgency=medium
+
+  [ Lei LIU ]
+  * [Windows] Detect multi files age in specified folder.
+  * [Windows] Merge multiple files age check function to check_wmi_fileage.
+
+  [ Vincent BESANCON ]
+  * Refresh the fabfile for trusty.
+  * Add bumpversion config.
+  * Bump version: 1.1.1 → 1.2.0
+
+ -- Vincent BESANCON <vincent.besancon@faurecia.com>  Mon, 03 Aug 2015 10:39:01 +0200
+
+plugin-windows (1.1.1) trusty; urgency=medium
+
+  * Update package for ubuntu trusty.
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Thu, 10 Jul 2014 15:37:46 +0200
+
+plugin-windows (1.1.0) precise; urgency=low
+
+  * Make sure we install the new plugin.
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Fri, 24 Jan 2014 11:17:50 +0100
+
+plugin-windows (1.0.5) precise; urgency=low
+
+  * Fix litle bugs and use PEP8.
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Fri, 24 Jan 2014 11:08:44 +0100
+
+plugin-windows (1.0.4) precise; urgency=low
+
+  * Use the remote current hour instead of local hour.
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Thu, 23 Jan 2014 17:53:02 +0100
+
+plugin-windows (1.0.3) precise; urgency=low
+
+  [ Anthony COMTOIS ]
+  * Add unreleased version of script check_wmi_fileage.py.
+
+  [ Yves ANDOLFATTO ]
+  * Released of check_wmi_fileage.py.
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Thu, 23 Jan 2014 17:22:27 +0100
+
+plugin-windows (1.0.2) precise; urgency=low
+
+  * Indentation and Downgrade Standard-Version for 3.9.3, i.e. precise version
+  * remove unused file
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Tue, 09 Apr 2013 17:45:21 +0200
+
+plugin-windows (1.0.1) precise; urgency=low
+
+  * [Dependencies] modify 'pyhton' by ${python:Depends}
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Wed, 03 Apr 2013 16:50:06 +0200
+
+plugin-windows (1.0.0) unstable; urgency=low
+
+  * Initial Release.
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Tue, 12 Feb 2013 14:26:23 +0100

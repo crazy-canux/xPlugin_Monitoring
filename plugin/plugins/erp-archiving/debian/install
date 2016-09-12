@@ -1,0 +1,2 @@
+src/check_optim_registry_integrity.py   usr/lib/faurecia/plugins/app/erp-archiving
+src/check_optim_xml_age.py              usr/lib/faurecia/plugins/app/erp-archiving

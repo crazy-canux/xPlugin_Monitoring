@@ -1,0 +1,17 @@
+Source: plugin-check-license-manager
+Section: misc
+Priority: extra
+Maintainer: Yves ANDOLFATTO <yves.andolfatto@faurecia.com>
+Build-Depends: debhelper (>= 9)
+Standards-Version: 3.9.5
+Vcs-Git: http://monitoring-dc.app.corp/git/plugins/license_manager_plugins.git
+Vcs-Browser: http://monitoring-dc.app.corp/git/?p=plugins/license_manager_plugins.git
+
+Package: plugin-check-license-manager
+Architecture: all
+Depends:
+    ${misc:Depends},
+    ${perl:Depends},
+    python2.7,
+Description: Plugin for Nagios to check popular Licence Managers
+ The package will install License Manager Nagios plugins. Codenamed colisée.

@@ -1,0 +1,23 @@
+Source: plugin-misc-app
+Section: misc
+Priority: extra
+Maintainer: Yves ANDOLFATTO <yves.andolfatto@faurecia.com>
+Build-Depends: debhelper (>= 8.0.0)
+Standards-Version: 3.9.3
+Vcs-Git: http://monitoring-dc.app.corp/git/plugins/misc-app.git
+Vcs-Browser: http://monitoring-dc.app.corp/git/?p=plugins/misc-app.git
+
+Package: plugin-misc-app
+Architecture: all
+Depends:
+    ${shlibs:Depends},
+    ${misc:Depends},
+    ${python:Depends},
+    python-monitoring-venv,
+    wmic,
+    ksh,
+    plugin-nagios,
+    bash (>= 4.2),
+    openssh-client
+Description: Misc application plugins for Nagios
+ That check various apps and we do not know where to put them

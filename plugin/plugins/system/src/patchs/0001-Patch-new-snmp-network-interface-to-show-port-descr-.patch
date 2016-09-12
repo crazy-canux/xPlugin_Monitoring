@@ -1,0 +1,117 @@
+From 3ab7434b9fcd36c76f35d1aada5a262525dfed98 Mon Sep 17 00:00:00 2001
+From: Yves ANDOLFATTO <yves.andolfatto@faurecia.com>
+Date: Thu, 12 Jun 2014 16:17:33 +0200
+Subject: [PATCH] Patch new snmp network interface to show port descr in
+ output
+
+---
+ src/check_snmp_netint.pl |   48 +++++++++++++++++++++++++++++++++++++++++-----
+ 1 file changed, 43 insertions(+), 5 deletions(-)
+
+diff --git a/src/check_snmp_netint.pl b/src/check_snmp_netint.pl
+index 5a87c9d..2d3747e 100755
+--- a/src/check_snmp_netint.pl
++++ b/src/check_snmp_netint.pl
+@@ -574,9 +574,13 @@ my $out_octet_table = '1.3.6.1.2.1.2.2.1.16.';
+ my $out_octet_table_64 = '1.3.6.1.2.1.31.1.1.1.10.';
+ my $out_error_table = '1.3.6.1.2.1.2.2.1.20.';
+ my $out_discard_table = '1.3.6.1.2.1.2.2.1.19.';
++my $descr_cisco_table = '1.3.6.1.2.1.31.1.1.1.18.';
+ 
+ my %status=(1=>'UP',2=>'DOWN',3=>'TESTING',4=>'UNKNOWN',5=>'DORMANT',6=>'NotPresent',7=>'lowerLayerDown');
+ 
++# Globals
++my ($session,$error);
++
+ # WL: For use in Cisco CATOS special hacks, enable use with "--cisco"
+ my $cisco_port_name_table='1.3.6.1.4.1.9.5.1.4.1.1.4';     # table of port names (the ones you set with 'set port name')
+ my $cisco_port_ifindex_map='1.3.6.1.4.1.9.5.1.4.1.1.11';   # map from cisco port table to normal SNMP ifindex table
+@@ -688,6 +692,20 @@ my $check_speed=0;      # If '-Y', '-u' or '-S' options are given this is set to
+ my $expected_speed=0;	# if -S has interface speed specified, this is set and alert is issued if interface is not same speed
+ 
+ # Functions
++
++sub get_cisco_description {
++    my $alias = shift;
++    my $descr_oid = $descr_cisco_table.$alias;
++
++    my $resultat = $session->get_request($descr_oid);
++
++    if (!defined($resultat) || $$resultat{$descr_oid} eq "noSuchObject" || $$resultat{$descr_oid} eq "") {
++        return "";
++    } else {
++        return '<b style=\'color: blue\'>['.$$resultat{$descr_oid}.']</b>';
++    }
++}
++
+ sub read_file { 
+ 	# Input : File, items_number
+ 	# Returns : array of value : [line][item] 
+@@ -1201,7 +1219,6 @@ $SIG{'ALRM'} = sub {
+ };
+ 
+ # Connect to host
+-my ($session,$error);
+ if ( defined($o_login) && defined($o_passwd)) {
+   # SNMPv3 login
+   if (!defined ($o_privpass)) {
+@@ -1273,6 +1290,7 @@ if (defined($o_octetlength)) {
+ my @tindex = ();
+ my @oids = undef;
+ my @descr = ();
++my @cisco_descr = undef;
+ my (@oid_perf,@oid_perf_outoct,@oid_perf_inoct,@oid_perf_inerr,@oid_perf_outerr,@oid_perf_indisc,@oid_perf_outdisc)= (undef,undef,undef,undef,undef,undef,undef);
+ my @oid_descr=(); # this is actually only used with '-m' to double-check that cached index is correct
+ my @oid_speed=();
+@@ -1404,6 +1422,10 @@ else {
+ 	 if (defined($o_stp)) {
+ 		$stpport[$num_int] = $stp_ifmap{$tindex[$num_int]} if exists($stp_ifmap{$tindex[$num_int]});
+ 	 }
++         # get the cisco description
++         my @oid_cisco = split(/\./, $key);
++         my $id_cisco = $oid_cisco[-1];
++         $cisco_descr[$num_int]=get_cisco_description($id_cisco);
+          # get the full description and get rid of special characters (specially for Windows)
+          $descr[$num_int]=$$result{$key};
+          $descr[$num_int]=~ s/[[:cntrl:]]//g;
+@@ -1974,8 +1996,18 @@ for (my $i=0;$i < $num_int; $i++) {
+       }
+     }
+     # Print the basic status
+-    $print_out.=sprintf("%s:%s",$int_desc, $status{$int_status});
+-    $print_out.=' ['.$int_status_extratext.']' if $int_status_extratext;
++    if (defined ($o_short)) {
++      my $short_desc=undef;
++      if ($o_short < 0) {$short_desc=substr($descr[$i],$o_short);}
++      else {$short_desc=substr($descr[$i],0,$o_short);}
++      $print_out.=sprintf("%s:<b style=\'color: green\'>[%s]</b> %s",$short_desc, $status{$int_status}, $cisco_descr[$i] );
++    } else {
++      $print_out.=sprintf("%s:<b style=\'color: green\'>[%s]</b> %s",$descr[$i], $status{$int_status}, $cisco_descr[$i] );
++    }
++    if ($usable_data !=0) { # On error writing, return Unknown status
++      $final_status=3;
++      $print_out.= " !!Unable to write file ".$temp_file_name." !! ";
++    }
+     # print the other checks if it was calculated
+     if ($usable_data==0 && defined($checkperf_out[0])) {
+       $print_out.= " (";
+@@ -2008,8 +2040,14 @@ for (my $i=0;$i < $num_int; $i++) {
+     }
+   } 
+   else {
+-    $print_out.=sprintf("%s:%s",$int_desc, $status{$int_status});
+-    $print_out.=' ['.$int_status_extratext.']' if $int_status_extratext;
++    if (defined ($o_short)) {
++      my $short_desc=undef;
++      if ($o_short < 0) {$short_desc=substr($descr[$i],$o_short);}
++      else {$short_desc=substr($descr[$i],0,$o_short);}
++      $print_out.=sprintf("%s:<b style=\'color: green\'>[%s]</b> %s",$short_desc, $status{$int_status}, $cisco_descr[$i] );
++    } else {
++      $print_out.=sprintf("%s:<b style=\'color: green\'>[%s]</b> %s",$descr[$i], $status{$int_status}, $cisco_descr[$i] );
++    }
+   }
+   # Get rid of special characters for performance in description
+   # $descr[$i] =~ s/'\/\(\)/_/g;
+-- 
+1.7.9.5
+
