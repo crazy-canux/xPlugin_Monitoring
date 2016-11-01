@@ -1,3 +1,11 @@
+plugin-ad2012 (1.1.1) trusty; urgency=medium
+
+  [ Canux CHENG ]
+  * [ad]add exception handle.
+  * [ad2012]add xception handler.
+
+ -- Vincent BESANCON <vincent.besancon@faurecia.com>  Thu, 24 Sep 2015 16:14:22 +0200
+
 plugin-ad2012 (1.1.0) trusty; urgency=medium
 
   [ Lei LIU ]

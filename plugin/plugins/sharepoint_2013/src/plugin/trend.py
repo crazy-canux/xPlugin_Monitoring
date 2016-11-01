@@ -19,20 +19,21 @@
 # TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 # OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-"""Class definition for XML validity plugin."""
+"""Class definition for XML value trend plugin."""
 
 import logging
-
-from datetime import datetime
 
 from monitoring.nagios.plugin import argument
 
 from .base import PluginBase
-logger = logging.getLogger('plugin.xml')
+
+import re
+
+logger = logging.getLogger('plugin.trend')
 
 
-class PluginXMLValidity(PluginBase):
-    """Plugin that test the validity of XML interface."""
+class PluginXMLTrend(PluginBase):
+    """Plugin that test the trend of XML interface."""
     def main(self):
         """
         Main plugin entry point.
@@ -40,31 +41,34 @@ class PluginXMLValidity(PluginBase):
         Implement here all the code that the plugin must do.
         """
         xml = self.fetch_xml_table()
+        pattern = re.compile(r'/')
+        num_tag = 0
 
-        # Last modified duration
-        xml_age = datetime.now() - xml.last_modified
+       # Get the value of xml_tag
+        for obj in xml:
+            for key in obj:
+                if pattern.split(key.lower())[-1] == self.options.xml_tag:
+                    num_tag = num_tag +1
+                    self.shortoutput = "OK"
+                    self.perfdata.append(
+                        '\'{property_name}\'={value}'.format(
+                        property_name=key,
+                        value=obj[key]))
 
-        # Test timestamp
-        if xml_age > self.options.xml_age:
-            self.shortoutput = \
-                'XML has been last modified ' \
-                'since {age} (>= {threshold})!'.format(
-                    age=xml.last_modified,
-                    threshold=self.options.xml_age)
-            status = self.critical
+        if not num_tag:
+            status=self.unknown("The tag you specified not exist, please check XML!")
         else:
-            self.shortoutput = 'XML is up-to-date.'
-            status = self.ok
+            status=self.ok
 
-        # Exit
         status(self.output())
 
     def define_plugin_arguments(self):
-        super(PluginXMLValidity, self).define_plugin_arguments()
-
+        super(PluginXMLTrend, self).define_plugin_arguments()
         self.required_args.add_argument(
-            '--age',
-            dest='xml_age',
-            type=argument.minutes,
-            help='Maximum age of the XML data in minutes.',
+            '-t', '--tag',
+            dest='xml_tag',
+            type=str.lower,
+            help='The lowercased string for '
+                'the exact tag name in the xml.',
             required=True)
+

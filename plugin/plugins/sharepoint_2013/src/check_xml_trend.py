@@ -20,33 +20,12 @@
 # TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 # OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-import smtplib
-import argparse
-from email.mime.text import MIMEText
+"""Plugin that checks the XML value trend."""
 
-# Parse arguments
-parser = argparse.ArgumentParser(description='Format a MIME mail and send it to generate a SMS.')
-parser.add_argument('-m', '--message', required=True, metavar='MESSAGE_BODY', help='The message body that will be in SMS.')
-parser.add_argument('-p', '--phone-numbers', required=True, nargs='+', metavar='PHONE_NUMBER@example.com', help='The phone numbers list where to send a SMS, use international format.')
+import plugin
+from plugin.trend import PluginXMLTrend
 
-args = parser.parse_args()
-
-# Globals
-mail_recipients = []
-
-# Create a text/plain message
-msg = MIMEText(args.message)
-
-# Headers
-msg['Subject'] = 'Alert'
-msg['From'] = "Nagios <nagios@faurecia.com>"
-msg['To'] = ';'.join(args.phone_numbers)
-msg['CC'] = 'vincent.besancon@faurecia.com'
-
-mail_recipients = args.phone_numbers
-mail_recipients.append(msg['CC'])
-
-# Send the message via local sat SMTP server
-s = smtplib.SMTP('localhost')
-s.sendmail(msg["From"], mail_recipients, msg.as_string())
-s.quit()
+PluginXMLTrend(
+    version=plugin.version,
+    description='Check XML trend.'
+).run()

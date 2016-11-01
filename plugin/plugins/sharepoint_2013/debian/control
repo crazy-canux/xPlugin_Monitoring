@@ -12,6 +12,6 @@ Architecture: all
 Depends:
     ${misc:Depends},
     python2.7,
-    python-monitoring-venv,
+    python-monitoring-nagios,
 Description: Nagios plugins to check Sharepoint 2013.
  This installs the Nagios plugins to check Sharepoint 2013 application.

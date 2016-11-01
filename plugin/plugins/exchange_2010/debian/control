@@ -12,6 +12,6 @@ Architecture: all
 Depends:
     ${misc:Depends},
     python2.7,
-    python-monitoring-venv,
+    python-monitoring-nagios,
 Description: Nagios plugins to check MS Exchange 2010.
  This installs the Nagios plugins to check MS Exchange 2010 application.

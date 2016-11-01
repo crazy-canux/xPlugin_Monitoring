@@ -1,3 +1,31 @@
+plugin-check-logfiles (0.0.14) trusty; urgency=medium
+
+  [ Mohamed CHERROUD ]
+  * Add share option for LRSROOT directory
+
+  [ Vincent BESANCON ]
+  * [fabfile] updated to trusty.
+
+ -- Vincent BESANCON <vincent.besancon@faurecia.com>  Tue, 24 Nov 2015 08:41:55 +0100
+
+plugin-check-logfiles (0.0.13) trusty; urgency=medium
+
+  [ Yves ANDOLFATTO ]
+  * Add VPSX ASIA
+  * Update changelog for 0.0.9 release
+
+  [ Mohamed CHERROUD ]
+  * Add VPSX bash script for Asia
+  * Update changelog for 0.0.10 release.
+  * Update install file.
+  * Update changelog for 0.0.11 release.
+  * FixBug
+  * Update changelog for 0.0.12 release.
+
+  [ Yves ANDOLFATTO ]
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Wed, 14 Jan 2015 15:08:52 +0100
+
 plugin-check-logfiles (0.0.12) precise; urgency=low
 
   * FixBug
@@ -24,8 +52,9 @@ plugin-check-logfiles (0.0.10) precise; urgency=low
 plugin-check-logfiles (0.0.9) precise; urgency=low
 
   * Add VPSX ASIA
+  * Update package for ubuntu trusty.
 
- -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Thu, 17 Jul 2014 16:44:48 +0200
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Thu, 10 Jul 2014 11:58:41 +0200
 
 plugin-check-logfiles (0.0.8) precise; urgency=low
 

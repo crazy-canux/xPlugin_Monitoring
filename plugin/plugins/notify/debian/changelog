@@ -1,3 +1,58 @@
+plugin-notify (0.1.6) trusty; urgency=medium
+
+  [ Mohamed CHERROUD ]
+  * [OMNIBus] : notification script : activate on prod/failover CS OMNIbus also
+
+  [ Yves ANDOLFATTO ]
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Mon, 11 Jul 2016 10:06:05 +0200
+
+plugin-notify (0.1.5) trusty; urgency=medium
+
+  [ Olivier BERNER ]
+  * Update fabfile.
+
+  [ Mohamed CHERROUD ]
+  * [Nagios] :  Removed usage of configuration file and added the possibility to send traps to multiple trap receivers.
+  * [OMNIBus] : notification script : Add port number 1162 and de-activate prod CS OMNIbus
+
+  [ Yves ANDOLFATTO ]
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Fri, 08 Jul 2016 09:32:57 +0200
+
+plugin-notify (0.1.4) trusty; urgency=medium
+
+  [ Mohamed CHERROUD ]
+  * [OMNIBus] : Update OMNIBus ip adress
+
+  [ Olivier BERNER ]
+
+ -- Olivier BERNER <olivier.berner-ext@faurecia.com>  Mon, 04 Jul 2016 08:41:07 +0200
+
+plugin-notify (0.1.3) trusty; urgency=medium
+
+  [ Mohamed CHERROUD ]
+  * [OMNIbus] : Add updated host notification script part
+
+  [ Yves ANDOLFATTO ]
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Thu, 30 Jun 2016 15:52:46 +0200
+
+plugin-notify (0.1.2) trusty; urgency=medium
+
+  [ Mohamed CHERROUD ]
+  * [Nagios] :  Removed usage of configuration file and added the possibility to send traps to multiple trap receivers.
+
+  [ Yves ANDOLFATTO ]
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Fri, 10 Jun 2016 15:44:41 +0200
+
+plugin-notify (0.1.1) trusty; urgency=medium
+
+  * Update package for ubuntu trusty.
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Thu, 10 Jul 2014 15:17:49 +0200
+
 plugin-notify (0.1.0) precise; urgency=low
 
   * [Gearman] Modify script to read conf_file and send a uniq trap. refs #2636

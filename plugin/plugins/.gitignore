@@ -1,0 +1,12 @@
+cache/
+.idea/workspace.xml
+.idea/tasks.xml
+build/
+dist/
+docs/_build/
+pkg-build/
+.directory
+*.pyc
+*.swp
+*.egg-info
+.vagrant

@@ -17,5 +17,5 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #===============================================================================
 
-from monitoring.fabric import package
+from monitoring.fabric.package import build, upload
 

@@ -19,5 +19,5 @@
 
 file="/tmp/app_vpsx-active_log_file_as"
 rm -f "$file"
-cd /tmp && smbget smb://WWFCSAPP0201.fcs.toa.prim/LRSROOT/vpsxroot/log/active_log_file -p 'NglP(23M,n' -u 9NagiosDC -w TOA -qn -o app_vpsx-active_log_file_as
+cd /tmp && smbget smb://WWFCSAPP0201.fcs.toa.prim/LRSROOT$/vpsxroot/log/active_log_file -p 'NglP(23M,n' -u 9NagiosDC -w TOA -qn -o app_vpsx-active_log_file_as
 

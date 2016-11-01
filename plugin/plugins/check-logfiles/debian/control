@@ -2,18 +2,17 @@ Source: plugin-check-logfiles
 Section: misc
 Priority: extra
 Maintainer: Yves ANDOLFATTO <yves.andolfatto@faurecia.com>
-Build-Depends: debhelper (>= 8.0.0)
-Standards-Version: 3.9.3
+Build-Depends: debhelper (>= 9)
+Standards-Version: 3.9.5
 Vcs-Git: http://monitoring-dc.app.corp/git/plugins/check-logfiles.git
 Vcs-Browser: http://monitoring-dc.app.corp/git/?p=plugins/check-logfiles.git
 
 Package: plugin-check-logfiles
 Architecture: all
 Depends: 
-    ${shlibs:Depends},
     ${misc:Depends},
     ${perl:Depends},
-    smbclient
+    smbclient,
 Description: Plugin for Nagios which scans log files for specific patterns.
  Use Perl power to check log files. Ported from check_logfiles plugin from
  ConsolLabs.

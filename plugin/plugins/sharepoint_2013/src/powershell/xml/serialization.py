@@ -52,7 +52,8 @@ class XMLSerializedObject(object):
             try:
                 self._tag = obj_tag
                 self.refid = int(self._tag['refid'])
-                self.name = self._tag.tostring.string.split('.')[-1]
+                self.name = self._tag.tostring.string.split('/')[-1]
+                print self.name
                 self.properties = self._pythonize_properties()
             except (KeyError, ValueError, AttributeError) as exc:
                 raise XMLValidityError('Not a valid serialized object !',
