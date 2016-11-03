@@ -1,8 +1,0 @@
-pymysql
-pymssql
-paramiko
-pysnmp
-pyvmomi
-sh
-requests
-bs4
