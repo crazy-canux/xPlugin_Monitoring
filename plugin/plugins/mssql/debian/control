@@ -1,7 +1,7 @@
 Source: plugin-mssql
 Section: misc
 Priority: extra
-Maintainer: Patrick BAILAT <patrick.bailat-ext@faurecia.com>
+Maintainer: Patrick BAILAT <patrick.bailat-ext@Company.com>
 Build-Depends: debhelper (>= 9)
 Standards-Version: 3.9.5
 Vcs-Git: http://monitoring-dc.app.corp/git/plugins/mssql.git

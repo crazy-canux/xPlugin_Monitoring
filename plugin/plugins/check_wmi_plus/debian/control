@@ -1,7 +1,7 @@
 Source: plugin-check-wmi-plus
 Section: misc
 Priority: extra
-Maintainer: Vincent BESANCON <vincent.besancon@faurecia.com>
+Maintainer: Vincent BESANCON <vincent.besancon@Company.com>
 Build-Depends:
     debhelper (>= 9),
     devscripts (>= 2.10),

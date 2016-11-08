@@ -1,5 +1,5 @@
 #!/usr/bin/perl -w
-# Copyright (C) Faurecia <http://www.faurecia.com/>
+# Copyright (C) Canux <http://www.Company.com/>
 #
 # Permission is hereby granted, free of charge, to any person obtaining
 # a copy of this software and associated documentation files (the "Software"),
@@ -28,7 +28,7 @@
 # Licence :	GPL - http://www.fsf.org/licenses/gpl.txt
 # Contrib :
 #		Makina Corpus <adam At greekattic d0t com>
-#		Vincent Besançon <vincent.besancon@faurecia.com>
+#		Vincent Besançon <vincent.besancon@Company.com>
 # TODO :
 #		- Put $o_delta as an option
 #		- If testing on localhost, selects itself....

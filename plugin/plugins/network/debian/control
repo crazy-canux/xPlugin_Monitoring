@@ -1,7 +1,7 @@
 Source: plugin-network
 Section: net
 Priority: extra
-Maintainer: Vincent BESANCON <vincent.besancon@faurecia.com>
+Maintainer: Vincent BESANCON <vincent.besancon@Company.com>
 Build-Depends: debhelper (>= 8.0.0)
 Standards-Version: 3.9.3
 Vcs-Git: http://monitoring-dc.app.corp/git/plugins/network.git

@@ -1,5 +1,5 @@
 From 3ab7434b9fcd36c76f35d1aada5a262525dfed98 Mon Sep 17 00:00:00 2001
-From: Yves ANDOLFATTO <yves.andolfatto@faurecia.com>
+From: Yves ANDOLFATTO <yves.andolfatto@Company.com>
 Date: Thu, 12 Jun 2014 16:17:33 +0200
 Subject: [PATCH] Patch new snmp network interface to show port descr in
  output

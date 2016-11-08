@@ -1,7 +1,7 @@
 Source: plugin-app-exalead
 Section: misc
 Priority: extra
-Maintainer: Vincent BESANCON <vincent.besancon@faurecia.com>
+Maintainer: Vincent BESANCON <vincent.besancon@Company.com>
 Build-Depends: debhelper (>= 9)
 Standards-Version: 3.9.5
 Homepage: http://monitoring-dc.app.corp/tracking/projects/exalead

@@ -1,7 +1,7 @@
 #!/bin/sh
 #===============================================================================
 # Name          : check_nfs
-# Author        : Vincent BESANCON aka 'v!nZ' <vincent.besancon@faurecia.com>
+# Author        : Vincent BESANCON aka 'v!nZ' <vincent.besancon@Company.com>
 # Version       : $Revision: 60 $
 # Last Modified : $Date: 2011-11-22 16:37:55 +0100 (mar., 22 nov. 2011) $
 # License       : Creative Commons Attribution-Noncommercial-Share Alike 2.0 France
@@ -25,18 +25,18 @@ ECHO='/bin/echo'
 
 # Functions
 show_help () {
-  $ECHO "Faurecia -- Nagios Plugins"
+  $ECHO "Company -- Nagios Plugins"
   $ECHO "--------------------------"
   $ECHO
   $ECHO "Name: $PROGNAME"
-  $ECHO "Author: Vincent BESANCON <vincent.besancon@faurecia.com>"
+  $ECHO "Author: Vincent BESANCON <vincent.besancon@Company.com>"
   $ECHO "Description: Check a NFS mount point by looking for presence of a file."
   $ECHO
   $ECHO "Usage: $PROGNAME [-h] -p <nfs_path>"
   $ECHO
   $ECHO "Options:"
   $ECHO "\t-h\tShow help."
-  $ECHO "\t-p\tNFS path to check (directory). It will look for the presence of file 'monitoring_nfs' inside. If found, it will return OK. If 
+  $ECHO "\t-p\tNFS path to check (directory). It will look for the presence of file 'monitoring_nfs' inside. If found, it will return OK. If
 not, it will return CRITICAL."
   $ECHO "\t-f\tName of the file to check. By default: 'monitoring_nfs'."
 }

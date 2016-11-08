@@ -1,7 +1,7 @@
 Source: plugin-ldap
 Section: misc
 Priority: extra
-Maintainer: Patrick BAILAT <patrick.bailat-ext@faurecia.com>
+Maintainer: Patrick BAILAT <patrick.bailat-ext@Company.com>
 Build-Depends: debhelper (>= 8.0.0)
 Standards-Version: 3.9.3
 Vcs-Git: http://monitoring-dc.app.corp/git/plugins/ldap.git

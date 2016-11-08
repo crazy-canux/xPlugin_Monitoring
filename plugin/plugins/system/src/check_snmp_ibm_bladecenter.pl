@@ -9,7 +9,7 @@
 
 use strict;
 require 5.6.0;
-use lib qw( /usr/lib/faurecia/plugins );
+use lib qw( /usr/lib/Company/plugins );
 use utils qw(%ERRORS $TIMEOUT &print_revision &support &usage);
 use Net::SNMP;
 use Getopt::Long;

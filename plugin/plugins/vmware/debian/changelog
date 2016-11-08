@@ -6,45 +6,45 @@ plugin-vmware (1.1.1) trusty; urgency=medium
   [ Canux CHENG ]
   * [vmware]update src/check_vmware_api.pl.
 
- -- Vincent BESANCON <vincent.besancon@faurecia.com>  Wed, 28 Oct 2015 16:26:10 +0100
+ -- Vincent BESANCON <vincent.besancon@Company.com>  Wed, 28 Oct 2015 16:26:10 +0100
 
 plugin-vmware (1.1.0) trusty; urgency=medium
 
   [ Canux CHENG ]
   * [vmware]update.
 
- -- Vincent BESANCON <vincent.besancon@faurecia.com>  Tue, 28 Jul 2015 16:17:45 +0200
+ -- Vincent BESANCON <vincent.besancon@Company.com>  Tue, 28 Jul 2015 16:17:45 +0200
 
 plugin-vmware (1.0.8) trusty; urgency=medium
 
   * Skip the SSL cert verification mandatory for LWP sub libs.
   * Revert "Fix SSL verify hostname on trusty."
 
- -- Vincent BESANCON <vincent.besancon@faurecia.com>  Thu, 05 Feb 2015 15:13:07 +0100
+ -- Vincent BESANCON <vincent.besancon@Company.com>  Thu, 05 Feb 2015 15:13:07 +0100
 
 plugin-vmware (1.0.7) trusty; urgency=medium
 
   * Fix SLL verify hostname on trusty.
 
- -- Vincent BESANCON <vincent.besancon@faurecia.com>  Fri, 19 Dec 2014 11:12:32 +0100
+ -- Vincent BESANCON <vincent.besancon@Company.com>  Fri, 19 Dec 2014 11:12:32 +0100
 
 plugin-vmware (1.0.6) trusty; urgency=medium
 
   * Update package for ubuntu trusty.
 
- -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Thu, 10 Jul 2014 15:36:12 +0200
+ -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Thu, 10 Jul 2014 15:36:12 +0200
 
 plugin-vmware (1.0.5) precise; urgency=low
 
   * Add vmware-vsphere-sdk as dep. refs #2664
 
- -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Tue, 01 Oct 2013 16:40:53 +0200
+ -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Tue, 01 Oct 2013 16:40:53 +0200
 
 plugin-vmware (1.0.4) precise; urgency=low
 
   * Fix known problem - server version unavailable. refs #2664
 
- -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Tue, 01 Oct 2013 09:33:52 +0200
+ -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Tue, 01 Oct 2013 09:33:52 +0200
 
 plugin-vmware (1.0.3) precise; urgency=low
 

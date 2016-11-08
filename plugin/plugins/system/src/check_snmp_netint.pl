@@ -536,7 +536,7 @@ use Getopt::Long;
 use Text::ParseWords;
 
 # Nagios specific
-use lib "/usr/lib/faurecia/plugins";
+use lib "/usr/lib/Company/plugins";
 our $TIMEOUT;
 our %ERRORS;
 eval 'use utils qw(%ERRORS $TIMEOUT)';

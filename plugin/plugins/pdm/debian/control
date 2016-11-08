@@ -1,7 +1,7 @@
 Source: plugin-app-pdm
 Section: misc
 Priority: extra
-Maintainer: Monitoring & Reporting <9OPMonitoring@none.faurecia.com>
+Maintainer: Monitoring & Reporting <9OPMonitoring@none.Company.com>
 Build-Depends: debhelper (>= 8.0.0)
 Standards-Version: 3.9.3
 Vcs-Git: http://monitoring-dc.app.corp/git/plugins/pdm.git

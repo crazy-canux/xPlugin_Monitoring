@@ -1,7 +1,7 @@
 Source: plugin-db2
 Section: misc
 Priority: extra
-Maintainer: EIT/PLM Delivery <dl-it-systemoperating-eitapplications@none.faurecia.com>
+Maintainer: EIT/PLM Delivery <dl-it-systemoperating-eitapplications@none.Company.com>
 Build-Depends: debhelper (>= 9)
 Standards-Version: 3.9.5
 Vcs-Git: http://monitoring-dc.app.corp/git/plugins/db2.git

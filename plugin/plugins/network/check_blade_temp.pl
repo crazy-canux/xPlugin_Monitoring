@@ -1,7 +1,7 @@
 #!/usr/bin/perl -w
 #===============================================================================
 # Name          : check_cisco_cpu_module.pl
-# Author        : Thibaut COURVOISIER <thibaut.courvoisier-ext@faurecia.com>
+# Author        : Thibaut COURVOISIER <thibaut.courvoisier-ext@Company.com>
 # Description   : Check which CPU module is active on Cisco Core Switch.
 #-------------------------------------------------------------------------------
 # This program is free software: you can redistribute it and/or modify
@@ -67,7 +67,7 @@ EOT
 sub help {
    print "\n==== $plugin_name ====\n\n";
    print "Creative Commons Attribution-Noncommercial-Share Alike 2.0 France\n";
-   print "(c)2010 Thibaut COURVOISIER, <thibaut.courvoisier-ext\@faurecia.com>\n\n";
+   print "(c)2010 Thibaut COURVOISIER, <thibaut.courvoisier-ext\@Company.com>\n\n";
    print_description();
    print_usage();
    print <<EOT;

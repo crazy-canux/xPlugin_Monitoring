@@ -1,7 +1,7 @@
 Source: plugins-nrft
 Section: misc
 Priority: optional
-Maintainer: Monitoring & Reporting <dl-itop-monitoring@faurecia.com>
+Maintainer: Monitoring & Reporting <dl-itop-monitoring@Company.com>
 Build-Depends: debhelper (>= 9)
 Standards-Version: 3.9.5
 Vcs-Git: http://monitoring-dc.app.corp/git/plugins/nrft.git

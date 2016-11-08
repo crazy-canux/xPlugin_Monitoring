@@ -1,13 +1,13 @@
 Format: http://dep.debian.net/deps/dep5
 Upstream-Name: plugin-network
-Source: http://www.faurecia.com/
+Source: http://www.Company.com/
 
 Files: *
 Copyright: 2009-2012 Monitoring & Reporting
 License: GPL-3.0+
 
 Files: debian/*
-Copyright: 2012 Vincent BESANCON <vincent.besancon@faurecia.com>
+Copyright: 2012 Vincent BESANCON <vincent.besancon@Company.com>
 License: GPL-3.0+
 
 Files: contrib/*

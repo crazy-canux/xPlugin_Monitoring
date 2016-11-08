@@ -2,10 +2,10 @@ plugin-erp-archiving (0.0.2) precise; urgency=low
 
   * Remove persona attr named path in favor of the default one gived by the lib.
 
- -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Mon, 24 Mar 2014 16:31:49 +0100
+ -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Mon, 24 Mar 2014 16:31:49 +0100
 
 plugin-erp-archiving (0.0.1) precise; urgency=low
 
   * Initial Release.
 
- -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Wed, 12 Mar 2014 10:38:57 +0100
+ -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Wed, 12 Mar 2014 10:38:57 +0100

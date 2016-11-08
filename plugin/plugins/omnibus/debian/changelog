@@ -2,22 +2,22 @@ plugin-omnibus (0.0.4) precise; urgency=low
 
   * Rename plugin. more genric name.
 
- -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Wed, 26 Feb 2014 12:19:05 +0100
+ -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Wed, 26 Feb 2014 12:19:05 +0100
 
 plugin-omnibus (0.0.3) precise; urgency=low
 
   * Make the plugin more generic.
 
- -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Wed, 26 Feb 2014 12:13:10 +0100
+ -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Wed, 26 Feb 2014 12:13:10 +0100
 
 plugin-omnibus (0.0.2) precise; urgency=low
 
   * Install plugins into app folder.
 
- -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Thu, 13 Feb 2014 09:43:49 +0100
+ -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Thu, 13 Feb 2014 09:43:49 +0100
 
 plugin-omnibus (0.0.1) precise; urgency=low
 
   * Initial Release.
 
- -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Wed, 12 Feb 2014 17:13:35 +0100
+ -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Wed, 12 Feb 2014 17:13:35 +0100

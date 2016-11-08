@@ -7,7 +7,7 @@
 # Plugin: check_lbl_conn_state.py
 # Description: check if the LoadBalancer is receiving connection
 #
-# Author: Vincent BESANCON <vincent.besancon@faurecia.com>
+# Author: Vincent BESANCON <vincent.besancon@Company.com>
 # SVN: $Id: check_lbl_conn_state.py 139 2009-10-08 14:37:28Z vincent $
 #
 

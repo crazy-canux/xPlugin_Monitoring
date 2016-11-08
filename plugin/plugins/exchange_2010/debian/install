@@ -1,3 +1,3 @@
-src/plugin                      usr/lib/faurecia/plugins/app/exchange/2010
-src/powershell                  usr/lib/faurecia/plugins/app/exchange/2010
-src/check_exchange_*.py         usr/lib/faurecia/plugins/app/exchange/2010
+src/plugin                      usr/lib/Company/plugins/app/exchange/2010
+src/powershell                  usr/lib/Company/plugins/app/exchange/2010
+src/check_exchange_*.py         usr/lib/Company/plugins/app/exchange/2010

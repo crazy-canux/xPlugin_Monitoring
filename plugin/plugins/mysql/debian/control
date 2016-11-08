@@ -1,7 +1,7 @@
 Source: plugin-mysql
 Section: misc
 Priority: extra
-Maintainer: Yves ANDOLFATTO <yves.andolfatto@faurecia.com>
+Maintainer: Yves ANDOLFATTO <yves.andolfatto@Company.com>
 Build-Depends: debhelper (>= 8.0.0)
 Standards-Version: 3.9.3
 Vcs-Git: http://monitoring-dc.app.corp/git/plugins/mysql.git

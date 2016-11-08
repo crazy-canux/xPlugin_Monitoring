@@ -2,7 +2,7 @@ Format: http://dep.debian.net/deps/dep5
 Upstream-Name: plugin-ldap
 
 Files: *
-Copyright: 2013 Monitoring & Reporting <9OPMonitoring@none.faurecia.com>
+Copyright: 2013 Monitoring & Reporting <9OPMonitoring@none.Company.com>
 License: GPL-3.0+
 
 License: GPL-3.0+

@@ -1,7 +1,7 @@
 Source: plugin-elasticsearch
 Section: misc
 Priority: extra
-Maintainer: Monitoring & Reporting <dl-itop-monitoring@faurecia.com>
+Maintainer: Monitoring & Reporting <dl-itop-monitoring@Company.com>
 Build-Depends: debhelper (>= 9),
                dh-python,
                python-all,

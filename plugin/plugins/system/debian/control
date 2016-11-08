@@ -22,7 +22,7 @@ Depends:
     php5-cli,
     ksh,
     rpcbind,
-    faurecia-snmp-mibs,
+    Company-snmp-mibs,
 Description: Collection of Nagios plugins checking System components
  Collection of plugins to check system elements, including:
     - Check files: size, count, age, sum of file sizes, check locally on

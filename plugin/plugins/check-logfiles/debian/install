@@ -1,5 +1,5 @@
-src/check_logfiles              usr/lib/faurecia/plugins/sys
+src/check_logfiles              usr/lib/Company/plugins/sys
 src/etc/nagios/logfileschecks   etc/nagios
-src/download_vpsx_log_file.sh   usr/lib/faurecia/plugins/app/fcs/vpsx
-src/download_vpsx_log_file_as.sh    usr/lib/faurecia/plugins/app/fcs/vpsx
+src/download_vpsx_log_file.sh   usr/lib/Company/plugins/app/fcs/vpsx
+src/download_vpsx_log_file_as.sh    usr/lib/Company/plugins/app/fcs/vpsx
 

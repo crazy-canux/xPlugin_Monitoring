@@ -1,5 +1,5 @@
-src/check_nemo_lsf_cpumem.py    usr/lib/faurecia/plugins/app/nemo
-src/check_nemo_lsf_pids.py      usr/lib/faurecia/plugins/app/nemo
-src/check_nemo_lsf_jobs.py      usr/lib/faurecia/plugins/app/nemo
-src/check_nemo_xml_age.py       usr/lib/faurecia/plugins/app/nemo
-src/nemo                        usr/lib/faurecia/plugins/app/nemo
+src/check_nemo_lsf_cpumem.py    usr/lib/Company/plugins/app/nemo
+src/check_nemo_lsf_pids.py      usr/lib/Company/plugins/app/nemo
+src/check_nemo_lsf_jobs.py      usr/lib/Company/plugins/app/nemo
+src/check_nemo_xml_age.py       usr/lib/Company/plugins/app/nemo
+src/nemo                        usr/lib/Company/plugins/app/nemo

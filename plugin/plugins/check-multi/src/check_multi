@@ -61,7 +61,7 @@ BEGIN {
 		}
 	}
 }
-use lib "/usr/lib/faurecia/plugins";
+use lib "/usr/lib/Company/plugins";
 #-------------------------------------------------------------------------------
 #--- vars ----------------------------------------------------------------------
 #-------------------------------------------------------------------------------
@@ -71,7 +71,7 @@ $nagios=lc("nagios");
 $NAGIOS=uc("nagios");
 $Nagios=ucfirst(lc("nagios"));
 $VERSION='check_multi_0.26_506_2011-11-18-20:28'.
-	"\nconfigure '--prefix=/usr' '--libexecdir=/usr/lib/faurecia/plugins' '--with-config_dir=/var/lib/nagios/multichecks' '--with-plugin_path=/usr/lib/faurecia/plugins' '--with-feed_passive_dir=/var/lib/nagios/multichecks/passive' '--localstatedir=/var/cache/nagios'";
+	"\nconfigure '--prefix=/usr' '--libexecdir=/usr/lib/Company/plugins' '--with-config_dir=/var/lib/nagios/multichecks' '--with-plugin_path=/usr/lib/Company/plugins' '--with-feed_passive_dir=/var/lib/nagios/multichecks/passive' '--localstatedir=/var/cache/nagios'";
 #
 #--- RC defines
 $OK=0;
@@ -188,7 +188,7 @@ my %opt=(
 		# child checks indented?
 		indent_label	=> 1,
 		# plugin directory to be added to check_multi search path
-		libexec		=> "/usr/lib/faurecia/plugins",
+		libexec		=> "/usr/lib/Company/plugins",
 		# livestatus socket
 		livestatus	=> "/var/cache/nagios/rw/live",
 		# loose (German) performance data (replace commata by decimal points)
@@ -212,7 +212,7 @@ my %opt=(
 		# create persistent data
 		persistent	=> 0,
 		# path to additional plugins
-		plugin_path	=> "/usr/lib/faurecia/plugins",
+		plugin_path	=> "/usr/lib/Company/plugins",
 		# PNP URL addon
 		pnp_add2url	=> "",
 		# PNP URL

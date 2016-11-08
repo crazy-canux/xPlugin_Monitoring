@@ -3611,7 +3611,7 @@ if (exists $commandline{labelformat}) {
 if (exists $commandline{'with-mymodules-dyn-dir'}) {
   $DBD::MySQL::Server::my_modules_dyn_dir = $commandline{'with-mymodules-dyn-dir'};
 } else {
-  $DBD::MySQL::Server::my_modules_dyn_dir = '/usr/lib/faurecia/plugins';
+  $DBD::MySQL::Server::my_modules_dyn_dir = '/usr/lib/Company/plugins';
 }
 
 if (exists $commandline{environment}) {

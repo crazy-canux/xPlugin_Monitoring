@@ -4,7 +4,7 @@ plugin-ad2012 (1.1.1) trusty; urgency=medium
   * [ad]add exception handle.
   * [ad2012]add xception handler.
 
- -- Vincent BESANCON <vincent.besancon@faurecia.com>  Thu, 24 Sep 2015 16:14:22 +0200
+ -- Vincent BESANCON <vincent.besancon@Company.com>  Thu, 24 Sep 2015 16:14:22 +0200
 
 plugin-ad2012 (1.1.0) trusty; urgency=medium
 
@@ -22,7 +22,7 @@ plugin-ad2012 (1.1.0) trusty; urgency=medium
   * Bump version: 1.0.3 → 1.1.0
   * Fabfile cleanup.
 
- -- Vincent BESANCON <vincent.besancon@faurecia.com>  Mon, 15 Jun 2015 12:12:13 +0200
+ -- Vincent BESANCON <vincent.besancon@Company.com>  Mon, 15 Jun 2015 12:12:13 +0200
 
 plugin-ad2012 (1.0.3~trusty) trusty; urgency=low
 
@@ -42,7 +42,7 @@ plugin-ad2012 (1.0.2) trusty; urgency=medium
 
   * Update package for ubuntu trusty.
 
- -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Thu, 10 Jul 2014 11:39:28 +0200
+ -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Thu, 10 Jul 2014 11:39:28 +0200
 
 plugin-ad2012 (1.0.1) precise; urgency=low
 
@@ -61,16 +61,16 @@ plugin-ad2012 (0.0.3) precise; urgency=low
   * Protect label for perfdata.
   * Set thresholds to NOT required.
 
- -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Tue, 01 Apr 2014 15:20:02 +0200
+ -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Tue, 01 Apr 2014 15:20:02 +0200
 
 plugin-ad2012 (0.0.2) precise; urgency=low
 
   * Use round to have a fload instead of a string. fix threshold compare for mem mode.
 
- -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Tue, 01 Apr 2014 15:02:14 +0200
+ -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Tue, 01 Apr 2014 15:02:14 +0200
 
 plugin-ad2012 (0.0.1) precise; urgency=low
 
   * Initial Release.
 
- -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Mon, 24 Mar 2014 10:10:08 +0100
+ -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Mon, 24 Mar 2014 10:10:08 +0100

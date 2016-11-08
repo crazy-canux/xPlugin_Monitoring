@@ -1,1 +1,1 @@
-src/check_vmware_api.pl     usr/lib/faurecia/plugins/sys/vmware
+src/check_vmware_api.pl     usr/lib/Company/plugins/sys/vmware

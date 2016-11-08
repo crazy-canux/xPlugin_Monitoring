@@ -20,19 +20,19 @@ plugin-nemo (1.0.6) precise; urgency=low
 
   * UNRELEASED
 
- -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Wed, 26 Jun 2013 14:08:34 +0200
+ -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Wed, 26 Jun 2013 14:08:34 +0200
 
 plugin-nemo (1.0.5) precise; urgency=low
 
   * Change XML Urls
 
- -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Wed, 26 Jun 2013 14:03:20 +0200
+ -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Wed, 26 Jun 2013 14:03:20 +0200
 
 plugin-nemo (1.0.4) precise; urgency=low
 
   * Indentation and Downgrade Standard-Version for 3.9.3, i.e. precise version
 
- -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Tue, 09 Apr 2013 17:24:49 +0200
+ -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Tue, 09 Apr 2013 17:24:49 +0200
 
 plugin-nemo (1.0.3) precise; urgency=low
 
@@ -43,20 +43,20 @@ plugin-nemo (1.0.3) precise; urgency=low
     jobs RUN . refs #2095.
   * [Remove docs(unused) and modify dependencies
 
- -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Thu, 28 Mar 2013 09:51:02 +0100
+ -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Thu, 28 Mar 2013 09:51:02 +0100
 
 plugin-nemo (1.0.2) precise; urgency=low
 
   * Convert hostname with lower() to match between XML and nagios HOSTNAME
   * BUMP version
 
- -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Tue, 19 Feb 2013 16:41:44 +0100
+ -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Tue, 19 Feb 2013 16:41:44 +0100
 
 plugin-nemo (1.0.1) precise; urgency=low
 
   * Set executable bit.
 
- -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Tue, 19 Feb 2013 11:51:07 +0100
+ -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Tue, 19 Feb 2013 11:51:07 +0100
 
 plugin-nemo (1.0.0) precise; urgency=low
 
@@ -70,10 +70,10 @@ plugin-nemo (1.0.0) precise; urgency=low
   * update list of plugins for debian packaging
   * fix bug...
 
- -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Tue, 19 Feb 2013 11:31:24 +0100
+ -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Tue, 19 Feb 2013 11:31:24 +0100
 
 plugin-nemo (0.0.1) unstable; urgency=low
 
   * Initial Release.
 
- -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Wed, 13 Feb 2013 16:53:18 +0100
+ -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Wed, 13 Feb 2013 16:53:18 +0100

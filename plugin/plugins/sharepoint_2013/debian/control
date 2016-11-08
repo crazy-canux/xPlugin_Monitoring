@@ -1,7 +1,7 @@
 Source: plugin-sharepoint2013
 Section: misc
 Priority: optional
-Maintainer: EIT/PLM Delivery <dl-it-systemoperating-eitapplications@none.faurecia.com>
+Maintainer: EIT/PLM Delivery <dl-it-systemoperating-eitapplications@none.Company.com>
 Build-Depends: debhelper (>= 9)
 Standards-Version: 3.9.5
 Vcs-Git: http://monitoring-dc.app.corp/git/plugins/sharepoint_2013.git

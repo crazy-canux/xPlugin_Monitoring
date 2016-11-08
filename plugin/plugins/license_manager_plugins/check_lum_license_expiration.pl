@@ -1,5 +1,5 @@
 #!/usr/bin/perl -w
-# Copyright (C) Faurecia <http://www.faurecia.com/>
+# Copyright (C) Canux <http://www.Company.com/>
 #
 # Permission is hereby granted, free of charge, to any person obtaining
 # a copy of this software and associated documentation files (the "Software"),
@@ -126,7 +126,7 @@ EOT
 sub help {
    print "\n==== Check license expiration for LUM license manager ====\n\n";
    print "GPL v3\n";
-   print "(c)2010 Vincent 'v!nZ' BESANCON, <vincent.besancon\@faurecia.com>\n\n";
+   print "(c)2010 Vincent 'v!nZ' BESANCON, <vincent.besancon\@Company.com>\n\n";
    print_description();
    print_usage();
    print <<EOT;

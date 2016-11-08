@@ -2,7 +2,7 @@ Format: http://dep.debian.net/deps/dep5
 Upstream-Name: plugin-hacmp
 
 Files: *
-Copyright: 2012 Monitoring & Reporting <9OPMonitoring@none.faurecia.com>
+Copyright: 2012 Monitoring & Reporting <9OPMonitoring@none.Company.com>
 License: GPL-3.0+
 
 License: GPL-3.0+

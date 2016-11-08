@@ -3,7 +3,7 @@
 # -*- coding: UTF-8 -*-
 # Module        : check_oftp
 # Author        : Vincent BESANCON aka 'v!nZ' <besancon.vincent@gmail.com>
-#                                             <vincent.besancon@faurecia.com>
+#                                             <vincent.besancon@Company.com>
 # Description   : Plugin to check if a OFTP server is available.
 #-------------------------------------------------------------------------------
 # This file is part of check_oftp.

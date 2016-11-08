@@ -7,7 +7,7 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
 
 PROGNAME=`basename $0`
 REVISION=`echo 'Revision: 0.2 ' `
-NAGIOSPLUGSDIR=/usr/lib/faurecia/plugins
+NAGIOSPLUGSDIR=/usr/lib/Company/plugins
 WARN=$3
 CRIT=$4
 

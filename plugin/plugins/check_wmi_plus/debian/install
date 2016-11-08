@@ -1,3 +1,3 @@
-check_wmi_plus.pl           usr/lib/faurecia/plugins/sys/win
+check_wmi_plus.pl           usr/lib/Company/plugins/sys/win
 src/wmi                     etc/nagios
 src/check_wmi_plus.conf     etc/nagios

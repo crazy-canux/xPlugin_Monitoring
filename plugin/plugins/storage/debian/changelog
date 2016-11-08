@@ -14,7 +14,7 @@ plugin-storage (1.2.0) trusty; urgency=medium
   [ Lei LIU ]
   * [Storage] Add new scripts to check snapshot number.
 
- -- Vincent BESANCON <vincent.besancon@faurecia.com>  Mon, 23 Feb 2015 16:02:28 +0100
+ -- Vincent BESANCON <vincent.besancon@Company.com>  Mon, 23 Feb 2015 16:02:28 +0100
 
 plugin-storage (1.1.1) precise; urgency=medium
 
@@ -31,17 +31,17 @@ plugin-storage (1.1.1) precise; urgency=medium
   [ Patrick BAILAT ]
   * [Storage] add regex on exit message
 
- -- Patrick BAILAT <patrick.bailat-ext@faurecia.com>  Thu, 30 Oct 2014 10:20:14 +0100
+ -- Patrick BAILAT <patrick.bailat-ext@Company.com>  Thu, 30 Oct 2014 10:20:14 +0100
 
 plugin-storage (1.1.0) precise; urgency=medium
 
   * Modify changelog
   * Modify changelog
 
- -- Patrick BAILAT <patrick.bailat-ext@faurecia.com>  Wed, 30 Jul 2014 09:31:04 +0200
+ -- Patrick BAILAT <patrick.bailat-ext@Company.com>  Wed, 30 Jul 2014 09:31:04 +0200
 
 plugin-storage (1.0.0) precise; urgency=low
 
   * Initial Release.
 
- -- Patrick BAILAT <patrick.bailat-ext@faurecia.com>  Tue, 29 Jul 2014 10:47:46 +0200
+ -- Patrick BAILAT <patrick.bailat-ext@Company.com>  Tue, 29 Jul 2014 10:47:46 +0200

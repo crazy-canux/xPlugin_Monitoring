@@ -2,10 +2,10 @@ plugin-elasticsearch (1.0.2-2) trusty; urgency=medium
 
   * create file install
 
- -- Anthony COMTOIS <anthony.comtois@faurecia.com>  Fri, 18 Jul 2014 15:45:54 +0200
+ -- Anthony COMTOIS <anthony.comtois@Company.com>  Fri, 18 Jul 2014 15:45:54 +0200
 
 plugin-elasticsearch (1.0.2-1) trusty; urgency=low
 
   * Initial Release.
 
- -- Anthony COMTOIS <anthony.comtois@faurecia.com>  Thu, 17 Jul 2014 09:54:57 +0200
+ -- Anthony COMTOIS <anthony.comtois@Company.com>  Thu, 17 Jul 2014 09:54:57 +0200

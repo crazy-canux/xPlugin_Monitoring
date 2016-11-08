@@ -16,16 +16,16 @@ plugin-ebcs (1.1.0) trusty; urgency=medium
   * Add bumpversion config file.
   * Bump version: 1.0.1 → 1.1.0
 
- -- Vincent BESANCON <vincent.besancon@faurecia.com>  Tue, 07 Jul 2015 15:19:26 +0200
+ -- Vincent BESANCON <vincent.besancon@Company.com>  Tue, 07 Jul 2015 15:19:26 +0200
 
 plugin-ebcs (1.0.1) trusty; urgency=medium
 
   * Update package for ubuntu trusty.
 
- -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Thu, 10 Jul 2014 14:07:43 +0200
+ -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Thu, 10 Jul 2014 14:07:43 +0200
 
 plugin-ebcs (1.0.0) precise; urgency=low
 
   * Initial Release.
 
- -- Adrien CREMET <adrien.cremet@faurecia.com>  Mon, 21 Oct 2013 11:06:00 +0200
+ -- Adrien CREMET <adrien.cremet@Company.com>  Mon, 21 Oct 2013 11:06:00 +0200

@@ -3,7 +3,7 @@ Upstream-Name: nagios-plugin-elasticsearch
 Source: https://github.com/anchor/nagios-plugin-elasticsearch
 
 Files: debian/*
-Copyright: 2014 Monitoring & Reporting <dl-itop-monitoring@faurecia.com>
+Copyright: 2014 Monitoring & Reporting <dl-itop-monitoring@Company.com>
 License: MIT
 
 Files: *

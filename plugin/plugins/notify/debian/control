@@ -1,7 +1,7 @@
 Source: plugin-notify
 Section: misc
 Priority: extra
-Maintainer: Yves ANDOLFATTO <yves.andolfatto@faurecia.com>
+Maintainer: Yves ANDOLFATTO <yves.andolfatto@Company.com>
 Build-Depends: debhelper (>= 9)
 Standards-Version: 3.9.5
 Vcs-Git: http://monitoring-dc.app.corp/git/plugins/notify.git

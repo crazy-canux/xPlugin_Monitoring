@@ -1,2 +1,2 @@
-usr/lib/faurecia/plugins/app/nrft/check_nrft_nb_batch.py    usr/lib/faurecia/plugins/app/nrft/nb_batch.py
-usr/lib/faurecia/plugins/app/nrft/check_nrft_loop_batch.py  usr/lib/faurecia/plugins/app/nrft/loop_batch.py
+usr/lib/Company/plugins/app/nrft/check_nrft_nb_batch.py    usr/lib/Company/plugins/app/nrft/nb_batch.py
+usr/lib/Company/plugins/app/nrft/check_nrft_loop_batch.py  usr/lib/Company/plugins/app/nrft/loop_batch.py

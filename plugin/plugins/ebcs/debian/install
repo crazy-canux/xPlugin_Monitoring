@@ -1,2 +1,2 @@
-src/check_ebcs_application_state.py         usr/lib/faurecia/plugins/app/ebcs
-src/check_ebcs_connection.py                usr/lib/faurecia/plugins/app/ebcs
+src/check_ebcs_application_state.py         usr/lib/Company/plugins/app/ebcs
+src/check_ebcs_connection.py                usr/lib/Company/plugins/app/ebcs
