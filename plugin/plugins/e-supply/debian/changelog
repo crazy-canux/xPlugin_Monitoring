@@ -1,3 +1,33 @@
+plugin-e-supply (0.0.5) trusty; urgency=medium
+
+  [ Canux CHENG ]
+  * [update]remove deadlock check.
+  * [update]remove db deadlock and rename to timecheck.
+
+  [ Yves ANDOLFATTO ]
+
+ -- Yves ANDOLFATTO <yves.andolfatto@faurecia.com>  Mon, 19 Dec 2016 12:22:17 +0100
+
+plugin-e-supply (0.0.4) trusty; urgency=medium
+
+  [ Canux CHENG ]
+  * [update]update debian for control again
+  * [update]update the control for dependence.
+
+  [ Adja Fatou FALL ]
+
+ -- Adja Fatou FALL <falladj@euedcmon0009.edc.eu.corp>  Wed, 23 Nov 2016 11:41:06 +0100
+
+plugin-e-supply (0.0.3) trusty; urgency=medium
+
+  [ Canux CHENG ]
+  * [update]update debian/control
+  * [update]update debian for control
+
+  [ Adja Fatou FALL ]
+
+ -- Adja Fatou FALL <falladj@euedcmon0009.edc.eu.corp>  Mon, 21 Nov 2016 10:50:48 +0100
+
 plugin-e-supply (0.0.2) trusty; urgency=medium
 
   [ Canux CHENG ]
@@ -11,4 +41,4 @@ plugin-e-supply (0.0.1) trusty; urgency=low
 
   * Initial Release.
 
- -- Monitoring & Reporting <dl-itop-monitoring@Company.com>  Mon, 29 Aug 2016 09:22:56 +0200
+ -- Monitoring & Reporting <dl-itop-monitoring@faurecia.com>  Mon, 29 Aug 2016 09:22:56 +0200

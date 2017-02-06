@@ -46,7 +46,7 @@ repo_list = [
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='git clone repo')
     parser.add_argument('-d', '--dest',
-                        default='/home/chengca/myCode/xplugin/plugin/plugins/',
+                        default='/home/chengca/myCode/zplugin/plugin/plugins/',
                         required=False,
                         help='default is %(default)s',
                         dest='dest')

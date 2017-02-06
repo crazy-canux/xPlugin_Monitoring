@@ -1,7 +1,7 @@
 Source: plugin-e-supply
 Section: misc
 Priority: extra
-Maintainer: Monitoring & Reporting <dl-itop-monitoring@Company.com>
+Maintainer: Canux CHENG canux.cheng@faurecia.com
 Build-Depends: debhelper (>= 9)
 Standards-Version: 3.9.5
 Vcs-Git: http://monitoring-dc.app.corp/git/plugins/plugin-e-supply.git
@@ -12,5 +12,6 @@ Architecture: all
 Depends:
     ${shlibs:Depends},
     ${misc:Depends},
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+    python2.7,
+    python-pymssql,
+Description: Plugin for e-supply function monitoring.

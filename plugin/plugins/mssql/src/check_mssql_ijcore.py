@@ -26,22 +26,22 @@ import os
 import sys
 import logging
 import argparse
+import pickle
 import pymssql
-import datetime
 
 
 class Nagios(object):
 
     """Basic class for nagios."""
 
-    def __init__(self, name=None, version='1.0.0', description='For e-supply'):
+    def __init__(self, name=None, version='1.0.0.0', description='For IJCORE MSSQL'):
         self.__name = os.path.basename(sys.argv[0]) if not name else name
         self.__version = version
         self.__description = description
 
         # Init the log
         logging.basicConfig(format='[%(levelname)s] (%(module)s) %(message)s')
-        self.logger = logging.getLogger("e-supply")
+        self.logger = logging.getLogger("ijcore")
         self.logger.setLevel(logging.INFO)
 
         # Init the argument
@@ -56,7 +56,7 @@ class Nagios(object):
         self.logger.debug("Init Nagios")
 
         # Init output data.
-        self.output_ = ""
+        self._output = ""
         self.shortoutput = ""
         self.longoutput = []
         self.perfdata = []
@@ -66,7 +66,7 @@ class Nagios(object):
             self.logger.debug("===== END DEBUG =====")
 
     def __define_options(self):
-        self.parser = argparse.ArgumentParser(description="Plugin for e-supply.")
+        self.parser = argparse.ArgumentParser(description="Plugin for IJCORE MSSQL.")
         self.parser.add_argument('-V', '--version',
                                  action='version',
                                  version='%s %s' % (self.__name,
@@ -79,7 +79,7 @@ class Nagios(object):
                                  dest='debug')
 
     def define_sub_options(self):
-        self.mssql_parser = self.parser.add_argument_group('E-supply options',
+        self.mssql_parser = self.parser.add_argument_group('Mssql options',
                                                            'For db connect.')
         self.subparsers = self.parser.add_subparsers(title='Action:',
                                                      description='The mode.',
@@ -95,20 +95,20 @@ class Nagios(object):
         if not substitute:
             substitute = {}
 
-        self.output_ += "{0}".format(self.shortoutput)
+        self._output += "{0}".format(self.shortoutput)
         if self.longoutput:
-            self.output_ = self.output_.rstrip("\n")
-            self.output_ += "\n{0}".format(
+            self._output = self._output.rstrip("\n")
+            self._output += "\n{0}".format(
                 "\n".join(self.longoutput[:long_output_limit]))
             if long_output_limit:
-                self.output_ += "\n(...showing only first {0} lines, " \
+                self._output += "\n(...showing only first {0} lines, " \
                     "{1} elements remaining...)".format(
                         long_output_limit,
                         len(self.longoutput[long_output_limit:]))
         if self.perfdata:
-            self.output_ = self.output_.rstrip("\n")
-            self.output_ += " | {0}".format(" ".join(self.perfdata))
-        return self.output_.format(**substitute)
+            self._output = self._output.rstrip("\n")
+            self._output += " | {0}".format(" ".join(self.perfdata))
+        return self._output.format(**substitute)
 
     def ok(self, msg):
         raise NagiosOk(msg)
@@ -189,7 +189,7 @@ class Mssql(Nagios):
             self.unknown("Fetchall error: %s" % e)
         try:
             self.cursor.close()
-            self.logger.debug("Close cursor ok")
+            self.logger.debug("close cursor ok")
         except pymssql.Error as e:
             self.unknown("Close cursor error: %s" % e)
         return self.results
@@ -198,7 +198,7 @@ class Mssql(Nagios):
         """Close the connection."""
         try:
             self.conn.close()
-            self.logger.debug("Close connect ok")
+            self.logger.debug("Close connect succeed")
         except pymssql.Error as e:
             self.unknown("Close connect error: %s" % e)
 
@@ -242,165 +242,185 @@ class Mssql(Nagios):
                                        dest='charset')
 
 
-class TimeCheck(Mssql):
+class Ijcore(Mssql):
 
-    """For e-supply function monitoring."""
+    """Use nagios to monitoring IJCore to replace ijcoreM."""
 
     def __init__(self, *args, **kwargs):
-        super(TimeCheck, self).__init__(*args, **kwargs)
-        self.logger.debug("Init TimeCheck")
+        super(Ijcore, self).__init__(*args, **kwargs)
+        self.logger.debug("Init ijcore")
 
     def define_sub_options(self):
-        super(TimeCheck, self).define_sub_options()
-        self.sql_parser = self.subparsers.add_parser('timecheck',
-                                                     help='esupply function monitoring .',
-                                                     description='Options\
-                                                     for esupply.')
-        self.sql_parser.add_argument('-w', '--warning',
-                                     default=0,
-                                     type=int,
-                                     required=False,
-                                     help='Warning minutes, default is %(default)s',
-                                     dest='warning')
-        self.sql_parser.add_argument('-c', '--critical',
-                                     default=0,
-                                     type=int,
-                                     required=False,
-                                     help='Critical minutes, default is %(default)s',
-                                     dest='critical')
-        self.sql_parser.add_argument('--as_dict',
-                                     default=False,
-                                     type=bool,
-                                     required=False,
-                                     help='Set the return mode.',
-                                     dest='as_dict')
+        super(Ijcore, self).define_sub_options()
+        self.ijcore_parser = self.subparsers.add_parser('ijcore',
+                                                        help='For ijcore db',
+                                                        description='Options\
+                                                        for ijcore.')
+        self.ijcore_parser.add_argument('--localid',
+                                        required=True,
+                                        help='LocalID.',
+                                        dest='localid')
+        self.ijcore_parser.add_argument('--messagecolumn',
+                                        required=True,
+                                        help='MessageColumn',
+                                        dest='messagecolumn')
+        self.ijcore_parser.add_argument('--localtimecolumn',
+                                        required=True,
+                                        help='LocalTimeColumn',
+                                        dest='localtimecolumn')
+        self.ijcore_parser.add_argument('-t', '--table',
+                                        required=True,
+                                        help='Table name.',
+                                        dest='table')
+        self.ijcore_parser.add_argument('-w', '--where',
+                                        required=True,
+                                        help='Where condition.',
+                                        dest='where')
+        self.ijcore_parser.add_argument('-c', '--code',
+                                        required=True,
+                                        help='Unique ID for each alert on one ijcore server.',
+                                        dest='code')
+        self.ijcore_parser.add_argument('-m', '--message',
+                                        default='No new entry fond.',
+                                        required=True,
+                                        help='The error type + name + message.',
+                                        dest='message')
+        self.ijcore_parser.add_argument('-n', '--number',
+                                        default=100,
+                                        type=int,
+                                        required=False,
+                                        help="The max number show in nagios dashboard. Default is %(default)s.",
+                                        dest="number")
+        self.ijcore_parser.add_argument('--as_dict',
+                                        default=True,
+                                        type=bool,
+                                        required=False,
+                                        help='Set the return mode.',
+                                        dest='as_dict')
 
-    def timecheck_handle(self):
-        self.sql = "select create_date, location from error_log where type='technical' and sub_type='Scheduler'"
-        status = self.ok
-        self.shortoutput = "Create_date already up to date."
-
-        self.__results = self.query(self.sql)
-        self.logger.debug("results: {}".format(self.__results))
-        # [(datetime.datetime(2016, 9, 9, 14, 41, 15), u'Server: Ip46_Scheduler-Tirgger'), (datetime.datetime(2016, 9, 9, 14, 41, 15), u'Server: Ip46_Scheduler-Tirgger')]
-        self.close()
-        if self.__results:
-            self.longoutput.append("-------------------------------\n")
-            for create_date, location in self.__results:
-                self.logger.debug("create_date: {}".format(create_date))
-                self.logger.debug("location: {}".format(location))
-                current_datetime = datetime.datetime.now()
-                self.logger.debug("current_datetime: {}".format(current_datetime))
-                self.longoutput.append("create_date: " + str(create_date) + "\n" + "location: " + str(location) + "\n")
-                if current_datetime - create_date > datetime.timedelta(minutes=self.args.warning):
-                    status = self.warning
-                    self.shortoutput = "Create_date not update in {} min".format(self.args.warning)
-                if current_datetime - create_date > datetime.timedelta(minutes=self.args.critical):
-                    status = self.critical
-                    self.shortoutput = "Create_date not update in {} min".format(self.args.critical)
+    def ijcore_handle(self):
+        # Init pickle data.
+        if os.environ.get("NAGIOSENV"):
+            self.picklefile_path = '/var/tmp/plugin/{NAGIOSENV}'.format(**os.environ)
         else:
-            self.shortoutput = "Everything up to date"
+            self.picklefile_path = '/var/tmp/plugin'
+        try:
+            if not os.path.isdir(self.picklefile_path):
+                os.makedirs(self.picklefile_path)
+        except OSError:
+            self.unknown("Unable to create the retention folder\
+                         {0._picklefile_path}".format(self))
+        self.picklefile_name = os.path.basename(sys.argv[0]) + "_" + self.args.server
+        self.picklefile_code = self.args.code
+        self.picklefile = '{0}/{1}_{2}.pkl'.format(
+            self.picklefile_path,
+            self.picklefile_name,
+            self.picklefile_code)
+        self.logger.debug(">>> picklefile: {}".format(self.picklefile))
 
-        # Return status with message to Nagios.
-        status(self.output(long_output_limit=None))
-        self.logger.debug("Return status and exit to Nagios.")
+        # Init the status
+        status = self.ok
+        self.shortoutput = "No new entry found."
 
-
-class Esupply(Mssql):
-
-    """Count the return value and show the lines.
-
-    Monitoring e-supply process.
-
-    """
-
-    def __init__(self, *args, **kwargs):
-        super(Esupply, self).__init__(*args, **kwargs)
-        self.logger.debug("Init esupply")
-
-    def define_sub_options(self):
-        super(Esupply, self).define_sub_options()
-        self.esupply_parser = self.subparsers.add_parser('esupply',
-                                                         help='For esupply db',
-                                                         description='Options\
-                                                         for esupply.')
-        self.esupply_parser.add_argument('-s', '--sql',
-                                         action='append',
-                                         type=str,
-                                         required=True,
-                                         help='The sql or store procedure.',
-                                         dest='sql')
-        self.esupply_parser.add_argument('-w', '--warning',
-                                         default=0,
-                                         type=int,
-                                         required=False,
-                                         help='Warning value for sql',
-                                         dest='warning')
-        self.esupply_parser.add_argument('-c', '--critical',
-                                         default=0,
-                                         type=int,
-                                         required=False,
-                                         help='Critical value for sql',
-                                         dest='critical')
-        self.esupply_parser.add_argument('--as_dict',
-                                         default=True,
-                                         type=bool,
-                                         required=False,
-                                         help='Set the return mode.',
-                                         dest='as_dict')
-
-    def esupply_handle(self):
-        self.__results = self.query(self.args.sql)
+        # Connect to Mssql and Run sql query, then close the connection.
+        self.__sql = 'SELECT' + ' ' + self.args.localid +\
+            ',' + self.args.messagecolumn +\
+            ',' + self.args.localtimecolumn + ' ' +\
+            'FROM' + ' ' + self.args.table + ' ' +\
+            'WHERE' + ' ' + self.args.where
+        self.__results = self.query(self.__sql)
         self.close()
         self.logger.debug("results: {}".format(self.__results))
-        self.__result = int(len(self.__results))
-        self.logger.debug("result: {}".format(self.__result))
-        status = self.ok
+        # [{u'dataProductionInternalOrderBarcode': u'B8SSILX162210019',
+        # u'RepeatedBarcode': 2,
+        # u'dateTime': datetime.datetime(2016, 12, 13, 7, 30, 4, 567000)}]
 
-        # Compare the vlaue.
-        if self.__result > self.args.warning:
-            status = self.warning
-        if self.__result > self.args.critical:
-            status = self.critical
-
-        # Output for nagios
-        self.shortoutput = "The result is {}".format(self.__result)
-        self.longoutput.append("-------------------------------\n")
-        if self.__result:
-            if isinstance(self.__results[0], dict):
-                keys = self.__results[0].keys()
-                for loop in range(0, self.__result):
-                    for key in keys:
-                        value = str(self.__results[loop].get(key)).strip("\n")
-                        line = key + ": " + value
-                        self.longoutput.append(line + "\n")
-                    self.longoutput.append("-------------------------------\n")
-        self.perfdata.append("\n{sql}={result};{warn};{crit};0;".format(
-            crit=self.args.critical,
-            warn=self.args.warning,
-            result=self.__result,
-            sql=self.args.sql))
+        # Check if the file exist.
+        if not os.path.isfile(self.picklefile):
+            self.__dump_id(self.__results, self.picklefile)
+            self.unknown("This is the first time to run this plugin, please force check.")
+        else:
+            # Read old dump_list from temp file.
+            self.dump_list = self.__load_id(self.picklefile)
+            self.logger.debug("dump_list: {}".format(self.dump_list))
+            # Write new self.__results in temp file.
+            self.__dump_id(self.__results, self.picklefile)
+            # Compare old dump_list and new self.__results.
+            self.diff_list = self.__compare_id(self.__results, self.dump_list)
+            self.logger.debug("diff_list: {}".format(self.diff_list))
+            if self.diff_list:
+                status = self.critical
+                self.__write_longoutput(self.diff_list)
+                self.shortoutput = self.args.message
+            self.__write_perfdata(self.diff_list)
 
         # Return status with message to Nagios.
         status(self.output(long_output_limit=None))
         self.logger.debug("Return status and exit to Nagios.")
 
+    def __compare_id(self, new, old):
+        """Compare the localid and return a different list."""
+        self.diff_list = []
+        old_localid_list = []
+        [old_localid_list.append(old_dict.get(self.args.localid)) for old_dict in old]
+        for new_dict in new:
+            self.logger.debug("new_dict: {}".format(new_dict))
+            new_localid = new_dict.get(self.args.localid)
+            if new_localid not in old_localid_list:
+                self.diff_list.append(new_dict)
+        return self.diff_list
 
-class Diff(TimeCheck, Esupply):
+    def __dump_id(self, obj, filename):
+        """Write something to the pickfile."""
+        try:
+            fw = open(filename, 'wb')
+            pickle.dump(obj, fw)
+            fw.close()
+        except Exception as e:
+            self.unknown("dump_id error: {}".format(e))
+
+    def __load_id(self, filename):
+        """Read something from the pickfile."""
+        try:
+            fr = open(filename, 'rb')
+            obj = pickle.load(fr)
+            fr.close()
+            return obj
+        except Exception as e:
+            self.unknown("load_id error: {}".format(e))
+
+    def __write_longoutput(self, results):
+        self.longoutput.append("--------------------------------------")
+        if isinstance(results[0], dict):
+            for loop in range(0, len(results)):
+                keys = results[loop].keys()
+                for key in keys:
+                    value = str(results[loop].get(key)).strip()
+                    line = key + ": " + value
+                    self.longoutput.append(line)
+                self.longoutput.append("--------------------------------------")
+
+    def __write_perfdata(self, results):
+        self.perfdata.append("\n{code}={result};{warn};{crit};0;".format(
+            crit=0,
+            warn=0,
+            result=int(len(results)),
+            code=self.args.code))
+
+
+class Register(Ijcore):
 
     """Summary all function monitoring class."""
 
     def __init__(self, *args, **kwargs):
-        super(Diff, self).__init__(*args, **kwargs)
+        super(Register, self).__init__(*args, **kwargs)
 
 
 def main():
-    plugin = Diff()
+    plugin = Register()
     arguments = sys.argv[1:]
-    if 'timecheck' in arguments:
-        plugin.timecheck_handle()
-    elif 'esupply' in arguments:
-        plugin.esupply_handle()
+    if 'ijcore' in arguments:
+        plugin.ijcore_handle()
     else:
         plugin.unknown("Unknown actions.")
 

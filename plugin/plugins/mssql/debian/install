@@ -1,3 +1,4 @@
-src/check_mssql_account.py   usr/lib/Company/plugins/app/mssql
-src/check_mssql_health.pl    usr/lib/Company/plugins/app/mssql
-src/check_mssql_sql.py       usr/lib/Company/plugins/app/mssql
+src/check_mssql_account.py   usr/lib/faurecia/plugins/app/mssql
+src/check_mssql_health.pl    usr/lib/faurecia/plugins/app/mssql
+src/check_mssql_sql.py       usr/lib/faurecia/plugins/app/mssql
+src/check_mssql_ijcore.py    usr/lib/faurecia/plugins/app/mssql

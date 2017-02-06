@@ -4502,7 +4502,7 @@ if (exists $commandline{labelformat}) {
 if (exists $commandline{'with-mymodules-dyn-dir'}) {
   $DBD::MSSQL::Server::my_modules_dyn_dir = $commandline{'with-mymodules-dyn-dir'};
 } else {
-  $DBD::MSSQL::Server::my_modules_dyn_dir = '/usr/lib/Company/plugins';
+  $DBD::MSSQL::Server::my_modules_dyn_dir = '/usr/lib/faurecia/plugins';
 }
 
 
