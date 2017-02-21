@@ -1,11 +1,11 @@
 Source: plugin-e-supply
 Section: misc
 Priority: extra
-Maintainer: Canux CHENG canux.cheng@faurecia.com
+Maintainer: Canux CHENG canuxcheng@gmail.com
 Build-Depends: debhelper (>= 9)
 Standards-Version: 3.9.5
-Vcs-Git: http://monitoring-dc.app.corp/git/plugins/plugin-e-supply.git
-Vcs-Browser: http://monitoring-dc.app.corp/git/?p=plugins/plugin-e-supply.git
+Vcs-Git: http://canuxcheng.com/git/plugins/plugin-e-supply.git
+Vcs-Browser: http://canuxcheng.com/git/?p=plugins/plugin-e-supply.git
 
 Package: plugin-e-supply
 Architecture: all

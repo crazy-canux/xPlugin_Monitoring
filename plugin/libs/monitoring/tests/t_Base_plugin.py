@@ -53,7 +53,7 @@ class TestBasePluginPickle(unittest.TestCase):
     def setUp(self):
         sys.argv = sys.argv[:1]
         args = [
-            '-H', 'monitoring-dc.app.corp',
+            '-H', 'canuxcheng.com',
         ]
         sys.argv.extend(args)
 
@@ -110,7 +110,7 @@ class TestBasePlugin(unittest.TestCase):
     def setUp(self):
         sys.argv = sys.argv[:1]
         args = [
-            '-H', 'monitoring-dc.app.corp',
+            '-H', 'canuxcheng.com',
         ]
         sys.argv.extend(args)
 
@@ -135,5 +135,5 @@ class TestBasePlugin(unittest.TestCase):
 
     def test_arguments_parser(self):
         """Test base plugin argument value getter."""
-        self.assertEqual('monitoring-dc.app.corp',
+        self.assertEqual('canuxcheng.com',
                          self.plugin.options.hostname)

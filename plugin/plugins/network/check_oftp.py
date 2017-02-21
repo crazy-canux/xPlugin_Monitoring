@@ -2,8 +2,8 @@
 #===============================================================================
 # -*- coding: UTF-8 -*-
 # Module        : check_oftp
-# Author        : Vincent BESANCON aka 'v!nZ' <besancon.vincent@gmail.com>
-#                                             <vincent.besancon@Company.com>
+# Author        : Canux CHENG aka 'v!nZ' <canuxcheng@gmail.com>
+#                                             <canuxcheng@gmail.com>
 # Description   : Plugin to check if a OFTP server is available.
 #-------------------------------------------------------------------------------
 # This file is part of check_oftp.

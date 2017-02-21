@@ -4,7 +4,7 @@ plugin-ad2012 (1.1.1) trusty; urgency=medium
   * [ad]add exception handle.
   * [ad2012]add xception handler.
 
- -- Vincent BESANCON <vincent.besancon@Company.com>  Thu, 24 Sep 2015 16:14:22 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Thu, 24 Sep 2015 16:14:22 +0200
 
 plugin-ad2012 (1.1.0) trusty; urgency=medium
 
@@ -13,7 +13,7 @@ plugin-ad2012 (1.1.0) trusty; urgency=medium
   * [AD2012] Remove warning/critical arg in mode_dns and perf_data.
   * [AD 2012] Delete the check for if regx is NONE.
 
-  [ Vincent BESANCON ]
+  [ Canux CHENG ]
   * Fix flake8 warnings.
   * check_ad_xml: dns: use a real regexp object in argument.
   * check_ad_xml: dns: provides pattern to test_regexp_and_exit().
@@ -22,13 +22,13 @@ plugin-ad2012 (1.1.0) trusty; urgency=medium
   * Bump version: 1.0.3 → 1.1.0
   * Fabfile cleanup.
 
- -- Vincent BESANCON <vincent.besancon@Company.com>  Mon, 15 Jun 2015 12:12:13 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Mon, 15 Jun 2015 12:12:13 +0200
 
 plugin-ad2012 (1.0.3~trusty) trusty; urgency=low
 
   * Release 1.0.3 with trusty changes.
 
- -- Vincent BESANCON <besancon.vincent@gmail.com>  Fri, 11 Jul 2014 12:00:13 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Fri, 11 Jul 2014 12:00:13 +0200
 
 plugin-ad2012 (1.0.3~precise) precise; urgency=low
 
@@ -36,41 +36,41 @@ plugin-ad2012 (1.0.3~precise) precise; urgency=low
   * check_ad_xml: replace empty mode by session mode.
   * Depends on python-monitoring-venv >= 1.5.1.
 
- -- Vincent BESANCON <besancon.vincent@gmail.com>  Fri, 11 Jul 2014 11:43:23 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Fri, 11 Jul 2014 11:43:23 +0200
 
 plugin-ad2012 (1.0.2) trusty; urgency=medium
 
   * Update package for ubuntu trusty.
 
- -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Thu, 10 Jul 2014 11:39:28 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Thu, 10 Jul 2014 11:39:28 +0200
 
 plugin-ad2012 (1.0.1) precise; urgency=low
 
   * check_ad_xml: add detection of empty tags.
 
- -- Vincent BESANCON <besancon.vincent@gmail.com>  Wed, 18 Jun 2014 14:29:28 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Wed, 18 Jun 2014 14:29:28 +0200
 
 plugin-ad2012 (1.0.0) precise; urgency=low
 
   * [check_ad_xml] heavy refactoring to add support for modes.
 
- -- Vincent BESANCON <besancon.vincent@gmail.com>  Tue, 06 May 2014 15:21:44 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Tue, 06 May 2014 15:21:44 +0200
 
 plugin-ad2012 (0.0.3) precise; urgency=low
 
   * Protect label for perfdata.
   * Set thresholds to NOT required.
 
- -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Tue, 01 Apr 2014 15:20:02 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Tue, 01 Apr 2014 15:20:02 +0200
 
 plugin-ad2012 (0.0.2) precise; urgency=low
 
   * Use round to have a fload instead of a string. fix threshold compare for mem mode.
 
- -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Tue, 01 Apr 2014 15:02:14 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Tue, 01 Apr 2014 15:02:14 +0200
 
 plugin-ad2012 (0.0.1) precise; urgency=low
 
   * Initial Release.
 
- -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Mon, 24 Mar 2014 10:10:08 +0100
+ -- Canux CHENG <canuxcheng@gmail.com>  Mon, 24 Mar 2014 10:10:08 +0100

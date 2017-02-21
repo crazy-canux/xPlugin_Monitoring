@@ -7,7 +7,7 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
 
 PROGNAME=`basename $0`
 REVISION=`echo 'Revision: 0.2 ' `
-NAGIOSPLUGSDIR=/usr/lib/Company/plugins
+NAGIOSPLUGSDIR=/usr/lib/canux/plugins
 WARN=$3
 CRIT=$4
 

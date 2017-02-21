@@ -37,7 +37,7 @@ class TestHTTPPlugin(unittest.TestCase):
 
     def setUp(self):
         sys.argv = sys.argv[:1]
-        args = ['-H', 'monitoring-dc.app.corp']
+        args = ['-H', 'canuxcheng.com']
         sys.argv.extend(args)
         self.plugin = NagiosPluginHTTP()
 

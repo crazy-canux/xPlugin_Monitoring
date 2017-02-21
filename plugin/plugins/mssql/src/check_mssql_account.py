@@ -1,6 +1,6 @@
 #!/usr/bin/env python2.7
 # -*- coding: utf-8 -*-
-# Copyright (C) Faurecia <http://www.faurecia.com/>
+# Copyright (C) Canux CHENG <canuxcheng@gmail.com>
 #
 # Permission is hereby granted, free of charge, to any person obtaining
 # a copy of this software and associated documentation files (the "Software"),
@@ -27,7 +27,7 @@ from monitoring.nagios.plugin import NagiosPluginMSSQL
 
 logger = logging.getLogger('plugin.sql')
 
-# define new args 
+# define new args
 class PluginMSSQL(NagiosPluginMSSQL):
     def define_plugin_arguments(self):
         super(PluginMSSQL,self).define_plugin_arguments()

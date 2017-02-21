@@ -1,11 +1,11 @@
 Source: plugin-omnibus
 Section: misc
 Priority: extra
-Maintainer: Yves ANDOLFATTO <yves.andolfatto@Company.com>
+Maintainer: Canux CHENG <canuxcheng@gmail.com>
 Build-Depends: debhelper (>= 8.0.0)
 Standards-Version: 3.9.3
-Vcs-Git: http://monitoring-dc.app.corp/git/plugins/omnibus.git
-Vcs-Browser: http://monitoring-dc.app.corp/git/?p=plugins/omnibus.git
+Vcs-Git: http://canuxcheng.com/git/plugins/omnibus.git
+Vcs-Browser: http://canuxcheng.com/git/?p=plugins/omnibus.git
 
 Package: plugin-omnibus
 Architecture: amd64

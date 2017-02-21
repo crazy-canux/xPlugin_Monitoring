@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright (C) Canux <http://www.Company.com/>
+# Copyright (C) Canux CHENG <canuxcheng@gmail.com>
 #
 # Permission is hereby granted, free of charge, to any person obtaining
 # a copy of this software and associated documentation files (the "Software"),
@@ -83,7 +83,7 @@ class RemoteInterfaceSession(object):
 
         # FTP session
         >>> session = RemoteInterfaceSession(\
-            "ftp://Nagios:Company1+@10.88.11.21:4000/ALERT_BEGNESEQ0001.xml")
+            "ftp://Nagios:canux1+@10.88.11.21:4000/ALERT_BEGNESEQ0001.xml")
         >>> session.connect()
         >>> isinstance(session._remote, ftplib.FTP)
         True
@@ -142,7 +142,7 @@ class RemoteInterfaceSession(object):
 
         # FTP session
         >>> session = RemoteInterfaceSession(\
-            "ftp://Nagios:Company1+@10.88.11.21:4000/ALERT_BEGNESEQ0001.xml")
+            "ftp://Nagios:canux1+@10.88.11.21:4000/ALERT_BEGNESEQ0001.xml")
         >>> session.connect()
         >>> data = session.read_data()
         >>> "<?xml" in data

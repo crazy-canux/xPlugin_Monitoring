@@ -1,2 +1,2 @@
-src/hacmp               usr/lib/Company/plugins/sys/hacmp
-src/check_hacmp_rg.py   usr/lib/Company/plugins/sys/hacmp
+src/hacmp               usr/lib/canux/plugins/sys/hacmp
+src/check_hacmp_rg.py   usr/lib/canux/plugins/sys/hacmp

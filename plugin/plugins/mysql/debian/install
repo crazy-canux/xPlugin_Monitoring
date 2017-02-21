@@ -1,1 +1,1 @@
-src/check_mysql_health.pl    usr/lib/Company/plugins/app/mysql
+src/check_mysql_health.pl    usr/lib/canux/plugins/app/mysql

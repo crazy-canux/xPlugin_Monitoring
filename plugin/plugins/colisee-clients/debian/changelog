@@ -3,47 +3,47 @@ plugin-colisee-clients (1.1.0) trusty; urgency=medium
   [ Lei LIU ]
   * [Colisee] LUM: heavy refactoring of INI config.
 
-  [ Vincent BESANCON ]
+  [ Canux CHENG ]
   * [fabfile] upgraded to trusty.
 
- -- Vincent BESANCON <vincent.besancon@Company.com>  Tue, 23 Jun 2015 09:17:58 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Tue, 23 Jun 2015 09:17:58 +0200
 
 plugin-colisee-clients (1.0.5) trusty; urgency=medium
 
   * Update package for ubuntu trusty.
 
- -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Thu, 10 Jul 2014 12:42:11 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Thu, 10 Jul 2014 12:42:11 +0200
 
 plugin-colisee-clients (1.0.4) precise; urgency=low
 
-  [ Adrien CREMET ]
+  [ Canux CHENG ]
   * New backup ini file added.
 
-  [ Yves ANDOLFATTO ]
+  [ Canux CHENG ]
 
- -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Thu, 13 Mar 2014 09:36:44 +0100
+ -- Canux CHENG <canuxcheng@gmail.com>  Thu, 13 Mar 2014 09:36:44 +0100
 
 plugin-colisee-clients (1.0.3) precise; urgency=low
 
-  [ Anthony COMTOIS ]
+  [ Canux CHENG ]
   * [lum usa] lum usa prod added
 
- -- Vincent BESANCON <besancon.vincent@gmail.com>  Thu, 06 Feb 2014 11:26:31 +0100
+ -- Canux CHENG <canuxcheng@gmail.com>  Thu, 06 Feb 2014 11:26:31 +0100
 
 plugin-colisee-clients (1.0.2) precise; urgency=low
 
   * Revert lmxendutil binary.
 
- -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Fri, 25 Oct 2013 11:12:31 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Fri, 25 Oct 2013 11:12:31 +0200
 
 plugin-colisee-clients (1.0.1) precise; urgency=low
 
   * Update lmxendutil version. refs #2701
 
- -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Wed, 02 Oct 2013 13:15:35 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Wed, 02 Oct 2013 13:15:35 +0200
 
 plugin-colisee-clients (1.0.0) precise; urgency=low
 
   * Initial Release.
 
- -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Wed, 29 May 2013 10:01:16 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Wed, 29 May 2013 10:01:16 +0200

@@ -5,16 +5,16 @@ plugins-nrft (1.1.0) precise; urgency=medium
   * Fix all PEP8 errors.
   * Renames plugins to standard.
 
- -- Vincent BESANCON <vincent.besancon@Company.com>  Thu, 15 Jan 2015 10:09:43 +0100
+ -- Canux CHENG <canuxcheng@gmail.com>  Thu, 15 Jan 2015 10:09:43 +0100
 
 plugins-nrft (1.0.1) precise; urgency=medium
 
   * Add precise version
 
- -- Mohamed CHERROUD <mohamed.cherroud-ext@Company.com>  Tue, 09 Dec 2014 16:24:32 +0100
+ -- Canux CHENG <canuxcheng@gmail.com>  Tue, 09 Dec 2014 16:24:32 +0100
 
 plugins-nrft (1.0.0) precise; urgency=low
 
   * Initial Release.
 
- -- Monitoring & Reporting <dl-itop-monitoring@Company.com>  Mon, 08 Dec 2014 16:34:20 +0100
+ -- Canux CHENG <canuxcheng@gmail.com>  Mon, 08 Dec 2014 16:34:20 +0100

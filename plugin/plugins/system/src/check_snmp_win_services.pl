@@ -1,5 +1,5 @@
 #!/usr/bin/perl -w
-# Copyright (C) Canux <http://www.Company.com/>
+# Copyright (C) Canux CHENG <canuxcheng@gmail.com>
 #
 # Permission is hereby granted, free of charge, to any person obtaining
 # a copy of this software and associated documentation files (the "Software"),
@@ -36,7 +36,7 @@ use Getopt::Long;
 
 # Nagios specific
 
-#use lib "/usr/lib/Company/plugins";
+#use lib "/usr/lib/canux/plugins";
 #use utils qw(%ERRORS $TIMEOUT);
 my $TIMEOUT = 60;
 my %ERRORS=('OK'=>0,'WARNING'=>1,'CRITICAL'=>2,'UNKNOWN'=>3,'DEPENDENT'=>4);

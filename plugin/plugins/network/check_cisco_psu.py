@@ -2,7 +2,7 @@
 # -*- coding: UTF-8 -*-
 #===============================================================================
 # Name          : check_cisco_psu.py
-# Author        : Patrick BAILAT
+# Author        : Canux CHENG
 # Description   : Check all PSU on Cisco. Alert if one is no ON.
 #-------------------------------------------------------------------------------
 # This program is free software: you can redistribute it and/or modify

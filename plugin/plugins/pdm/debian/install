@@ -1,4 +1,4 @@
-src/LoadBalancingCheck.class        usr/lib/Company/plugins/app/pdm
-src/check_pdm_login.sh              usr/lib/Company/plugins/app/pdm
-src/check_pdm_login.py              usr/lib/Company/plugins/app/pdm
-src/pdm                             usr/lib/Company/plugins/app/pdm
+src/LoadBalancingCheck.class        usr/lib/canux/plugins/app/pdm
+src/check_pdm_login.sh              usr/lib/canux/plugins/app/pdm
+src/check_pdm_login.py              usr/lib/canux/plugins/app/pdm
+src/pdm                             usr/lib/canux/plugins/app/pdm

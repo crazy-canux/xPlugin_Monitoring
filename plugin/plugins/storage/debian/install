@@ -1,3 +1,3 @@
-src/storage                     usr/lib/Company/plugins/sto
-src/check_netapp_volume.py      usr/lib/Company/plugins/sto
-src/check_netapp_snapshot.py    usr/lib/Company/plugins/sto
+src/storage                     usr/lib/canux/plugins/sto
+src/check_netapp_volume.py      usr/lib/canux/plugins/sto
+src/check_netapp_snapshot.py    usr/lib/canux/plugins/sto

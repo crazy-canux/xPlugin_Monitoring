@@ -1,6 +1,6 @@
 #!/usr/bin/env python2.7
 # -*- coding: utf-8 -*-
-# Copyright (C) Canux <http://www.Company.com/>
+# Copyright (C) Canux CHENG <canuxcheng@gmail.com>
 #
 # Permission is hereby granted, free of charge, to any person obtaining
 # a copy of this software and associated documentation files (the "Software"),
@@ -39,9 +39,9 @@ msg = MIMEText(args.message)
 
 # Headers
 msg['Subject'] = 'Alert'
-msg['From'] = "Nagios <nagios@Company.com>"
+msg['From'] = "Nagios <nagios.com>"
 msg['To'] = ';'.join(args.phone_numbers)
-msg['CC'] = 'vincent.besancon@Company.com'
+msg['CC'] = 'canuxcheng@gmail.com'
 
 mail_recipients = args.phone_numbers
 mail_recipients.append(msg['CC'])

@@ -1,1 +1,1 @@
-src/check_vmware_api.pl     usr/lib/Company/plugins/sys/vmware
+src/check_vmware_api.pl     usr/lib/canux/plugins/sys/vmware

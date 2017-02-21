@@ -1,2 +1,2 @@
-src/check_multi     usr/lib/Company/plugins/sys
+src/check_multi     usr/lib/canux/plugins/sys
 src/multichecks     etc/nagios

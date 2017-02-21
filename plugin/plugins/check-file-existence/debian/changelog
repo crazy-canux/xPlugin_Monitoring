@@ -2,47 +2,47 @@ plugin-check-file-existence (0.2.5) precise; urgency=low
 
   * Indentation and Downgrade Standard-Version for 3.9.3, i.e. precise version
 
- -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Tue, 09 Apr 2013 15:29:02 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Tue, 09 Apr 2013 15:29:02 +0200
 
 plugin-check-file-existence (0.2.4) precise; urgency=low
 
-  * Move to /usr/lib/Company/plugins/sys/unix
+  * Move to /usr/lib/canux/plugins/sys/unix
   * Good to have some standards ;-)
   * git-build-package config is now the default.
   * Use ${python:Depends}.
   * Renamed sys/ to src/ for plugin sources.
   * Bumped version.
 
- -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Fri, 15 Mar 2013 10:50:19 +0100
+ -- Canux CHENG <canuxcheng@gmail.com>  Fri, 15 Mar 2013 10:50:19 +0100
 
 plugin-check-file-existence (0.2.3) precise; urgency=low
 
   * add dependency
   * Updated project management files.
 
- -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Wed, 20 Feb 2013 11:32:19 +0100
+ -- Canux CHENG <canuxcheng@gmail.com>  Wed, 20 Feb 2013 11:32:19 +0100
 
 plugin-check-file-existence (0.2.2) stable; urgency=low
 
   * Nicer output. Set count argument type to int.
 
- -- Vincent BESANCON <vincent.besancon@Company.com>  Wed, 06 Jun 2012 15:12:44 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Wed, 06 Jun 2012 15:12:44 +0200
 
 plugin-check-file-existence (0.2.1) stable; urgency=low
 
   * Will now say when in hours, minutes and seconds the check will occur if nothing to do.
 
- -- Vincent BESANCON <vincent.besancon@Company.com>  Tue, 05 Jun 2012 09:42:47 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Tue, 05 Jun 2012 09:42:47 +0200
 
 plugin-check-file-existence (0.2) stable; urgency=low
 
   * Pycharm: fixed Git root directory.
   * Fixed bugs.
 
- -- Vincent BESANCON <vincent.besancon@Company.com>  Mon, 04 Jun 2012 16:47:56 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Mon, 04 Jun 2012 16:47:56 +0200
 
 plugin-check-file-existence (0.1) stable; urgency=low
 
   * Initial release
 
- -- Vincent BESANCON <vincent.besancon@Company.com>  Fri, 01 Jun 2012 13:44:59 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Fri, 01 Jun 2012 13:44:59 +0200

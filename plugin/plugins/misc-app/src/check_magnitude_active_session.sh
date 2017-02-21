@@ -19,7 +19,7 @@
 
 typeset -i rc_code=0
 status="OK"
-ls_cmd="/usr/lib/Company/plugins"
+ls_cmd="/usr/lib/canux/plugins"
 
 # ===============================> fonctions <================================ #
 

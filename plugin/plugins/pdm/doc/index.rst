@@ -66,5 +66,5 @@ Indices and tables
 * :ref:`modindex`
 * :ref:`search`
 
-.. _Source code: http://monitoring-dc.app.corp/tracking/projects/pdm/repository
+.. _Source code: http://canuxcheng.com/tracking/projects/pdm/repository
 .. _Git: http://git-scm.com/

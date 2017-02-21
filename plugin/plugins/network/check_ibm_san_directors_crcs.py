@@ -2,7 +2,7 @@
 # -*- coding: UTF-8 -*-
 #===============================================================================
 # Name          : check_ibm_san_directors_crcs.py
-# Authors       : Vincent BESANCON <besancon.vincent@gmail.com>
+# Authors       : Canux CHENG <canuxcheng@gmail.com>
 # Description   : Check IBM SAN Directors for CRCs on ports.
 #-------------------------------------------------------------------------------
 # This program is free software: you can redistribute it and/or modify

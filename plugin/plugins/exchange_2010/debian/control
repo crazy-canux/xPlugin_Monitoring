@@ -1,11 +1,11 @@
 Source: plugin-exchange2010
 Section: misc
 Priority: optional
-Maintainer: Monitoring & Reporting <dl-itop-monitoring@Company.com>
+Maintainer: Canux CHENG <canuxcheng@gmail.com>
 Build-Depends: debhelper (>= 9)
 Standards-Version: 3.9.5
-Vcs-Git: http://monitoring-dc.app.corp/git/plugins/exchange_2010.git
-Vcs-Browser: http://monitoring-dc.app.corp/git/?p=plugins/exchange_2010.git
+Vcs-Git: http://canuxcheng.com/git/plugins/exchange_2010.git
+Vcs-Browser: http://canuxcheng.com/git/?p=plugins/exchange_2010.git
 
 Package: plugin-exchange2010
 Architecture: all

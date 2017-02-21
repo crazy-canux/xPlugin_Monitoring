@@ -164,15 +164,6 @@ and copy it `/opt/lum`. It also assumes that you have both commands "i4tv" and "
 This is a old script I did quickly in the past (written in Perl). It will do the job, but I will rewrite it using Python
 like the others.
 
-Contact
-=======
-
-- **Author:** Vincent 'v!nZ' Besançon
-- **Project home page:** http://github.com/bigbrozer/license_manager_plugins
-- **Nagios Exchange:** http://exchange.nagios.org/directory/Plugins/License-Management/Industry-License-Manager-Plugins/details
-- **Email:** besancon [DOT] vincent [AT] gmail [DOT] com
-- **Support:** http://github.com/bigbrozer/license_manager_plugins/issues
-
 Support
 =======
 

@@ -1,7 +1,6 @@
 #!/usr/bin/perl -w
 #===============================================================================
 # Name          : check_cisco_cpu_module.pl
-# Author        : Thibaut COURVOISIER <thibaut.courvoisier-ext@Company.com>
 # Description   : Check which CPU module is active on Cisco Core Switch.
 #-------------------------------------------------------------------------------
 # This program is free software: you can redistribute it and/or modify
@@ -67,7 +66,7 @@ EOT
 sub help {
    print "\n==== $plugin_name ====\n\n";
    print "Creative Commons Attribution-Noncommercial-Share Alike 2.0 France\n";
-   print "(c)2010 Thibaut COURVOISIER, <thibaut.courvoisier-ext\@Company.com>\n\n";
+   print "(c)2010 Thibaut COURVOISIER, <thibaut.courvoisier-ext\@canux.com>\n\n";
    print_description();
    print_usage();
    print <<EOT;
@@ -87,48 +86,48 @@ sub temp_sensor {
 	my $cpt_error = 0;
     my $resultat1 = $session->get_request($oid_temp_sensor_1); #43.5 C (Warn at 90.0 C/Recover at 80.0 C)
     my $resultat2 = $session->get_request($oid_temp_sensor_2); #43.5 C (Warn at 90.0 C/Recover at 80.0 C)
-	
+
 	my @temp_elements = split(" ", $$resultat1{$oid_temp_sensor_1}); # s�paration de : 43.5 C (Warn at 90.0 C/Recover at 80.0 C)
 	my $temp = $temp_elements[0]; # reccup�ration de : 43.5
-	
-	
+
+
 	my @temp2_elements = split(" ", $$resultat2{$oid_temp_sensor_2}); # s�paration de : 43.5 C (Warn at 90.0 C/Recover at 80.0 C)
 	my $temp2 = $temp2_elements[0]; # reccup�ration de : 43.5
-	
-	
+
+
     if (!defined($resultat1 or $resultat2)) {
         printf("ERROR: Description table : %s.\n", $session->error);
         $session->close;
         exit $ERRORS{"UNKNOWN"};
     }
-	
+
     if ($temp > 55) {
 		$cpt_error = $cpt_error + 1;
         $nagios_long_output = "WARNING: Primary temperature sensor is above the warning threshold !\n";
 		$error = $ERRORS{"WARNING"};
-		
+
 	}
-	
+
 	if ($temp2 > 55) {
 		$cpt_error = $cpt_error + 1;
 		$nagios_long_output .= "WARNING: Secondary temperature sensor is above the warningthreshold !\n";
 		$error = $ERRORS{"WARNING"};
     }
-	
-	
+
+
 	if($temp > 70){
 		$cpt_error = $cpt_error + 1;
         $nagios_long_output .= "CRITICAL: Primary temperature sensor is above the critical threshold !\n";
 		$error = $ERRORS{"CRITICAL"};
 		}
-		
+
 	if($temp2 > 70){
 		$cpt_error = $cpt_error + 1;
         $nagios_long_output .= "CRITICAL: Secondary temperature sensor is above the critical threshold !\n";
 		$error = $ERRORS{"CRITICAL"};
-		}	
-		
-		
+		}
+
+
 	if($cpt_error >= 1 ){
 	$nagios_output = "Click to see that temperature sensor is above the threshold | 'Sensor_1'=".$temp."C;55;70; 'Sensor_2'=".$temp2."C;55;70;";
 	$nagios_long_output .= "Primary sensor: ".$temp."\n";
@@ -138,9 +137,9 @@ sub temp_sensor {
 	$session->close;
     exit $error;
 	}
-	
+
 	else{
-    $nagios_output = "OK: Temperature sensor are in good health. | 'Sensor_1'=".$temp."C;55;70; 'Sensor_2'=".$temp2."C;55;70;\n";    
+    $nagios_output = "OK: Temperature sensor are in good health. | 'Sensor_1'=".$temp."C;55;70; 'Sensor_2'=".$temp2."C;55;70;\n";
     $nagios_long_output .= "Primary sensor: ".$temp."\n";
     $nagios_long_output .= "Secondary sensor: ".$temp2."\n";
 

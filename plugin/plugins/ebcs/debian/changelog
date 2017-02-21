@@ -3,7 +3,7 @@ plugin-ebcs (1.1.0) trusty; urgency=medium
   [ Paul LI ]
   * [ebcs] new plugin to check the number connected users to ebc.vxuser.
 
-  [ Vincent BESANCON ]
+  [ Canux CHENG ]
   * Refresh fabfile for trusty.
   * Install plugin check_ebcs_connection.py.
   * Fix "--Oracle_home" invalid syntax.
@@ -16,16 +16,16 @@ plugin-ebcs (1.1.0) trusty; urgency=medium
   * Add bumpversion config file.
   * Bump version: 1.0.1 → 1.1.0
 
- -- Vincent BESANCON <vincent.besancon@Company.com>  Tue, 07 Jul 2015 15:19:26 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Tue, 07 Jul 2015 15:19:26 +0200
 
 plugin-ebcs (1.0.1) trusty; urgency=medium
 
   * Update package for ubuntu trusty.
 
- -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Thu, 10 Jul 2014 14:07:43 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Thu, 10 Jul 2014 14:07:43 +0200
 
 plugin-ebcs (1.0.0) precise; urgency=low
 
   * Initial Release.
 
- -- Adrien CREMET <adrien.cremet@Company.com>  Mon, 21 Oct 2013 11:06:00 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Mon, 21 Oct 2013 11:06:00 +0200

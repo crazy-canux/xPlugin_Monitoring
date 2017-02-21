@@ -1,14 +1,14 @@
 Source: plugin-check-wmi-plus
 Section: misc
 Priority: extra
-Maintainer: Vincent BESANCON <vincent.besancon@Company.com>
+Maintainer: Canux CHENG <canuxcheng@gmail.com>
 Build-Depends:
     debhelper (>= 9),
     devscripts (>= 2.10),
 Standards-Version: 3.9.5
 Homepage: http://www.edcint.co.nz/checkwmiplus/
-Vcs-Git: http://monitoring-dc.app.corp/git/plugin/plugin-check-wmi-plus.git
-Vcs-Browser: http://monitoring-dc.app.corp/git/?p=plugin/plugin-check-wmi-plus.git
+Vcs-Git: http://canuxcheng.com/git/plugin/plugin-check-wmi-plus.git
+Vcs-Browser: http://canuxcheng.com/git/?p=plugin/plugin-check-wmi-plus.git
 
 Package: plugin-check-wmi-plus
 Architecture: all

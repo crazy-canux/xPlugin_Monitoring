@@ -32,7 +32,7 @@
 my $conf_file='/etc/nagios/check_wmi_plus.conf';
 
 # we are looking for the dir where utils.pm is located. This is normally installed as part of Nagios
-use lib "/usr/lib/Company/plugins";
+use lib "/usr/lib/canux/plugins";
 
 # you shouldn't need to change anything else below this line
 # change the settings in the $conf_file itself

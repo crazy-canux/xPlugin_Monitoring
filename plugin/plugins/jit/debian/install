@@ -1,5 +1,5 @@
-src/check_jit_bbdd.py               usr/lib/Company/plugins/app/jit
-src/check_jit_event.py              usr/lib/Company/plugins/app/jit
-src/check_jit_sysdb_data.py         usr/lib/Company/plugins/app/jit
-src/check_jit_xml_interface.py      usr/lib/Company/plugins/app/jit
-src/jit                             usr/lib/Company/plugins/app/jit
+src/check_jit_bbdd.py               usr/lib/canux/plugins/app/jit
+src/check_jit_event.py              usr/lib/canux/plugins/app/jit
+src/check_jit_sysdb_data.py         usr/lib/canux/plugins/app/jit
+src/check_jit_xml_interface.py      usr/lib/canux/plugins/app/jit
+src/jit                             usr/lib/canux/plugins/app/jit

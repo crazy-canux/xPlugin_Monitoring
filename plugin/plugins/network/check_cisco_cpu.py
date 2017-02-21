@@ -2,7 +2,7 @@
 # -*- coding: UTF-8 -*-
 #===============================================================================
 # Name          : check_cisco_cpu.py
-# Author        : Vincent BESANCON <besancon.vincent@gmail.com>
+# Author        : Canux CHENG <canuxcheng@gmail.com>
 # Description   : Check all CPUs usage on Cisco devices supporting CISCO-PROCESS-MIB.
 #-------------------------------------------------------------------------------
 # This program is free software: you can redistribute it and/or modify

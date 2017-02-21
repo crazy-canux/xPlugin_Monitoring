@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 #===============================================================================
 # Filename      : check_ssh_file_existence
-# Author        : Vincent BESANCON <besancon.vincent@gmail.com>
+# Author        : Canux CHENG <canuxcheng@gmail.com>
 # Description   : Check on remote server if some files are present using SSH.
 #-------------------------------------------------------------------------------
 # This program is free software: you can redistribute it and/or modify

@@ -3,114 +3,114 @@ plugin-check-wmi-plus (1.56+16) trusty; urgency=medium
   [ Lei LIU ]
   * [Exchange] Add exchange_events ini.
 
- -- Vincent BESANCON <vincent.besancon@Company.com>  Wed, 28 Oct 2015 12:27:46 +0100
+ -- Canux CHENG <canuxcheng@gmail.com>  Wed, 28 Oct 2015 12:27:46 +0100
 
 plugin-check-wmi-plus (1.56+15) trusty; urgency=medium
 
-  [ Yves ANDOLFATTO ]
+  [ Canux CHENG ]
   * Update package for ubuntu trusty.
   * Use the new fabfile
 
   [ Lei LIU ]
   * Add CommCell service event check.
 
- -- Vincent BESANCON <vincent.besancon@Company.com>  Thu, 16 Apr 2015 12:41:37 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Thu, 16 Apr 2015 12:41:37 +0200
 
 plugin-check-wmi-plus (1.56+14) trusty; urgency=medium
 
-  [ Patrick BAILAT ]
+  [ Canux CHENG ]
   * [system] count file: do not show filenames in longoutput.
 
-  [ Vincent BESANCON ]
+  [ Canux CHENG ]
   * Deprecate monitoring.fabric.package.release.* tasks.
 
- -- Vincent BESANCON <vincent.besancon@Company.com>  Wed, 04 Feb 2015 10:48:23 +0100
+ -- Canux CHENG <canuxcheng@gmail.com>  Wed, 04 Feb 2015 10:48:23 +0100
 
 plugin-check-wmi-plus (1.56+13) trusty; urgency=medium
 
-  [ Patrick BAILAT ]
+  [ Canux CHENG ]
   * Add new commande check_file_count_size
   * Update to latest monitoring.fabric update.
   * Update changelog for 1.56+12 release
 
-  [ Yves ANDOLFATTO ]
+  [ Canux CHENG ]
 
- -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Wed, 14 Jan 2015 15:01:46 +0100
+ -- Canux CHENG <canuxcheng@gmail.com>  Wed, 14 Jan 2015 15:01:46 +0100
 
 plugin-check-wmi-plus (1.56+12) precise; urgency=medium
 
   * Add new commande check_file_count_size
   * Update to latest monitoring.fabric update.
 
- -- Patrick BAILAT <patrick.bailat-ext@Company.com>  Wed, 05 Nov 2014 09:24:46 +0100
+ -- Canux CHENG <canuxcheng@gmail.com>  Wed, 05 Nov 2014 09:24:46 +0100
 
 plugin-check-wmi-plus (1.56+11) trusty; urgency=medium
 
   * Update package for ubuntu trusty.
   * Use the new fabfile
 
- -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Thu, 10 Jul 2014 12:36:11 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Thu, 10 Jul 2014 12:36:11 +0200
 
 plugin-check-wmi-plus (1.56+10) precise; urgency=low
 
   * Fix a bug..
 
- -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Tue, 07 Jan 2014 10:54:22 +0100
+ -- Canux CHENG <canuxcheng@gmail.com>  Tue, 07 Jan 2014 10:54:22 +0100
 
 plugin-check-wmi-plus (1.56+9) precise; urgency=low
 
   * Test only EventCode. This test is done only if SourceName match.
 
- -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Tue, 07 Jan 2014 10:27:20 +0100
+ -- Canux CHENG <canuxcheng@gmail.com>  Tue, 07 Jan 2014 10:27:20 +0100
 
 plugin-check-wmi-plus (1.56+8) precise; urgency=low
 
   * Change ini checks. If sourceName, check also EventCode.
   * Remove unused parameters.
 
- -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Tue, 07 Jan 2014 10:04:37 +0100
+ -- Canux CHENG <canuxcheng@gmail.com>  Tue, 07 Jan 2014 10:04:37 +0100
 
 plugin-check-wmi-plus (1.56+7) precise; urgency=low
 
   * Set Environment to identify the satellite who ask a check.
 
- -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Tue, 17 Dec 2013 17:00:09 +0100
+ -- Canux CHENG <canuxcheng@gmail.com>  Tue, 17 Dec 2013 17:00:09 +0100
 
 plugin-check-wmi-plus (1.56+6) precise; urgency=low
 
   * Change tmp dir.
 
- -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Tue, 24 Sep 2013 14:53:30 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Tue, 24 Sep 2013 14:53:30 +0200
 
 plugin-check-wmi-plus (1.56+5) precise; urgency=low
 
   * Change tmp path in conf file.
 
- -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Mon, 23 Sep 2013 16:33:07 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Mon, 23 Sep 2013 16:33:07 +0200
 
 plugin-check-wmi-plus (1.56+4) precise; urgency=low
 
   * Set tmp directory as /var/tmp.
 
- -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Mon, 23 Sep 2013 16:19:19 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Mon, 23 Sep 2013 16:19:19 +0200
 
 plugin-check-wmi-plus (1.56+3) precise; urgency=low
 
   * Change ini dir.
 
- -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Mon, 23 Sep 2013 13:55:54 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Mon, 23 Sep 2013 13:55:54 +0200
 
 plugin-check-wmi-plus (1.56+2) precise; urgency=low
 
   * Add libconfig-inifiles-perl as dep.
 
- -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Mon, 23 Sep 2013 13:48:10 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Mon, 23 Sep 2013 13:48:10 +0200
 
 plugin-check-wmi-plus (1.56+1) precise; urgency=low
 
   * Add libnumber-format-perl as dep.
 
- -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Mon, 23 Sep 2013 13:29:05 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Mon, 23 Sep 2013 13:29:05 +0200
 
 plugin-check-wmi-plus (1.56) precise; urgency=low
 
@@ -120,7 +120,7 @@ plugin-check-wmi-plus (1.56) precise; urgency=low
   * Imported Upstream version 1.56
   * Change install paths
 
- -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Mon, 23 Sep 2013 10:46:25 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Mon, 23 Sep 2013 10:46:25 +0200
 
 plugin-check-wmi-plus (1.51) precise; urgency=low
 
@@ -129,10 +129,10 @@ plugin-check-wmi-plus (1.51) precise; urgency=low
   * Update all paths.
   * Import upload() task in fabfile, the time to take into account this kind of package.
 
- -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Fri, 15 Mar 2013 11:54:14 +0100
+ -- Canux CHENG <canuxcheng@gmail.com>  Fri, 15 Mar 2013 11:54:14 +0100
 
 plugin-check-wmi-plus (1.50) stable; urgency=low
 
   * Initial release.
 
- -- Vincent BESANCON <vincent.besancon@Company.com>  Fri, 16 Mar 2012 09:53:19 +0100
+ -- Canux CHENG <canuxcheng@gmail.com>  Fri, 16 Mar 2012 09:53:19 +0100

@@ -1,5 +1,5 @@
 #!/usr/bin/perl -w
-# Copyright (C) Canux <http://www.Company.com/>
+# Copyright (C) Canux CHENG <canuxcheng@gmail.com>
 #
 # Permission is hereby granted, free of charge, to any person obtaining
 # a copy of this software and associated documentation files (the "Software"),
@@ -126,7 +126,6 @@ EOT
 sub help {
    print "\n==== Check license expiration for LUM license manager ====\n\n";
    print "GPL v3\n";
-   print "(c)2010 Vincent 'v!nZ' BESANCON, <vincent.besancon\@Company.com>\n\n";
    print_description();
    print_usage();
    print <<EOT;
@@ -142,14 +141,14 @@ EOT
 # Sub -- Get the name of the current product being checked
 sub get_product_name {
     my($product) = shift;
-    
+
     $product =~ s/\s+$//;                           # Trim trailing spaces
     $product =~ s/^\s+Product Name:\s+//;           # Delete uneeded
     $product;
 }
 
 # Sub -- Return the max value from an array (avoid usage of List::Util on old perl version)
-sub max { 
+sub max {
     my $max = pop(@_);
     foreach (@_) {
         $max = $_ if $_ > $max;
@@ -158,7 +157,7 @@ sub max {
 }
 
 # Sub -- Return the min value from an array (avoid usage of List::Util on old perl version)
-sub min { 
+sub min {
     my $min = pop(@_);
     foreach (@_) {
         $min = $_ if $_ < $min;
@@ -170,7 +169,7 @@ sub min {
 sub license_days_remaining {
     my($expire_date_line) = shift;
     my $days_delta;
-    
+
     # Date variables
     my %months = (
         'Jan' => 0,
@@ -189,15 +188,15 @@ sub license_days_remaining {
     my $today_seconds = time();
     my @license_date;
     my $license_date_seconds;
-    
-    
+
+
     # Get the license date expiration from the result and transform it like localtime array
     $expire_date_line =~ /Exp. Date: ([a-zA-Z]{3})\s([0-9]{2})\s([0-9]*)/;
     if (!$1 || !$2 || !$3) {
         print "Error: Unable to parse license expiration date for product \"$product_name\" !\n";
         exit 3;
     }
-    
+
     # We will have problem with this in year 2038 ;-)) (limitation of Time::Local)
     if (int($3) < 2038) {
         @license_date = (0, 0, 0, int($2), int($months{$1}), int($3));
@@ -205,10 +204,10 @@ sub license_days_remaining {
     } else {
         return $days_delta = undef;
     }
-    
+
     # Calculate the number of days between the two dates
     $days_delta = POSIX::ceil( ($license_date_seconds - $today_seconds) / 60 / 60 / 24 );
-    
+
     # Return
     if ($days_delta > 15) {
         return $days_delta = undef;
@@ -234,7 +233,7 @@ while (<I4BLT_RESULT>) {
         $in_product_section = 0;
         $in_license_section = 0;
     }
-    
+
     # Check if we are entering a product section
     if (/Product Name:/ && !$in_product_section) {
         verb("Entering a product section.\n");
@@ -242,13 +241,13 @@ while (<I4BLT_RESULT>) {
         $product_name = get_product_name($_);
         verb("\tProduct name: $product_name\n");
     }
-    
+
     # Check if we are entering a license section
     if (/^\s-{5,}\sLicense Information\s-{5,}$/ && $in_product_section) {
         verb("Entering a license section.\n");
         $in_license_section = 1;
     }
-    
+
     # Get the expiration date in a license section
     if (/Exp. Date:/ && $in_license_section) {
         verb("Trying to get license expiration date in:\n");
@@ -285,17 +284,17 @@ if (%license_status) {
         } else {
             $remaining_days = @{$license_status{$product}}[0];
         }
-        
+
         if ($remaining_days > 0 && $remaining_days <= 15) {
             $nagios_longoutput .= "* Product \"$product\" is about to expire on $expiration_date !\n";
             $nbr_license_expiring_very_soon++;
         }
-        
+
         if ($remaining_days <= 0) {
             $nagios_longoutput .= "*** Product \"$product\" is expired !\n";
             $nbr_license_expired++;
         }
-        
+
         # Check if we must set Nagios status to CRITICAL or WARNING
         if ($nbr_license_expired) {
             $nagios_status = "CRITICAL";
@@ -310,22 +309,22 @@ $nagios_output .= "$nagios_status: ";
 
 if ($nbr_license_expired) {
     $nagios_output .= "$nbr_license_expired products licenses are expired";
-    
+
     if ($nbr_license_expiring_very_soon) {
         $nagios_output .= ", $nbr_license_expiring_very_soon are about to expire";
     }
-    
+
     $nagios_output .= " !\n";
     $nagios_status_code = 2;
 } elsif ($nbr_license_expiring_very_soon) {
-    
+
     $nagios_output .= ", " if $nbr_license_expiring_very_soon;
-    
+
     if ($nbr_license_expiring_very_soon) {
         $nagios_output .= "$nbr_license_expiring_very_soon products licenses are about to expire";
         $nagios_status_code = 2;
     }
-    
+
     $nagios_output .= " !\n";
     $nagios_status_code = 1 if $nagios_status_code != 2;
 } else {

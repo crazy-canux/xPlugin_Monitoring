@@ -1,2 +1,2 @@
-src/*.py        usr/lib/Company/plugins/app/exalead
-src/exalead     usr/lib/Company/plugins/app/exalead
+src/*.py        usr/lib/canux/plugins/app/exalead
+src/exalead     usr/lib/canux/plugins/app/exalead

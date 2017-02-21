@@ -2,7 +2,7 @@
 # -*- coding: UTF-8 -*-
 #===============================================================================
 # Name          : check_cisco_hard.py
-# Author        : Vincent BESANCON <besancon.vincent@gmail.com>
+# Author        : Canux CHENG <canuxcheng@gmail.com>
 # Description   : Check hardware (sensors, fans, power) of Cisco devices.
 #-------------------------------------------------------------------------------
 # This program is free software: you can redistribute it and/or modify

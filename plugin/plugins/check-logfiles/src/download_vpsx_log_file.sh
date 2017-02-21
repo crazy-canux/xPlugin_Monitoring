@@ -1,6 +1,6 @@
 #!/bin/bash
 #===============================================================================
-# Author        : Yves ANDOLFATTO <yves.andolfatto@Company.com>
+# Author        : Canux CHENG <canuxcheng@gmail.com>
 # Description   : Download VPSX log file for check_logfiles processing.
 #-------------------------------------------------------------------------------
 # This program is free software: you can redistribute it and/or modify

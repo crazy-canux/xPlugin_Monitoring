@@ -2,7 +2,7 @@
 # -*- coding: UTF-8 -*-
 #===============================================================================
 # Name          : check_cisco_temp.py
-# Author        : Vincent BESANCON <besancon.vincent@gmail.com>
+# Author        : Canux CHENG <canuxcheng@gmail.com>
 # Description   : Check all temperature on Cisco devices and alert if one is above thresholds.
 #-------------------------------------------------------------------------------
 # This program is free software: you can redistribute it and/or modify

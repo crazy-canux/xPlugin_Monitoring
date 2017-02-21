@@ -1,15 +1,15 @@
 Source: plugin-colisee-clients
 Section: misc
 Priority: extra
-Maintainer: Yves ANDOLFATTO <yves.andolfatto@Company.com>
+Maintainer: Canux CHENG <canuxcheng@gmail.com>
 Build-Depends:
     debhelper (>= 9),
     libstdc++5,
     libc6,
     libgcc1,
 Standards-Version: 3.9.5
-Vcs-Git: http://monitoring-dc.app.corp/git/plugins/colisee-clients.git
-Vcs-Browser: http://monitoring-dc.app.corp/git/?p=plugins/colisee-clients.git
+Vcs-Git: http://canuxcheng.com/git/plugins/colisee-clients.git
+Vcs-Browser: http://canuxcheng.com/git/?p=plugins/colisee-clients.git
 
 Package: plugin-colisee-clients
 Architecture: i386

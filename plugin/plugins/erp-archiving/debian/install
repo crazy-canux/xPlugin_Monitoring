@@ -1,2 +1,2 @@
-src/check_optim_registry_integrity.py   usr/lib/Company/plugins/app/erp-archiving
-src/check_optim_xml_age.py              usr/lib/Company/plugins/app/erp-archiving
+src/check_optim_registry_integrity.py   usr/lib/canux/plugins/app/erp-archiving
+src/check_optim_xml_age.py              usr/lib/canux/plugins/app/erp-archiving

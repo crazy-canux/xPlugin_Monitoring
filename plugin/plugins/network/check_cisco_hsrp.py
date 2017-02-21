@@ -2,7 +2,7 @@
 # -*- coding: UTF-8 -*-
 #===============================================================================
 # Name          : check_cisco_hsrp.py
-# Author        : Vincent BESANCON <besancon.vincent@gmail.com>
+# Author        : Canux CHENG <canuxcheng@gmail.com>
 # Description   : Check HSRP on Cisco devices. Check if the router must be the
 #                 active or standby router for VLANs.
 #-------------------------------------------------------------------------------

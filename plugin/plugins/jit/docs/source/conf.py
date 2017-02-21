@@ -42,7 +42,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Plugins - JIT'
-copyright = u'2013, Monitoring & Reporting'
+copyright = u'2013, Canux CHENG'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -215,7 +215,7 @@ latex_documents = [
 # (source start file, name, description, authors, manual section).
 man_pages = [
     ('index', 'plugins-jit', u'Plugins - JIT Documentation',
-     [u'Monitoring & Reporting'], 1)
+     [u'Canux CHENG'], 1)
 ]
 
 # If true, show URL addresses after external links.
@@ -229,7 +229,7 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
   ('index', 'Plugins-JIT', u'Plugins - JIT Documentation',
-   u'Monitoring & Reporting', 'Plugins-JIT', 'One line description of project.',
+   u'Canux CHENG', 'Plugins-JIT', 'One line description of project.',
    'Miscellaneous'),
 ]
 

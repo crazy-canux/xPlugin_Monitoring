@@ -453,7 +453,7 @@ ORDER BY
         $thisparams{freespacemb} = $freespacemb;
         $thisparams{freespacepct} = $freespacepct;
         $thisparams{polldate} = $polldate;
-        my $datafile = 
+        my $datafile =
             DBD::MSSQL::Server::Database::Datafile->new(
             %thisparams);
         add_datafile($datafile);
@@ -488,7 +488,7 @@ sub new {
   return $self;
 }
 
-sub init { 
+sub init {
   my $self = shift;
   my %params = @_;
   $self->init_nagios();
@@ -520,7 +520,7 @@ sub nagios {
     if ($params{mode} =~ /server::database::datafile::iotraffic/) {
       $self->add_nagios(
           $self->check_thresholds($self->{io_total_per_sec}, "1000", "5000"),
-          sprintf ("%s: %.2f IO Operations per Second", 
+          sprintf ("%s: %.2f IO Operations per Second",
               $self->{name}, $self->{io_total_per_sec}));
       $self->add_perfdata(sprintf "'dbf_%s_io_total_per_sec'=%.2f;%d;%d",
           $self->{name}, $self->{io_total_per_sec},
@@ -576,17 +576,17 @@ our @ISA = qw(DBD::MSSQL::Server);
             SELECT
               db_name(d.dbid) AS db_name,
               SUM(
-                CASE WHEN u.segmap != 4 
-                     THEN u.size/1048576.*@@maxpagesize 
+                CASE WHEN u.segmap != 4
+                     THEN u.size/1048576.*@@maxpagesize
                 END)
               AS data_size,
               SUM(
-                CASE WHEN u.segmap != 4 
+                CASE WHEN u.segmap != 4
                      THEN size - curunreservedpgs(u.dbid, u.lstart, u.unreservedpgs)
                 END)/1048576.*@@maxpagesize
               AS data_used,
               SUM(
-                CASE WHEN u.segmap = 4 
+                CASE WHEN u.segmap = 4
                      THEN u.size/1048576.*@@maxpagesize
                 END)
               AS log_size,
@@ -605,7 +605,7 @@ our @ISA = qw(DBD::MSSQL::Server);
           $log_size = 0 if ! defined $log_size;
           $log_used = 0 if ! defined $log_used;
           $cache_db_sizes->{$db_name} = {
-              'db_name' => $db_name, 
+              'db_name' => $db_name,
               'data_size' => $data_size,
               'data_used' => $data_used,
               'log_size' => $log_size,
@@ -614,17 +614,17 @@ our @ISA = qw(DBD::MSSQL::Server);
           $cache_db_sizes->{$db_name}->{data_used_pct} = 100 *
               $cache_db_sizes->{$db_name}->{data_used} /
               $cache_db_sizes->{$db_name}->{data_size};
-          $cache_db_sizes->{$db_name}->{log_used_pct} = 
+          $cache_db_sizes->{$db_name}->{log_used_pct} =
               $cache_db_sizes->{$db_name}->{log_size} ?
               100 *
               $cache_db_sizes->{$db_name}->{log_used} /
               $cache_db_sizes->{$db_name}->{log_size}
               : 0;
           $cache_db_sizes->{$db_name}->{data_free} =
-              $cache_db_sizes->{$db_name}->{data_size} - 
+              $cache_db_sizes->{$db_name}->{data_size} -
               $cache_db_sizes->{$db_name}->{data_used};
           $cache_db_sizes->{$db_name}->{log_free} =
-              $cache_db_sizes->{$db_name}->{log_size} - 
+              $cache_db_sizes->{$db_name}->{log_size} -
               $cache_db_sizes->{$db_name}->{log_used};
         }
         @databaseresult = $params{handle}->fetchall_array(q{
@@ -710,7 +710,7 @@ our @ISA = qw(DBD::MSSQL::Server);
                   id = 1
               SELECT
                   databasename, COUNT(*)
-              FROM 
+              FROM
                   ::fn_trace_gettable(@path, 0)
               INNER JOIN
                   sys.trace_events e
@@ -787,7 +787,7 @@ our @ISA = qw(DBD::MSSQL::Server);
                   id = 1
               SELECT
                   databasename, COUNT(*)
-              FROM 
+              FROM
                   ::fn_trace_gettable(@path, 0)
               INNER JOIN
                   sys.trace_events e
@@ -870,9 +870,9 @@ our @ISA = qw(DBD::MSSQL::Server);
               DATEDIFF(MI, MAX(b.backup_start_date), MAX(b.backup_finish_date))
             FROM master.dbo.sysdatabases a LEFT OUTER JOIN msdb.dbo.backupset b
             ON b.database_name = a.name
-            GROUP BY a.name 
-            ORDER BY a.name 
-          }); 
+            GROUP BY a.name
+            ORDER BY a.name
+          });
         }
         foreach (sort {
           if (! defined $b->[1]) {
@@ -882,11 +882,11 @@ our @ISA = qw(DBD::MSSQL::Server);
           } else {
             return $a->[1] <=> $b->[1];
           }
-        } @databaseresult) { 
+        } @databaseresult) {
           my ($name, $recovery_model, $age, $duration) = @{$_};
           next if $params{notemp} && $name eq "tempdb";
           next if $params{database} && $name ne $params{database};
-          if ($params{regexp}) { 
+          if ($params{regexp}) {
             next if $params{selectname} && $name !~ /$params{selectname}/;
           } else {
             next if $params{selectname} && lc $params{selectname} ne lc $name;
@@ -993,7 +993,7 @@ sub init {
   if ($params{mode} =~ /server::database::datafile/) {
     $params{database} = $self->{name};
     DBD::MSSQL::Server::Database::Datafile::init_datafiles(%params);
-    if (my @datafiles = 
+    if (my @datafiles =
         DBD::MSSQL::Server::Database::Datafile::return_datafiles()) {
       $self->{datafiles} = \@datafiles;
     } else {
@@ -1027,7 +1027,7 @@ sub init {
     #);
     # server mgmt studio           sp_spaceused
     # Currently Allocated Space    database_size       641.94MB
-    # Available Free Space         unallocated space   457.09MB 
+    # Available Free Space         unallocated space   457.09MB
     #$database_size =~ s/MB//g;
     #$unallocated_space =~ s/MB//g;
     #$self->{size} = $database_size * 1024 * 1024;
@@ -1072,7 +1072,7 @@ sub init {
         # werte aus sp_spaceused
         # sind von der theorie her nicht so exakt, in der praxis aber doch.
         # wenn obige werte seltsam aussehen, dann lieber daten aus sysusages verwenden.
-        $unreserved = $cache_db_sizes->{data_free}; # 
+        $unreserved = $cache_db_sizes->{data_free}; #
         $reserved = $cache_db_sizes->{data_size} - $unreserved;
         $unreserved_pct = 100 * ($unreserved / $cache_db_sizes->{data_size});
         $reserved_pct = 100  - $unreserved_pct;
@@ -1095,14 +1095,14 @@ sub init {
         $self->{allocated_percent} = $reserved_pct; # data_size - unreserved - unused
         $self->{free_log_mb} = $sp_log_free_pages;
         $self->{free_log_percent} = $log_free_pct;
-        #printf "%14s %.2f%% %.2f%%  %.2f%%  %.2f%%\n", 
+        #printf "%14s %.2f%% %.2f%%  %.2f%%  %.2f%%\n",
         #    $self->{name}, $unreserved_pct, $reserved_pct, $log_free_pct, $log_used_pct;
       } else {
         my $database_size = $cache_db_sizes->{data_size};
 
         my $log_used_pct = 100 * $sp_log_used_pages / $cache_db_sizes->{data_size};
         my $log_free_pct = 100 * $sp_log_free_pages / $cache_db_sizes->{data_size};
-        #printf "%14s %.2f%% %.2f%%  %.2f%%  %.2f%%\n", 
+        #printf "%14s %.2f%% %.2f%%  %.2f%%  %.2f%%\n",
         #    $self->{name}, $unreserved_pct, $reserved_pct, $log_free_pct, $log_used_pct;
         $self->{max_mb} = $cache_db_sizes->{data_size};
         $self->{free_mb} = $unreserved;
@@ -1130,11 +1130,11 @@ sub init {
         }
       } else {
         $self->{handle}->execute(q{
-          if object_id('tempdb..#FreeSpace') is null 
-            create table #FreeSpace(  
-              Drive varchar(10),  
-              MB_Free bigint  
-            ) 
+          if object_id('tempdb..#FreeSpace') is null
+            create table #FreeSpace(
+              Drive varchar(10),
+              MB_Free bigint
+            )
         });
         $self->{handle}->execute(q{
           DELETE FROM #FreeSpace
@@ -1159,9 +1159,9 @@ sub init {
       #   besser ist sys.allocation_units
       if (DBD::MSSQL::Server::return_first_server()->version_is_minimum("9.x")) {
         my $sql = q{
-            SELECT 
+            SELECT
                 SUM(CAST(used AS BIGINT)) / 128
-            FROM 
+            FROM
                 [?].sys.sysindexes
             WHERE
                 indid IN (0,1,255)
@@ -1181,9 +1181,9 @@ sub init {
         }
       } else {
         my $sql = q{
-            SELECT 
+            SELECT
                 SUM(CAST(used AS BIGINT)) / 128
-            FROM 
+            FROM
                 [?].dbo.sysindexes
             WHERE
                 indid IN (0,1,255)
@@ -1262,7 +1262,7 @@ sub init {
           if ($maxsize == -1) {
             $calc->{datafile}->{$name}->{maxsize} =
                 exists $calc->{drive_mb}->{$drive} ?
-                    ($calc->{datafile}->{$name}->{allocsize} + 
+                    ($calc->{datafile}->{$name}->{allocsize} +
                      $calc->{drive_mb}->{$drive}) : 4 * 1024;
             # falls die platte nicht gefunden wurde, dann nimm halt 4GB
             if (exists $calc->{drive_mb}->{$drive}) {
@@ -1285,7 +1285,7 @@ sub init {
       if ($self->{used_mb} > $self->{allocated_mb}) {
         # obige used-berechnung liefert manchmal (wenns knapp hergeht) mehr als
         # den maximal verfuegbaren platz. vermutlich muessen dann
-        # zwecks ermittlung des tatsaechlichen platzverbrauchs 
+        # zwecks ermittlung des tatsaechlichen platzverbrauchs
         # irgendwelche dbcc updateusage laufen.
         # egal, wird schon irgendwie stimmen.
         $self->{used_mb} = $self->{allocated_mb};
@@ -1409,12 +1409,12 @@ sub nagios {
         );
       } elsif (! $self->{accessible}) {
         $self->add_nagios(
-            defined $params{mitigation} ? $params{mitigation} : 1, 
+            defined $params{mitigation} ? $params{mitigation} : 1,
             sprintf("insufficient privileges to access %s", $self->{name})
         );
       } elsif ($self->{other_error}) {
         $self->add_nagios(
-            defined $params{mitigation} ? $params{mitigation} : 1, 
+            defined $params{mitigation} ? $params{mitigation} : 1,
             sprintf("error accessing %s: %s", $self->{name}, $self->{other_error})
         );
       } elsif ($params{units} eq "%") {
@@ -1504,22 +1504,22 @@ sub nagios {
         }
       }
     } elsif ($params{mode} =~ /server::database::auto(growths|shrinks)/) {
-      my $type = ""; 
+      my $type = "";
       if ($params{mode} =~ /::datafile/) {
         $type = "data ";
       } elsif ($params{mode} =~ /::logfile/) {
         $type = "log ";
       }
-      $self->add_nagios( 
-          $self->check_thresholds($self->{autogrowshrink}, 1, 5), 
+      $self->add_nagios(
+          $self->check_thresholds($self->{autogrowshrink}, 1, 5),
           sprintf "%s had %d %sfile auto %s events in the last %d minutes", $self->{name},
-              $self->{autogrowshrink}, $type, 
+              $self->{autogrowshrink}, $type,
               ($params{mode} =~ /server::database::autogrowths/) ? "grow" : "shrink",
               $self->{growshrinkinterval});
     } elsif ($params{mode} =~ /server::database::dbccshrinks/) {
       # nur relevant fuer master
-      $self->add_nagios( 
-          $self->check_thresholds($self->{autogrowshrink}, 1, 5), 
+      $self->add_nagios(
+          $self->check_thresholds($self->{autogrowshrink}, 1, 5),
           sprintf "%s had %d DBCC Shrink events in the last %d minutes", $self->{name}, $self->{autogrowshrink}, $self->{growshrinkinterval});
     } elsif ($params{mode} =~ /server::database::.*backupage/) {
       my $log = "";
@@ -1529,26 +1529,26 @@ sub nagios {
       if ($params{mode} =~ /server::database::logbackupage/ &&
           $self->{recovery_model} == 3) {
         $self->add_nagios_ok(sprintf "%s has no logs",
-            $self->{name}); 
+            $self->{name});
       } else {
-        if (! defined $self->{backup_age}) { 
+        if (! defined $self->{backup_age}) {
           $self->add_nagios(defined $params{mitigation} ? $params{mitigation} : 2, sprintf "%s%s was never backed up",
-              $log, $self->{name}); 
+              $log, $self->{name});
           $self->{backup_age} = 0;
           $self->{backup_duration} = 0;
           $self->check_thresholds($self->{backup_age}, 48, 72); # init wg perfdata
-        } else { 
-          $self->add_nagios( 
-              $self->check_thresholds($self->{backup_age}, 48, 72), 
+        } else {
+          $self->add_nagios(
+              $self->check_thresholds($self->{backup_age}, 48, 72),
               sprintf "%s%s was backed up %dh ago", $log, $self->{name}, $self->{backup_age});
-        } 
-        $self->add_perfdata(sprintf "'%s_bck_age'=%d;%s;%s", 
-            $self->{name}, $self->{backup_age}, 
-            $self->{warningrange}, $self->{criticalrange}); 
-        $self->add_perfdata(sprintf "'%s_bck_time'=%d", 
-            $self->{name}, $self->{backup_duration}); 
+        }
+        $self->add_perfdata(sprintf "'%s_bck_age'=%d;%s;%s",
+            $self->{name}, $self->{backup_age},
+            $self->{warningrange}, $self->{criticalrange});
+        $self->add_perfdata(sprintf "'%s_bck_time'=%d",
+            $self->{name}, $self->{backup_duration});
       }
-    } 
+    }
   }
 }
 
@@ -1583,15 +1583,15 @@ our @ISA = qw(DBD::MSSQL::Server);
       if ($params{product} eq "MSSQL") {
         if (DBD::MSSQL::Server::return_first_server()->version_is_minimum("9.x")) {
           @jobresult = $params{handle}->fetchall_array(q{
-            SELECT 
+            SELECT
                 [sJOB].[job_id] AS [JobID]
                 , [sJOB].[name] AS [JobName]
                 ,CURRENT_TIMESTAMP  --can be used for debugging
-                , CASE 
+                , CASE
                     WHEN [sJOBH].[run_date] IS NULL OR [sJOBH].[run_time] IS NULL THEN NULL
                     ELSE datediff(Minute, CAST(
                         CAST([sJOBH].[run_date] AS CHAR(8))
-                        + ' ' 
+                        + ' '
                         + STUFF(
                             STUFF(RIGHT('000000' + CAST([sJOBH].[run_time] AS VARCHAR(6)),  6)
                                 , 3, 0, ':')
@@ -1601,11 +1601,11 @@ our @ISA = qw(DBD::MSSQL::Server);
                 ,CAST(SUBSTRING(RIGHT('000000' + CAST([sJOBH].[run_duration] AS VARCHAR(6)), 6), 1, 2) AS INT) * 3600 +
                  CAST(SUBSTRING(RIGHT('000000' + CAST([sJOBH].[run_duration] AS VARCHAR(6)), 6), 3, 2) AS INT) * 60 +
                  CAST(SUBSTRING(RIGHT('000000' + CAST([sJOBH].[run_duration] AS VARCHAR(6)), 6), 5, 2) AS INT) AS LastRunDurationSeconds
-                , CASE 
+                , CASE
                     WHEN [sJOBH].[run_date] IS NULL OR [sJOBH].[run_time] IS NULL THEN NULL
                     ELSE CAST(
                             CAST([sJOBH].[run_date] AS CHAR(8))
-                            + ' ' 
+                            + ' '
                             + STUFF(
                                 STUFF(RIGHT('000000' + CAST([sJOBH].[run_time] AS VARCHAR(6)),  6)
                                     , 3, 0, ':')
@@ -1622,21 +1622,21 @@ our @ISA = qw(DBD::MSSQL::Server);
                 , STUFF(
                         STUFF(RIGHT('000000' + CAST([sJOBH].[run_duration] AS VARCHAR(6)),  6)
                             , 3, 0, ':')
-                        , 6, 0, ':') 
+                        , 6, 0, ':')
                     AS [LastRunDuration (HH:MM:SS)]
                 , [sJOBH].[message] AS [LastRunStatusMessage]
                 , CASE [sJOBSCH].[NextRunDate]
                     WHEN 0 THEN NULL
                     ELSE CAST(
                             CAST([sJOBSCH].[NextRunDate] AS CHAR(8))
-                            + ' ' 
+                            + ' '
                             + STUFF(
                                 STUFF(RIGHT('000000' + CAST([sJOBSCH].[NextRunTime] AS VARCHAR(6)),  6)
                                     , 3, 0, ':')
                                 , 6, 0, ':')
                             AS DATETIME)
                   END AS [NextRunDateTime]
-            FROM 
+            FROM
                 [msdb].[dbo].[sysjobs] AS [sJOB]
                 LEFT JOIN (
                             SELECT
@@ -1648,7 +1648,7 @@ our @ISA = qw(DBD::MSSQL::Server);
                         ) AS [sJOBSCH]
                     ON [sJOB].[job_id] = [sJOBSCH].[job_id]
                 LEFT JOIN (
-                            SELECT 
+                            SELECT
                                 [job_id]
                                 , [run_date]
                                 , [run_time]
@@ -1656,7 +1656,7 @@ our @ISA = qw(DBD::MSSQL::Server);
                                 , [run_duration]
                                 , [message]
                                 , ROW_NUMBER() OVER (
-                                                        PARTITION BY [job_id] 
+                                                        PARTITION BY [job_id]
                                                         ORDER BY [run_date] DESC, [run_time] DESC
                                   ) AS RowNumber
                             FROM [msdb].[dbo].[sysjobhistory]
@@ -1748,10 +1748,10 @@ sub nagios {
       } else {
         $self->add_nagios(
             $self->check_thresholds($self->{lastrundurationseconds}, 60, 300),
-                sprintf("job %s ran for %d seconds (started %s)", $self->{name}, 
+                sprintf("job %s ran for %d seconds (started %s)", $self->{name},
                 $self->{lastrundurationseconds}, $self->{lastrundatetime}));
       }
-    } 
+    }
   }
 }
 
@@ -1781,7 +1781,7 @@ use Data::Dumper;
   sub return_servers {
     return @servers;
   }
-  
+
   sub return_first_server() {
     return $servers[0];
   }
@@ -1819,7 +1819,7 @@ sub new {
     # @@VERSION:
     # Variant1:
     # Adaptive Server Enterprise/15.5/EBF 18164 SMP ESD#2/P/x86_64/Enterprise Linux/asear155/2514/64-bit/FBO/Wed Aug 25 11:17:26 2010
-    # Variant2: 
+    # Variant2:
     # Microsoft SQL Server 2005 - 9.00.1399.06 (Intel X86)
     #    Oct 14 2005 00:33:37
     #    Copyright (c) 1988-2005 Microsoft Corporation
@@ -2001,11 +2001,11 @@ sub init {
       $self->valdiff(\%params, qw(recompilations_s compilations_s));
       # http://www.sqlmag.com/Articles/ArticleID/40925/pg/3/3.html
       # http://www.grumpyolddba.co.uk/monitoring/Performance%20Counter%20Guidance%20-%20SQL%20Server.htm
-      $self->{delta_initial_compilations_s} = $self->{delta_compilations_s} - 
+      $self->{delta_initial_compilations_s} = $self->{delta_compilations_s} -
           $self->{delta_recompilations_s};
-      $self->{initial_compilations_per_sec} = 
+      $self->{initial_compilations_per_sec} =
           $self->{delta_initial_compilations_s} / $self->{delta_timestamp};
-      $self->{recompilations_per_sec} = 
+      $self->{recompilations_per_sec} =
           $self->{delta_recompilations_s} / $self->{delta_timestamp};
     }
   } elsif ($params{mode} =~ /^server::batchrequests/) {
@@ -2063,7 +2063,7 @@ sub init {
       @{$self->{genericsql}} =
           $self->{handle}->fetchrow_array($params{selectname});
       if (! (defined $self->{genericsql} &&
-          (scalar(grep { /^[+-]?(?:\d+(?:\.\d*)?|\.\d+)$/ } @{$self->{genericsql}})) == 
+          (scalar(grep { /^[+-]?(?:\d+(?:\.\d*)?|\.\d+)$/ } @{$self->{genericsql}})) ==
           scalar(@{$self->{genericsql}}))) {
         $self->add_nagios_unknown(sprintf "got no valid response for %s",
             $params{selectname});
@@ -2112,7 +2112,7 @@ sub init {
       }
     } else {
       $self->add_nagios_unknown(
-          sprintf "Class %s is not a subclass of DBD::MSSQL::Server%s", 
+          sprintf "Class %s is not a subclass of DBD::MSSQL::Server%s",
               ref($self->{my}),
               $loaderror ? sprintf " (syntax error in %s?)", $loaderror : "" );
     }
@@ -2252,7 +2252,7 @@ sub nagios {
           if ($self->{genericsql} !~ /$params{name2}/) {
             $self->add_nagios_ok(
                 sprintf "output %s does not match pattern %s",
-                    $self->{genericsql}, $params{name2}); 
+                    $self->{genericsql}, $params{name2});
           } else {
             $self->add_nagios_critical(
                 sprintf "output %s matches pattern %s",
@@ -2291,7 +2291,7 @@ sub nagios {
               $params{units} ? $params{units} : "",
             ($i == 0) ? $self->{warningrange} : "",
               ($i == 0) ? $self->{criticalrange} : ""
-          );  
+          );
           $i++;
         }
       }
@@ -2805,7 +2805,7 @@ sub requires_version {
   my @instances = DBD::MSSQL::Server::return_servers();
   my $instversion = $instances[0]->{version};
   if (! $self->version_is_minimum($version)) {
-    $self->add_nagios($ERRORS{UNKNOWN}, 
+    $self->add_nagios($ERRORS{UNKNOWN},
         sprintf "not implemented/possible for MSSQL release %s", $instversion);
   }
 }
@@ -3152,7 +3152,7 @@ sub fetchrow_array {
     }
     $self->trace(sprintf "RESULT:\n%s\n",
         Data::Dumper::Dumper(\@row));
-  }; 
+  };
   *STDERR = *SAVEERR;
   $self->{errstr} = join("\n", (split(/\n/, $self->{errstr}), $stderrvar)) if $stderrvar;
   if ($@) {
@@ -3162,7 +3162,7 @@ sub fetchrow_array {
     $self->trace(sprintf "stderr %s", $self->{errstr}) ;
   }
   if (-f "/tmp/check_mssql_health_simulation/".$self->{mode}) {
-    my $simulation = do { local (@ARGV, $/) = 
+    my $simulation = do { local (@ARGV, $/) =
         "/tmp/check_mssql_health_simulation/".$self->{mode}; <> };
     @row = split(/\s+/, (split(/\n/, $simulation))[0]);
   }
@@ -3204,7 +3204,7 @@ sub fetchall_array {
     }
     $self->trace(sprintf "RESULT:\n%s\n",
         Data::Dumper::Dumper($rows));
-  }; 
+  };
   *STDERR = *SAVEERR;
   $self->{errstr} = join("\n", (split(/\n/, $self->{errstr}), $stderrvar)) if $stderrvar;
   if ($@) {
@@ -3215,7 +3215,7 @@ sub fetchall_array {
     $self->trace(sprintf "stderr %s", $self->{errstr}) ;
   }
   if (-f "/tmp/check_mssql_health_simulation/".$self->{mode}) {
-    my $simulation = do { local (@ARGV, $/) = 
+    my $simulation = do { local (@ARGV, $/) =
         "/tmp/check_mssql_health_simulation/".$self->{mode}; <> };
     @{$rows} = map { [ split(/\s+/, $_) ] } split(/\n/, $simulation);
   }
@@ -3356,7 +3356,7 @@ sub init {
           $self->{sqlcmd} .= ' -h-1 -s"|" -W';
         }
       }
-  
+
       use POSIX ':signal_h';
       if ($^O =~ /MSWin/) {
         local $SIG{'ALRM'} = sub {
@@ -3415,7 +3415,7 @@ sub fetchrow_array {
     $self->{errstr} = join(" ", @oerrs);
   } else {
     my $output = do { local (@ARGV, $/) = $self->{sql_resultfile}; <> };
-    @row = map { convert($_) } 
+    @row = map { convert($_) }
         map { s/^\s+([\.\d]+)$/$1/g; $_ }         # strip leading space from numbers
         map { s/\s+$//g; $_ }                     # strip trailing space
         split(/\|/, (split(/\n/, $output))[0]);
@@ -3458,12 +3458,12 @@ sub fetchall_array {
     $self->{errstr} = join(" ", @oerrs);
   } else {
     my $output = do { local (@ARGV, $/) = $self->{sql_resultfile}; <> };
-    my @rows = map { [ 
-        map { convert($_) } 
+    my @rows = map { [
+        map { convert($_) }
         map { s/^\s+([\.\d]+)$/$1/g; $_ }
         map { s/\s+$//g; $_ }
         split /\|/
-    ] } grep { ! /^\(\d+ rows affected\)/ } 
+    ] } grep { ! /^\(\d+ rows affected\)/ }
         grep { ! /^\s*$/ }
         grep { ! /^Database name .* ignored, referencing object in/ } split(/\n/, $output);
     $rows = \@rows;
@@ -3638,7 +3638,7 @@ sub init {
           $self->{sqsh} .= ' -h -s"|"';
         }
       }
-  
+
       use POSIX ':signal_h';
       if ($^O =~ /MSWin/) {
         local $SIG{'ALRM'} = sub {
@@ -3697,7 +3697,7 @@ sub fetchrow_array {
     $self->{errstr} = join(" ", @oerrs);
   } else {
     my $output = do { local (@ARGV, $/) = $self->{sql_resultfile}; <> };
-    @row = map { convert($_) } 
+    @row = map { convert($_) }
         map { s/^\s+([\.\d]+)$/$1/g; $_ }         # strip leading space from numbers
         map { s/\s+$//g; $_ }                     # strip trailing space
         split(/\|/, (split(/\n/, $output))[0]);
@@ -3740,12 +3740,12 @@ sub fetchall_array {
     $self->{errstr} = join(" ", @oerrs);
   } else {
     my $output = do { local (@ARGV, $/) = $self->{sql_resultfile}; <> };
-    my @rows = map { [ 
-        map { convert($_) } 
+    my @rows = map { [
+        map { convert($_) }
         map { s/^\s+([\.\d]+)$/$1/g; $_ }
         map { s/\s+$//g; $_ }
         split /\|/
-    ] } grep { ! /^\(\d+ rows affected\)/ } 
+    ] } grep { ! /^\(\d+ rows affected\)/ }
         grep { ! /^\s*$/ }
         grep { ! /^Database name .* ignored, referencing object in/ } split(/\n/, $output);
     $rows = \@rows;
@@ -3858,7 +3858,7 @@ sub init {
       open OUT ,'>',\$stderrvar;
       *STDERR = *OUT;
       if ($self->{handle} = DBI->connect(
-          #sprintf("DBI:SQLRelay:host=%s;port=%d;socket=%s", 
+          #sprintf("DBI:SQLRelay:host=%s;port=%d;socket=%s",
           sprintf("DBI:SQLRelay:host=%s;port=%d;",
               $self->{hostname}, $self->{port}),
         $self->{username},
@@ -4294,10 +4294,10 @@ EOUS
        the name of the database etc depending on the mode.
     --name2
        if name is a sql statement, this statement would appear in
-       the output and the performance data. This can be ugly, so 
+       the output and the performance data. This can be ugly, so
        name2 can be used to appear instead.
     --regexp
-       if this parameter is used, name will be interpreted as a 
+       if this parameter is used, name will be interpreted as a
        regular expression.
     --units
        one of %, KB, MB, GB. This is used for a better output of mode=sql
@@ -4315,13 +4315,13 @@ EOUS
   If an additional --regexp is added, --name's argument will be interpreted
   as a regular expression.
   The parameter --mitigation lets you classify the severity of an offline
-  tablespace. 
+  tablespace.
 
   In mode sql you can url-encode the statement so you will not have to mess
   around with special characters in your Nagios service definitions.
-  Instead of 
+  Instead of
   --name="select count(*) from master..sysprocesses"
-  you can say 
+  you can say
   --name=select%20count%28%2A%29%20from%20master%2E%2Esysprocesses
   For your convenience you can call check_mssql_health with the --encode
   option and it will encode the standard input.
@@ -4334,7 +4334,7 @@ EOUS
 #
 # --basis
 #  one of rate, delta, value
-  
+
 }
 
 sub print_help () {
@@ -4502,7 +4502,7 @@ if (exists $commandline{labelformat}) {
 if (exists $commandline{'with-mymodules-dyn-dir'}) {
   $DBD::MSSQL::Server::my_modules_dyn_dir = $commandline{'with-mymodules-dyn-dir'};
 } else {
-  $DBD::MSSQL::Server::my_modules_dyn_dir = '/usr/lib/faurecia/plugins';
+  $DBD::MSSQL::Server::my_modules_dyn_dir = '/usr/lib/canux/plugins';
 }
 
 
@@ -4514,7 +4514,7 @@ if (exists $commandline{environment}) {
     if ((! $ENV{$_}) || ($ENV{$_} ne $commandline{environment}->{$_})) {
       $needs_restart = 1;
       $ENV{$_} = $commandline{environment}->{$_};
-      printf STDERR "new %s=%s forces restart\n", $_, $ENV{$_} 
+      printf STDERR "new %s=%s forces restart\n", $_, $ENV{$_}
           if $DBD::MSSQL::Server::verbose;
     }
   }
@@ -4522,7 +4522,7 @@ if (exists $commandline{environment}) {
   # during the sudo.
   # so the perl interpreter starts without a shlib_path. but --runas cares for
   # a --environment shlib_path=...
-  # so setting the environment variable in the code above and restarting the 
+  # so setting the environment variable in the code above and restarting the
   # perl interpreter will help it find shared libs
 }
 
@@ -4532,12 +4532,12 @@ if (exists $commandline{runas}) {
   $needs_restart = 1;
   # if the calling script has a path for shared libs and there is no --environment
   # parameter then the called script surely needs the variable too.
-  foreach my $important_env (qw(LD_LIBRARY_PATH SHLIB_PATH 
+  foreach my $important_env (qw(LD_LIBRARY_PATH SHLIB_PATH
       MSSQL_HOME TNS_ADMIN ORA_NLS ORA_NLS33 ORA_NLS10)) {
-    if ($ENV{$important_env} && ! scalar(grep { /^$important_env=/ } 
+    if ($ENV{$important_env} && ! scalar(grep { /^$important_env=/ }
         keys %{$commandline{environment}})) {
       $commandline{environment}->{$important_env} = $ENV{$important_env};
-      printf STDERR "add important --environment %s=%s\n", 
+      printf STDERR "add important --environment %s=%s\n",
           $important_env, $ENV{$important_env} if $DBD::MSSQL::Server::verbose;
     }
   }
@@ -4571,7 +4571,7 @@ if ($needs_restart) {
   } elsif ($runas) {
     exec "sudo", "-S", "-u", $runas, $0, @newargv;
   } else {
-    exec $0, @newargv;  
+    exec $0, @newargv;
     # this makes sure that even a SHLIB or LD_LIBRARY_PATH are set correctly
     # when the perl interpreter starts. Setting them during runtime does not
     # help loading e.g. libclntsh.so
@@ -4612,7 +4612,7 @@ if (exists $commandline{name}) {
   }
   # objects can be encoded like an url
   # with s/([^A-Za-z0-9])/sprintf("%%%02X", ord($1))/seg;
-  if (($commandline{mode} ne "sql") || 
+  if (($commandline{mode} ne "sql") ||
       (($commandline{mode} eq "sql") &&
        ($commandline{name} =~ /select%20/i))) { # protect ... like '%cac%' ... from decoding
     $commandline{name} =~ s/\%([A-Fa-f0-9]{2})/pack('C', hex($1))/seg;
@@ -4620,7 +4620,7 @@ if (exists $commandline{name}) {
   if ($commandline{name} =~ /^0$/) {
     # without this, $params{selectname} would be treated like undef
     $commandline{name} = "00";
-  } 
+  }
 }
 
 $SIG{'ALRM'} = sub {
@@ -4651,32 +4651,32 @@ if ($commandline{mode} =~ /^my-([^\-.]+)/) {
 my %params = (
     timeout => $TIMEOUT,
     mode => (
-        map { $_->[0] } 
+        map { $_->[0] }
         grep {
-           ($commandline{mode} eq $_->[1]) || 
-           ( defined $_->[2] && grep { $commandline{mode} eq $_ } @{$_->[2]}) 
+           ($commandline{mode} eq $_->[1]) ||
+           ( defined $_->[2] && grep { $commandline{mode} eq $_ } @{$_->[2]})
         } @modes
     )[0],
     cmdlinemode => $commandline{mode},
     method => $commandline{method} ||
         $ENV{NAGIOS__SERVICEMSSQL_METH} ||
         $ENV{NAGIOS__HOSTMSSQL_METH} || 'dbi',
-    hostname => $commandline{hostname}  || 
+    hostname => $commandline{hostname}  ||
         $ENV{NAGIOS__SERVICEMSSQL_HOST} ||
         $ENV{NAGIOS__HOSTMSSQL_HOST},
-    username => $commandline{username} || 
+    username => $commandline{username} ||
         $ENV{NAGIOS__SERVICEMSSQL_USER} ||
         $ENV{NAGIOS__HOSTMSSQL_USER},
-    password => $commandline{password} || 
+    password => $commandline{password} ||
         $ENV{NAGIOS__SERVICEMSSQL_PASS} ||
         $ENV{NAGIOS__HOSTMSSQL_PASS},
-    port => $commandline{port} || 
+    port => $commandline{port} ||
         $ENV{NAGIOS__SERVICEMSSQL_PORT} ||
         $ENV{NAGIOS__HOSTMSSQL_PORT},
-    server => $commandline{server}  || 
+    server => $commandline{server}  ||
         $ENV{NAGIOS__SERVICEMSSQL_SERVER} ||
         $ENV{NAGIOS__HOSTMSSQL_SERVER},
-    currentdb => $commandline{currentdb}  || 
+    currentdb => $commandline{currentdb}  ||
         $ENV{NAGIOS__SERVICEMSSQL_CURRENTDB} ||
         $ENV{NAGIOS__HOSTMSSQL_CURRENTDB},
     warningrange => $commandline{warning},

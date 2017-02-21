@@ -36,7 +36,7 @@ from monitoring.fabric import package
 
 
 @task
-@hosts('monitoring-dc.app.corp')
+@hosts('canuxcheng.com')
 def doc():
     """Upload doc to central server"""
     env.user = "webcontent"

@@ -2,7 +2,7 @@
 # -*- coding: UTF-8 -*-
 #===============================================================================
 # Name          : check_cisco_config.py
-# Authors       : Vincent BESANCON <besancon.vincent@gmail.com>
+# Authors       : Canux CHENG <canuxcheng@gmail.com>
 #                 Julien DORMOY aka Fusionwork <dormoyjuju@free.fr>
 # Description   : Check config last change and last saved date time.
 #-------------------------------------------------------------------------------

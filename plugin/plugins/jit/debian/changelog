@@ -2,44 +2,44 @@ plugin-app-jit (1.3.7) precise; urgency=low
 
   * Fix deprecations for monitoring.nagios v1.3.0.
 
- -- Vincent BESANCON <besancon.vincent@gmail.com>  Mon, 10 Mar 2014 14:28:58 +0100
+ -- Canux CHENG <canuxcheng@gmail.com>  Mon, 10 Mar 2014 14:28:58 +0100
 
 plugin-app-jit (1.3.6) precise; urgency=low
 
   * [JIT] added execption for url http. refs #2617
 
- -- Patrick BAILAT <patrick.bailat-ext@Company.com>  Thu, 26 Sep 2013 16:29:54 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Thu, 26 Sep 2013 16:29:54 +0200
 
 plugin-app-jit (1.3.5) precise; urgency=low
 
   * [JIT] verify if servers role.upper is MAIN. refs #2356
 
- -- Patrick BAILAT <patrick.bailat-ext@Company.com>  Wed, 25 Sep 2013 10:08:57 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Wed, 25 Sep 2013 10:08:57 +0200
 
 plugin-app-jit (1.3.4) precise; urgency=low
 
   * [JIT] verify if servers role is MAIN or Main. refs #2356
 
- -- Patrick BAILAT <patrick.bailat-ext@Company.com>  Tue, 24 Sep 2013 16:33:14 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Tue, 24 Sep 2013 16:33:14 +0200
 
 plugin-app-jit (1.3.3) precise; urgency=low
 
   * [JIT] verify if servers role is MAIN. refs #2356
 
- -- Patrick BAILAT <patrick.bailat-ext@Company.com>  Tue, 24 Sep 2013 16:23:52 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Tue, 24 Sep 2013 16:23:52 +0200
 
 plugin-app-jit (1.3.2) precise; urgency=low
 
   * Fix error exception refs #2576
 
- -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Mon, 26 Aug 2013 14:02:03 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Mon, 26 Aug 2013 14:02:03 +0200
 
 plugin-app-jit (1.3.1) precise; urgency=low
 
   * Fix XMLInterface.last_updated, role and version that was missed during
     instance init.
 
- -- Vincent BESANCON <besancon.vincent@gmail.com>  Tue, 30 Jul 2013 16:36:33 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Tue, 30 Jul 2013 16:36:33 +0200
 
 plugin-app-jit (1.3.0) precise; urgency=low
 
@@ -66,7 +66,7 @@ plugin-app-jit (1.3.0) precise; urgency=low
   * Prepare version 1.3.0.
   * doc.update: set location to jit-plugins.
 
- -- Vincent BESANCON <besancon.vincent@gmail.com>  Tue, 30 Jul 2013 12:07:14 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Tue, 30 Jul 2013 12:07:14 +0200
 
 plugin-app-jit (1.2.0) precise; urgency=low
 
@@ -83,7 +83,7 @@ plugin-app-jit (1.2.0) precise; urgency=low
   * Install files in new location.
   * Create a transitional package to setup the new one.
 
- -- Vincent BESANCON <besancon.vincent@gmail.com>  Mon, 15 Jul 2013 16:40:55 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Mon, 15 Jul 2013 16:40:55 +0200
 
 plugin-app-gimm (1.1.13) precise; urgency=low
 
@@ -91,35 +91,35 @@ plugin-app-gimm (1.1.13) precise; urgency=low
   * [idea] upgrade for Pycharm 2.7.
   * [interface] fixed UNUSED severity key. All upper case ! refs #2296
 
- -- Vincent BESANCON <besancon.vincent@gmail.com>  Thu, 06 Jun 2013 17:47:17 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Thu, 06 Jun 2013 17:47:17 +0200
 
 plugin-app-gimm (1.1.11) precise; urgency=low
 
   * Fix lintian error about dependencies and remove unused file
 
- -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Tue, 09 Apr 2013 16:15:12 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Tue, 09 Apr 2013 16:15:12 +0200
 
 plugin-app-gimm (1.1.10) precise; urgency=low
 
-  [ Vincent BESANCON ]
+  [ Canux CHENG ]
   * Miss version info.
 
-  [ Yves ANDOLFATTO ]
+  [ Canux CHENG ]
 
- -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Wed, 03 Apr 2013 16:40:44 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Wed, 03 Apr 2013 16:40:44 +0200
 
 plugin-app-gimm (1.1.9) precise; urgency=low
 
   * [add dependency and maj fabfiles
 
- -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Wed, 20 Feb 2013 11:40:01 +0100
+ -- Canux CHENG <canuxcheng@gmail.com>  Wed, 20 Feb 2013 11:40:01 +0100
 
 plugin-app-gimm (1.1.8) quantal; urgency=low
 
   * check_gimm_bbdd.py: wrong value for used MB in plugin output. It was KB
     and not MB.
 
- -- Vincent BESANCON <besancon.vincent@gmail.com>  Mon, 11 Feb 2013 17:16:51 +0100
+ -- Canux CHENG <canuxcheng@gmail.com>  Mon, 11 Feb 2013 17:16:51 +0100
 
 plugin-app-gimm (1.1.7) quantal; urgency=low
 
@@ -129,7 +129,7 @@ plugin-app-gimm (1.1.7) quantal; urgency=low
     than the value if not available or set it to maxsize get from the
     database.
 
- -- Vincent BESANCON <besancon.vincent@gmail.com>  Mon, 11 Feb 2013 17:07:56 +0100
+ -- Canux CHENG <canuxcheng@gmail.com>  Mon, 11 Feb 2013 17:07:56 +0100
 
 plugin-app-gimm (1.1.6) precise; urgency=low
 
@@ -141,26 +141,26 @@ plugin-app-gimm (1.1.6) precise; urgency=low
     interface status. refs #1823 @15m.
   * New patch v1.1.6.
 
- -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Fri, 04 Jan 2013 15:20:17 +0100
+ -- Canux CHENG <canuxcheng@gmail.com>  Fri, 04 Jan 2013 15:20:17 +0100
 
 plugin-app-gimm (1.1.5) quantal; urgency=low
 
   * Handle socket.error exception when connecting to FTP. Show a message about
     login or firewall issue.
 
- -- Vincent BESANCON <besancon.vincent@gmail.com>  Thu, 03 Jan 2013 10:32:47 +0100
+ -- Canux CHENG <canuxcheng@gmail.com>  Thu, 03 Jan 2013 10:32:47 +0100
 
 plugin-app-gimm (1.1.4) stable; urgency=low
 
   * Now able to specify a timeout for the FTP connection (default to 10 secs).
 
- -- Vincent BESANCON <besancon.vincent@gmail.com>  Thu, 03 Jan 2013 09:29:32 +0100
+ -- Canux CHENG <canuxcheng@gmail.com>  Thu, 03 Jan 2013 09:29:32 +0100
 
 plugin-app-gimm (1.1.3) stable; urgency=low
 
   * [xml] status: use UTC date time for XML last update check.
 
- -- Vincent BESANCON <besancon.vincent@gmail.com>  Wed, 02 Jan 2013 17:38:34 +0100
+ -- Canux CHENG <canuxcheng@gmail.com>  Wed, 02 Jan 2013 17:38:34 +0100
 
 plugin-app-gimm (1.1.2) stable; urgency=low
 
@@ -169,7 +169,7 @@ plugin-app-gimm (1.1.2) stable; urgency=low
     support for "Unused" severity.
   * Documents exceptions.
 
- -- Vincent BESANCON <besancon.vincent@gmail.com>  Wed, 02 Jan 2013 17:18:52 +0100
+ -- Canux CHENG <canuxcheng@gmail.com>  Wed, 02 Jan 2013 17:18:52 +0100
 
 plugin-app-gimm (1.1.1) stable; urgency=low
 
@@ -178,7 +178,7 @@ plugin-app-gimm (1.1.1) stable; urgency=low
   * [xml] status: show version of the XML file in output.
   * [fabfile] doc: do not set install() the default.
 
- -- Vincent BESANCON <besancon.vincent@gmail.com>  Thu, 13 Dec 2012 16:53:55 +0100
+ -- Canux CHENG <canuxcheng@gmail.com>  Thu, 13 Dec 2012 16:53:55 +0100
 
 plugin-app-gimm (1.1.0) stable; urgency=low
 
@@ -193,7 +193,7 @@ plugin-app-gimm (1.1.0) stable; urgency=low
   * [doc] created the documentation for the project. refs #1723 @2h.
   * Converted fabfile module to a package for tasks sorting.
 
- -- Vincent BESANCON <besancon.vincent@gmail.com>  Tue, 27 Nov 2012 15:02:49 +0100
+ -- Canux CHENG <canuxcheng@gmail.com>  Tue, 27 Nov 2012 15:02:49 +0100
 
 plugin-app-gimm (1.0.4) precise; urgency=low
 
@@ -204,7 +204,7 @@ plugin-app-gimm (1.0.4) precise; urgency=low
     or log file type. It will detect the filename automatically. refs #1443
     @1h.
 
- -- Vincent BESANCON <besancon.vincent@gmail.com>  Mon, 13 Aug 2012 11:32:09 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Mon, 13 Aug 2012 11:32:09 +0200
 
 plugin-app-gimm (1.0.3) stable; urgency=low
 
@@ -212,19 +212,19 @@ plugin-app-gimm (1.0.3) stable; urgency=low
   * check_gimm_hist_tables.py: check threshold on all rows of query results.
     Make '-w' required.
 
- -- Vincent BESANCON <vincent.besancon@Company.com>  Fri, 13 Jul 2012 14:29:56 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Fri, 13 Jul 2012 14:29:56 +0200
 
 plugin-app-gimm (1.0.2) stable; urgency=low
 
   * pending_events.py: add threshold args in a argparse group.
 
- -- Vincent BESANCON <vincent.besancon@Company.com>  Thu, 12 Jul 2012 16:33:03 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Thu, 12 Jul 2012 16:33:03 +0200
 
 plugin-app-gimm (1.0.1) stable; urgency=low
 
   * check_gimm_master_data.py: forget to treat OK case. refs #1324.
 
- -- Vincent BESANCON <vincent.besancon@Company.com>  Thu, 12 Jul 2012 13:49:48 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Thu, 12 Jul 2012 13:49:48 +0200
 
 plugin-app-gimm (1.0.0) stable; urgency=low
 
@@ -232,7 +232,7 @@ plugin-app-gimm (1.0.0) stable; urgency=low
     callof error. refs #1328
   * First release ready for production.
 
- -- Vincent BESANCON <vincent.besancon@Company.com>  Mon, 09 Jul 2012 16:52:09 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Mon, 09 Jul 2012 16:52:09 +0200
 
 plugin-app-gimm (0.0.9) stable; urgency=low
 
@@ -248,20 +248,20 @@ plugin-app-gimm (0.0.9) stable; urgency=low
     refs #1327 @ 3 h
   * check_gimm_sequence_jump.py: format QUERY inside initialize().
 
- -- Vincent BESANCON <vincent.besancon@Company.com>  Mon, 09 Jul 2012 16:06:46 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Mon, 09 Jul 2012 16:06:46 +0200
 
 plugin-app-gimm (0.0.8) stable; urgency=low
 
   * check_gimm_master_data.py: new plugin to check the integration of master
     data. refs #1324
 
- -- Vincent BESANCON <vincent.besancon@Company.com>  Thu, 05 Jul 2012 17:37:13 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Thu, 05 Jul 2012 17:37:13 +0200
 
 plugin-app-gimm (0.0.7) stable; urgency=low
 
   * check_gimm_forecast.py: new plugin to check forecast integration.
 
- -- Vincent BESANCON <vincent.besancon@Company.com>  Tue, 03 Jul 2012 13:55:22 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Tue, 03 Jul 2012 13:55:22 +0200
 
 plugin-app-gimm (0.0.6) stable; urgency=low
 
@@ -271,14 +271,14 @@ plugin-app-gimm (0.0.6) stable; urgency=low
   * check_gimm_sysdb_data.py: new plugin to check the states of all databases
     on the SQL server. refs #1277
 
- -- Vincent BESANCON <vincent.besancon@Company.com>  Fri, 29 Jun 2012 15:55:41 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Fri, 29 Jun 2012 15:55:41 +0200
 
 plugin-app-gimm (0.0.5) stable; urgency=low
 
   * check_gimm_hist_tables.py: new plugin to check the num rows of history
     tables.
 
- -- Vincent BESANCON <vincent.besancon@Company.com>  Fri, 29 Jun 2012 12:05:39 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Fri, 29 Jun 2012 12:05:39 +0200
 
 plugin-app-gimm (0.0.4) stable; urgency=low
 
@@ -287,23 +287,23 @@ plugin-app-gimm (0.0.4) stable; urgency=low
   * bbdd.py: add thresholds options to a parser group (used in --help).
   * Pycharm: open monitoring.nagios project with this one.
 
- -- Vincent BESANCON <vincent.besancon@Company.com>  Fri, 29 Jun 2012 10:19:03 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Fri, 29 Jun 2012 10:19:03 +0200
 
 plugin-app-gimm (0.0.3) stable; urgency=low
 
   * Misc fixes in check_gimm_bbdd.py.
 
- -- Vincent BESANCON <vincent.besancon@Company.com>  Thu, 28 Jun 2012 17:16:52 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Thu, 28 Jun 2012 17:16:52 +0200
 
 plugin-app-gimm (0.0.2) stable; urgency=high
 
   * Set executable bit on check_gimm_bbdd.py.
   * Added git-buildpackage configuration.
 
- -- Vincent BESANCON <vincent.besancon@Company.com>  Thu, 28 Jun 2012 10:28:21 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Thu, 28 Jun 2012 10:28:21 +0200
 
 plugin-app-gimm (0.0.1) stable; urgency=low
 
   * Initial Release.
 
- -- Monitoring & Reporting <9OPMonitoring@none.Company.com>  Thu, 28 Jun 2012 08:45:52 +0200
+ -- Canux CHENG <9OPMonitoring@none.canux.com>  Thu, 28 Jun 2012 08:45:52 +0200

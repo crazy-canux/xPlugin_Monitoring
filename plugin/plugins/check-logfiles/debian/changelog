@@ -1,20 +1,20 @@
 plugin-check-logfiles (0.0.14) trusty; urgency=medium
 
-  [ Mohamed CHERROUD ]
+  [ Canux CHENG ]
   * Add share option for LRSROOT directory
 
-  [ Vincent BESANCON ]
+  [ Canux CHENG ]
   * [fabfile] updated to trusty.
 
- -- Vincent BESANCON <vincent.besancon@Company.com>  Tue, 24 Nov 2015 08:41:55 +0100
+ -- Canux CHENG <canuxcheng@gmail.com>  Tue, 24 Nov 2015 08:41:55 +0100
 
 plugin-check-logfiles (0.0.13) trusty; urgency=medium
 
-  [ Yves ANDOLFATTO ]
+  [ Canux CHENG ]
   * Add VPSX ASIA
   * Update changelog for 0.0.9 release
 
-  [ Mohamed CHERROUD ]
+  [ Canux CHENG ]
   * Add VPSX bash script for Asia
   * Update changelog for 0.0.10 release.
   * Update install file.
@@ -22,75 +22,75 @@ plugin-check-logfiles (0.0.13) trusty; urgency=medium
   * FixBug
   * Update changelog for 0.0.12 release.
 
-  [ Yves ANDOLFATTO ]
+  [ Canux CHENG ]
 
- -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Wed, 14 Jan 2015 15:08:52 +0100
+ -- Canux CHENG <canuxcheng@gmail.com>  Wed, 14 Jan 2015 15:08:52 +0100
 
 plugin-check-logfiles (0.0.12) precise; urgency=low
 
   * FixBug
 
- -- Mohamed CHERROUD <mohamed.cherroud-ext@Company.com>  Fri, 18 Jul 2014 15:07:17 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Fri, 18 Jul 2014 15:07:17 +0200
 
 plugin-check-logfiles (0.0.11) precise; urgency=low
 
   * Update install file.
 
- -- Mohamed CHERROUD <mohamed.cherroud-ext@Company.com>  Fri, 18 Jul 2014 14:55:06 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Fri, 18 Jul 2014 14:55:06 +0200
 
 plugin-check-logfiles (0.0.10) precise; urgency=low
 
-  [ Yves ANDOLFATTO ]
+  [ Canux CHENG ]
   * Add VPSX ASIA
   * Update changelog for 0.0.9 release
 
-  [ Mohamed CHERROUD ]
+  [ Canux CHENG ]
   * Add VPSX bash script for Asia
 
- -- Mohamed CHERROUD <mohamed.cherroud-ext@Company.com>  Fri, 18 Jul 2014 09:35:08 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Fri, 18 Jul 2014 09:35:08 +0200
 
 plugin-check-logfiles (0.0.9) precise; urgency=low
 
   * Add VPSX ASIA
   * Update package for ubuntu trusty.
 
- -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Thu, 10 Jul 2014 11:58:41 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Thu, 10 Jul 2014 11:58:41 +0200
 
 plugin-check-logfiles (0.0.8) precise; urgency=low
 
   * Change path to tmp files to store them by env on the NFS.
 
- -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Wed, 11 Dec 2013 11:35:07 +0100
+ -- Canux CHENG <canuxcheng@gmail.com>  Wed, 11 Dec 2013 11:35:07 +0100
 
 plugin-check-logfiles (0.0.7) precise; urgency=low
 
   * Change tmp path.
 
- -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Tue, 24 Sep 2013 15:21:52 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Tue, 24 Sep 2013 15:21:52 +0200
 
 plugin-check-logfiles (0.0.6) precise; urgency=low
 
   * Add smbclient as dep.
 
- -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Fri, 20 Sep 2013 10:58:19 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Fri, 20 Sep 2013 10:58:19 +0200
 
 plugin-check-logfiles (0.0.5) precise; urgency=low
 
   * Fix path.
 
- -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Fri, 20 Sep 2013 10:41:24 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Fri, 20 Sep 2013 10:41:24 +0200
 
 plugin-check-logfiles (0.0.4) precise; urgency=low
 
   * Add missing components for check_logile
 
- -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Fri, 20 Sep 2013 10:37:07 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Fri, 20 Sep 2013 10:37:07 +0200
 
 plugin-check-logfiles (0.0.3) precise; urgency=low
 
   * Indentation and Downgrade Standard-Version for 3.9.3, i.e. precise version
 
- -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Tue, 09 Apr 2013 15:34:34 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Tue, 09 Apr 2013 15:34:34 +0200
 
 plugin-check-logfiles (0.0.2) precise; urgency=low
 
@@ -98,10 +98,10 @@ plugin-check-logfiles (0.0.2) precise; urgency=low
   * Add Perl dependencies.
   * Install plugin in "sys".
 
- -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Wed, 03 Apr 2013 16:35:22 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Wed, 03 Apr 2013 16:35:22 +0200
 
 plugin-check-logfiles (0.0.1) precise; urgency=low
 
   * Initial Release.
 
- -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Wed, 13 Mar 2013 13:19:53 +0100
+ -- Canux CHENG <canuxcheng@gmail.com>  Wed, 13 Mar 2013 13:19:53 +0100

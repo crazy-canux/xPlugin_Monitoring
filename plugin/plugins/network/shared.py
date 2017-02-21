@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #===============================================================================
 # Filename      : shared.py
-# Author        : Vincent BESANCON <besancon.vincent@gmail.com>
+# Author        : Canux CHENG <canuxcheng@gmail.com>
 # Description   : Shared data between plugins.
 #-------------------------------------------------------------------------------
 # This program is free software: you can redistribute it and/or modify

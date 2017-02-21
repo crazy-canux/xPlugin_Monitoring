@@ -7,7 +7,7 @@
 Nagios Plugin - JIT's Application
 ================================================================================
 
-:authors: Monitoring & Reporting,
+:authors: Canux CHENG,
           CC Industrialization & JIT Applications
 
 This is the API reference for **JIT** application's plugins for Nagios. These
@@ -35,4 +35,4 @@ Indices and tables
 
 .. links:
 
-.. _XML interface: http://monitoring-dc.app.corp/tracking/projects/gimm/wiki/#XML-interface-specification
+.. _XML interface: http://canuxcheng.com/tracking/projects/gimm/wiki/#XML-interface-specification

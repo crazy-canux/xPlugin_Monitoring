@@ -1,11 +1,11 @@
 Source: plugin-erp-archiving
 Section: misc
 Priority: extra
-Maintainer: Yves ANDOLFATTO <yves.andolfatto@Company.com>
+Maintainer: Canux CHENG <canuxcheng@gmail.com>
 Build-Depends: debhelper (>= 8.0.0)
 Standards-Version: 3.9.3
-Vcs-Git: http://monitoring-dc.app.corp/git/plugins/erp-archiving.git
-Vcs-Browser: http://monitoring-dc.app.corp/git/?p=plugins/erp-archiving.git
+Vcs-Git: http://canuxcheng.com/git/plugins/erp-archiving.git
+Vcs-Browser: http://canuxcheng.com/git/?p=plugins/erp-archiving.git
 
 Package: plugin-erp-archiving
 Architecture: amd64

@@ -1,7 +1,7 @@
 # hacmp_two_nodes_status.cmd
 #
 # Check global state of a HACMP cluster with 2 nodes
-# Author: Vincent BESANCON <vincent.besancon@Company.com>
+# Author: Canux CHENG <canuxcheng@gmail.com>
 #
 
 command[ substate ] = $PLUGINPATH$/check_snmp -H $HOSTIP$ -C $COMMUNITY$ -m '/usr/share/mibs/site/HACMP.txt' -o RISC6000CLSMUXPD-MIB::clusterSubState.$HACMP_CLUSTER_ID$ -l 'Cluster_substate' -s 'stable(32)'

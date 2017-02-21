@@ -1,11 +1,11 @@
 Source: plugin-db2
 Section: misc
 Priority: extra
-Maintainer: EIT/PLM Delivery <dl-it-systemoperating-eitapplications@none.Company.com>
+Maintainer: EIT/PLM Delivery <dl-it-systemoperating-eitapplications@none.canux.com>
 Build-Depends: debhelper (>= 9)
 Standards-Version: 3.9.5
-Vcs-Git: http://monitoring-dc.app.corp/git/plugins/db2.git
-Vcs-Browser: http://monitoring-dc.app.corp/git/?p=plugins/db2.git
+Vcs-Git: http://canuxcheng.com/git/plugins/db2.git
+Vcs-Browser: http://canuxcheng.com/git/?p=plugins/db2.git
 
 Package: plugin-db2
 Architecture: all

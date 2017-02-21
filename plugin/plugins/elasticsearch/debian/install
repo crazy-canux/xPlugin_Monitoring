@@ -1,2 +1,2 @@
-check_elasticsearch usr/lib/Company/plugins/app/elasticsearch
+check_elasticsearch usr/lib/canux/plugins/app/elasticsearch
 

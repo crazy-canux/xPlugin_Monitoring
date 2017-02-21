@@ -53,6 +53,6 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     for repo in repo_list:
-        cmd = "cd %s;git clone git@monitoring-dc.app.corp:%s" % (args.dest, repo)
+        cmd = "cd %s;git clone git@canuxcheng.com:%s" % (args.dest, repo)
         print cmd
         os.system(cmd)

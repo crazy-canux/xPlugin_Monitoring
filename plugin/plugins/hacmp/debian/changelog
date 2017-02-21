@@ -1,59 +1,59 @@
 plugin-hacmp (0.2.4) precise; urgency=low
 
-  [ Patrick BAILAT ]
+  [ Canux CHENG ]
   * Update changelog for 0.2.3 release.
 
-  [ Yves ANDOLFATTO ]
+  [ Canux CHENG ]
 
- -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Mon, 26 Aug 2013 14:44:01 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Mon, 26 Aug 2013 14:44:01 +0200
 
 plugin-hacmp (0.2.3) precise; urgency=low
 
   * [Excel] add # before ==== beacause problem with exoprt excel
 
- -- Patrick BAILAT <patrick.bailat-ext@Company.com>  Tue, 20 Aug 2013 08:33:07 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Tue, 20 Aug 2013 08:33:07 +0200
 
 plugin-hacmp (0.2.2) precise; urgency=low
 
   * fix lintian error spelling-error-in-description
 
- -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Tue, 09 Apr 2013 16:23:38 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Tue, 09 Apr 2013 16:23:38 +0200
 
 plugin-hacmp (0.2.1) precise; urgency=low
 
   * Indentation and Downgrade Standard-Version for 3.9.3, i.e. precise version
 
- -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Tue, 09 Apr 2013 16:17:10 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Tue, 09 Apr 2013 16:17:10 +0200
 
 plugin-hacmp (0.2.0) precise; urgency=low
 
-  [ Yves ANDOLFATTO ]
+  [ Canux CHENG ]
   * [Dependencies] Modify 'python' to ${python:Depends}
 
-  [ Patrick BAILAT ]
+  [ Canux CHENG ]
   * Added exception snmpquery is null
 
- -- Patrick BAILAT <patrick.bailat-ext@Company.com>  Wed, 03 Apr 2013 16:10:31 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Wed, 03 Apr 2013 16:10:31 +0200
 
 plugin-hacmp (0.1.2) precise; urgency=low
 
   * maj dependency
   * maj management files
 
- -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Wed, 20 Feb 2013 11:44:58 +0100
+ -- Canux CHENG <canuxcheng@gmail.com>  Wed, 20 Feb 2013 11:44:58 +0100
 
 plugin-hacmp (0.1.1) quantal; urgency=low
 
-  [ Patrick BAILAT ]
+  [ Canux CHENG ]
   * add file gitignore
 
-  [ Vincent BESANCON ]
+  [ Canux CHENG ]
   * Created a hacmp package for shared ressources.
 
- -- Vincent BESANCON <besancon.vincent@gmail.com>  Mon, 04 Feb 2013 15:42:49 +0100
+ -- Canux CHENG <canuxcheng@gmail.com>  Mon, 04 Feb 2013 15:42:49 +0100
 
 plugin-hacmp (0.1) stable; urgency=low
 
   * Initial Release.
 
- -- Patrick BAILAT <patrick.bailat-ext@Company.com>  Mon, 05 Nov 2012 10:14:44 +0100
+ -- Canux CHENG <canuxcheng@gmail.com>  Mon, 05 Nov 2012 10:14:44 +0100

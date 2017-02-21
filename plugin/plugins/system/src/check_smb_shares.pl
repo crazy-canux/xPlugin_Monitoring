@@ -23,7 +23,7 @@
 
 use POSIX;
 use strict;
-use lib "/usr/lib/Company/plugins"  ;
+use lib "/usr/lib/canux/plugins"  ;
 use Filesys::SmbClient; 
 
 use Data::Dumper;

@@ -7,7 +7,7 @@
 # Description: Shell script wrap the command output of 'check_sap_db2_status' nagios
 #              command and format a good result.
 #
-# Author: Vincent BESANCON <vincent.besancon@Company.com>
+# Author: Canux CHENG <canuxcheng@gmail.com>
 # SVN: $Id: check_sap_db2_status.sh 781 2012-02-23 10:28:02Z bailat $
 #
 

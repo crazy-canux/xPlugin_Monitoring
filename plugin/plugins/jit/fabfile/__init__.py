@@ -1,6 +1,6 @@
 # -*- coding: UTF-8 -*-
 #===============================================================================
-# Author        : Vincent BESANCON <besancon.vincent@gmail.com>
+# Author        : Canux CHENG <canuxcheng@gmail.com>
 # Description   : fabfile module
 #-------------------------------------------------------------------------------
 # This program is free software: you can redistribute it and/or modify

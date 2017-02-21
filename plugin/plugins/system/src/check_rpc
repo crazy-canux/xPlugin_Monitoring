@@ -20,7 +20,7 @@
 #
 
 use strict;
-use lib "/usr/lib/Company/plugins" ;
+use lib "/usr/lib/canux/plugins" ;
 use utils qw($TIMEOUT %ERRORS &print_revision &support);
 use vars qw($PROGNAME);
 my ($verbose,@proto,%prognum,$host,$response,$prognum,$port,$cmd,$progver,$state);

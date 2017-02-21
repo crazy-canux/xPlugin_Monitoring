@@ -33,7 +33,7 @@
  * 3) Verified working with AIX 5.3, NOT working with 4.3
  */
 
-require_once("/usr/lib/Company/plugins/utils.php");
+require_once("/usr/lib/canux/plugins/utils.php");
 
 if(!$argv[2]){
 	print("\nUsage: ./check_aix_disks <communityname> <host>");

@@ -1,7 +1,6 @@
 #!/usr/bin/perl -w
 #===============================================================================
 # Name          : check_cisco_cpu_module.pl
-# Author        : Thibaut COURVOISIER <thibaut.courvoisier-ext@Company.com>
 # Description   : Check which CPU module is active on Cisco Core Switch.
 #-------------------------------------------------------------------------------
 # This program is free software: you can redistribute it and/or modify
@@ -85,7 +84,7 @@ EOT
 sub help {
    print "\n==== $plugin_name ====\n\n";
    print "Creative Commons Attribution-Noncommercial-Share Alike 2.0 France\n";
-   print "(c)2010 Thibaut COURVOISIER, <thibaut.courvoisier-ext\@Company.com>\n\n";
+   print "(c)2010 Thibaut COURVOISIER, <thibaut.courvoisier-ext\@canux.com>\n\n";
    print_description();
    print_usage();
    print <<EOT;
@@ -107,19 +106,19 @@ sub get_cpu_status {
         $session->close;
         exit $ERRORS{"UNKNOWN"};
     }
-	
+
     if ($$resultat1{$oid_module_5} != 14) {
         printf("WARNING: primary CPU module aren't active !\n");
         $session->close;
         exit $ERRORS{"WARNING"};
     }
-	
+
     #print "\n";
     #print Dumper($resultat1, $resultat2);
 
     my $nagios_output = "OK: Primary CPU module is active.\n";
     my $nagios_long_output = "";
-    
+
     $nagios_long_output .= "CPU Module 5: ".$CPU_STATES{$$resultat1{$oid_module_5}}."\n";
     $nagios_long_output .= "CPU Module 6: ".$CPU_STATES{$$resultat2{$oid_module_6}}."\n";
 

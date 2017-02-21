@@ -1,12 +1,12 @@
 Source: plugin-app-exalead
 Section: misc
 Priority: extra
-Maintainer: Vincent BESANCON <vincent.besancon@Company.com>
+Maintainer: Canux CHENG <canuxcheng@gmail.com>
 Build-Depends: debhelper (>= 9)
 Standards-Version: 3.9.5
-Homepage: http://monitoring-dc.app.corp/tracking/projects/exalead
-Vcs-Git: http://monitoring-dc.app.corp/git/plugins/exalead.git
-Vcs-Browser: http://monitoring-dc.app.corp/git/?p=plugins/exalead.git
+Homepage: http://canuxcheng.com/tracking/projects/exalead
+Vcs-Git: http://canuxcheng.com/git/plugins/exalead.git
+Vcs-Browser: http://canuxcheng.com/git/?p=plugins/exalead.git
 
 Package: plugin-app-exalead
 Architecture: all

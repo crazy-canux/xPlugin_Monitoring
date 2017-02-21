@@ -1,2 +1,2 @@
-src/db2                usr/lib/Company/plugins/app/db2
-src/check_*.py         usr/lib/Company/plugins/app/db2
+src/db2                usr/lib/canux/plugins/app/db2
+src/check_*.py         usr/lib/canux/plugins/app/db2

@@ -1,2 +1,2 @@
-usr/lib/Company/plugins/app/nrft/check_nrft_nb_batch.py    usr/lib/Company/plugins/app/nrft/nb_batch.py
-usr/lib/Company/plugins/app/nrft/check_nrft_loop_batch.py  usr/lib/Company/plugins/app/nrft/loop_batch.py
+usr/lib/canux/plugins/app/nrft/check_nrft_nb_batch.py    usr/lib/canux/plugins/app/nrft/nb_batch.py
+usr/lib/canux/plugins/app/nrft/check_nrft_loop_batch.py  usr/lib/canux/plugins/app/nrft/loop_batch.py

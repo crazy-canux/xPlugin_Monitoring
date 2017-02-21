@@ -33,4 +33,4 @@ for one event).
 
 .. links:
 
-.. _XML interface: http://monitoring-dc.app.corp/tracking/projects/gimm/wiki/#XML-interface-specification
+.. _XML interface: http://canuxcheng.com/tracking/projects/gimm/wiki/#XML-interface-specification

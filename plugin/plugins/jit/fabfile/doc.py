@@ -1,6 +1,6 @@
 # -*- coding: UTF-8 -*-
 #===============================================================================
-# Author        : Vincent BESANCON <besancon.vincent@gmail.com>
+# Author        : Canux CHENG <canuxcheng@gmail.com>
 # Description   : fabric tasks
 #-------------------------------------------------------------------------------
 # This program is free software: you can redistribute it and/or modify
@@ -31,7 +31,7 @@ DOCROOT = '/var/www/project'
 DOCDIR = os.path.join(DOCROOT, 'jit-plugins')
 
 @task
-@hosts('monitoring-dc.app.corp')
+@hosts('canuxcheng.com')
 def upload():
     """Upload doc to central server"""
     env.user = 'webcontent'

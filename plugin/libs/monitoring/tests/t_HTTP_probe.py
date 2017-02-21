@@ -33,11 +33,11 @@ from monitoring.nagios.probes import ProbeHTTP
 class TestHTTPProbe(unittest.TestCase):
     """Basic tests of HTTP probe functionalities."""
     def setUp(self):
-        self.http = ProbeHTTP("monitoring-dc.app.corp")
+        self.http = ProbeHTTP("canuxcheng.com")
 
     def test_instance_init(self):
         """Test instance initialization."""
-        self.assertEqual(self.http.baseurl, "http://monitoring-dc.app.corp:80")
+        self.assertEqual(self.http.baseurl, "http://canuxcheng.com:80")
 
     def test_probe_auth(self):
         """Test HTTP probe auth."""

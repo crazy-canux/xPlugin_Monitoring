@@ -1,5 +1,5 @@
 #!/usr/bin/perl -w
-# Copyright (C) Canux <http://www.Company.com/>
+# Copyright (C) Canux CHENG <canuxcheng@gmail.com>
 #
 # Permission is hereby granted, free of charge, to any person obtaining
 # a copy of this software and associated documentation files (the "Software"),
@@ -28,7 +28,6 @@
 # Licence :	GPL - http://www.fsf.org/licenses/gpl.txt
 # Contrib :
 #		Makina Corpus <adam At greekattic d0t com>
-#		Vincent Besançon <vincent.besancon@Company.com>
 # TODO :
 #		- Put $o_delta as an option
 #		- If testing on localhost, selects itself....
@@ -65,12 +64,12 @@ my $proc_run_state = '1.3.6.1.2.1.25.4.2.1.7';
 # Globals
 
 
-my $o_host = 	undef; 		# hostname 
-my $o_community =undef; 	# community 
+my $o_host = 	undef; 		# hostname
+my $o_community =undef; 	# community
 my $o_port = 	161; 		# port
 my $o_version2	= undef;	#use snmp v2c
-my $o_descr = 	undef; 		# description filter 
-my $o_warn = 	0; 		# warning limit 
+my $o_descr = 	undef; 		# description filter
+my $o_warn = 	0; 		# warning limit
 my @o_warnL=	undef;		# warning limits (min,max)
 my $o_crit=	0; 		# critical limit
 my @o_critL=	undef;		# critical limits (min,max)
@@ -81,7 +80,7 @@ my $o_noreg=	undef;		# Do not use Regexp for name
 my $o_path=	undef;		# check path instead of name
 my $o_inverse=	undef;		# checks max instead of min number of process
 my $o_get_all=	undef;		# get all tables at once
-my $o_param=	undef;		# Add process parameters for selection 
+my $o_param=	undef;		# Add process parameters for selection
 my $o_perf=	undef;		# Add performance output
 my $o_timeout=  40;            	# Default 5s Timeout
 my $o_retries=	3;		# Default to 3 retries
@@ -122,34 +121,34 @@ $SIG{'ALRM'} = sub {
      exit $ERRORS{"UNKNOWN"};
 };
 
-sub read_file { 
+sub read_file {
         # Input : File, items_number
-        # Returns : array of value : [line][item] 
+        # Returns : array of value : [line][item]
   my ($traffic_file,$items_number)=@_;
-  my ($ligne,$n_rows)=(undef,0);  
+  my ($ligne,$n_rows)=(undef,0);
   my (@last_values,@file_values,$i);
-  open(FILE,"<".$traffic_file) || return (1,0,0); 
-  
+  open(FILE,"<".$traffic_file) || return (1,0,0);
+
   while($ligne = <FILE>)
   {
     chomp($ligne);
     @file_values = split(":",$ligne);
     #verb("@file_values");
-    if ($#file_values >= ($items_number-1)) { 
+    if ($#file_values >= ($items_number-1)) {
         # check if there is enough data, else ignore line
       for ( $i=0 ; $i< $items_number ; $i++ ) {$last_values[$n_rows][$i]=$file_values[$i]; }
       $n_rows++;
-    } 
+    }
   }
   close FILE;
-  if ($n_rows != 0) { 
+  if ($n_rows != 0) {
     return (0,$n_rows,@last_values);
   } else {
     return (1,0,0);
   }
 }
 
-sub write_file { 
+sub write_file {
         # Input : file , rows, items, array of value : [line][item]
         # Returns : 0 / OK, 1 / error
   my ($file_out,$rows,$item,@file_values)=@_;
@@ -183,8 +182,8 @@ sub help {
 -C, --community=COMMUNITY NAME
    community name for the host's SNMP agent (implies SNMP v1 or v2c with option)
 -l, --login=LOGIN ; -x, --passwd=PASSWD, -2, --v2c
-   Login and auth password for snmpv3 authentication 
-   If no priv password exists, implies AuthNoPriv 
+   Login and auth password for snmpv3 authentication
+   If no priv password exists, implies AuthNoPriv
    -2 : use snmp v2c
 -R, --retries
    Number of retries to send SNMP request (default: 3)
@@ -192,7 +191,7 @@ sub help {
    Priv password for snmpv3 (AuthPriv protocol)
 -L, --protocols=<authproto>,<privproto>
    <authproto> : Authentication protocol (md5|sha : default md5)
-   <privproto> : Priv protocole (des|aes : default des) 
+   <privproto> : Priv protocole (des|aes : default des)
 -p, --port=PORT
    SNMP port (Default 161)
 -n, --name=NAME
@@ -201,21 +200,21 @@ sub help {
 -r, --noregexp
    Do not use regexp to match NAME in description OID
 -f, --fullpath
-   Use full path name instead of process name 
+   Use full path name instead of process name
    (Windows doesn't provide full path name)
 -A, --param
    Add parameters to select processes.
-   ex : "named.*-t /var/named/chroot" will only select named process with this parameter 
+   ex : "named.*-t /var/named/chroot" will only select named process with this parameter
 -F, --perfout
    Add performance output
    outputs : memory_usage, num_process, cpu_usage
 -w, --warn=MIN[,MAX]
-   Number of process that will cause a warning 
+   Number of process that will cause a warning
    -1 for no warning, MAX must be >0. Ex : -w-1,50
 -c, --critical=MIN[,MAX]
    number of process that will cause an error (
    -1 for no critical, MAX must be >0. Ex : -c-1,50
-Notes on warning and critical : 
+Notes on warning and critical :
    with the following options : -w m1,x1 -c m2,x2
    you must have : m2 <= m1 < x1 <= x2
    you can omit x1 or x2 or both
@@ -229,7 +228,7 @@ Notes on warning and critical :
    values are warning and critical values in % of CPU usage
    if more than one CPU, value can be > 100% : 100%=1 CPU
 -d, --delta=seconds
-   make an average of <delta> seconds for CPU (default 300=5min)   
+   make an average of <delta> seconds for CPU (default 300=5min)
 -g, --getall
   In some cases, it is necessary to get all data at once because
   process die very frequently.
@@ -237,16 +236,16 @@ Notes on warning and critical :
 -o, --octetlength=INTEGER
   max-size of the SNMP message, usefull in case of Too Long responses.
   Be carefull with network filters. Range 484 - 65535, default are
-  usually 1472,1452,1460 or 1440.  
+  usually 1472,1452,1460 or 1440.
 -t, --timeout=INTEGER
    timeout for SNMP in seconds (Default: 20)
 -V, --version
    prints version number
-Note :   
-  CPU usage is in % of one cpu, so maximum can be 100% * number of CPU 
-  example : 
-  Browse process list : <script> -C <community> -H <host> -n <anything> -v 
-  the -n option allows regexp in perl format : 
+Note :
+  CPU usage is in % of one cpu, so maximum can be 100% * number of CPU
+  example :
+  Browse process list : <script> -C <community> -H <host> -n <anything> -v
+  the -n option allows regexp in perl format :
   All process of /opt/soft/bin  	: -n /opt/soft/bin/ -f
   All 'named' process			: -n named
 
@@ -267,7 +266,7 @@ sub check_options {
 		'x:s'	=> \$o_passwd,			'passwd:s'			=> \$o_passwd,
 		'R:i'	=> \$o_retries,			'retries:i'			=> \$o_retries,
 		'X:s'	=> \$o_privpass,		'privpass:s'		=> \$o_privpass,
-		'L:s'	=> \$v3protocols,		'protocols:s'		=> \$v3protocols,   
+		'L:s'	=> \$v3protocols,		'protocols:s'		=> \$v3protocols,
 		'c:s'	=> \$o_crit,			'critical:s'		=> \$o_crit,
 		'w:s'	=> \$o_warn,			'warn:s'			=> \$o_warn,
 		't:i'	=> \$o_timeout,			'timeout:i'			=> \$o_timeout,
@@ -300,7 +299,7 @@ sub check_options {
 	  if ((defined ($v3proto[1])) && (!defined($o_privpass))) {
 	    print "Put snmp V3 priv login info with priv protocols!\n"; print_usage(); exit $ERRORS{"UNKNOWN"}}
 	}
-	if (defined($o_timeout) && (isnotnum($o_timeout) || ($o_timeout < 2) || ($o_timeout > 60))) 
+	if (defined($o_timeout) && (isnotnum($o_timeout) || ($o_timeout < 2) || ($o_timeout > 60)))
 	  { print "Timeout must be >1 and <60 !\n"; print_usage(); exit $ERRORS{"UNKNOWN"}}
 	if (!defined($o_timeout)) {$o_timeout=5;}
     # Check compulsory attributes
@@ -313,21 +312,21 @@ sub check_options {
     if ((defined($o_warnL[1]) && isnotnum($o_warnL[1])) || (defined($o_critL[1]) && isnotnum($o_critL[1])))
        { print "Numerical values for warning and critical\n";print_usage(); exit $ERRORS{"UNKNOWN"};}
     # Check for positive numbers on maximum number of processes
-    if ((defined($o_warnL[1]) && ($o_warnL[1] < 0)) || (defined($o_critL[1]) && ($o_critL[1] < 0))) 
+    if ((defined($o_warnL[1]) && ($o_warnL[1] < 0)) || (defined($o_critL[1]) && ($o_critL[1] < 0)))
       { print " Maximum process warn and critical > 0 \n";print_usage(); exit $ERRORS{"UNKNOWN"}};
     # Check min_crit < min warn < max warn < crit warn
     if ($o_warnL[0] < $o_critL[0]) { print " warn minimum must be >= crit minimum\n";print_usage(); exit $ERRORS{"UNKNOWN"}};
     if (defined($o_warnL[1])) {
       if ($o_warnL[1] <= $o_warnL[0])
         { print "warn minimum must be < warn maximum\n";print_usage(); exit $ERRORS{"UNKNOWN"}};
-    } elsif ( defined($o_critL[1]) && ($o_critL[1] <= $o_warnL[0])) 
-       { print "warn minimum must be < crit maximum when no crit warning defined\n";print_usage(); exit $ERRORS{"UNKNOWN"};} 
-    if ( defined($o_critL[1]) && defined($o_warnL[1]) && ($o_critL[1]<$o_warnL[1])) 
-       { print "warn max must be <= crit maximum\n";print_usage(); exit $ERRORS{"UNKNOWN"};}  
+    } elsif ( defined($o_critL[1]) && ($o_critL[1] <= $o_warnL[0]))
+       { print "warn minimum must be < crit maximum when no crit warning defined\n";print_usage(); exit $ERRORS{"UNKNOWN"};}
+    if ( defined($o_critL[1]) && defined($o_warnL[1]) && ($o_critL[1]<$o_warnL[1]))
+       { print "warn max must be <= crit maximum\n";print_usage(); exit $ERRORS{"UNKNOWN"};}
     #### Memory checks
     if (defined ($o_mem)) {
       @o_memL=split(/,/,$o_mem);
-      if ($#o_memL != 1) 
+      if ($#o_memL != 1)
         {print "2 values (warning,critical) for memory\n";print_usage(); exit $ERRORS{"UNKNOWN"}};
       if (isnotnum($o_memL[0]) || isnotnum($o_memL[1]))
        {print "Numeric values for memory!\n";print_usage(); exit $ERRORS{"UNKNOWN"}};
@@ -337,7 +336,7 @@ sub check_options {
     #### CPU checks
     if (defined ($o_cpu)) {
       @o_cpuL=split(/,/,$o_cpu);
-      if ($#o_cpuL != 1) 
+      if ($#o_cpuL != 1)
         {print "2 values (warning,critical) for cpu\n";print_usage(); exit $ERRORS{"UNKNOWN"}};
       if (isnotnum($o_cpuL[0]) || isnotnum($o_cpuL[1]))
        {print "Numeric values for cpu!\n";print_usage(); exit $ERRORS{"UNKNOWN"}};
@@ -378,7 +377,7 @@ if ( defined($o_login) && defined($o_passwd)) {
 		-authprotocol	=> $o_authproto,
 		-timeout		=> $o_timeout,
 		-retries		=> $o_retries
-    );  
+    );
   } else {
     verb("SNMPv3 AuthPriv login : $o_login, $o_authproto, $o_privproto");
     ($session, $error) = Net::SNMP->session(
@@ -463,7 +462,7 @@ if (defined($o_param)) { # Get parameter table too
       $session->close;
       exit $ERRORS{"UNKNOWN"};
    }
-   
+
 }
 
 if (defined ($o_get_all)) {
@@ -476,7 +475,7 @@ if (defined ($o_get_all)) {
   }
   foreach my $key ( keys %$getall_run) {
     $result_cons{$key}=$$getall_run{$key};
-  } 
+  }
   $getall_cpu = $session->get_table(-baseoid => $proc_cpu_table,
                                     -maxrepetitions => 10);
   if (!defined($getall_cpu)) {
@@ -486,7 +485,7 @@ if (defined ($o_get_all)) {
   }
   foreach my $key ( keys %$getall_cpu) {
     $result_cons{$key}=$$getall_cpu{$key};
-  } 
+  }
   $getall_mem = $session->get_table(-baseoid => $proc_mem_table,
                                     -maxrepetitions => 10);
   if (!defined($getall_mem)) {
@@ -496,8 +495,8 @@ if (defined ($o_get_all)) {
   }
   foreach my $key ( keys %$getall_mem) {
     $result_cons{$key}=$$getall_mem{$key};
-  } 
-} 
+  }
+}
 
 my @tindex = undef;
 my @oids = undef;
@@ -570,11 +569,11 @@ if (!defined ($o_get_all)) {
       $tmp_result = $session->get_request(-varbindlist => \@toid);
       if (!defined($tmp_result)) { printf("ERROR: running table : %s.\n", $session->error); $session->close;
 	  exit $ERRORS{"UNKNOWN"};
-      } 
+      }
       foreach (@toid) { $result_cons{$_}=$$tmp_result{$_}; }
       $tmp_count-=$tmp_num;
       $tmp_index+=$tmp_num;
-    }  
+    }
 
   } else {
     $result = $session->get_request(-varbindlist => \@oids);
@@ -609,11 +608,11 @@ if (defined ($o_mem) ) {
  if (defined ($o_mem_avg)) {
    for (my $i=0; $i< $num_int; $i++) { $res_memory += $result_cons{$proc_mem_table . "." . $tindex[$i]};}
    $res_memory /= ($num_int_ok*1024);
-   verb("Memory average : $res_memory"); 
+   verb("Memory average : $res_memory");
  } else {
-   for (my $i=0; $i< $num_int; $i++) { 
+   for (my $i=0; $i< $num_int; $i++) {
      $res_memory = ($result_cons{$proc_mem_table . "." . $tindex[$i]} > $res_memory) ? $result_cons{$proc_mem_table . "." . $tindex[$i]} : $res_memory;
-   } 
+   }
    $res_memory /=1024;
    verb("Memory max : $res_memory");
  }
@@ -641,25 +640,25 @@ if (defined ($o_cpu) ) {
   my $n_items_check=2;
   my $trigger=$timenow - ($o_delta - ($o_delta/10));
   my $trigger_low=$timenow - 3*$o_delta;
-  my ($old_value,$old_time)=undef; 
+  my ($old_value,$old_time)=undef;
   my $found_value=undef;
-  
+
   #### Get the current values
   for (my $i=0; $i< $num_int; $i++) { $res_cpu += $result_cons{$proc_cpu_table . "." . $tindex[$i]};}
-  
+
   verb("Time: $timenow , cpu (centiseconds) : $res_cpu");
 
   #### Read file
   $temp_file_name=$o_descr;
   $temp_file_name =~ s/ /_/g;
-  $temp_file_name = $o_base_dir . $o_host ."." . $temp_file_name; 
+  $temp_file_name = $o_base_dir . $o_host ."." . $temp_file_name;
   # First, read entire file
   my @ret_array=read_file($temp_file_name,$n_items_check);
   $return = shift(@ret_array);
   $n_rows = shift(@ret_array);
-  if ($n_rows != 0) { @file_values = @ret_array };     
+  if ($n_rows != 0) { @file_values = @ret_array };
   verb ("File read returns : $return with $n_rows rows");
-  #make the checks if the file is OK  
+  #make the checks if the file is OK
   if ($return ==0) {
     my $j=$n_rows-1;
     do {

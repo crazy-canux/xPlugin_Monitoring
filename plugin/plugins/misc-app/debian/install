@@ -1,4 +1,4 @@
-src/check_datastore_exchange.sh         usr/lib/Company/plugins/app/exchange
-src/check_sap_db2_status.sh             usr/lib/Company/plugins/app/sap
-src/check_sap_status.sh                 usr/lib/Company/plugins/app/sap
-src/check_magnitude_active_session.sh   usr/lib/Company/plugins/app/magnitude
+src/check_datastore_exchange.sh         usr/lib/canux/plugins/app/exchange
+src/check_sap_db2_status.sh             usr/lib/canux/plugins/app/sap
+src/check_sap_status.sh                 usr/lib/canux/plugins/app/sap
+src/check_magnitude_active_session.sh   usr/lib/canux/plugins/app/magnitude

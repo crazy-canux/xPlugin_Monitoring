@@ -2,7 +2,7 @@
 # -*- coding: UTF-8 -*-
 #===============================================================================
 # Filename      : check_snmpnetstat.py
-# Author        : Vincent BESANCON <besancon.vincent@gmail.com>
+# Author        : Canux CHENG <canuxcheng@gmail.com>
 # Description   : check the number of tcp or udp connection using command
 #                 'snmpnetstat' (filters available).
 #-------------------------------------------------------------------------------

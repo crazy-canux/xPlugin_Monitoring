@@ -6,84 +6,84 @@ plugin-hadr (1.0.10) precise; urgency=low
   * [check_hadr_synchro] code style: fix all PEP8 issues.
   * [check_hadr_synchro] handle timeout exception properly.
 
- -- Vincent BESANCON <besancon.vincent@gmail.com>  Tue, 13 May 2014 12:25:47 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Tue, 13 May 2014 12:25:47 +0200
 
 plugin-hadr (1.0.9) precise; urgency=low
 
   * Modify test on output cmd
 
- -- Patrick BAILAT <patrick.bailat-ext@Company.com>  Tue, 24 Sep 2013 13:39:54 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Tue, 24 Sep 2013 13:39:54 +0200
 
 plugin-hadr (1.0.8) precise; urgency=low
 
   * Change state to CRITICAL if output is empty. refs #2565
 
- -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Wed, 28 Aug 2013 15:24:58 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Wed, 28 Aug 2013 15:24:58 +0200
 
 plugin-hadr (1.0.7) precise; urgency=low
 
   * Fix bug :P. refs #2565
 
- -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Wed, 28 Aug 2013 15:21:38 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Wed, 28 Aug 2013 15:21:38 +0200
 
 plugin-hadr (1.0.6) precise; urgency=low
 
   * fix nagios output bug (null). refs #2565
 
- -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Wed, 28 Aug 2013 15:14:50 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Wed, 28 Aug 2013 15:14:50 +0200
 
 plugin-hadr (1.0.5) precise; urgency=low
 
   * Indentation and Downgrade Standard-Version for 3.9.3, i.e. precise version
 
- -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Tue, 09 Apr 2013 16:25:21 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Tue, 09 Apr 2013 16:25:21 +0200
 
 plugin-hadr (1.0.4) precise; urgency=low
 
   * maj management files
   * [Dependencies] Modify 'python' to ${python:Depends}
 
- -- Yves ANDOLFATTO <yves.andolfatto@Company.com>  Wed, 03 Apr 2013 16:42:04 +0200
+ -- Canux CHENG <canuxcheng@gmail.com>  Wed, 03 Apr 2013 16:42:04 +0200
 
 plugin-hadr (1.0.3) precise; urgency=low
 
   * move check_hadr_backup in repository plugin-db2
 
- -- Patrick BAILAT <patrick.bailat-ext@Company.com>  Tue, 19 Feb 2013 16:13:29 +0100
+ -- Canux CHENG <canuxcheng@gmail.com>  Tue, 19 Feb 2013 16:13:29 +0100
 
 plugin-hadr (1.0.2) quantal; urgency=low
 
   * say to debian package to install hadr python package.
 
- -- Vincent BESANCON <besancon.vincent@gmail.com>  Mon, 04 Feb 2013 15:43:56 +0100
+ -- Canux CHENG <canuxcheng@gmail.com>  Mon, 04 Feb 2013 15:43:56 +0100
 
 plugin-hadr (1.0.1) quantal; urgency=low
 
   * [idea] share Pycharm configuration.
   * Upgraded plugin to use monitoring.nagios v1.2.x.
 
- -- Vincent BESANCON <besancon.vincent@gmail.com>  Mon, 04 Feb 2013 14:32:26 +0100
+ -- Canux CHENG <canuxcheng@gmail.com>  Mon, 04 Feb 2013 14:32:26 +0100
 
 plugin-hadr (1.0.0) stable; urgency=low
 
   * create new plugin for check backup age refs #1730
 
- -- Patrick BAILAT <patrick.bailat-ext@Company.com>  Thu, 22 Nov 2012 14:57:25 +0100
+ -- Canux CHENG <canuxcheng@gmail.com>  Thu, 22 Nov 2012 14:57:25 +0100
 
 plugin-hadr (0.3) stable; urgency=low
 
   * Add check on hadr_state. And modify output message
 
- -- Patrick BAILAT <patrick.bailat-ext@Company.com>  Wed, 07 Nov 2012 13:59:10 +0100
+ -- Canux CHENG <canuxcheng@gmail.com>  Wed, 07 Nov 2012 13:59:10 +0100
 
 plugin-hadr (0.2) stable; urgency=low
 
   * Create new plugin to check HADR Synchro refs #1694
 
- -- Patrick BAILAT <patrick.bailat-ext@Company.com>  Wed, 07 Nov 2012 13:42:47 +0100
+ -- Canux CHENG <canuxcheng@gmail.com>  Wed, 07 Nov 2012 13:42:47 +0100
 
 plugin-hadr (0.1) stable; urgency=low
 
   * Initial Release.
 
- -- Patrick BAILAT <patrick.bailat-ext@Company.com>  Mon, 06 Nov 2012 15:49:44 +0100
+ -- Canux CHENG <canuxcheng@gmail.com>  Mon, 06 Nov 2012 15:49:44 +0100

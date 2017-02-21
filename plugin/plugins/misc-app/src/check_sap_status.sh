@@ -7,8 +7,8 @@
 # Description: Shell script wrap the command output of 'check_sap_status' nagios
 #              command and format a good result.
 #
-# Author: Vincent BESANCON <vincent.besancon@Company.com>
-# SVN: $Id: check_sap_status.sh 835 2012-10-26 13:48:09Z vincent $
+# Author: Canux CHENG <canuxcheng@gmail.com>
+# SVN: $Id: check_sap_status.sh 835 2012-10-26 13:48:09Z  $
 #
 
 # Usage

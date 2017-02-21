@@ -153,8 +153,8 @@ par---------------------------------------------------------------------------
 parVendor Name   : ^vnam-c32
 parProduct Name  : ^pnam-c31
 parVersion       : ^ver                 Customer Name : ^cust
-parSecurity Level: ^reg-d!1             Company Name  : ^cnam
-par                                     Company Location: ^cloc
+parSecurity Level: ^reg-d!1             canux Name  : ^cnam
+par                                     canux Location: ^cloc
 parAdditional Information
 par----------------------
 add^addi-c60

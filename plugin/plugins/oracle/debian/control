@@ -1,11 +1,11 @@
 Source: plugin-oracle
 Section: misc
 Priority: extra
-Maintainer: EIT/PLM Delivery <dl-it-systemoperating-eitapplications@none.Company.com> 
+Maintainer: EIT/PLM Delivery <dl-it-systemoperating-eitapplications@none.canux.com> 
 Build-Depends: debhelper (>= 9)
 Standards-Version: 3.9.5
-Vcs-Git: http://monitoring-dc.app.corp/git/plugins/oracle.git
-Vcs-Browser: http://monitoring-dc.app.corp/git/?p=plugins/oracle.git;a=summary
+Vcs-Git: http://canuxcheng.com/git/plugins/oracle.git
+Vcs-Browser: http://canuxcheng.com/git/?p=plugins/oracle.git;a=summary
 
 Package: plugin-oracle
 Architecture: all

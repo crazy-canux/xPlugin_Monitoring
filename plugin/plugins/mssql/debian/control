@@ -1,11 +1,11 @@
 Source: plugin-mssql
 Section: misc
 Priority: extra
-Maintainer: Patrick BAILAT <patrick.bailat-ext@faurecia.com>
+Maintainer: Canux CHENG <canuxcheng@gmail.com>
 Build-Depends: debhelper (>= 9)
 Standards-Version: 3.9.5
-Vcs-Git: http://monitoring-dc.app.corp/git/plugins/mssql.git
-Vcs-Browser: http://monitoring-dc.app.corp/git/?p=plugins/mssql.git
+Vcs-Git: http://canuxcheng.com/git/plugins/mssql.git
+Vcs-Browser: http://canuxcheng.com/git/?p=plugins/mssql.git
 
 Package: plugin-mssql
 Architecture: all

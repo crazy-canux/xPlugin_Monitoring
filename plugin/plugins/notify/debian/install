@@ -1,3 +1,3 @@
-src/notify_by_sms.py                usr/lib/Company/plugins/notify
-src/omnibus_host_trap_notify.pl     usr/lib/Company/plugins/notify
-src/omnibus_trap_notify.pl          usr/lib/Company/plugins/notify
+src/notify_by_sms.py                usr/lib/canux/plugins/notify
+src/omnibus_host_trap_notify.pl     usr/lib/canux/plugins/notify
+src/omnibus_trap_notify.pl          usr/lib/canux/plugins/notify

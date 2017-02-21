@@ -1,15 +1,15 @@
 plugin-sharepoint2013 (1.1.0) trusty; urgency=medium
 
-  [ Vincent BESANCON ]
+  [ Canux CHENG ]
   * Migrate package for trusty.
 
   [ Lei LIU ]
   * Add sharepoint performance check plugins.
 
- -- Vincent BESANCON <vincent.besancon@Company.com>  Tue, 24 Nov 2015 08:45:51 +0100
+ -- Canux CHENG <canuxcheng@gmail.com>  Tue, 24 Nov 2015 08:45:51 +0100
 
 plugin-sharepoint2013 (1.0.0) trusty; urgency=low
 
   * Initial Release.
 
- -- EIT/PLM Delivery <dl-it-systemoperating-eitapplications@none.Company.com>  Mon, 26 Jan 2015 16:27:39 +0100
+ -- EIT/PLM Delivery <dl-it-systemoperating-eitapplications@none.canux.com>  Mon, 26 Jan 2015 16:27:39 +0100

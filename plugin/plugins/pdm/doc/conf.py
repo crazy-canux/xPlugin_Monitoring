@@ -43,7 +43,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'plugin-app-pdm'
-copyright = u'2013, Monitoring & Reporting'
+copyright = u'2013, Canux CHENG'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -216,7 +216,7 @@ latex_documents = [
 # (source start file, name, description, authors, manual section).
 man_pages = [
     ('index', 'plugin-app-pdm', u'plugin-app-pdm Documentation',
-     [u'Monitoring & Reporting'], 1)
+     [u'Canux CHENG'], 1)
 ]
 
 # If true, show URL addresses after external links.
@@ -230,7 +230,7 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
   ('index', 'plugin-app-pdm', u'plugin-app-pdm Documentation',
-   u'Monitoring & Reporting', 'plugin-app-pdm', 'One line description of project.',
+   u'Canux CHENG', 'plugin-app-pdm', 'One line description of project.',
    'Miscellaneous'),
 ]
 

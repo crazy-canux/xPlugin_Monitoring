@@ -1,12 +1,12 @@
 Source: plugin-app-jit
 Section: misc
 Priority: extra
-Maintainer: Monitoring & Reporting <9OPMonitoring@none.Company.com>
+Maintainer: Canux CHENG <9OPMonitoring@none.canux.com>
 Build-Depends: debhelper (>= 8.0.0)
 Standards-Version: 3.9.3
-Homepage: http://monitoring-dc.app.corp/tracking/projects/jitall
-Vcs-Git: http://monitoring-dc.app.corp/git/plugins/jit.git
-Vcs-Browser: http://monitoring-dc.app.corp/git/?p=plugins/jit.git
+Homepage: http://canuxcheng.com/tracking/projects/jitall
+Vcs-Git: http://canuxcheng.com/git/plugins/jit.git
+Vcs-Browser: http://canuxcheng.com/git/?p=plugins/jit.git
 
 Package: plugin-app-jit
 Architecture: all

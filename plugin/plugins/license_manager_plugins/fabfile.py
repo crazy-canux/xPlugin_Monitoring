@@ -1,6 +1,5 @@
 # -*- coding: UTF-8 -*-
 #===============================================================================
-# Author        : Vincent BESANCON <besancon.vincent@gmail.com>
 # Description   : fabric tasks
 #-------------------------------------------------------------------------------
 # This program is free software: you can redistribute it and/or modify

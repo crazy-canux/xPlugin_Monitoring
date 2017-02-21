@@ -1,1 +1,1 @@
-src/check_ldap_account.py   usr/lib/Company/plugins/app/ldap
+src/check_ldap_account.py   usr/lib/canux/plugins/app/ldap
