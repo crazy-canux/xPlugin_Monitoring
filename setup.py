@@ -42,7 +42,7 @@ INSTALL_REQUIRES = [
 ]
 
 setup(
-    name='xplugin',
+    name='zplugin',
     version=plugin.__version__,
     author='Canux CHENG',
     author_email='canuxcheng@gmail.com',
@@ -53,7 +53,7 @@ setup(
     license='GPL',
     platforms='any',
     keywords='monitoring nagios plugin',
-    url='https://github.com/crazy-canux/xplugin',
+    url='https://github.com/crazy-canux/zplugin',
     install_requires=INSTALL_REQUIRES,
     packages=find_packages(),
     zip_safe=False,
