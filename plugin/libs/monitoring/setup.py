@@ -30,7 +30,7 @@ dependencies = [
     'pymssql==2.0.1',
     'requests==2.2.1',
     'beautifulsoup4==4.3.2',
-    'paramiko==2.4.1',
+    'paramiko==2.4.2',
 ]
 
 # Way to obtain the project version if project is already installed somewhere
